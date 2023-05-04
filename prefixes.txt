@@ -1,0 +1,22 @@
+bc blogcard
+cc CampaignCard
+cg campaign grid
+cf categoryfilter
+si sidebar
+ft footer
+nv navbar
+bl blog
+cp campaigns
+hd Header
+hi HowItWorks
+ccp CampaignsPage
+cpp CampaignPage
+acp ActiveCampaign
+rt RewardsTab
+sn SideNotice
+sb SideBio
+cch CreateCampaignheader
+bt basicstab
+cct CreateCampaignTabs
+
+@media(max-width: 1000px){}

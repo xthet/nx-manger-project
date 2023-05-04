@@ -1,0 +1,20 @@
+/* crd */
+.crd-section.sc-padding.fl-cl.fl-c{
+  padding-top: 4.04vw;
+  padding-bottom: 7.04vw;
+  gap: 1.74vw;
+}
+@media (max-width: 1000px){
+  .crd-section.sc-padding.fl-cl.fl-c{
+    padding-top: 5vw;
+    padding-bottom: 8vw;
+    gap: 2.82vw;
+  }
+}
+@media(max-width: 550px){
+  .crd-section.sc-padding.fl-cl.fl-c{
+    padding-top: 14.29vw;
+    padding-bottom: 17.29vw;
+    gap: 3vw;
+  }
+}

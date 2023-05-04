@@ -1,0 +1,76 @@
+.nt-item
+  width: 100%
+  padding: 0.5rem
+  box-shadow: 0 0 10px 10px rgba(196, 162, 231, 0.1)
+  transition: all 0.3s ease
+  border-radius: 0.2rem
+  &:hover
+    opacity: 0.5
+
+.nt-bdr
+  width: 100%
+  padding: 0.5rem
+  border: 1px dashed rgba(255,255,255,0.6)
+  @include fl-cl
+  @include fl-c
+  gap: 0.5rem
+  position: relative
+  background: transparent
+  cursor: default
+
+.nt-cancel
+  position: absolute
+  width: 95%
+  @include fl-cr
+
+.nt-x-icon
+  color: #000
+  height: 1.2rem
+  cursor: pointer
+
+.nt-invisible
+  display: none
+
+.nt-title
+  font-family: $font-family
+  color: #000
+  font-weight: 500
+  letter-spacing: 0.03em
+  text-align: center
+  line-height: 1em
+  font-size: 1.6rem
+  @media(max-width: $md)
+    font-size: 1.2rem
+
+.nt-sep
+  width: 100%
+  height: 1px
+  background: #fff
+  opacity: 0.6  
+
+.nt-msg
+  @include def-p
+  font-size: 1.3rem
+  line-height: 1.3em
+  color: #000
+  white-space: pre-line
+
+.nt-pop-in
+  animation: ntpopin 0.4s ease forwards
+@keyframes ntpopin
+  0%
+    opacity: 0
+    transform: scale(0)
+  100%
+    opacity: 1
+    transform: scale(1)
+
+.nt-pop-out
+  animation: ntpopout 0.4s ease forwards
+@keyframes ntpopout
+  0%
+    opacity: 1
+    transform: scale(1)
+  100%
+    opacity: 0
+    transform: scale(0)

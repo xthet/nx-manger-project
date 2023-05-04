@@ -1,0 +1,86 @@
+/* cf */
+.cf-wrapper.fl-cc{
+  max-width: 100%;
+  gap: 0.7vw;
+  z-index: 8;
+}
+
+.cf-category{
+  padding: 0.5em 0.9em;
+  border: 1px solid #361E77;
+  border-radius: 0.7em;
+  width: max-content;
+  white-space: nowrap;
+  /* background-color: var(--color-sub-bg); */
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1em;
+  color: var(--color-card-text);
+  cursor: pointer;
+
+  -webkit-user-select: none;
+  -ms-user-select: none; 
+  user-select: none;
+  transition: all 0.4s ease;
+}
+@media(max-width: 1250px){
+  .cf-category{
+    font-size: 1.2rem;
+  }
+}
+@media(max-width: 1000px){
+  .cf-category{
+    font-size: 1.5rem;
+  }
+}
+@media(max-width: 600px){
+  .cf-category{
+    font-size: 0.8rem;
+  }
+}
+.cf-category:hover{
+  background-color: #9071DF;
+  color: var(--color-htext);
+  border-color: #9071DF;
+}
+.cf-category.active{
+  background-color: #361E77;
+  border-color: #361E77;
+  color: var(--color-htext);
+}
+
+.cf-arrow-btn{
+  /* width: max(14px, 2vw); */
+  height: 2.5rem;
+  color: #544776;
+  cursor: pointer;
+}
+@media(max-width: 1250px){
+  .cf-arrow-btn{
+    height: 1.8rem;
+  }
+}
+@media(max-width: 1000px){
+  .cf-arrow-btn{
+    height: 2.2rem;
+  }
+}
+@media(max-width: 600px){
+  .cf-arrow-btn{
+    height: 1.5rem;
+  }
+}
+
+
+.cf-other-cat-wrapper.fl-cc{
+  gap: 0.7vw;
+  width: 100%;
+}
+
+.cf-other-cat.fl-cl{
+  gap: 0.7vw;
+  width: 92%;
+  overflow: hidden;
+}

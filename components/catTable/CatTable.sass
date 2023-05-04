@@ -1,0 +1,52 @@
+.bt-cat-table
+  position: absolute
+  @include fl-cl
+  gap: 10px
+  width: 500px
+  height: 300px
+  background: rgba(255,255,255,0.9)
+  top: 25px
+  left: 10.42vw
+  box-shadow: 0px 4px 23px 4px rgba(0, 0, 0, 0.13)
+  border-radius: 1rem
+  padding: 1rem
+  &.hide-cat-table
+    display: none
+  @media(max-width: $sm)
+    overflow-x: scroll
+    top: 18px
+    left: 6vw
+    width: 75.6vw
+    height: 320px
+
+.bt-cats-lists
+  @include fl-tl
+  @include fl-c
+  gap: 1rem
+  height: 100%
+  @media(max-width: $sm)
+    gap: 0.8rem
+
+.bt-cat-list-title
+  @include def-p
+  @include no-select
+  font-size: 1.2rem
+  font-weight: 500
+  margin-bottom: 1rem
+  @media(max-width: $sm)
+    line-height: 1.2em
+
+.bt-catinlist
+  @include def-p
+  @include no-select
+  font-size: 1.3rem
+  cursor: pointer
+  &:hover
+    color: $color-subtext
+  @media(max-width: $sm)
+    line-height: 1.2em
+
+.bt-cat-table-sep
+  width: 1px
+  height: 100%
+  background: $color-card-text

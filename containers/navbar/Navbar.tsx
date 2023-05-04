@@ -1,0 +1,79 @@
+import { Logo, Sidebar, UserBox } from "@/components/exportComps"
+import { ConnectionContext } from "@/contexts/connection"
+import { useQUData } from "@/hooks/useQUData"
+import { useScroll } from "@/hooks/useScroll"
+import { conn } from "@/types"
+import { cutStr } from "@/utils/cutStr"
+import { truncateStr } from "@/utils/truncateStr"
+import { faAngleDown, faAngleUp, faBarsStaggered } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import { useContext, useEffect, useState } from "react"
+import Blockies from "react-blockies"
+
+function Menu(){
+  return (
+    <>
+      <Link href="/campaigns">{"Campaigns"}</Link>
+      <Link href="/#how-it-works">{"How it works"}</Link>
+      <Link href="/">{"About us"}</Link>
+      <Link href="/#blog">{"Blog"}</Link>
+    </>
+  )
+}
+
+export default function Navbar() {
+  const { isConnected, connect, account, uNameVal }:conn = useContext(ConnectionContext)!
+  const [SiInvis, setSiInvis] = useState(true)
+  const [UBInvis, setUBInvis] = useState(true)
+  const [UBOff, setUBOff] = useState(true)
+  const { scrollY, scrollX, scrollDirection } = useScroll()
+  const router = useRouter()
+  function siVisible(bool: boolean){
+    setSiInvis(bool)
+  }
+
+  return (
+    <nav 
+      className={
+        `nv-navbar sc-padding ${scrollDirection == "down" ? scrollY >= 8 && router.pathname !== "/create-campaign" ? "nv-active" : "" : ""}  
+        ${(router.pathname == "/" || router.pathname == "/profile/[profile]" 
+          || router.pathname == "/create-campaign" 
+          || router.pathname == "/signUp" ) && "page-unfill"}`
+      } 
+      onScroll={()=>{console.log(scrollY)}}
+    >
+      <div className="fl-cc fl-sb nv-menu-wrapper">
+        <Logo className="nv-logo fl-cl"/>
+        <div className="nv-menu fl-cr">
+          <div className="nv-menu-links fl-cr">
+            <Menu/>
+            {
+              !isConnected
+                ? <button className="nv-connect" onClick={()=>{connect()}}>{"Connect"}</button>
+                : <div className="nv-conn-info fl-cl">
+                  <Blockies seed={account} scale={3} size={8} 
+                    className="nv-jazzicon" color="#b78be4" bgColor="#361E77" spotColor="#fff"
+                  />
+                  <p className="nv-usr-address">{uNameVal.length > 7 ? cutStr(uNameVal, 7) : uNameVal}</p>
+                  { 
+                    UBOff ?
+                      <FontAwesomeIcon icon={faAngleDown} className="nv-drpdown-icon" onClick={()=>{setUBInvis(false); setUBOff(false)}}/>
+                      : <FontAwesomeIcon icon={faAngleUp} className="nv-drpdown-icon" onClick={()=>{setUBOff(true)}}/>
+                  }
+                </div>
+            }
+          </div>
+          {!UBInvis && <UserBox iVisible={UBOff} offMe={()=>{setUBInvis(true); setUBOff(true)}}/>}
+          {
+            !SiInvis && (
+              <Sidebar myVis={siVisible}/>
+            )
+          }
+          <FontAwesomeIcon icon={faBarsStaggered} className="nv-hamburger" onClick={()=>{setSiInvis(prev=>!prev)}}/>
+        </div>
+      </div>
+    </nav>
+  )
+}

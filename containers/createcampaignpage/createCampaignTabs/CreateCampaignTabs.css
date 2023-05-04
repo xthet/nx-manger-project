@@ -1,0 +1,20 @@
+/* cct */
+
+.cct-section.sc-padding.fl-tl.fl-c{
+  padding-top: 2.08vw;
+  padding-bottom: 2.08vw;
+  width: 100%;
+  gap: 4vw;
+}
+@media(max-width: 1000px){
+  .cct-section.sc-padding.fl-tl.fl-c{
+    padding-top: 3.37vw;
+    padding-bottom: 3.37vw;
+  }
+}
+@media(max-width: 600px){
+  .cct-section.sc-padding.fl-tl.fl-c{
+    padding-top: 5.11vw;
+    padding-bottom: 5.11vw;
+  }
+}

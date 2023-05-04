@@ -1,0 +1,144 @@
+.mub-container.fl-tl.fl-c{
+  width: 100%;
+  background: linear-gradient(0deg, rgba(144, 124, 192, 0.7) 32.83%, rgba(221, 213, 241, 0.26) 105.07%);
+  padding: 1rem;
+  gap: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 23px 4px rgba(0, 0, 0, 0.13);
+}
+
+.mub-acc-grp.fl-tl{
+  width: 100%;
+  gap: 10px;
+}
+
+.mub-jazzicon{
+  width: 4.43vw;
+  height: 4.43vw;
+  background: var(--color-btn);
+  border-radius: 1.69vw;
+}
+@media(max-width: 600px){
+  .mub-jazzicon{
+    width: 7.43vw;
+    height: 7.43vw;
+  }
+}
+
+.mub-addr-grp.fl-tl.fl-c{
+  gap: 8px;
+}
+
+.mub-addr-grp.fl-tl.fl-c p:first-child,
+.mub-addr-grp.fl-tl.fl-c p:last-child{
+  font-family: var(--font-family);
+  color: var(--color-sub-bg);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  line-height: 1em;
+}
+
+.mub-addr-grp.fl-tl.fl-c p:last-child{
+  color: var(--color-htext);
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+}
+
+.mub-details-cont{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap:1rem
+}
+
+.mob-curr-ico{
+  width: 2rem;
+}
+
+
+.mub-attribute-grp{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.mub-attribute-grp p:first-child,
+.mub-attribute-grp p:last-child{
+  white-space: nowrap;
+  font-family: var(--font-family);
+  color: var(--color-sub-bg);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  line-height: 1em;
+}
+
+.mub-attribute-grp p:last-child{
+  color: var(--color-htext);
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.mub-cta{
+  white-space: nowrap;
+  font-family: var(--font-family);
+  color: var(--color-htext);
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  line-height: 1em;
+  background: var(--color-text);
+  width: 100%;
+  padding: 0.6em 0.6em 0.7em;
+  cursor: pointer;
+  border-radius: 0.5em;
+  /* box-shadow: 0px 4px 23px 4px rgba(0, 0, 0, 0.13); */
+  transition: all 0.3s ease;
+}
+.mub-cta:hover{
+  transform: scale(1.02);
+}
+
+
+.mub-wallet-options.fl-cl{
+  width: 100%;
+  justify-content: space-between;
+}
+@media(max-width: 400px){
+  .mub-wallet-options.fl-cl{
+    /* display: none; */
+    /* flex-direction: column;
+    gap:10px;
+    align-items: center;
+    justify-content: flex-start; */
+  }
+}
+
+.mub-wallet-option.fl-cl{
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.2);
+  padding: 0.3em 0.6em;
+  border-radius: 0.4em;
+}
+.mub-wallet-option.fl-cl:hover{
+  transform: scale(1.02);
+}
+
+
+
+.mub-wallet-option.fl-cl p:last-child{
+  font-family: var(--font-family);
+  line-height: 1.2em;
+  color: var(--color-htext);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.mub-w-option-icon{
+  height: 1rem;
+  color: var(--color-htext);
+}
