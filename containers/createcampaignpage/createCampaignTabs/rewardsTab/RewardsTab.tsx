@@ -394,24 +394,28 @@ export default function RewardsTab() {
               <div className="rt-form-inpt-grp ft-top">
                 <p className="rt-form-inpt-label">{"Included items:"}</p>
                 <div className="rt-form-items-inpt">
-                  <div className="rt-form-add-item-grp">
+                  <input type="text" name="r-items" className="rt-form-inpt --rt-items-inpt"
+                    onChange={(e)=>{setCurrItem(e.target.value)}} value={currItem}
+                    placeholder="Separate reward items with comma; ','"
+                  />
+                  {/* <div className="rt-form-add-item-grp">
                     <input type="text" name="r-items" className="rt-form-inpt"
                       onChange={(e)=>{setCurrItem(e.target.value)}} value={currItem}
                     />
                     <FontAwesomeIcon icon={faCirclePlus} className="rt-form-add-item-icon"
                       onClick={()=>{currItem && setItemArr(prev => ([...prev, currItem])); setCurrItem("")}}
                     />
-                  </div>
+                  </div> */}
                   <div className="rt-form-items-ul">
                     <ul>
                       {
-                        itemArr.map((item, index)=>{
+                        currItem && currItem.split(",").map((item, index)=>{
                           return (
                             <div key={index} className="rt-i-item">
                               <li>{item}</li>
-                              <FontAwesomeIcon icon={faCircleXmark} className="rt-x-item"
+                              {/* <FontAwesomeIcon icon={faCircleXmark} className="rt-x-item"
                                 onClick={()=>{itemArr.splice(index,1); setItemArr(prev => ([...itemArr]))}}
-                              />
+                              /> */}
                             </div>
                           )
                         })
