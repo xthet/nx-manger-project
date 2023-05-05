@@ -1,4 +1,4 @@
-import { DummyRewardCard, TimelineBox } from "@/components/exportComps"
+import { DummyRewardCard, RewardCard, TimelineBox } from "@/components/exportComps"
 import campaignABI from "@/constants/abis/Campaign.json"
 import { CampaignCreatorContext } from "@/contexts/campaignCreator"
 import { ConnectionContext } from "@/contexts/connection"
@@ -16,6 +16,7 @@ import ReactLoading from "react-loading"
 import Select, { components } from "react-select"
 import { v4 } from "uuid"
 import fleek from "@fleekhq/fleek-storage-js"
+import useRwdTab from "@/hooks/useRwdTab"
 
 
 function Option(props:any){
@@ -38,6 +39,7 @@ export default function RewardsTab() {
   const { updateGrandCmp, newCampaignAddr, setNewCampaignAddr, setActiveTab, grandCmp } = useContext(CampaignCreatorContext)!
   const { isConnected, connect, account, signer, isAuth }:conn = useContext(ConnectionContext)!
   const { dispatch } = useContext(NotificationContext)!
+  const { loading, rwIds } = useRwdTab(newCampaignAddr)
   const [counOptionsArr, setCounOptionsArr] = useState<counOpt[]>([])
   const [rFormVisible, setRFormVisible] = useState(false)
   const [selectedOption, setSelectedOption] = useState<readonly any[]>([])
@@ -57,8 +59,6 @@ export default function RewardsTab() {
   const [onEdit, setOnEdit] = useState(false)
   const [imgState, setImgState] = useState("unset")
   const [imgURLToBe, setImgURLToBe] = useState("")
-
-
 
   const [showTBX, setShowTBX] = useState(false)
   const tlArr = [
@@ -104,7 +104,6 @@ export default function RewardsTab() {
   const handleRewardSubmit = onetime(async (e:any) => {
     setRwdIds(prev=>([...prev, rPrice]))
     const data = new FormData(e.target)
-    const date = Math.floor((new Date(data.get("r-deld")!.toString()).getTime()) / 1000)
     
     if(rType && newCampaignAddr && rPrice){
       setShowTBX(true)
@@ -305,22 +304,22 @@ export default function RewardsTab() {
           </div>
           <div className="ct-container">
             <div className="rt-made-rewards">
-              { rwdArr && 
-              modifyRwdArr().map((rwd, index)=>{
-                return (
-                  <div className="rt-rwd-edit-grp" key={index}>
-                    <DummyRewardCard rwd={rwd}/>
-                    {/* <div className="rt-rwd-options">
+              { rwdIds && 
+                rwIds.map((rId:number, index:number)=>{
+                  return (
+                    <div className="rt-rwd-edit-grp" key={index}>
+                      <RewardCard address={newCampaignAddr} id={rId} key={index} onEdit={true}/>
+                      {/* <div className="rt-rwd-options">
                       <FontAwesomeIcon icon={faSquarePen} className="rt-edit-icon" 
                         onClick={()=>{setRFormVisible(true); router.push("/create-campaign#rt-form"); editRwd(rwd, index)}}
                       />
                       <FontAwesomeIcon icon={faTrash} className="rt-rwd-x-icon" 
                         onClick={()=>{deleteRwd(rwd, index)}}
                       />
-                    </div> */}
-                  </div>
-                )
-              }) }
+                      </div> */}
+                    </div>
+                  )
+                }) }
             </div>
 
             <form className="rt-card-form" 
