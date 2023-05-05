@@ -107,10 +107,20 @@
 .rc-dets-cont.fl-tl.fl-sb{
   width: 100%;
 }
+@media(max-width: 600px){
+  .rc-dets-cont.fl-tl.fl-sb{
+    flex-direction: column-reverse;
+  }
+}
 
 .rc-details.fl-tl.fl-c{
   padding: 0.69vw;
   gap: 1.1vw;
+}
+@media(max-width: 600px){
+  .rc-details.fl-tl.fl-c{
+    width: 100%;
+  }
 }
 
 .rc-img-cont{
@@ -203,6 +213,11 @@
 
 .rc-perks.fl-tl.fl-c li{
   font-weight: 500;
+}
+@media(max-width: 600px){
+  .rc-perks.fl-tl.fl-c li{
+    line-height: 1.3em;
+  }
 }
 
 .rc-input-container.fl-bl.fl-sb{

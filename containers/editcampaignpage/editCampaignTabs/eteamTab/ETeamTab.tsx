@@ -21,6 +21,7 @@ import onetime from "onetime"
 import { TimelineBox } from "@/components/exportComps"
 import Blockies from "react-blockies"
 import Link from "next/link"
+import { useMediaQuery } from "react-responsive"
 
 
 function hasKey<O extends object>(obj: O, key: PropertyKey): key is keyof O {

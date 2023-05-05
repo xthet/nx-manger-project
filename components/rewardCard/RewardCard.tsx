@@ -11,6 +11,7 @@ import { v4 } from "uuid"
 import onetime from "onetime"
 import { InfoBox } from "../exportComps"
 import { useQUData } from "@/hooks/useQUData"
+import { useMediaQuery } from "react-responsive"
 
 
 interface props {
@@ -26,6 +27,8 @@ export default function RewardCard({ address, id, onEdit }:props) {
   const { dispatch } = useContext(NotificationContext)!
   const [showSignUp, setShowSignUp] = useState(false)
   const { uData } = useQUData(account)
+  const isBigScreen = useMediaQuery({ query: "(min-width: 600px)" })
+
 
   const handleFund = onetime(async (donation:BigNumber) => {
     // check if rwd is physical and auth b4 funding
@@ -92,7 +95,7 @@ export default function RewardCard({ address, id, onEdit }:props) {
         </div>
 
         <div className="rc-dets-cont fl-tl fl-sb">
-          <article className="rc-details fl-tl fl-c" style={(rwdDetails.pic !== "_NIL") ? { "width":"60%" } : { "width":"88%" }}>
+          <article className="rc-details fl-tl fl-c" style={((rwdDetails.pic !== "_NIL") && isBigScreen) ? { "width":"60%" } : { "width":"88%" }}>
             <h3 className="rc-title">{loading ? <Skeleton style={{ "width": "15vw" }}/> : rwdDetails.title}</h3>
             <p className="rc-description">{loading ? <Skeleton style={{ "width": "60%" }}/> : rwdDetails.description}</p>
             <div className="rc-perks-container">
