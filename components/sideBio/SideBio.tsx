@@ -16,6 +16,7 @@ import Link from "next/link"
 import { useContext, useState } from "react"
 import Blockies from "react-blockies"
 import { v4 } from "uuid"
+import { cutStr } from "@/utils/cutStr"
 
 export default function SideBio() {
   const { currAddress } = useContext(CampaignContext)!
@@ -97,7 +98,7 @@ export default function SideBio() {
           <FontAwesomeIcon icon={faShareNodes} className="sb-social-icon"/>
         </div>
 
-        <p className="sb-creator-bio">{cdata ? cdata.bio : ""}</p>
+        <p className="sb-creator-bio">{cdata ? cutStr(cdata.bio, 145) : ""}</p>
       </div>
 
       <div className="sb-support fl-tl fl-c">
