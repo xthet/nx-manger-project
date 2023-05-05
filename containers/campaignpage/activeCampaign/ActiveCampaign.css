@@ -107,7 +107,7 @@
 .acp-camp-title h4{
   font-family: var(--font-family);
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   line-height: 1em;
   letter-spacing: 0.02em;
   color: var(--color-text);
@@ -131,7 +131,7 @@
 .acp-camp-title p{
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 1.8rem; /*18px*/
+  font-size: 1.5rem; /*18px*/
   line-height: 1.33em;
   letter-spacing: 0.01em;
   color: var(--color-card-text);

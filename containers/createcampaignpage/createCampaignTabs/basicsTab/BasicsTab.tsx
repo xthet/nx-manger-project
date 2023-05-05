@@ -213,10 +213,10 @@ export default function BasicsTab() {
           <p className="bt-card-subtitle">{"What is the title of your campaign?"}</p>
           <div className="bt-card-input fl-bl fl-c">
             <input type="text" className="bt-card-txt-input" 
-              maxLength={80} onChange={(e)=>{setCmpTitle(e.target.value)}} 
+              maxLength={50} onChange={(e)=>{setCmpTitle(e.target.value)}} 
               value={cmpTitle} required
             />
-            <p className="bt-card-char-count">{80 - cmpTitle.length}</p>
+            <p className="bt-card-char-count">{50 - cmpTitle.length}</p>
           </div>
         </div>
 
