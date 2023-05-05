@@ -132,6 +132,8 @@ export default function RewardsTab() {
             message: "Failed to add reward."
           }
         })
+        setShowTBX(false)
+        setTlIndex(0)
         console.log(error)        
       }
 
@@ -208,7 +210,7 @@ export default function RewardsTab() {
   // }
 
   function checkPrice(e:any){
-    if(rwIds.includes(e.target.value)){
+    if(rwIds.includes(Number(e.target.value))){
       setRPrice(e.target.value)
       setShowDuplicateWarning(true)
     }else{
@@ -303,7 +305,7 @@ export default function RewardsTab() {
                   <small style={showDuplicateWarning ? { "color":"red" } : {}}>
                     {showDuplicateWarning 
                       ? "You cannot have two rewards with the same price"
-                      : "Reward prices are not editable once created"
+                      : "Rewards are not editable once created"
                     }
                   </small>
                 </div>
