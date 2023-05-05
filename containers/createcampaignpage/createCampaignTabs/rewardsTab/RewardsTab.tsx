@@ -147,6 +147,7 @@ export default function RewardsTab() {
       setCurrRwd(null)
       setRFormVisible(false)
       setTlIndex(prev => prev >= tlArr.length ? prev : prev + 2)
+      router.reload()
     }
   })
 
