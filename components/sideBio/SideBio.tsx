@@ -17,6 +17,8 @@ import { useContext, useState } from "react"
 import Blockies from "react-blockies"
 import { v4 } from "uuid"
 import { cutStr } from "@/utils/cutStr"
+import { RefundNotice, TimelineBox } from "../exportComps"
+import onetime from "onetime"
 
 export default function SideBio() {
   const { currAddress } = useContext(CampaignContext)!
@@ -26,6 +28,7 @@ export default function SideBio() {
   const { cdata, fcLoading, cStory } = useURIData(currAddress)
   const { creatorVal, userDets } = useQCData(currAddress, campaignDetails.creator)
   const [donAmount, setDonAmount] = useState("")
+  const [showRNX, setShowRNX] = useState(false)
 
   const [showTBX, setShowTBX] = useState(false)
   const tlArr = [
@@ -37,7 +40,8 @@ export default function SideBio() {
   const [tlIndex, setTlIndex] = useState(0)
   const [tlClosable, setTlClosable] = useState(false)
 
-  async function handleRefund(){
+
+  const handleRefund = onetime(async()=>{
     const crowdfunder = new ethers.Contract(crowdFunderABI.address, crowdFunderABI.abi, signer)
     setShowTBX(true)
     try {
@@ -58,6 +62,7 @@ export default function SideBio() {
       setTlIndex(prev => prev >= tlArr.length ? prev : prev + 2)
     } catch (error) {
       setShowTBX(false)
+      setTlIndex(0)
       dispatch({
         type: "ADD_NOTI",
         payload:{
@@ -69,13 +74,15 @@ export default function SideBio() {
       })      
       console.log(error)      
     }
-  }
+  })
+
 
   return (
     <div className="sb-container fl-tl fl-c">
       <div className="sb-bio fl-tl fl-c">
+        {showTBX && <TimelineBox offMe={()=>{setShowTBX(false)}} arr={tlArr} arrIndex={tlIndex} closable={tlClosable}/>}
         <h4 className="sb-bio-heading">{"Creator"}</h4>
-
+        {showRNX && <RefundNotice offMe={()=>{setShowRNX(false)}} refund={()=>{handleRefund()}}/>}
         <div className="sb-bio-details fl-tl">
           {!(userDets && userDets.pfp && (userDets.pfp != "_NIL")) ? <Blockies seed={campaignDetails && campaignDetails.creator ? campaignDetails.creator.toLowerCase() : "0x"} scale={5} size={8} 
             className="sb-creator-jazzicon" color="#C4A2E7" bgColor="#361E77" spotColor="#fff"
@@ -116,7 +123,7 @@ export default function SideBio() {
             <p>{"You can request a refund here before the campaign expires. Make sure you're connected with the address used to fund this campaign."}</p>
           </div>
           
-          <button className="sb-fund-cta" onClick={()=>{handleRefund()}}>
+          <button className="sb-fund-cta" onClick={()=>{setShowRNX(true)}}>
             {"Refund"}
           </button>
         </div>

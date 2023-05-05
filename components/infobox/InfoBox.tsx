@@ -1,9 +1,4 @@
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
-import ReactLoading from "react-loading"
-import { useMediaQuery } from "react-responsive"
 
 interface props {
   offMe: Function
@@ -12,7 +7,6 @@ interface props {
 }
 
 export default function InfoBox({ offMe, msg, cta }:props) {
-  const isBigScreen = useMediaQuery({ query: "(min-width: 700px)" })
   const router = useRouter()
   return (
     <>
