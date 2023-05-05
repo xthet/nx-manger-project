@@ -166,6 +166,8 @@ export default function RewardsTab() {
       setRDelD("")
       setRQty("")
       setItemArr([])
+      setImgURLToBe("")
+      setImgState("unset")
       setSelectedOption([])
       setCurrItem("")
       setOnEdit(false)
