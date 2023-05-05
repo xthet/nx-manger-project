@@ -20,12 +20,11 @@ export default function FaqsTab() {
       <h3 className="st-title --st-cent">{"Frequently Asked Questions."}</h3>
       {
         !cdata || fcLoading || !cdata.risks ? <ReactLoading type="bubbles" color="#C4A2E7"/> 
-          : 
-          <div className="st-faqs">
+          : <div className="st-faqs">
             {
               cFaqs.length > 0 ? cFaqs.map((faq, index)=>{
                 return (
-                  <div key={index} className="ct-faqbox">
+                  <div key={index} className="ct-faqbox --cmpfaq">
                     <div className="ct-faq-box-qa">
                       <p className="ct-faqbox-q">{faq.question}
                         {!(showFAns == index) ? <FontAwesomeIcon icon={faCaretDown} className="ct-faqbox-show-icon" onClick={()=>{setShowFAns(index)}}/>

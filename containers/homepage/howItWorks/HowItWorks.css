@@ -201,7 +201,7 @@
   
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 1.8rem; /*15px*/
+  font-size: 1.5rem; /*15px*/
   line-height: 1em;
   letter-spacing: 0.02em;
   color: var(--color-htext);
