@@ -117,11 +117,6 @@
   padding: 0.69vw;
   gap: 1.1vw;
 }
-@media(max-width: 600px){
-  .rc-details.fl-tl.fl-c{
-    width: 100%;
-  }
-}
 
 .rc-img-cont{
   width: 40%;
