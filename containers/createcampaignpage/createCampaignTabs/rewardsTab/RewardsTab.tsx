@@ -100,9 +100,7 @@ export default function RewardsTab() {
     }
   }
  
-  const handleRewardSubmit = onetime(async (e:any) => {
-    const data = new FormData(e.target)
-    
+  const handleRewardSubmit = onetime(async (e:any) => {  
     if(rType && newCampaignAddr && rPrice){
       setShowTBX(true)
       const currCmp = new ethers.Contract(newCampaignAddr, campaignABI.abi, signer)
