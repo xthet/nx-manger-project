@@ -33,23 +33,28 @@ export default function DummyRewardCard({ rwd }:props) {
         </div>
       </div>
 
-      <article className="rc-details fl-tl fl-c">
-        <h3 className="rc-title">{rwd.rName}</h3>
-        <p className="rc-description">{rwd.rDesc}</p>
-        <div className="rc-perks-container">
-          <h5>{"INCLUDES"}</h5>
-          <ul className="rc-perks fl-tl fl-c">
-            {
-              rwd.items &&
-                rwd.items.map((perk, index)=>{
-                  return (
-                    <li key={index}>{perk}</li>
-                  )
-                })
-            }
-          </ul>
-        </div>
-      </article>
+      <div className="rc-dets-cont fl-tl fl-sb">
+        <article className="rc-details fl-tl fl-c">
+          <h3 className="rc-title">{rwd.rName}</h3>
+          <p className="rc-description">{rwd.rDesc}</p>
+          <div className="rc-perks-container">
+            <h5>{"INCLUDES"}</h5>
+            <ul className="rc-perks fl-tl fl-c">
+              {
+                rwd.items &&
+                  rwd.items.map((perk, index)=>{
+                    return (
+                      <li key={index}>{perk}</li>
+                    )
+                  })
+              }
+            </ul>
+          </div>
+        </article>
+        {(rwd.rPic !== "_NIL") && <div className="rc-img-cont">
+          <img src={rwd.rPic.replace("ipfs://", "https://ipfs.io/ipfs/")} alt="--" className="rc-img"/>
+        </div>}
+      </div>
 
       <div className="rc-input-container fl-bl fl-sb">
         { !(rwd.shipsTo[0] == "_NW") &&

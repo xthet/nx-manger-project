@@ -104,10 +104,24 @@
 }
 
 /* reward - description */
-.rc-details.fl-tl.fl-c{
+.rc-dets-cont.fl-tl.fl-sb{
   width: 100%;
+}
+
+.rc-details.fl-tl.fl-c{
+  width: 60%;
   padding: 0.69vw;
   gap: 1.1vw;
+}
+
+.rc-img-cont{
+  width: 40%;
+}
+
+.rc-img{
+  width: 100%;
+  border-radius: 0.425em;
+  opacity: 0.8;
 }
 
 .rc-rwd-qty-sep +p
@@ -173,7 +187,7 @@
 }
 
 .rc-description{
-  width: 75%;
+  width: 98%;
   font-weight: 400;
   line-height: 1.25em;
 }

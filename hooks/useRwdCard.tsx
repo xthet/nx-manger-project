@@ -10,6 +10,7 @@ let rwdObj:rwd = {
   price: BigNumber.from("0"),
   title: "",
   description: "",
+  pic: "_NIL",
   perks: [],
   delDate: BigNumber.from("0"),
   quantity: BigNumber.from("0"),

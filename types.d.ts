@@ -33,6 +33,7 @@ export interface rwd{
   price: BigNumber
   title: string
   description: string
+  pic: string
   perks: string[]
   delDate: BigNumber
   quantity: BigNumber

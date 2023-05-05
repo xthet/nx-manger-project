@@ -91,25 +91,32 @@ export default function RewardCard({ address, id, onEdit }:props) {
           </div>
         </div>
 
-        <article className="rc-details fl-tl fl-c">
-          <h3 className="rc-title">{loading ? <Skeleton style={{ "width": "15vw" }}/> : rwdDetails.title}</h3>
-          <p className="rc-description">{loading ? <Skeleton style={{ "width": "60%" }}/> : rwdDetails.description}</p>
-          <div className="rc-perks-container">
-            <h5 style={rwdDetails && rwdDetails.perks.length > 0 && rwdDetails.perks[0] == "" ? { "display":"none" } : {}}>
-              {"INCLUDES"}
-            </h5>
-            <ul className="rc-perks fl-tl fl-c">
-              {
-                loading || !(rwdDetails.perks.length > 0) ? <Skeleton count={3} style={{ "width": "15vw" }}/>
-                  : rwdDetails.perks.map((perk, index)=>{
-                    return (
-                      <li key={index} style={perk == "" ? { "display":"none" } : {}}>{perk}</li>
-                    )
-                  })
-              }
-            </ul>
-          </div>
-        </article>
+        <div className="rc-dets-cont fl-tl fl-sb">
+          <article className="rc-details fl-tl fl-c">
+            <h3 className="rc-title">{loading ? <Skeleton style={{ "width": "15vw" }}/> : rwdDetails.title}</h3>
+            <p className="rc-description">{loading ? <Skeleton style={{ "width": "60%" }}/> : rwdDetails.description}</p>
+            <div className="rc-perks-container">
+              <h5 style={rwdDetails && rwdDetails.perks.length > 0 && rwdDetails.perks[0] == "" ? { "display":"none" } : {}}>
+                {"INCLUDES"}
+              </h5>
+              <ul className="rc-perks fl-tl fl-c">
+                {
+                  loading || !(rwdDetails.perks.length > 0) ? <Skeleton count={3} style={{ "width": "15vw" }}/>
+                    : rwdDetails.perks.map((perk, index)=>{
+                      return (
+                        <li key={index} style={perk == "" ? { "display":"none" } : {}}>{perk}</li>
+                      )
+                    })
+                }
+              </ul>
+            </div>
+          </article>
+          {(rwdDetails.pic !== "_NIL") &&
+            <div className="rc-img-cont">
+              <img src={rwdDetails.pic.replace("ipfs://", "https://ipfs.io/ipfs/")} alt="--" className="rc-img"/>
+            </div>
+          }
+        </div>
 
 
         <div className="rc-input-container fl-bl fl-sb">
