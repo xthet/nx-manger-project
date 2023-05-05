@@ -308,14 +308,14 @@ export default function RewardsTab() {
                 return (
                   <div className="rt-rwd-edit-grp" key={index}>
                     <DummyRewardCard rwd={rwd}/>
-                    <div className="rt-rwd-options">
+                    {/* <div className="rt-rwd-options">
                       <FontAwesomeIcon icon={faSquarePen} className="rt-edit-icon" 
                         onClick={()=>{setRFormVisible(true); router.push("/create-campaign#rt-form"); editRwd(rwd, index)}}
                       />
                       <FontAwesomeIcon icon={faTrash} className="rt-rwd-x-icon" 
                         onClick={()=>{deleteRwd(rwd, index)}}
                       />
-                    </div>
+                    </div> */}
                   </div>
                 )
               }) }
