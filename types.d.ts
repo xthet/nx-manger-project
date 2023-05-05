@@ -126,6 +126,7 @@ export interface rwdFormObj {
   rPrice: string
   rName: string
   rDesc: string
+  rPic: string
   rType: string
   rDelD: string
   rQty: string
