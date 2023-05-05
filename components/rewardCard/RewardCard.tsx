@@ -92,7 +92,7 @@ export default function RewardCard({ address, id, onEdit }:props) {
         </div>
 
         <div className="rc-dets-cont fl-tl fl-sb">
-          <article className="rc-details fl-tl fl-c">
+          <article className="rc-details fl-tl fl-c" style={(rwdDetails.pic !== "_NIL") ? { "width":"60%" } : { "width":"88%" }}>
             <h3 className="rc-title">{loading ? <Skeleton style={{ "width": "15vw" }}/> : rwdDetails.title}</h3>
             <p className="rc-description">{loading ? <Skeleton style={{ "width": "60%" }}/> : rwdDetails.description}</p>
             <div className="rc-perks-container">
