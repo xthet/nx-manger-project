@@ -51,12 +51,12 @@ export default function RewardsTab() {
   const [rQty, setRQty] = useState("")
   const [shipsTo, setShipsTo] = useState<any[]>([])
   const [currItem, setCurrItem] = useState("")
-  const [itemArr, setItemArr] = useState<string[]>([])
-  const [rwdArr, setRwdArr] = useState<any[]>([])
-  const [rwdIds, setRwdIds] = useState<any[]>([])
+  // const [itemArr, setItemArr] = useState<string[]>([])
+  // const [rwdArr, setRwdArr] = useState<any[]>([])
+  // const [rwdIds, setRwdIds] = useState<any[]>([])
   const [currRwd, setCurrRwd] = useState<any | number>(null)
   const [showDuplicateWarning, setShowDuplicateWarning] = useState(false)
-  const [onEdit, setOnEdit] = useState(false)
+  // const [onEdit, setOnEdit] = useState(false)
   const [imgState, setImgState] = useState("unset")
   const [imgURLToBe, setImgURLToBe] = useState("")
 
@@ -74,12 +74,11 @@ export default function RewardsTab() {
   const phyRef = useRef<HTMLInputElement|null>(null)
  
   function handleRewardsCheck(){
-    if(rwdArr.length > 0){
+    if(rwIds.length > 0){
       updateGrandCmp({ rewards: true })
     }else{
       updateGrandCmp({ rewards: false })
     }
-    localStorage.setItem("rewardsObj", JSON.stringify({ rewards: modifyRwdArr() }))
     setActiveTab("Content")
   }
 
@@ -102,7 +101,6 @@ export default function RewardsTab() {
   }
  
   const handleRewardSubmit = onetime(async (e:any) => {
-    setRwdIds(prev=>([...prev, rPrice]))
     const data = new FormData(e.target)
     
     if(rType && newCampaignAddr && rPrice){
@@ -137,106 +135,82 @@ export default function RewardsTab() {
         console.log(error)        
       }
 
-      const rwdFormObj:rwdFormObj = {
-        rPrice,
-        rName,
-        rDesc,
-        rPic: imgURLToBe ? imgURLToBe : "_NIL",
-        rType,
-        rDelD: (Math.floor((new Date(rDelD).getTime()) / 1000)).toString(),
-        rQty: rQty && rQty !== "0" && Number(rQty) ? rQty : "0",
-        infinite: !rQty ? true : false,
-        items: currItem.split(","),
-        shipsTo: shipsTo.length > 0 ? shipsTo : ["_NW"]
-      }
-      if(onEdit){
-        if(currRwd >= 0){
-          rwdArr[currRwd] = rwdFormObj
-          setRwdArr(prev => ([...rwdArr]))
-        }
-      }
-      else{
-        setRwdArr(prev => ([...prev, rwdFormObj]))
-      }
-
       setRPrice("")
       setRName("")
       setRDesc("")
       setRDelD("")
       setRQty("")
-      setItemArr([])
       setImgURLToBe("")
       setImgState("unset")
       setSelectedOption([])
       setCurrItem("")
-      setOnEdit(false)
       setCurrRwd(null)
       setRFormVisible(false)
       setTlIndex(prev => prev >= tlArr.length ? prev : prev + 2)
     }
   })
 
-  function editRwd(rwd:rwdFormObj, index:number){
-    if(rwd.shipsTo.length && shipsTo[0] !== "_NW" || rwd.shipsTo.length && rwd.rType == "Physical"){
-      const newCounArr = getCountrySelect(rwd.shipsTo)
-      setSelectedOption(newCounArr)
-    }
-    setOnEdit(true)
-    setRPrice(rwd.rPrice)
-    setRName(rwd.rName)
-    setRDesc(rwd.rDesc)
-    setRDelD((new Date(parseInt(rwd.rDelD) * 1000)).toISOString().substring(0,10))
-    setRQty(rwd.rQty)
-    setRType(rwd.rType)
-    setItemArr(rwd.items)
-    rwd.rType == "Physical" ? phyRef.current!.click() : rwd.rType == "Digital" ? digRef.current!.click() : ""
-    setCurrItem("")
-    setCurrRwd(index)
-  }
+  // function editRwd(rwd:rwdFormObj, index:number){
+  //   if(rwd.shipsTo.length && shipsTo[0] !== "_NW" || rwd.shipsTo.length && rwd.rType == "Physical"){
+  //     const newCounArr = getCountrySelect(rwd.shipsTo)
+  //     setSelectedOption(newCounArr)
+  //   }
+  //   setOnEdit(true)
+  //   setRPrice(rwd.rPrice)
+  //   setRName(rwd.rName)
+  //   setRDesc(rwd.rDesc)
+  //   setRDelD((new Date(parseInt(rwd.rDelD) * 1000)).toISOString().substring(0,10))
+  //   setRQty(rwd.rQty)
+  //   setRType(rwd.rType)
+  //   setItemArr(rwd.items)
+  //   rwd.rType == "Physical" ? phyRef.current!.click() : rwd.rType == "Digital" ? digRef.current!.click() : ""
+  //   setCurrItem("")
+  //   setCurrRwd(index)
+  // }
   
-  async function deleteRwd(rwd:rwdFormObj, index:number){
-    if(newCampaignAddr){
-      const currCmp = new ethers.Contract(newCampaignAddr, campaignABI.abi, signer)
-      try {
-        const delRwdTx = await currCmp.deleteReward(
-          ethers.utils.parseEther(rwd.rPrice)
-        )
+  // async function deleteRwd(rwd:rwdFormObj, index:number){
+  //   if(newCampaignAddr){
+  //     const currCmp = new ethers.Contract(newCampaignAddr, campaignABI.abi, signer)
+  //     try {
+  //       const delRwdTx = await currCmp.deleteReward(
+  //         ethers.utils.parseEther(rwd.rPrice)
+  //       )
 
-        const delRwdTxR = await delRwdTx.wait(1)
+  //       const delRwdTxR = await delRwdTx.wait(1)
 
-      } catch (error) {
-        console.log(error)        
-      }
-    }
+  //     } catch (error) {
+  //       console.log(error)        
+  //     }
+  //   }
 
-    rwdArr.splice(index,1)
-    setRwdArr(prev=>([...rwdArr]))
-    if(rwdIds.includes(rwd.rPrice)){
-      rwdIds.splice(rwdIds.indexOf(rwd.rPrice), 1)
-      setRwdIds(prev=>([...rwdIds]))
-    }
-    setOnEdit(false)
-    localStorage.setItem("rewardsObj", JSON.stringify({ rewards: modifyRwdArr() }))
-  }
+  //   rwdArr.splice(index,1)
+  //   setRwdArr(prev=>([...rwdArr]))
+  //   if(rwdIds.includes(rwd.rPrice)){
+  //     rwdIds.splice(rwdIds.indexOf(rwd.rPrice), 1)
+  //     setRwdIds(prev=>([...rwdIds]))
+  //   }
+  //   setOnEdit(false)
+  //   localStorage.setItem("rewardsObj", JSON.stringify({ rewards: modifyRwdArr() }))
+  // }
 
-  function modifyRwdArr() {
-    const prices:string[] = []
-    const modRwdArr = rwdArr.reverse().filter((rwd, index)=>{
-      if(!(prices.includes(rwd.rPrice))){
-        prices.push(rwd.rPrice)
-        return true
-      }else{
-        rwdArr.splice(index,1)
-        return false
-      }
-    })
-    return modRwdArr
-  }
+  // function modifyRwdArr() {
+  //   const prices:string[] = []
+  //   const modRwdArr = rwdArr.reverse().filter((rwd, index)=>{
+  //     if(!(prices.includes(rwd.rPrice))){
+  //       prices.push(rwd.rPrice)
+  //       return true
+  //     }else{
+  //       rwdArr.splice(index,1)
+  //       return false
+  //     }
+  //   })
+  //   return modRwdArr
+  // }
 
   function checkPrice(e:any){
-    if(rwdIds.includes(e.target.value)){
+    if(rwIds.includes(e.target.value)){
       setRPrice(e.target.value)
-      !onEdit && setShowDuplicateWarning(true)
+      setShowDuplicateWarning(true)
     }else{
       setShowDuplicateWarning(false)
       setRPrice(e.target.value)
@@ -265,14 +239,6 @@ export default function RewardsTab() {
       const basicObj:basicCmpObj = JSON.parse(basicRec)
       updateGrandCmp(basicObj)
       setNewCampaignAddr(basicObj.campaign)
-    }
-    const rwdRec = localStorage.getItem("rewardsObj")
-    if(rwdRec && !rwdArr.length){
-      const recObj = JSON.parse(rwdRec)
-      setRwdArr(recObj.rewards)
-      if(recObj.rewards.length){
-        updateGrandCmp({ rewards: true })
-      }
     }
   },[])
 
@@ -304,7 +270,7 @@ export default function RewardsTab() {
           </div>
           <div className="ct-container">
             <div className="rt-made-rewards">
-              { rwdIds && 
+              { rwIds && 
                 rwIds.map((rId:number, index:number)=>{
                   return (
                     <div className="rt-rwd-edit-grp" key={index}>
@@ -319,7 +285,8 @@ export default function RewardsTab() {
                       </div> */}
                     </div>
                   )
-                }) }
+                }) 
+              }
             </div>
 
             <form className="rt-card-form" 
@@ -332,7 +299,6 @@ export default function RewardsTab() {
                 <div className="rt-form-inpt-sm-grp">
                   <input type="number" name="r-qty" className="rt-form-inpt"
                     onChange={(e)=>{checkPrice(e)}} value={rPrice} required
-                    disabled={onEdit}
                   />
                   <small style={showDuplicateWarning ? { "color":"red" } : {}}>
                     {showDuplicateWarning 
