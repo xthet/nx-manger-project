@@ -81,7 +81,7 @@ export default function RewardCard({ address, id, onEdit }:props) {
             <p className="rc-reward-del-label">{"EST. DELIVERY"}</p>
             <p>{loading ? "" : deliDate}</p>
             {
-              rwdDetails.quantity.toString() && rwdDetails.quantity.toString() !== "0" && !rwdDetails.infinite &&
+              rwdDetails.quantity.toString() && !rwdDetails.infinite &&
             <>
               <div className="rc-rwd-qty-sep"></div>
               <p>{`${rwdDetails.quantity.toString()} left`}</p>
