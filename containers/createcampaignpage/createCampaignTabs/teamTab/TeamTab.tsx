@@ -241,6 +241,7 @@ export default function TeamTab() {
       localStorage.removeItem("rewardsObj")
       localStorage.removeItem("grandcmp")
       localStorage.removeItem("teamObj")
+      localStorage.removeItem("currTab")
       router.push("/campaigns")
       setTimeout(()=>{router.reload()}, 3000)
     }

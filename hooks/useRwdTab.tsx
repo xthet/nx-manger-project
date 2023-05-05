@@ -34,7 +34,7 @@ export default function useRwdTab(address:string) {
         console.log(error)
       }
     }
-    isIn && isConnected && startRewardsTab().catch(e=>console.log(e))
+    isIn && address && isConnected && startRewardsTab().catch(e=>console.log(e))
     return ()=>{isIn = false}
   },[isConnected, address])
 

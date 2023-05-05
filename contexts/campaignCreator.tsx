@@ -57,7 +57,17 @@ function CampaignCreatorProvider ({ children }:{children:ReactNode}) {
       const grandObj:fcmp = JSON.parse(grandRec)
       updateGrandCmp(grandObj)
     }
+    const tabRec = localStorage.getItem("currTab")
+    if(tabRec){
+      console.log(tabRec)
+      const nTab = JSON.parse(tabRec)
+      setActiveTab(nTab.currTab)
+    }
   },[])
+
+  useEffect(()=>{
+    localStorage.setItem("currTab", JSON.stringify({ currTab: activeTab }))
+  },[activeTab])
 
   return (
     <CampaignCreatorContext.Provider value={{ activeTab, setActiveTab, updateGrandCmp, setNewCampaignAddr, newCampaignAddr, grandCmp, grandURI, setGrandURI }}>
