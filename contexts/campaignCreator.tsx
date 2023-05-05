@@ -59,14 +59,15 @@ function CampaignCreatorProvider ({ children }:{children:ReactNode}) {
     }
     const tabRec = localStorage.getItem("currTab")
     if(tabRec){
-      console.log(tabRec)
       const nTab = JSON.parse(tabRec)
       setActiveTab(nTab.currTab)
+    }else{
+      setActiveTab("Basics")
     }
   },[])
 
   useEffect(()=>{
-    localStorage.setItem("currTab", JSON.stringify({ currTab: activeTab }))
+    (activeTab !== "Basics") && localStorage.setItem("currTab", JSON.stringify({ currTab: activeTab }))
   },[activeTab])
 
   return (
