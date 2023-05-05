@@ -105,7 +105,6 @@ export default function RewardsTab() {
     setRwdIds(prev=>([...prev, rPrice]))
     const data = new FormData(e.target)
     const date = Math.floor((new Date(data.get("r-deld")!.toString()).getTime()) / 1000)
-    // console.log(data.get("r-qty"))
     
     if(rType && newCampaignAddr && rPrice){
       setShowTBX(true)
@@ -116,7 +115,8 @@ export default function RewardsTab() {
           ethers.utils.parseEther(rPrice),
           rName,
           rDesc,
-          itemArr.length > 0 ? itemArr : [""],
+          imgURLToBe,
+          currItem ? currItem.split(",") : [""],
           (Math.floor((new Date(rDelD).getTime()) / 1000)).toString(),
           rQty && Number(rQty) ? rQty : "0",
           !rQty ? true : false, // bool infinite
@@ -142,11 +142,12 @@ export default function RewardsTab() {
         rPrice,
         rName,
         rDesc,
+        rPic: imgURLToBe,
         rType,
         rDelD: (Math.floor((new Date(rDelD).getTime()) / 1000)).toString(),
         rQty: rQty && rQty !== "0" && Number(rQty) ? rQty : "0",
         infinite: !rQty ? true : false,
-        items: itemArr,
+        items: currItem.split(","),
         shipsTo: shipsTo.length > 0 ? shipsTo : ["_NW"]
       }
       if(onEdit){
