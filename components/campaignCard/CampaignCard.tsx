@@ -45,10 +45,9 @@ export default function CampaignCard({ address, creator }:props) {
   } = useCdata(address)
   const { creatorVal, cDetails, dLoading, userDets } = useQCData(address, campaignDetails.creator)
   const router = useRouter()
-  console.log(campaignDetails.state)
 
   return (
-    <div className="cc-container fl-cl fl-c" style={campaignDetails && campaignDetails.state == 1 ? { "display":"none" } : {}}>
+    <div className="cc-container fl-cl fl-c" style={campaignDetails && (campaignDetails.state == 1) ? { "display":"none" } : {}}>
       <div className="cc-img">
         {!imgLoad && <Skeleton style={{ "height": "100%", "borderRadius": "1.39vw 1.39vw 0 0" }}/>}
         <img src={imageURI} alt="cc-mckp" onLoad={()=>{setImgLoad(true)}} 
