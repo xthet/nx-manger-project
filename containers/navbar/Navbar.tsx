@@ -36,26 +36,26 @@ export default function Navbar() {
     setSiInvis(bool)
   }
 
-  useEffect(()=>{
-    async function getCampaign(){
-      let srch = "rune fencer illya"
-      console.log(srch.split(" ").join(" | "))
-      const client = new ApolloClient({
-        uri: process.env.NEXT_PUBLIC_SUBGRAPH_URI,
-        cache: new InMemoryCache(),
-      })
+  // useEffect(()=>{
+  //   async function getCampaign(){
+  //     let srch = "rune fencer illya"
+  //     console.log(srch.split(" ").join(" | "))
+  //     const client = new ApolloClient({
+  //       uri: process.env.NEXT_PUBLIC_SUBGRAPH_URI,
+  //       cache: new InMemoryCache(),
+  //     })
       
-      const cmpData = await client
-        .query({
-          query: SEARCH_CAMPAIGNS,
-          variables: { term: srch.split(" ").join("|") }
-        })
-        .then(async (data) => {console.log(data.data.campaignSearch)})
-        .catch(err => console.log("Error fetching data: ", err))
-    }
+  //     const cmpData = await client
+  //       .query({
+  //         query: SEARCH_CAMPAIGNS,
+  //         variables: { term: srch.split(" ").join("|") }
+  //       })
+  //       .then(async (data) => {console.log(data.data.campaignSearch)})
+  //       .catch(err => console.log("Error fetching data: ", err))
+  //   }
 
-    getCampaign().catch(e=>console.log(e))
-  },[])
+  //   getCampaign().catch(e=>console.log(e))
+  // },[])
 
   return (
     <nav 
