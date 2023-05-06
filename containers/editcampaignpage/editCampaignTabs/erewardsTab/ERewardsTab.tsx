@@ -1,7 +1,7 @@
 import { CampaignEditorContext } from "@/contexts/campaignEditor"
 import { conn, counOpt, rwdFormObj } from "@/types"
 import getCountrySelect from "@/utils/getCountrySelect"
-import { faCaretLeft, faCirclePlus, faCircleXmark, faSquarePen, faSquareXmark, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faCaretLeft, faCirclePlus, faCircleXmark, faImages, faSquarePen, faSquareXmark, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { useContext, useEffect, useState } from "react"
 import Select from "react-select"
@@ -14,6 +14,11 @@ import { useRouter } from "next/router"
 import { DummyRewardCard, RewardCard, TimelineBox } from "@/components/exportComps"
 import useRwdTab from "@/hooks/useRwdTab"
 import onetime from "onetime"
+import { v4 } from "uuid"
+import { NotificationContext } from "@/contexts/notification"
+import { truncateStr } from "@/utils/truncateStr"
+import fleek from "@fleekhq/fleek-storage-js"
+
 
 function Option(props:any){
   return (
@@ -32,9 +37,10 @@ function Option(props:any){
 
 export default function EewardsTab() {
   const router = useRouter()
-  const { updateGrandCmp, setActiveTab, currAddress } = useContext(CampaignEditorContext)!
+  const { updateGrandCmp, setActiveTab, currAddress, grandCmp } = useContext(CampaignEditorContext)!
   const { isConnected, connect, account, signer, isAuth }:conn = useContext(ConnectionContext)!
-  const { loading:rwdLoading, rwIds:cpRwIds } = useRwdTab(currAddress)
+  const { loading:rwdLoading, rwIds } = useRwdTab(currAddress)
+  const { dispatch } = useContext(NotificationContext)!
   const [counOptionsArr, setCounOptionsArr] = useState<counOpt[]>([])
   const [rFormVisible, setRFormVisible] = useState(false)
   const [selectedOption, setSelectedOption] = useState<readonly any[]>([])
@@ -46,14 +52,15 @@ export default function EewardsTab() {
   const [rQty, setRQty] = useState("")
   const [shipsTo, setShipsTo] = useState<any[]>([])
   const [currItem, setCurrItem] = useState("")
-  const [itemArr, setItemArr] = useState<string[]>([])
-  const [rwdArr, setRwdArr] = useState<any[]>([])
+  // const [itemArr, setItemArr] = useState<string[]>([])
   const [newRwdArr, setNewRwdArr] = useState<any[]>([])
-  const [rwdIds, setRwdIds] = useState<any[]>([])
+  // const [rwdIds, setRwdIds] = useState<any[]>([])
   const [newRwdIds, setNewRwdIds] = useState<any[]>([])
   const [currRwd, setCurrRwd] = useState<any | number>(null)
   const [showDuplicateWarning, setShowDuplicateWarning] = useState(false)
-  const [onEdit, setOnEdit] = useState(false)
+  // const [onEdit, setOnEdit] = useState(false)
+  const [imgState, setImgState] = useState("unset")
+  const [imgURLToBe, setImgURLToBe] = useState("")
 
   const [showTBX, setShowTBX] = useState(false)
   const tlArr = [
@@ -70,37 +77,60 @@ export default function EewardsTab() {
     }else{
       updateGrandCmp({ rewards: false })
     }
-    localStorage.setItem("rewardsObj", JSON.stringify({ rewards: modifyRwdArr() }))
     setActiveTab("Content")
   }
  
-  const handleRewardSubmit = onetime( async (e:any) => {
-    setNewRwdIds(prev=>([...prev, rPrice]))
-    const data = new FormData(e.target)
-    const date = Math.floor((new Date(data.get("r-deld")!.toString()).getTime()) / 1000)
-    console.log(data.get("r-qty"))
-    
+  async function uploadImg(e:any){
+    const date = new Date()
+    const timestamp = date.getTime()
+    const imgData = {
+      apiKey: process.env.NEXT_PUBLIC_FLEEK_STORAGE_API_KEY!,
+      apiSecret: process.env.NEXT_PUBLIC_FLEEK_STORAGE_API_SEC!,
+      key: `manger/rwdImgUploads/${truncateStr(account, 10)}/MNG_${grandCmp.title}_${timestamp}`,
+      data: e.target.files[0]
+    }
+    try {
+      const response = await fleek.upload(imgData)
+      setImgURLToBe(`ipfs://${response.hashV0}`)
+      setImgState("finished")
+    } catch (error) {
+      console.log(error)      
+    }
+  }
+
+  const handleRewardSubmit = onetime(async (e:any) => {  
     if(rType && currAddress && rPrice){
-      const currCmp = new ethers.Contract(currAddress, campaignABI.abi, signer)
       setShowTBX(true)
+      const currCmp = new ethers.Contract(currAddress, campaignABI.abi, signer)
       try {
+        setTlIndex(prev => prev >= tlArr.length ? prev : prev + 1)
         const addRwdTx = await currCmp.makeReward(
           ethers.utils.parseEther(rPrice),
           rName,
           rDesc,
-          itemArr.length > 0 ? itemArr : [""],
+          imgURLToBe ? imgURLToBe : "_NIL",
+          currItem ? currItem.split(",") : [""],
           (Math.floor((new Date(rDelD).getTime()) / 1000)).toString(),
-          rQty ? rQty : "0",
-          !rQty ? true : false,
+          rQty && Number(rQty) ? rQty : "0",
+          !rQty ? true : false, // bool infinite
           shipsTo.length > 0 ? shipsTo : ["_NW"]
         )
         setTlIndex(prev => prev >= tlArr.length ? prev : prev + 1)
         const addRwdTxR = await addRwdTx.wait(1)
-        setTlIndex(prev => prev >= tlArr.length ? prev : prev + 2)
+
       } catch (error) {
-        console.log(error)    
-        setShowTBX(false)    
+        dispatch({
+          type: "ADD_NOTI",
+          payload:{
+            id: v4(),
+            type: "FAILURE",
+            title: "",
+            message: "Failed to add reward."
+          }
+        })
+        setShowTBX(false)
         setTlIndex(0)
+        console.log(error)        
       }
 
       setRPrice("")
@@ -108,79 +138,78 @@ export default function EewardsTab() {
       setRDesc("")
       setRDelD("")
       setRQty("")
-      setItemArr([])
+      setImgURLToBe("")
+      setImgState("unset")
       setSelectedOption([])
       setCurrItem("")
-      setOnEdit(false)
       setCurrRwd(null)
+      setRFormVisible(false)
+      setTlIndex(prev => prev >= tlArr.length ? prev : prev + 2)
+      router.reload()
     }
   })
 
-  function editRwd(rwd:rwdFormObj, index:number){
-    if(shipsTo && shipsTo[0] !== "_NW" || rwd.rType == "Physical"){
-      const newCounArr = getCountrySelect(shipsTo)
-      setSelectedOption(newCounArr)
-    }
-    console.log(rwd.rDelD)
-    setOnEdit(true)
-    setRPrice(rwd.rPrice)
-    setRName(rwd.rName)
-    setRDesc(rwd.rDesc)
-    setRDelD((new Date(parseInt(rwd.rDelD) * 1000)).toISOString().substring(0,10))
-    setRQty(rwd.rQty)
-    setRType(rwd.rType)
-    setItemArr(rwd.items)
-    setCurrItem("")
-    setCurrRwd(index)
-  }
+  // function editRwd(rwd:rwdFormObj, index:number){
+  //   if(shipsTo && shipsTo[0] !== "_NW" || rwd.rType == "Physical"){
+  //     const newCounArr = getCountrySelect(shipsTo)
+  //     setSelectedOption(newCounArr)
+  //   }
+  //   console.log(rwd.rDelD)
+  //   setOnEdit(true)
+  //   setRPrice(rwd.rPrice)
+  //   setRName(rwd.rName)
+  //   setRDesc(rwd.rDesc)
+  //   setRDelD((new Date(parseInt(rwd.rDelD) * 1000)).toISOString().substring(0,10))
+  //   setRQty(rwd.rQty)
+  //   setRType(rwd.rType)
+  //   setItemArr(rwd.items)
+  //   setCurrItem("")
+  //   setCurrRwd(index)
+  // }
 
-  async function deleteRwd(rwd:rwdFormObj, index:number){
-    if(currAddress){
-      const currCmp = new ethers.Contract(currAddress, campaignABI.abi, signer)
-      try {
-        const delRwdTx = await currCmp.deleteReward(
-          ethers.utils.parseEther(rwd.rPrice)
-        )
+  // async function deleteRwd(rwd:rwdFormObj, index:number){
+  //   if(currAddress){
+  //     const currCmp = new ethers.Contract(currAddress, campaignABI.abi, signer)
+  //     try {
+  //       const delRwdTx = await currCmp.deleteReward(
+  //         ethers.utils.parseEther(rwd.rPrice)
+  //       )
 
-        const delRwdTxR = await delRwdTx.wait(1)
+  //       const delRwdTxR = await delRwdTx.wait(1)
 
-      } catch (error) {
-        console.log(error)        
-      }
-    }
+  //     } catch (error) {
+  //       console.log(error)        
+  //     }
+  //   }
 
-    newRwdArr.splice(index,1)
-    setNewRwdArr(prev=>([...newRwdArr]))
-    if(newRwdIds.includes(rwd.rPrice)){
-      newRwdIds.splice(newRwdIds.indexOf(rwd.rPrice), 1)
-      setNewRwdIds(prev=>([...newRwdIds]))
-    }
-    setOnEdit(false)
-  }
+  //   newRwdArr.splice(index,1)
+  //   setNewRwdArr(prev=>([...newRwdArr]))
+  //   if(newRwdIds.includes(rwd.rPrice)){
+  //     newRwdIds.splice(newRwdIds.indexOf(rwd.rPrice), 1)
+  //     setNewRwdIds(prev=>([...newRwdIds]))
+  //   }
+  //   setOnEdit(false)
+  // }
 
-  function modifyRwdArr() {
-    const prices:string[] = []
-    const modRwdArr = newRwdArr.reverse().filter((rwd, index)=>{
-      if(!(prices.includes(rwd.rPrice))){
-        prices.push(rwd.rPrice)
-        return true
-      }else{
-        newRwdArr.splice(index,1)
-        return false
-      }
-    })
-    return modRwdArr
-  }
+  // function modifyRwdArr() {
+  //   const prices:string[] = []
+  //   const modRwdArr = newRwdArr.reverse().filter((rwd, index)=>{
+  //     if(!(prices.includes(rwd.rPrice))){
+  //       prices.push(rwd.rPrice)
+  //       return true
+  //     }else{
+  //       newRwdArr.splice(index,1)
+  //       return false
+  //     }
+  //   })
+  //   return modRwdArr
+  // }
 
   function checkPrice(e:any){
-    if(newRwdIds.includes(e.target.value)){
+    if(rwIds.includes(Number(e.target.value))){
       setRPrice(e.target.value)
-      !onEdit && setShowDuplicateWarning(true)
-    }
-    if(rwdIds.includes(parseFloat(e.target.value))){
-      setRPrice(e.target.value)
-      !onEdit && setShowDuplicateWarning(true)
-    }    
+      setShowDuplicateWarning(true)
+    }  
     else{
       setShowDuplicateWarning(false)
       setRPrice(e.target.value)
@@ -201,12 +230,6 @@ export default function EewardsTab() {
       setShipsTo(muShipsTo)
     }
   },[selectedOption])
-
-  useEffect(()=>{
-    if(!rwdLoading){
-      setRwdIds(cpRwIds)
-    }
-  },[rwdLoading, cpRwIds])
 
   return (
     <>
@@ -232,33 +255,11 @@ export default function EewardsTab() {
           </div>
           <div className="ct-container">
             <div className="rt-made-rewards">
-              { rwdIds && 
-              rwdIds.map((id, index)=>{
+              { rwIds && 
+              rwIds.map((id:number, index:number)=>{
                 return (
                   <div className="rt-rwd-edit-grp" key={index}>
                     <RewardCard id={id} address={currAddress} onEdit={true}/>
-                    {/* <div className="rt-rwd-options"> 
-                      <FontAwesomeIcon icon={faTrash} className="rt-rwd-x-icon" 
-                        onClick={()=>{deleteRwd(id, index)}}
-                      />
-                    </div> */}
-                  </div>
-                )
-              }) }
-
-              { newRwdArr && 
-              modifyRwdArr().map((rwd, index)=>{
-                return (
-                  <div className="rt-rwd-edit-grp" key={index}>
-                    <DummyRewardCard rwd={rwd}/>
-                    <div className="rt-rwd-options">
-                      <FontAwesomeIcon icon={faSquarePen} className="rt-edit-icon" 
-                        onClick={()=>{setRFormVisible(true); router.push(`/edit-campaign/${currAddress}/#rt-form`); editRwd(rwd, index)}}
-                      />
-                      <FontAwesomeIcon icon={faTrash} className="rt-rwd-x-icon" 
-                        onClick={()=>{deleteRwd(rwd, index)}}
-                      />
-                    </div>
                   </div>
                 )
               }) }
@@ -274,7 +275,6 @@ export default function EewardsTab() {
                 <div className="rt-form-inpt-sm-grp">
                   <input type="number" name="r-qty" className="rt-form-inpt"
                     onChange={(e)=>{checkPrice(e)}} value={rPrice} required
-                    disabled={onEdit}
                   />
                   <small style={showDuplicateWarning ? { "color":"red" } : {}}>
                     {showDuplicateWarning 
@@ -302,6 +302,23 @@ export default function EewardsTab() {
               </div>
 
               <div className="rt-form-inpt-grp">
+                <p className="rt-form-inpt-label">{"Reward Image:"}</p>
+                <div className="rt-img-inpt">
+                  <input type="file" id="rt-card-img" hidden onChange={(e)=>{uploadImg(e); setImgState("loading")}}/>
+                  <label htmlFor="rt-card-img" className="rt-card-img-lbl">
+                    <div className="rt-img-cont">
+                      {imgState == "loading" 
+                        ? <ReactLoading type="bubbles" color="#827B93"/> 
+                        : imgState == "finished" 
+                          ? imgURLToBe && <img src={imgURLToBe.replace("ipfs://", "https://ipfs.io/ipfs/")} alt="--" /> 
+                          : <FontAwesomeIcon icon={faImages} className="rt-card-img-icon"/>
+                      }
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div className="rt-form-inpt-grp">
                 <p className="rt-form-inpt-label">{"Reward Type:"}</p>
                 <div className="rt-form-grp-input">
                   <input type="radio" name="r-type" value={"Physical"} 
@@ -315,28 +332,20 @@ export default function EewardsTab() {
                   <small className="rt-rad-info">{"Does this reward include physical items?"}</small>
                 </div>
               </div>
-
               <div className="rt-form-inpt-grp ft-top">
                 <p className="rt-form-inpt-label">{"Included items:"}</p>
                 <div className="rt-form-items-inpt">
-                  <div className="rt-form-add-item-grp">
-                    <input type="text" name="r-items" className="rt-form-inpt"
-                      onChange={(e)=>{setCurrItem(e.target.value)}} value={currItem}
-                    />
-                    <FontAwesomeIcon icon={faCirclePlus} className="rt-form-add-item-icon"
-                      onClick={()=>{currItem && setItemArr(prev => ([...prev, currItem])); setCurrItem("")}}
-                    />
-                  </div>
+                  <input type="text" name="r-items" className="rt-form-inpt --rt-items-inpt"
+                    onChange={(e)=>{setCurrItem(e.target.value)}} value={currItem}
+                    placeholder="Separate reward items with comma; ','"
+                  />
                   <div className="rt-form-items-ul">
                     <ul>
                       {
-                        itemArr.map((item, index)=>{
+                        currItem && currItem.split(",").map((item, index)=>{
                           return (
                             <div key={index} className="rt-i-item">
                               <li>{item}</li>
-                              <FontAwesomeIcon icon={faCircleXmark} className="rt-x-item"
-                                onClick={()=>{itemArr.splice(index,1); setItemArr(prev => ([...itemArr]))}}
-                              />
                             </div>
                           )
                         })
