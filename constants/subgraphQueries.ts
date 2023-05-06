@@ -85,3 +85,12 @@ export const GET_BACKED_CAMPAIGNS = gql`
     }
   }
 `
+
+export const SEARCH_CAMPAIGNS = gql`
+  query searchCampaigns($term: String!){
+    campaignSearch(text: $term){
+      published
+      creator
+    }
+  }
+`
