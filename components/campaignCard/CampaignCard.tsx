@@ -9,6 +9,7 @@ import Link from "next/link"
 import { useCdata } from "@/hooks/useCdata"
 import { useQCData } from "@/hooks/useQCData"
 import Blockies from "react-blockies"
+import { useRouter } from "next/router"
 
 
 interface props{
@@ -43,12 +44,16 @@ export default function CampaignCard({ address, creator }:props) {
     deadlineStatement
   } = useCdata(address)
   const { creatorVal, cDetails, dLoading, userDets } = useQCData(address, campaignDetails.creator)
+  const router = useRouter()
 
   return (
     <div className="cc-container fl-cl fl-c" style={campaignDetails && campaignDetails.state == 1 ? { "display":"none" } : {}}>
       <div className="cc-img">
         {!imgLoad && <Skeleton style={{ "height": "100%", "borderRadius": "1.39vw 1.39vw 0 0" }}/>}
-        <img src={imageURI} alt="cc-mckp" onLoad={()=>{setImgLoad(true)}} style={!imgLoad ? { "display": "none" } : {}}/>
+        <img src={imageURI} alt="cc-mckp" onLoad={()=>{setImgLoad(true)}} 
+          style={!imgLoad ? { "display": "none" } : {}} 
+          onClick={()=>{router.push(`/campaigns/campaign/${address}`)}}
+        />
       </div>
 
       <div className="cc-details fl-cl fl-c">
