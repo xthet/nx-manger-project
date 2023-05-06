@@ -97,31 +97,10 @@ export default function EewardsTab() {
         setTlIndex(prev => prev >= tlArr.length ? prev : prev + 1)
         const addRwdTxR = await addRwdTx.wait(1)
         setTlIndex(prev => prev >= tlArr.length ? prev : prev + 2)
-
       } catch (error) {
         console.log(error)    
         setShowTBX(false)    
-      }
-
-      const rwdFormObj:rwdFormObj = {
-        rPrice,
-        rName,
-        rDesc,
-        rType,
-        rDelD: (Math.floor((new Date(rDelD).getTime()) / 1000)).toString(),
-        rQty: rQty ? rQty : "0",
-        infinite: !rQty ? true : false,
-        items: itemArr,
-        shipsTo: shipsTo.length > 0 ? shipsTo : ["_NW"]
-      }
-      if(onEdit){
-        if(currRwd >= 0){
-          newRwdArr[currRwd] = rwdFormObj
-          setNewRwdArr(prev => ([...newRwdArr]))
-        }
-      }
-      else{
-        setNewRwdArr(prev => ([...prev, rwdFormObj]))
+        setTlIndex(0)
       }
 
       setRPrice("")
