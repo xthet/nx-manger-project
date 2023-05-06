@@ -196,6 +196,7 @@ export default function ETeamTab() {
       localStorage.removeItem("grandcmp")
       localStorage.removeItem("staticGrandCmp")
       localStorage.removeItem("teamObj")
+      localStorage.removeItem("eCurrTab")
     }
   },[creationFin])
 

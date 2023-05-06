@@ -91,6 +91,20 @@ function CampaignEditorProvider ({ children, cmpAddress, validator }:{children:R
     if(grandCmp.title){localStorage.setItem("staticGrandCmp", JSON.stringify(grandCmp))}
   },[grandCmp])
 
+  useEffect(()=>{
+    const tabRec = localStorage.getItem("eCurrTab")
+    if(tabRec){
+      const nTab = JSON.parse(tabRec)
+      setActiveTab(nTab.currTab)
+    }else{
+      setActiveTab("Basics")
+    }
+  },[])
+
+  useEffect(()=>{
+    (activeTab !== "Basics") && localStorage.setItem("eCurrTab", JSON.stringify({ currTab: activeTab }))
+  },[activeTab])
+
   const payload:cec = {
     activeTab, 
     setActiveTab, 
