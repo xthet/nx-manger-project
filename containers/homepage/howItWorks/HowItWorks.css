@@ -150,7 +150,7 @@
 
 .hi-info-title{
   font-family: var(--font-family);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 2.3rem;
   line-height: 1em;
   color: var(--color-card-text);
@@ -176,7 +176,7 @@
   font-family: var(--font-family);
   font-weight: 300;
   font-size: 1.5rem;
-  line-height: 1.5em;
+  line-height: 1.3em;
   color: var(--color-card-text);
   text-align: center;
   width: 90%;

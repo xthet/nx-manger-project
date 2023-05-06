@@ -1,4 +1,14 @@
+.ub-reactive{
+  position: fixed;
+  z-index: 9;
+  top: 54px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: none;
+}
 .ub-container.fl-cl.fl-c{
+  z-index: 11;
   position: absolute;
   top: 4.17vw;
   right: 4.86vw;
