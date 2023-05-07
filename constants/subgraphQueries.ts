@@ -94,3 +94,11 @@ export const SEARCH_CAMPAIGNS = gql`
     }
   }
 `
+
+export const CHECK_UVAL = gql`
+  query checkUVal($term: String!){
+    userAddeds(where:{username: $term}){
+      username
+    }
+  }
+`

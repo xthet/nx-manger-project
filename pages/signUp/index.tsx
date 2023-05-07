@@ -16,6 +16,8 @@ import { TimelineBox } from "@/components/exportComps"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import fleek from "@fleekhq/fleek-storage-js"
 import { faImages } from "@fortawesome/free-solid-svg-icons"
+import { ApolloClient, InMemoryCache } from "@apollo/client"
+import { CHECK_UVAL } from "@/constants/subgraphQueries"
 
  
 
@@ -29,6 +31,8 @@ export default function SignUp() {
   const [imgState, setImgState] = useState("unset")
   const [imgURLToBe, setImgURLToBe] = useState("")
   const [showImgNoti, setShowImgNoti] = useState(false)
+  const [showInvalidUVal, setShowInvalidUVal] = useState(false)
+  const [uValDuplicate, setUValDuplicate] = useState(false)
 
   const [showTBX, setShowTBX] = useState(false)
   const tlArr = [
@@ -57,6 +61,32 @@ export default function SignUp() {
     } catch (error) {
       console.log(error)      
     }
+  }
+
+  async function checkName(e:string){
+    if(e.length > 0){
+      const valid = /^[a-z][a-z0-9_]{4,19}$/.test(e)
+      if(!valid){
+        setShowInvalidUVal(true)
+      }else{setShowInvalidUVal(false)}
+    }
+
+    const client = new ApolloClient({
+      uri: process.env.NEXT_PUBLIC_SUBGRAPH_URI,
+      cache: new InMemoryCache(),
+    })
+      
+    const userData = await client
+      .query({
+        query: CHECK_UVAL,
+        variables: { term: e }
+      })
+      .then(async (data) => {return data.data.userAddeds})
+      .catch(err => console.log("Error fetching data: ", err))
+
+    if(userData.length > 0){
+      setUValDuplicate(true)
+    }else{setUValDuplicate(false)}
   }
 
   const handleSubmit = onetime(async (e:FormEvent<HTMLFormElement>|any) =>{
@@ -121,6 +151,15 @@ export default function SignUp() {
     }
   })
 
+  useEffect(()=>{
+    let id:any
+    if(usrName.length > 0){id = setTimeout(()=>{checkName(usrName).catch(e=>console.log(e))}, 1000)}
+    else{
+      setUValDuplicate(false)
+      setShowInvalidUVal(false)
+    }
+    return()=>{clearTimeout(id)}
+  },[usrName])
 
   return (
     <>
@@ -138,7 +177,7 @@ export default function SignUp() {
         </div>
         {showTBX && <TimelineBox offMe={()=>{setShowTBX(false)}} arr={tlArr} arrIndex={tlIndex} closable={tlClosable}/>}
         { !isConnected ? <ReactLoading type="bubbles" color="#C4A2E7"/> :
-          <form onSubmit={(e)=>{e.preventDefault(); handleSubmit(e)}} className="su-container">
+          <form onSubmit={(e)=>{e.preventDefault(); !uValDuplicate && !showInvalidUVal && handleSubmit(e)}} className="su-container">
             <div className="su-usr-address">{truncateStr(account, 14)}</div>
             <h1 className="su-title">{"Create a new account."}</h1>
             <p className="su-info">{"Already a member?, please switch to the address you used to sign up."}</p>
@@ -168,7 +207,7 @@ export default function SignUp() {
               <div className="su-inpt short">
                 <div className="su-inpt-lbl">
                   <label htmlFor="username">{"Username"}</label>
-                  <small style={{ "color":"yellow" }}>{"required"}</small>
+                  {showInvalidUVal ? <small style={{ "color":"red" }}>{"Invalid Username!!"}</small> : uValDuplicate ? <small style={{ "color":"red" }}>{"Username already exists!!"}</small> : <small style={{ "color":"yellow" }}>{"required"}</small>}
                 </div>
                 <input type="text" name="username" placeholder="username" required className="su-form-input" 
                   onChange={(e)=>{setUsrName(e.target.value)}} value={usrName}
