@@ -23,6 +23,7 @@ export default function SignUp() {
   const { isConnected, connect, account, signer, isAuth }:conn = useContext(ConnectionContext)!
   const { dispatch } = useContext(NotificationContext)!
   const [twit, setTwit] = useState("")
+  const [usrName, setUsrName] = useState("")
   const [cookies, setCookie, removeCookie] = useCookies(["sess_sig"])
   const router = useRouter()
   const [imgState, setImgState] = useState("unset")
@@ -169,7 +170,9 @@ export default function SignUp() {
                   <label htmlFor="username">{"Username"}</label>
                   <small style={{ "color":"yellow" }}>{"required"}</small>
                 </div>
-                <input type="text" name="username" placeholder="username" required className="su-form-input"/>
+                <input type="text" name="username" placeholder="username" required className="su-form-input" 
+                  onChange={(e)=>{setUsrName(e.target.value)}} value={usrName}
+                />
               </div>
               <div className="su-inpt short">
                 <div className="su-inpt-lbl">
