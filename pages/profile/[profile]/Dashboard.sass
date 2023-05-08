@@ -1,0 +1,181 @@
+.db
+  padding-top: 3.7vw
+  @include fl-tl
+
+.db-side
+  position: fixed
+  top: 54px
+  max-height: 93vh
+  padding: 2rem
+  width: 15%
+  @include fl-tl
+  @include fl-c
+  @include fl-sb
+  gap: 8rem
+  overflow: hidden
+
+.db-menu
+  @include fl-tl
+  @include fl-c
+  gap: 1.8rem
+  span
+    @include def-p
+    font-weight: 600
+    color: $color-subtext
+
+.db-user
+  margin-top: auto
+  width: 100%
+  @include fl-cl
+  gap: 0.4em
+  img
+    width: 4rem
+    height: 4rem
+    border-radius: 0.2em
+    box-shadow: 0 0 5px 2px rgba(0,0,0,0.04)
+  span
+    @include def-p
+    color: $color-subtext
+    font-weight: 600
+
+.db-sec-title
+  font-family: $font-family
+  font-weight: 800
+  font-size: 2rem
+  color: $color-text
+  opacity: 0.8
+  letter-spacing: 0.03em
+
+.db-main
+  margin-left: 15%
+  background: #F8F5FF
+  width: 85%
+  padding: 2rem
+  @include fl-tl
+  @include fl-c
+  gap: 2rem
+
+.db-main-header
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+
+.db-crt-dnt
+  width: 80%
+  @include fl-cl
+  gap: 0.8em
+  padding-bottom: 0.5em
+  border-bottom: 1px solid rgba(0,0,0,0.2)
+  span
+    @include def-p
+    font-size: 2.2rem
+    font-weight: 700
+    color: $color-card-text
+    cursor: pointer
+    transition: all 0.3s ease
+    &:hover
+      opacity: 0.8
+
+.db-hdr-cta
+  @include def-btn
+  padding: 0.65em 1.2em
+
+.db-hdr-cta-icon
+  height: 1.5rem
+  color: $color-htext
+
+.db-stats-cont
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+
+.db-stat
+  background: rgba(196, 162, 231, 0.7)
+  box-shadow: 0 0 9px 5px rgba(17, 10, 37, 0.05)
+  border-radius: 0.3em
+  padding: 0.5em 1em
+  @include fl-tl
+  @include fl-c
+  gap: 0.2rem
+  width: 31%
+
+.db-stat-act
+  @include def-p
+  font-size: 2rem
+  opacity: 0.8
+  letter-spacing: 0.03em
+
+.db-stat-amt-grp
+  width: 100%
+  @include fl-bl
+  @include fl-sb
+  gap: 0.5rem
+
+.db-stat-amt
+  @include def-p
+  font-size: 9rem
+  font-weight: 800
+  letter-spacing: 0.03em
+  color: $color-text
+  opacity: 0.83
+
+.db-stat-msr
+  @include def-p
+  font-size: 2rem
+  font-weight: 600
+  color: $color-card-text
+  letter-spacing: 0.03em
+
+.db-recents
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 0.8rem
+  h3
+    @include def-h
+    font-size: 1.8rem
+    font-weight: 600
+
+.db-recents-cont
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+
+.db-recent
+  width: 32.4%
+  @include fl-bl
+  @include fl-sb
+  background: #D7CDF4
+  padding: 1rem
+  border-radius: 0.3em
+
+.db-recent-dets-grp
+  @include fl-tl
+  gap: 0.5rem
+  img
+    width: 3rem
+    height: 3rem
+    border-radius: 0.2em
+
+.db-recent-dets
+  @include fl-tl
+  @include fl-c
+  gap: 0.3rem
+  span:first-child
+    @include def-p
+    font-size: 1.4rem
+    font-weight: 600
+    letter-spacing: 0.03em
+  span:last-child
+    @include def-p
+    font-size: 1rem
+    color: $color-subtext
+    letter-spacing: 0.03em
+
+.db-recent-amt
+  @include def-p
+  span
+    margin-left: 0.2em
+    @include def-p
+    font-weight: 600
+    color: $color-card-text
