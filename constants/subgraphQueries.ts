@@ -102,3 +102,22 @@ export const CHECK_UVAL = gql`
     }
   }
 `
+
+export const FIND_USER = gql`
+  query findUser($name: String!){
+    userAddeds(where:{username: $name}){
+      id
+      address
+      email
+      twitter
+      backedCount
+      backed
+      username
+      created
+      createdCount
+      createdAt
+      homeAddr
+      pfp
+    }
+  }
+`

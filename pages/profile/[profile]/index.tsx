@@ -22,7 +22,7 @@ export default function Profile() {
       {
         !profile 
           ? <ReactLoading type="bubbles" color="#827B93"/> 
-          : typeof(profile) == "string" && profile.includes("0x") && profile.length == 42
+          : typeof(profile) == "string" && profile.length >= 5
             ? <>
               <ProfileProvider address={profile}>
                 <ProfileHeader/>
