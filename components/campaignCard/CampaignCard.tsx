@@ -98,9 +98,9 @@ export default function CampaignCard({ address, creator }:props) {
               <Blockies seed={campaignDetails.creator.toLowerCase()} scale={3} size={7} 
                 className="cc-creator-jazzicon" color="#C4A2E7" bgColor="#361E77" spotColor="#fff"
               /> }
-            <Link href={`/profile/${campaignDetails ? campaignDetails.creator : "#"}`}>
+            {userDets && <Link href={`/profile/${campaignDetails ? userDets!.username : "#"}`}>
               <p>{creatorVal}</p>
-            </Link>
+            </Link>}
           </div>
           <div className="cc-eta fl-tr">
             <p>{daysUntil}</p>
