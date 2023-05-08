@@ -94,6 +94,10 @@ export default function Dashboard() {
               </div>
             </div>
           </section>
+
+          <div className="db-crtd-table">
+
+          </div>
         </main>
       </div>
     </>

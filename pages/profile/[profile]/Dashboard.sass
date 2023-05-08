@@ -3,11 +3,10 @@
 
 .db-side
   position: fixed
-  // top: 54px
-  height: 100vh
+  bottom: 0
+  top: 0
   padding: 2rem
   padding-top: 5vw
-  padding-bottom: 13vw
   width: 15%
   @include fl-tl
   @include fl-c
@@ -48,11 +47,11 @@
   letter-spacing: 0.03em
 
 .db-main
-  padding-top: 3.7vw
+  padding: 2rem
+  padding-top: calc(3.7vw + 2rem)
   margin-left: 15%
   background: #F8F5FF
   width: 85%
-  padding: 2rem
   @include fl-tl
   @include fl-c
   gap: 2rem
@@ -137,6 +136,7 @@
     @include def-h
     font-size: 1.8rem
     font-weight: 600
+    opacity: 0.8
 
 .db-recents-cont
   width: 100%
