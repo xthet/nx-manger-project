@@ -34,7 +34,6 @@ export default function useProfile(type:string, profile:string) {
     recicampaigns.length > 0 && recicampaigns.forEach(mutateCampaigns)
     setCampaigns(cmpForGrid)
     setCldng(false)
-    // campaigns && setLoading(false)
   }
 
   const callProfileBacked = async()=>{
