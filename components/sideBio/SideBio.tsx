@@ -19,6 +19,7 @@ import { v4 } from "uuid"
 import { cutStr } from "@/utils/cutStr"
 import { RefundNotice, TimelineBox } from "../exportComps"
 import onetime from "onetime"
+import { useQUData } from "@/hooks/useQUData"
 
 export default function SideBio() {
   const { currAddress } = useContext(CampaignContext)!
@@ -27,6 +28,7 @@ export default function SideBio() {
   const { campaignDetails } = useCdata(currAddress)
   const { cdata, fcLoading, cStory } = useURIData(currAddress)
   const { creatorVal, userDets } = useQCData(currAddress, campaignDetails.creator)
+  const { uNameVal } = useQUData(campaignDetails.creator)
   const [donAmount, setDonAmount] = useState("")
   const [showRNX, setShowRNX] = useState(false)
 
@@ -92,7 +94,7 @@ export default function SideBio() {
               <FontAwesomeIcon icon={faEthereum} className="sb-bio-curr-icon"/>
               <p>{truncateStr(campaignDetails.creator, 10)}</p>
             </div>
-            <Link href={`/profile/${campaignDetails.creator}`}>
+            <Link href={`/profile/${uNameVal}`}>
               <p className="sb-creator-name">{creatorVal}</p>
             </Link>
           </div>

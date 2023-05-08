@@ -3,7 +3,7 @@ import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { useEffect, useState } from "react"
 
 export default function useFindUser(uVal:string) {
-  const [address, setAddress] = useState<string|null>(null)
+  const [address, setAddress] = useState("0x0000000000000000000000000000000000000000000000000")
 
   useEffect(()=>{
     async function findUser(){
@@ -18,15 +18,15 @@ export default function useFindUser(uVal:string) {
           query: FIND_USER,
           variables: { name: uVal }
         })
-        .then(async (data) => {console.log(data); return data.data.userAddeds})
+        .then(async (data) => {console.log(data); return data.data.userAddeds[0]})
         .catch(err => console.log("Error fetching data: ", err))
-      userData && setAddress(userData.address)
+      userData && userData.id.length && setAddress(userData.address)
     }
   
     uVal && findUser().catch(e=>console.log(e))
   },[uVal])
 
   return {
-    address: address!
+    address
   }
 }
