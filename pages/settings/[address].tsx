@@ -14,6 +14,8 @@ import { useRouter } from "next/router"
 import { FormEvent, useContext, useEffect, useState } from "react"
 import ReactLoading from "react-loading"
 import { v4 } from "uuid"
+import { ApolloClient, InMemoryCache } from "@apollo/client"
+import { CHECK_UVAL } from "@/constants/subgraphQueries"
 
 
 export default function Account() {
@@ -23,9 +25,12 @@ export default function Account() {
   const { address } = router.query
   const [uloading, setUloading] = useState(true)
   const [twit, setTwit] = useState("")
+  const [usrName, setUsrName] = useState("")
   const [imgState, setImgState] = useState("unset")
   const [imgURLToBe, setImgURLToBe] = useState("")
   const [showImgNoti, setShowImgNoti] = useState(false)
+  const [showInvalidUVal, setShowInvalidUVal] = useState(false)
+  const [uValDuplicate, setUValDuplicate] = useState(false)
 
   const [showTBX, setShowTBX] = useState(false)
   const tlArr = [
@@ -54,6 +59,32 @@ export default function Account() {
     } catch (error) {
       console.log(error)      
     }
+  }
+
+  async function checkName(e:string){
+    if(e.length > 0){
+      const valid = /^[a-z][a-z0-9_]{4,19}$/.test(e)
+      if(!valid){
+        setShowInvalidUVal(true)
+      }else{setShowInvalidUVal(false)}
+    }
+
+    const client = new ApolloClient({
+      uri: process.env.NEXT_PUBLIC_SUBGRAPH_URI,
+      cache: new InMemoryCache(),
+    })
+      
+    const userData = await client
+      .query({
+        query: CHECK_UVAL,
+        variables: { term: e }
+      })
+      .then(async (data) => {return data.data.userAddeds})
+      .catch(err => console.log("Error fetching data: ", err))
+
+    if(userData.length > 0){
+      setUValDuplicate(true)
+    }else{setUValDuplicate(false)}
   }
 
 
@@ -108,6 +139,16 @@ export default function Account() {
     }
   },[usrData])
 
+  useEffect(()=>{
+    let id:any
+    if(usrName.length > 0){id = setTimeout(()=>{checkName(usrName).catch(e=>console.log(e))}, 1000)}
+    else{
+      setUValDuplicate(false)
+      setShowInvalidUVal(false)
+    }
+    return()=>{clearTimeout(id)}
+  },[usrName])
+
   return (
     <>
       <Head>
@@ -121,7 +162,7 @@ export default function Account() {
           ? <ReactLoading type="bubbles" color="#827B93"/> 
           : typeof(address) == "string" && address.includes("0x") && address.length == 42 ? isAuth 
             ? <section className="acs">
-              <form onSubmit={(e)=>{e.preventDefault(); handleSubmit(e)}} className="acs-container">
+              <form onSubmit={(e)=>{e.preventDefault(); !uValDuplicate && !showInvalidUVal && handleSubmit(e)}} className="acs-container">
                 <div className="acs-header">
                   <div className="acs-usr-address">{truncateStr(account, 14)}</div>
                   <h1 className="acs-title">{"Account Settings"}</h1>
@@ -153,12 +194,14 @@ export default function Account() {
                   <div className="su-inpt short">
                     <div className="acs-inpt-lbl">
                       <label htmlFor="username">{"Username"}</label>
-                      <small style={{ "color":"orange" }}>{"required"}</small>
+                      {showInvalidUVal ? <small style={{ "color":"red" }}>{"Invalid Username!!"}</small> : uValDuplicate ? <small style={{ "color":"red" }}>{"Username already exists!!"}</small> : <small style={{ "color":"yellow" }}>{"required"}</small>}
                     </div>
                     <input type="text" name="username" placeholder="username" required className="acs-form-input"
                       defaultValue={usrData ? usrData.username : ""}
+                      onChange={(e)=>{setUsrName(e.target.value)}} value={usrName}
                     />
                   </div>
+
                   <div className="su-inpt short">
                     <div className="acs-inpt-lbl">
                       <label htmlFor="twitter">{"Twitter"}</label>
