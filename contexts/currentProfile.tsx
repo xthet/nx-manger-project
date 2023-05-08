@@ -2,6 +2,7 @@ import { conn } from "@/types"
 import { createContext, ReactNode, useContext, useEffect, useState } from "react"
 import { ConnectionContext } from "./connection"
 import { useRouter } from "next/router"
+import useFindUser from "@/hooks/useFindUser"
 
 interface props{
   children:ReactNode
