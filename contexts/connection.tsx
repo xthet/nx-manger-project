@@ -80,7 +80,7 @@ function ConnectionProvider ({ children }:props) {
         })
         .then(async (data) => {return data.data.userAdded})
         .catch(err => console.log("Error fetching data: ", err))
-      setUNameVal(!userData || !userData.username ? truncateStr(account, 10) : userData.username)
+      setUNameVal((!userData || !userData.username) ? account : userData.username)
       setUsrData(userData)
 
       if(userData && userData.username && userData.email && userData.twitter && userData.homeAddr && seSSig){
