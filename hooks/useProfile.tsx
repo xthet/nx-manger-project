@@ -16,8 +16,9 @@ export default function useProfile(type:string, profile:string) {
     })
 
     let cmpForGrid:CmpObject[] = []
+    let recicampaigns:string[] = []
     setCldng(true)
-    const recicampaigns:string[] = await client
+    recicampaigns = await client
       .query({
         query: GET_CREATED_CAMPAIGNS,
         variables: { profile: profile.toLowerCase() }
@@ -43,8 +44,9 @@ export default function useProfile(type:string, profile:string) {
     })
     
     let cmpForGrid:CmpObject[] = []
+    let recicampaigns:string[] = []
     setCldng(true)
-    const recicampaigns:string[] = await client
+    recicampaigns = await client
       .query({
         query: GET_BACKED_CAMPAIGNS,
         variables: { profile: profile.toLowerCase() }
