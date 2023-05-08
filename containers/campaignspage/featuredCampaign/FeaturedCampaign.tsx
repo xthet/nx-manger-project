@@ -68,11 +68,11 @@ export default function FeaturedCampaign({ campaigns }:props) {
             <div className="fc-amounts fl-tl fl-c">
               <div className="fc-amt-raised fl-cl">
                 <FontAwesomeIcon icon={faEthereum} className="fc-curr-icon"/>
-                <p className="fc-amt-figure">{ethers.utils.formatEther(campaignDetails.currentBalance)}</p>
+                <p className="fc-amt-figure">{(Number(ethers.utils.formatEther(campaignDetails.currentBalance)) >= 10) ? Number(ethers.utils.formatEther(campaignDetails.currentBalance)).toPrecision(4) : Number(Number(ethers.utils.formatEther(campaignDetails.currentBalance)).toFixed(3)).toPrecision(2)}</p>
                 <p className="fc-amt-curr">{"ETH"}</p>
               </div>
               <div className="fc-goal">
-                {`raised out of ${ethers.utils.formatEther(campaignDetails.goalAmount)} ETH`}
+                {`raised out of ${Number(ethers.utils.formatEther(campaignDetails.goalAmount)).toPrecision(2)} ETH`}
               </div>
             </div>
           
@@ -94,7 +94,7 @@ export default function FeaturedCampaign({ campaigns }:props) {
               <Blockies seed={campaignDetails.creator.toLowerCase()} scale={4} size={7} 
                 className="fc-creator-jazzicon" color="#C4A2E7" bgColor="#361E77" spotColor="#fff"
               /> }
-            <Link href={`/profile/${campaignDetails ? campaignDetails.creator : "#"}`}>
+            <Link href={`/profile/${userDets ? userDets?.username : "#"}`}>
               <p>{creatorVal}</p>
             </Link>
           </div>

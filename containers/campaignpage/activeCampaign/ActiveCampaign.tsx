@@ -11,6 +11,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useContext, useEffect } from "react"
 import { CampaignContext } from "@/contexts/currentCampaign"
+import { useQUData } from "@/hooks/useQUData"
 
 
 interface props{
@@ -32,7 +33,7 @@ export default function ActiveCampaign({ click, setPTitle }: props) {
     deadlineStatement
   } = useCdata(currAddress)
   const { cdata, visLoaded, setVisLoaded } = useURIData(currAddress)  
-  const { creatorVal, cDetails, dLoading } = useQCData(currAddress, campaignDetails.creator)
+  const { creatorVal, cDetails, dLoading, userDets } = useQCData(currAddress, campaignDetails.creator)
 
   useEffect(()=>{
     campaignDetails && campaignDetails.title && setPTitle(campaignDetails.title)
@@ -67,7 +68,7 @@ export default function ActiveCampaign({ click, setPTitle }: props) {
             <div className="acp-amounts fl-tl fl-c">
               <div className="acp-amt-raised fl-cl">
                 <FontAwesomeIcon icon={faEthereum} className="acp-curr-icon"/>
-                <p className="acp-amt-figure">{(Number(ethers.utils.formatEther(campaignDetails.currentBalance)) >= 10) ? Number(ethers.utils.formatEther(campaignDetails.currentBalance)).toPrecision(3) : Number(Number(ethers.utils.formatEther(campaignDetails.currentBalance)).toFixed(3)).toPrecision(1)}</p>
+                <p className="acp-amt-figure">{(Number(ethers.utils.formatEther(campaignDetails.currentBalance)) >= 10) ? Number(ethers.utils.formatEther(campaignDetails.currentBalance)).toPrecision(4) : Number(Number(ethers.utils.formatEther(campaignDetails.currentBalance)).toFixed(3)).toPrecision(2)}</p>
                 <p className="acp-amt-curr">{"ETH"}</p>
               </div>
               <div className="acp-goal">
@@ -100,7 +101,7 @@ export default function ActiveCampaign({ click, setPTitle }: props) {
               <FontAwesomeIcon icon={faCubes} className="acp-cat-icon"/>
               {campaignDetails.category}
             </div>
-            <Link href={`/profile/${campaignDetails ? campaignDetails.creator : "#"}`}>
+            <Link href={`/profile/${userDets ? userDets.username : "#"}`}>
               <div className="acp-creator fl-cl">
                 <img src="/assets/manger_bio_logo.svg" alt="bio-logo" />
                 <p>{creatorVal}</p>

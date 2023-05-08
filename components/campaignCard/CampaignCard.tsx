@@ -76,7 +76,7 @@ export default function CampaignCard({ address, creator }:props) {
           <div className="cc-amounts fl-tl fl-c">
             <div className="cc-amt-raised fl-cl">
               <FontAwesomeIcon icon={faEthereum} className="cc-curr-icon"/>
-              <p className="cc-amt-figure">{(Number(ethers.utils.formatEther(campaignDetails.currentBalance)) >= 10) ? Number(ethers.utils.formatEther(campaignDetails.currentBalance)).toPrecision(3) : Number(Number(ethers.utils.formatEther(campaignDetails.currentBalance)).toFixed(3)).toPrecision(1)}</p>
+              <p className="cc-amt-figure">{(Number(ethers.utils.formatEther(campaignDetails.currentBalance)) >= 10) ? Number(ethers.utils.formatEther(campaignDetails.currentBalance)).toPrecision(4) : Number(Number(ethers.utils.formatEther(campaignDetails.currentBalance)).toFixed(3)).toPrecision(2)}</p>
               <p className="cc-amt-curr">{"ETH"}</p>
             </div>
             <div className="cc-goal">
