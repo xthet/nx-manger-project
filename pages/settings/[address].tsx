@@ -198,7 +198,7 @@ export default function Account() {
                     </div>
                     <input type="text" name="username" placeholder="username" required className="acs-form-input"
                       defaultValue={usrData ? usrData.username : ""}
-                      onChange={(e)=>{setUsrName(e.target.value)}} value={usrName}
+                      onChange={(e)=>{setUsrName(e.target.value)}}
                     />
                   </div>
 
