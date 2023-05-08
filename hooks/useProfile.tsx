@@ -23,7 +23,7 @@ export default function useProfile(type:string, profile:string) {
         query: GET_CREATED_CAMPAIGNS,
         variables: { profile: profile.toLowerCase() }
       })
-      .then(async data => data.data.userAdded.created)
+      .then((data) => {if(data.data.userAdded){return data.data.userAdded.created}else{return []}})
       .catch(error => console.log(error))
 
     function mutateCampaigns(val:string, index:number){
@@ -50,7 +50,7 @@ export default function useProfile(type:string, profile:string) {
         query: GET_BACKED_CAMPAIGNS,
         variables: { profile: profile.toLowerCase() }
       })
-      .then(async data => data.data.userAdded.backed)
+      .then((data) => {if(data.data.userAdded){return data.data.userAdded.backed}else{return []}})
       .catch(error => console.log(error))
 
     function mutateCampaigns(val:string, index:number){
@@ -65,10 +65,10 @@ export default function useProfile(type:string, profile:string) {
 
   useEffect(()=>{
     if(isConnected && type == "Created"){
-      callProfileCreated().catch(e=>console.log(e))
+      profile && callProfileCreated().catch(e=>console.log(e))
     }
     else if(isConnected && type == "Backed"){
-      callProfileBacked().catch(e=>console.log(e))
+      profile && callProfileBacked().catch(e=>console.log(e))
     }
   },[isConnected, profile, account])
 
