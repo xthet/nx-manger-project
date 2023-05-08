@@ -56,14 +56,17 @@ export default function Navbar() {
 
   //   getCampaign().catch(e=>console.log(e))
   // },[])
+  console.log(router.pathname)
 
   return (
     <nav 
       className={
-        `nv-navbar sc-padding ${scrollDirection == "down" ? scrollY >= 8 && router.pathname !== "/create-campaign" ? "nv-active" : "" : ""}  
+        `nv-navbar sc-padding ${(scrollDirection == "down") ? (scrollY >= 8 && router.pathname !== "/create-campaign") ? "nv-active" : "" : ""}  
         ${(router.pathname == "/" || router.pathname == "/profile/[profile]" 
           || router.pathname == "/create-campaign" 
-          || router.pathname == "/signUp" ) && "page-unfill"}`
+          || router.pathname == "/signUp" ) && "page-unfill"}
+        ${(router.pathname.includes("/profile/[profile]/dashboard")) && "nv-active"}
+        `
       } 
       onScroll={()=>{console.log(scrollY)}}
     >
