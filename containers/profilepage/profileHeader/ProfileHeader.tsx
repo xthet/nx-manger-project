@@ -34,7 +34,7 @@ export default function ProfileHeader() {
               campaign${uData ? uData.created.length == 1 ? "" : "s" : ""} • Funded 
               ${uData ? uData.backedCount : ""} campaign${uData ? uData.backed.length == 1 ? "" : "s" : ""}`}
           </p>
-          {isOwnPage && <Link href={`/profile/${currProfile}/dashboard`}><button className="crh-dashboard-btn">{"Dashboard"}</button></Link>}
+          {isOwnPage && <Link href={`/profile/${uNameVal}/dashboard`}><button className="crh-dashboard-btn">{"Dashboard"}</button></Link>}
         </div>
       </div>
 
