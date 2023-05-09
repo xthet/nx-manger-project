@@ -1,5 +1,5 @@
 import { faEthereum } from "@fortawesome/free-brands-svg-icons"
-import { faChartSimple, faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { faChartSimple, faCircleInfo, faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Head from "next/head"
 import { useRouter } from "next/router"
@@ -41,29 +41,40 @@ export default function Dashboard() {
             </button>
           </div>
 
-          <div className="db-stats-cont">
-            <div className="db-stat">
-              <p className="db-stat-act">{"raised"}</p>
-              <div className="db-stat-amt-grp">
-                <p className="db-stat-amt">{"27.97"}</p>
-                <p className="db-stat-msr">{"ETH"}</p>
+          <div className="db-stats-grp">
+            <div className="db-stats-cont">
+              <div className="db-stat">
+                <p className="db-stat-act">{"raised"}</p>
+                <div className="db-stat-amt-grp">
+                  <p className="db-stat-amt">{"27.97"}</p>
+                  <p className="db-stat-msr">{"ETH"}</p>
+                </div>
+              </div>
+              <div className="db-stat">
+                <p className="db-stat-act">{"from"}</p>
+                <div className="db-stat-amt-grp">
+                  <p className="db-stat-amt">{"170"}</p>
+                  <p className="db-stat-msr">{"backers"}</p>
+                </div>
+              </div>
+              <div className="db-stat">
+                <p className="db-stat-act">{"across"}</p>
+                <div className="db-stat-amt-grp">
+                  <p className="db-stat-amt">{"19"}</p>
+                  <p className="db-stat-msr">{"campaigns"}</p>
+                </div>
               </div>
             </div>
 
-            <div className="db-stat">
-              <p className="db-stat-act">{"from"}</p>
-              <div className="db-stat-amt-grp">
-                <p className="db-stat-amt">{"170"}</p>
-                <p className="db-stat-msr">{"backers"}</p>
-              </div>
-            </div>
-
-            <div className="db-stat">
-              <p className="db-stat-act">{"across"}</p>
-              <div className="db-stat-amt-grp">
-                <p className="db-stat-amt">{"19"}</p>
-                <p className="db-stat-msr">{"campaigns"}</p>
-              </div>
+            <div className="db-stats-info">
+              <p>
+                <FontAwesomeIcon icon={faCircleInfo} className="db-stats-info-icon"/>
+                {`
+                Did you know: Manger runs a flexible crowdfunding system i.e. 
+                all earnings at the end of a campaign belong to the campaign creator, 
+                even if the campaign goal isn't reached. 
+                `}
+              </p>
             </div>
           </div>
 

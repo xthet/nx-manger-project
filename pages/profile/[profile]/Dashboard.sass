@@ -85,6 +85,12 @@
   height: 1.5rem
   color: $color-htext
 
+.db-stats-grp
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 0.8em
+
 .db-stats-cont
   width: 100%
   @include fl-cl
@@ -126,8 +132,23 @@
   color: $color-subtext
   letter-spacing: 0.03em
 
+.db-stats-info
+  width: 100%
+  @include fl-tl
+  gap: 0.2em
+  p
+    @include def-p
+    opacity: 0.8
+    width: 60%
+    font-size: 1.2rem
+    line-height: 1.2em
+
+.db-stats-info-icon
+  color: $color-subtext
+  height: 1.2rem
+
 .db-recents
-  margin-top: 10vw
+  // margin-top: 5vw
   width: 100%
   @include fl-tl
   @include fl-c
