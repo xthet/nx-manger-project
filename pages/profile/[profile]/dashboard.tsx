@@ -1,5 +1,7 @@
+import { faEthereum } from "@fortawesome/free-brands-svg-icons"
 import { faChartSimple, faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Head from "next/head"
 import { useRouter } from "next/router"
 
 export default function Dashboard() {
@@ -8,6 +10,12 @@ export default function Dashboard() {
 
   return (
     <>
+      <Head>
+        <title>{"Manger | Dashboard"}</title>
+        <meta name="description" content="Manger Project - Fundraising on the blockchain" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/assets/manger_favicon.svg" />
+      </Head>
       <div className="db">
         <aside className="db-side">
           <h3 className="db-sec-title">{"Dashboard"}</h3>
@@ -99,30 +107,36 @@ export default function Dashboard() {
             <div className="db-tbl-hdr">
               <span className="db-tbl-hdr-ele">{"Name"}</span>
               <span className="db-tbl-hdr-ele">{"Status"}</span>
-              <span className="db-tbl-hdr-ele">{"Duration"}</span>
+              <span className="db-tbl-hdr-ele">{"ETA"}</span>
               <span className="db-tbl-hdr-ele">{"Balance"}</span>
             </div>
 
             <div className="db-tbl-rw">
-              <span className="db-tbl-rw-ele --img-grp">
-                <img src="/e43.png" alt="--" width={20}/>
+              <span className="db-tbl-rw-ele">
+                <img src="/e43.png" alt="--" width={20} className="db-tbl-rw-img"/>
                 <span>{"Dark Metroidvania"}</span>
               </span>
               <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
               <span className="db-tbl-rw-ele">{"5"}</span>
-              <span className="db-tbl-rw-ele">{"3.58"}</span>
+              <span className="db-tbl-rw-ele">
+                <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
+                <span>{"3.58"}</span>
+              </span>
               <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
               <FontAwesomeIcon icon={faTrashCan} className="db-tbl-act-icon"/>
             </div>
 
             <div className="db-tbl-rw">
-              <span className="db-tbl-rw-ele --img-grp">
-                <img src="/e43.png" alt="--" width={20}/>
+              <span className="db-tbl-rw-ele">
+                <img src="/e43.png" alt="--" width={20} className="db-tbl-rw-img"/>
                 <span>{"Dark Metroidvania"}</span>
               </span>
               <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
               <span className="db-tbl-rw-ele">{"5"}</span>
-              <span className="db-tbl-rw-ele">{"3.58"}</span>
+              <span className="db-tbl-rw-ele">
+                <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
+                <span>{"3.58"}</span>
+              </span>
               <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
               <FontAwesomeIcon icon={faTrashCan} className="db-tbl-act-icon"/>
             </div>
