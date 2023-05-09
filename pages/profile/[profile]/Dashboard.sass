@@ -148,7 +148,6 @@
   height: 1.2rem
 
 .db-recents
-  // margin-top: 5vw
   width: 100%
   @include fl-tl
   @include fl-c
@@ -209,12 +208,23 @@
   @include fl-c
   // border: 1px solid #000
 
+.db-table-type
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+  padding: 0.5em 0
+  h3
+    @include def-h
+    font-weight: 700
+    font-size: 2rem
+    color: $color-card-text
+
 .db-tbl-hdr
-  padding: 0.8em 0
+  padding: 0.5em 0
   width: 100%
   display: grid
-  border-top: 1px solid $color-subtext
-  border-bottom: 1px solid $color-subtext
+  border-top: 1px solid $color-sub-bg
+  border-bottom: 1px solid $color-sub-bg
   grid-template-columns: repeat(5, 1fr)
   justify-items: start
   align-content: center
@@ -227,3 +237,24 @@
 .db-tbl-act-icon
   height: 1.4rem
   color: $color-subtext
+
+.db-tbl-rw
+  width: 100%
+  padding: 0.5em 0
+  display: grid
+  border-bottom: 1px solid $color-sub-bg
+  grid-template-columns: repeat(5, 1fr)
+  justify-items: start
+  align-content: center
+
+.db-tbl-rw-img
+  width: 2.08vw
+  border-radius: 0.4em
+
+.db-tbl-rw-ele
+  @include fl-cl
+  gap: 0.4em
+  @include def-p
+  font-size: 1.3rem
+  letter-spacing: 0.02em
+
