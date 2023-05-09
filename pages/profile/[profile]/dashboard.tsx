@@ -46,21 +46,21 @@ export default function Dashboard() {
               <div className="db-stat">
                 <p className="db-stat-act">{"raised"}</p>
                 <div className="db-stat-amt-grp">
-                  <p className="db-stat-amt">{"27.97"}</p>
+                  <p className="db-stat-amt">{"27997"}</p>
                   <p className="db-stat-msr">{"ETH"}</p>
                 </div>
               </div>
               <div className="db-stat">
                 <p className="db-stat-act">{"from"}</p>
                 <div className="db-stat-amt-grp">
-                  <p className="db-stat-amt">{"170"}</p>
+                  <p className="db-stat-amt">{"1700"}</p>
                   <p className="db-stat-msr">{"backers"}</p>
                 </div>
               </div>
               <div className="db-stat">
                 <p className="db-stat-act">{"across"}</p>
                 <div className="db-stat-amt-grp">
-                  <p className="db-stat-amt">{"19"}</p>
+                  <p className="db-stat-amt">{"190"}</p>
                   <p className="db-stat-msr">{"campaigns"}</p>
                 </div>
               </div>
