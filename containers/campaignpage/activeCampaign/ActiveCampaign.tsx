@@ -90,7 +90,7 @@ export default function ActiveCampaign({ click, setPTitle }: props) {
 
         <button className="acp-fund-cta" 
           onClick={()=>{router.push(`${router.asPath}#cmpdetails`); click()}}
-          disabled={campaignDetails && campaignDetails.state == 2}
+          disabled={campaignDetails && (campaignDetails.state != 0)}
         >
           {"Fund this project"}
         </button>
