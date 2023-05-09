@@ -103,7 +103,7 @@ export default function CampaignCard({ address, creator }:props) {
             </Link>}
           </div>
           <div className="cc-eta fl-tr">
-            <p>{daysUntil}</p>
+            <p>{daysUntil <= 0 ? 0 : daysUntil}</p>
             <p>{"days to go"}</p>
           </div>
         </div>

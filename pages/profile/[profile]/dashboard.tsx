@@ -2,6 +2,7 @@ import { faEthereum } from "@fortawesome/free-brands-svg-icons"
 import { faChartSimple, faCircleInfo, faPencil, faTrash, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Head from "next/head"
+import Link from "next/link"
 import { useRouter } from "next/router"
 
 export default function Dashboard() {
@@ -35,10 +36,12 @@ export default function Dashboard() {
               <span>{"Created"}</span>
               <span>{"Donated"}</span>
             </div>
-            <button className="db-hdr-cta">
-              <FontAwesomeIcon icon={faChartSimple} className="db-hdr-cta-icon"/>
-              {"Start a campaign"}
-            </button>
+            <Link href={"/create-campaign"}>
+              <button className="db-hdr-cta">
+                <FontAwesomeIcon icon={faChartSimple} className="db-hdr-cta-icon"/>
+                {"Start a campaign"}
+              </button>
+            </Link>
           </div>
 
           <div className="db-stats-grp">
@@ -124,17 +127,17 @@ export default function Dashboard() {
             <div className="db-tbl-hdr">
               <span className="db-tbl-hdr-ele">{"Name"}</span>
               <span className="db-tbl-hdr-ele">{"Status"}</span>
-              <span className="db-tbl-hdr-ele">{"ETA (days)"}</span>
+              <span className="db-tbl-hdr-ele --eta">{"ETA (days)"}</span>
               <span className="db-tbl-hdr-ele">{"Balance"}</span>
             </div>
 
             <div className="db-tbl-rw">
               <span className="db-tbl-rw-ele">
                 <img src="/e43.png" alt="--" className="db-tbl-rw-img"/>
-                <span>{"Dark Metroidvania"}</span>
+                <span>{"Rune Fencer Illyia - A Cute Metroidvania"}</span>
               </span>
               <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
-              <span className="db-tbl-rw-ele">{"5"}</span>
+              <span className="db-tbl-rw-ele  --eta">{"15"}</span>
               <span className="db-tbl-rw-ele">
                 <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
                 <span>{"3.58"}</span>
@@ -152,7 +155,7 @@ export default function Dashboard() {
                 <span>{"Dark Metroidvania"}</span>
               </span>
               <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
-              <span className="db-tbl-rw-ele --eta">{"5"}</span>
+              <span className="db-tbl-rw-ele --eta">{"53"}</span>
               <span className="db-tbl-rw-ele">
                 <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
                 <span>{"3.58"}</span>
@@ -170,7 +173,7 @@ export default function Dashboard() {
                 <span>{"Dark Metroidvania"}</span>
               </span>
               <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
-              <span className="db-tbl-rw-ele">{"5"}</span>
+              <span className="db-tbl-rw-ele  --eta">{"5"}</span>
               <span className="db-tbl-rw-ele">
                 <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
                 <span>{"3.58"}</span>

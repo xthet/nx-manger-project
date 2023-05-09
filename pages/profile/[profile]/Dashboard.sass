@@ -231,9 +231,11 @@
   display: grid
   border-top: 1px solid $color-sub-bg
   border-bottom: 1px solid $color-sub-bg
-  grid-template-columns: repeat(5, 1fr)
+  grid-template-columns: 2fr 1fr 0.5fr 0.5fr 2fr
+  grid-column-gap: 2em
   justify-items: start
   align-content: center
+
 
 .db-tbl-hdr-ele
   @include def-p
@@ -241,19 +243,26 @@
   font-weight: 500
   font-size: 1.3rem
   letter-spacing: 0.04em
+  &.--eta
+    justify-self: end
 
 .db-tbl-act-icon
   height: 1.4rem
   color: $color-subtext
 
 .db-tbl-rw
+  cursor: pointer
   width: 100%
   padding: 0.5em 0
   display: grid
   border-bottom: 1px solid $color-sub-bg
-  grid-template-columns: repeat(5, 1fr)
+  grid-template-columns: 2fr 1fr 0.5fr 0.5fr 2fr
+  grid-column-gap: 2em
   justify-items: start
   align-content: center
+  transition: all 0.5s ease
+  &:hover
+    background: rgba(255,255,255,0.4)
 
 .db-tbl-rw-img
   width: 2.08vw
@@ -266,14 +275,16 @@
   font-size: 1.3rem
   letter-spacing: 0.03em
   font-weight: 600
+  &.--eta
+    justify-self: end
   &.--status
-    opacity: 0.85
+    // opacity: 0.85
     margin: 0.2em 0
     font-size: 1.1rem
     padding: 0 1.3em
     border-radius: 0.6em
-    background: #EFDBC8
-    color: #946C47
+    background: #C8EFE9
+    color: #47947D
   &.--options
     gap:1em
     cursor: pointer
@@ -299,3 +310,7 @@
 // green
 // background: #C8EFE9
 // color: #47947D
+
+// red
+// background: #EFD1C8
+// color: #945C47

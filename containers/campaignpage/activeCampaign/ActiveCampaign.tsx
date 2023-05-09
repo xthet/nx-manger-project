@@ -82,7 +82,7 @@ export default function ActiveCampaign({ click, setPTitle }: props) {
             </div>
 
             <div className="acp-percent fl-bl fl-c">
-              <p>{daysUntil}</p>
+              <p>{daysUntil <= 0 ? 0 : daysUntil}</p>
               <p>{"days to go"}</p>
             </div>
           </div>
@@ -121,7 +121,10 @@ export default function ActiveCampaign({ click, setPTitle }: props) {
         </div>
 
         <div className="acp-info">
-          <p>{`Risk involved: Donations will no longer be refundable when this project expires by ${deadlineStatement}.`}</p>
+          {currState == 0  
+            ? <p>{`Risk involved: Donations will no longer be refundable when this project expires by ${deadlineStatement}.`}</p>
+            : <p>{`${cDetails && cDetails.funderCount} backer${cDetails && cDetails.funderCount == 1 ? "" : "s"} donated to help bring this project to life.`}</p>
+          }
         </div>
       </div>
     </section>

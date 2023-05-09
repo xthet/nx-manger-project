@@ -82,7 +82,7 @@ export default function FeaturedCampaign({ campaigns }:props) {
             </div>
 
             <div className="fc-percent fl-bl fl-c">
-              <p>{daysUntil}</p>
+              <p>{daysUntil <= 0 ? 0 : daysUntil}</p>
               <p>{"days to go"}</p>
             </div>
           </div>
