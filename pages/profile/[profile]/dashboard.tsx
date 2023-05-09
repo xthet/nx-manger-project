@@ -104,7 +104,10 @@ export default function Dashboard() {
             </div>
 
             <div className="db-tbl-rw">
-              <span className="db-tbl-rw-ele">{"Dark Metroidvania"}</span>
+              <span className="db-tbl-rw-ele --img-grp">
+                <img src="/e43.png" alt="--" width={20}/>
+                <span>{"Dark Metroidvania"}</span>
+              </span>
               <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
               <span className="db-tbl-rw-ele">{"5"}</span>
               <span className="db-tbl-rw-ele">{"3.58"}</span>
@@ -113,7 +116,10 @@ export default function Dashboard() {
             </div>
 
             <div className="db-tbl-rw">
-              <span className="db-tbl-rw-ele">{"Dark Metroidvania"}</span>
+              <span className="db-tbl-rw-ele --img-grp">
+                <img src="/e43.png" alt="--" width={20}/>
+                <span>{"Dark Metroidvania"}</span>
+              </span>
               <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
               <span className="db-tbl-rw-ele">{"5"}</span>
               <span className="db-tbl-rw-ele">{"3.58"}</span>
