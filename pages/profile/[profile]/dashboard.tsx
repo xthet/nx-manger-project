@@ -122,8 +122,10 @@ export default function Dashboard() {
                 <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
                 <span>{"3.58"}</span>
               </span>
-              <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
-              <FontAwesomeIcon icon={faTrashCan} className="db-tbl-act-icon"/>
+              <span className="db-tbl-rw-ele">
+                <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
+                <FontAwesomeIcon icon={faTrashCan} className="db-tbl-act-icon"/>
+              </span>
             </div>
 
             <div className="db-tbl-rw">
@@ -137,8 +139,10 @@ export default function Dashboard() {
                 <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
                 <span>{"3.58"}</span>
               </span>
-              <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
-              <FontAwesomeIcon icon={faTrashCan} className="db-tbl-act-icon"/>
+              <span className="db-tbl-rw-ele">
+                <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
+                <FontAwesomeIcon icon={faTrashCan} className="db-tbl-act-icon"/>
+              </span>
             </div>
           </div>
         </main>

@@ -185,13 +185,22 @@
   width: 100%
   @include fl-cl
   @include fl-c
-  border: 1px solid #000
+  // border: 1px solid #000
 
 .db-tbl-hdr
+  padding: 0.8em 0
   width: 100%
   display: grid
-  border: 1px solid red
-  grid-template-columns: repeat(4, 1fr)
+  border-top: 1px solid $color-subtext
+  border-bottom: 1px solid $color-subtext
+  grid-template-columns: repeat(5, 1fr)
+  justify-items: start
+  align-content: center
+
+.db-tbl-hdr-ele
+  @include def-p
+  font-size: 1.3rem
+  letter-spacing: 0.04em
 
 .db-tbl-act-icon
   height: 1.4rem
