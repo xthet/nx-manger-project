@@ -110,7 +110,7 @@ export default function ActiveCampaign({ click, setPTitle }: props) {
           </div>
 
           <div className="acp-bio-socials fl-cr">
-            {cdata && cdata.twitter && <Link href={`https://twitter.com/${cdata.twitter}`}>
+            {cdata && cdata.twitter && <Link href={`${cdata.twitter}`}>
               <FontAwesomeIcon icon={faTwitter} className="acp-social-icon"/>
             </Link>}
             {cdata && cdata.website && <Link href={cdata.website}>
