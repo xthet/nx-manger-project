@@ -122,7 +122,7 @@ export default function Dashboard() {
             <div className="db-tbl-hdr">
               <span className="db-tbl-hdr-ele">{"Name"}</span>
               <span className="db-tbl-hdr-ele">{"Status"}</span>
-              <span className="db-tbl-hdr-ele">{"ETA"}</span>
+              <span className="db-tbl-hdr-ele">{"ETA (days)"}</span>
               <span className="db-tbl-hdr-ele">{"Balance"}</span>
             </div>
 
@@ -137,16 +137,16 @@ export default function Dashboard() {
                 <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
                 <span>{"3.58"}</span>
               </span>
-              <span className="db-tbl-rw-ele">
+              <span className="db-tbl-rw-ele --options">
                 <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
                 <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/>
-                <span>{"Details"}</span>
+                <span className="db-tbl-details">{"Details"}</span>
               </span>
             </div>
 
             <div className="db-tbl-rw">
               <span className="db-tbl-rw-ele">
-                <img src="/e43.png" alt="--" width={20} className="db-tbl-rw-img"/>
+                <img src="/e43.png" alt="--" className="db-tbl-rw-img"/>
                 <span>{"Dark Metroidvania"}</span>
               </span>
               <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
@@ -155,16 +155,16 @@ export default function Dashboard() {
                 <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
                 <span>{"3.58"}</span>
               </span>
-              <span className="db-tbl-rw-ele">
+              <span className="db-tbl-rw-ele --options">
                 <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
                 <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/>
-                <span>{"Details"}</span>
+                <span className="db-tbl-details">{"Details"}</span>
               </span>
             </div>
 
             <div className="db-tbl-rw">
               <span className="db-tbl-rw-ele">
-                <img src="/e43.png" alt="--" width={20} className="db-tbl-rw-img"/>
+                <img src="/e43.png" alt="--" className="db-tbl-rw-img"/>
                 <span>{"Dark Metroidvania"}</span>
               </span>
               <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
@@ -173,10 +173,10 @@ export default function Dashboard() {
                 <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
                 <span>{"3.58"}</span>
               </span>
-              <span className="db-tbl-rw-ele">
+              <span className="db-tbl-rw-ele --options">
                 <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
                 <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/>
-                <span>{"Details"}</span>
+                <span className="db-tbl-details">{"Details"}</span>
               </span>
             </div>
           </div>
