@@ -97,20 +97,22 @@
   @include fl-sb
 
 .db-stat
-  background: rgba(196, 162, 231, 0.4)
-  box-shadow: 0 0 9px 0px rgba(17, 10, 37, 0.06)
+  background: $color-btn
+  box-shadow: 0 0 9px 0px rgba(17, 10, 37, 0.1)
   border-radius: 0.3em
   padding: 0.5em 1em
   @include fl-tl
   @include fl-c
   gap: 0.2rem
   width: 31%
+  opacity: 0.85
 
 .db-stat-act
   @include def-p
   font-size: 2rem
   opacity: 0.8
   letter-spacing: 0.03em
+  color: $color-node-ring
 
 .db-stat-amt-grp
   width: 100%
@@ -129,7 +131,7 @@
   @include def-p
   font-size: 2rem
   font-weight: 600
-  color: $color-subtext
+  color: $color-htext
   letter-spacing: 0.03em
 
 .db-stats-info
