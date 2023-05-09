@@ -21,7 +21,11 @@ import { RefundNotice, TimelineBox } from "../exportComps"
 import onetime from "onetime"
 import { useQUData } from "@/hooks/useQUData"
 
-export default function SideBio() {
+interface props {
+  state: number
+}
+
+export default function SideBio({ state }:props) {
   const { currAddress } = useContext(CampaignContext)!
   const { isConnected, signer, account }:conn = useContext(ConnectionContext)!
   const { dispatch } = useContext(NotificationContext)!
@@ -110,7 +114,7 @@ export default function SideBio() {
         <p className="sb-creator-bio">{cdata ? cutStr(cdata.bio, 145) : ""}</p>
       </div>
 
-      <div className="sb-support fl-tl fl-c">
+      {state == 0 && <div className="sb-support fl-tl fl-c">
         <h4 className="sb-support-heading">{"Support"}</h4>
         <div className="sb-support-box fl-tl fl-c">
           <h4 className="sb-support-box-heading">{"Get a refund."}</h4>
@@ -129,7 +133,7 @@ export default function SideBio() {
             {"Refund"}
           </button>
         </div>
-      </div>
+      </div>}
     </div>
   )
 }

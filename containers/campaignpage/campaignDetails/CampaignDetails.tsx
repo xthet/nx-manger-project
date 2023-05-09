@@ -60,7 +60,7 @@ export default function CampaignDetails({ onFund, resetter }: props) {
       </main>
 
       <aside className="cpd-info">
-        {activeTab == "REWARDS" ? <SideNotice/> : <SideBio/>}
+        {activeTab == "REWARDS" ? <SideNotice/> : <SideBio state={currState}/>}
       </aside>
     </section>
   )
