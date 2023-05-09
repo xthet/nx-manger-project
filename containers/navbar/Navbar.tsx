@@ -56,7 +56,6 @@ export default function Navbar() {
 
   //   getCampaign().catch(e=>console.log(e))
   // },[])
-  console.log(router.pathname)
 
   return (
     <nav 

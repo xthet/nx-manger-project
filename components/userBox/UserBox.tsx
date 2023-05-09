@@ -67,7 +67,7 @@ export default function UserBox({ iVisible, offMe }:props) {
         <div className="ub-wallet-options fl-cl">
           <div className="ub-wallet-option fl-cl">
             <FontAwesomeIcon icon={faUser} className="ub-w-option-icon"/>
-            {isAuth
+            {(isAuth && uNameVal)
               ? <Link href={`/profile/${uNameVal}`}><p>{"Profile"}</p></Link>
               : <Link href="/signUp"><p>{"Sign up"}</p></Link>
             }
