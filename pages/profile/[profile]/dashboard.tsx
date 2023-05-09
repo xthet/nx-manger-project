@@ -1,4 +1,4 @@
-import { faChartSimple } from "@fortawesome/free-solid-svg-icons"
+import { faChartSimple, faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useRouter } from "next/router"
 
@@ -95,8 +95,31 @@ export default function Dashboard() {
             </div>
           </section>
 
-          <div className="db-crtd-table">
+          <div className="db-table">
+            <div className="db-tbl-hdr">
+              <span className="db-tbl-hdr-ele">{"Name"}</span>
+              <span className="db-tbl-hdr-ele">{"Status"}</span>
+              <span className="db-tbl-hdr-ele">{"Duration"}</span>
+              <span className="db-tbl-hdr-ele">{"Balance"}</span>
+            </div>
 
+            <div className="db-tbl-rw">
+              <span className="db-tbl-rw-ele">{"Dark Metroidvania"}</span>
+              <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
+              <span className="db-tbl-rw-ele">{"5"}</span>
+              <span className="db-tbl-rw-ele">{"3.58"}</span>
+              <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
+              <FontAwesomeIcon icon={faTrashCan} className="db-tbl-act-icon"/>
+            </div>
+
+            <div className="db-tbl-rw">
+              <span className="db-tbl-rw-ele">{"Dark Metroidvania"}</span>
+              <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
+              <span className="db-tbl-rw-ele">{"5"}</span>
+              <span className="db-tbl-rw-ele">{"3.58"}</span>
+              <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
+              <FontAwesomeIcon icon={faTrashCan} className="db-tbl-act-icon"/>
+            </div>
           </div>
         </main>
       </div>
