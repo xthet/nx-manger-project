@@ -1,5 +1,5 @@
 /* acp */
-.acp-section.sc-padding.fl-cl{
+.acp-section.sc-padding.fl-tl{
   position: relative;
   padding-top: 7.04vw;
   padding-bottom: 7.04vw;
@@ -7,7 +7,7 @@
   width: 100%;
 }
 @media(max-width: 1000px){
-  .acp-section.sc-padding.fl-cl{
+  .acp-section.sc-padding.fl-tl{
     padding-top: 8vw;
     padding-bottom: 8vw;
     flex-direction: column;
@@ -17,7 +17,7 @@
   }
 }
 @media(max-width: 600px){
-  .acp-section.sc-padding.fl-cl{
+  .acp-section.sc-padding.fl-tl{
     padding-top: 17.29vw;
     padding-bottom: 17.29vw;
   }

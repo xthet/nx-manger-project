@@ -20,7 +20,7 @@ interface props{
 }
 
 export default function ActiveCampaign({ click, setPTitle }: props) {
-  const { currAddress } = useContext(CampaignContext)!
+  const { currAddress, currState } = useContext(CampaignContext)!
   const router = useRouter()
   const {    
     loading,
@@ -40,7 +40,7 @@ export default function ActiveCampaign({ click, setPTitle }: props) {
   },[loading])
   
   return (
-    <section className="acp-section sc-padding fl-cl">
+    <section className="acp-section sc-padding fl-tl">
       <div className="acp-bg">
         <img src={imageURI} alt="cc-mckp" onLoad={()=>{setImgLoad(true)}} style={!imgLoad ? { "display": "none" } : {}}/>
         <div className="acp-bg-grad"></div>
@@ -88,12 +88,12 @@ export default function ActiveCampaign({ click, setPTitle }: props) {
           </div>
         </div>
 
-        <button className="acp-fund-cta" 
+        {(currState == 0) && <button className="acp-fund-cta" 
           onClick={()=>{router.push(`${router.asPath}#cmpdetails`); click()}}
           disabled={campaignDetails && (campaignDetails.state != 0)}
         >
           {"Fund this project"}
-        </button>
+        </button>}
 
         <div className="acp-bio fl-cl fl-sb">
           <div className="acp-bio-native fl-cl">
