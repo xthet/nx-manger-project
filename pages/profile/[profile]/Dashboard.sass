@@ -52,6 +52,7 @@
   margin-left: 15%
   background: #F8F5FF
   width: 85%
+  min-height: 100vh
   @include fl-tl
   @include fl-c
   gap: 4rem
@@ -90,6 +91,7 @@
   @include fl-tl
   @include fl-c
   gap: 0.8em
+  margin-top: -2rem
 
 .db-stats-cont
   width: 100%
@@ -135,13 +137,14 @@
   letter-spacing: 0.03em
 
 .db-stats-info
+  opacity: 0.7
   width: 100%
   @include fl-tl
   gap: 0.2em
   p
     @include def-p
     opacity: 0.8
-    width: 60%
+    width: 65%
     font-size: 1.25rem
     line-height: 1.2em
 
@@ -259,11 +262,19 @@
   gap: 0.4em
   @include def-p
   font-size: 1.3rem
-  letter-spacing: 0.02em
+  letter-spacing: 0.03em
+  font-weight: 600
   &.--status
+    opacity: 0.85
     margin: 0.2em 0
     font-size: 1.1rem
     padding: 0 1.3em
     border-radius: 0.6em
-    background: #E2DAF6
+    background: #C8EFE9
+    color: #47947D
 
+
+
+// purple
+// background: #E2DAF6
+// color: #5C4794

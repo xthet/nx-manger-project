@@ -161,6 +161,24 @@ export default function Dashboard() {
                 <span>{"Details"}</span>
               </span>
             </div>
+
+            <div className="db-tbl-rw">
+              <span className="db-tbl-rw-ele">
+                <img src="/e43.png" alt="--" width={20} className="db-tbl-rw-img"/>
+                <span>{"Dark Metroidvania"}</span>
+              </span>
+              <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
+              <span className="db-tbl-rw-ele">{"5"}</span>
+              <span className="db-tbl-rw-ele">
+                <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
+                <span>{"3.58"}</span>
+              </span>
+              <span className="db-tbl-rw-ele">
+                <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
+                <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/>
+                <span>{"Details"}</span>
+              </span>
+            </div>
           </div>
         </main>
       </div>
