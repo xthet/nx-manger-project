@@ -1,4 +1,5 @@
 import { RewardsTab, SideNotice, SideBio, StoryTab, RisksTab, FaqsTab } from "@/components/exportComps"
+import { CampaignContext } from "@/contexts/currentCampaign"
 import { useContext, useEffect, useRef, useState } from "react"
 
 interface props{
@@ -8,6 +9,8 @@ interface props{
 
 export default function CampaignDetails({ onFund, resetter }: props) {
   const [activeTab, setActiveTab] = useState("STORY")
+  const { currState } = useContext(CampaignContext)!
+
   const rwdRef = useRef<HTMLDivElement>(null)
 
   useEffect(()=>{
@@ -38,12 +41,12 @@ export default function CampaignDetails({ onFund, resetter }: props) {
             >
               {"FAQ"}
             </div>
-            <div 
+            {currState == 0 && <div 
               className={`cpd-tab-title ${activeTab == "REWARDS" && "cpd-active-tab"}`} 
               onClick={()=>{setActiveTab("REWARDS")}} ref={rwdRef}
             >
               {"REWARDS"}
-            </div>
+            </div>}
           </div>
           <div className="cpd-separator"></div>
         </div>
@@ -51,7 +54,7 @@ export default function CampaignDetails({ onFund, resetter }: props) {
         <>
           {activeTab == "STORY" && <StoryTab />}
           {activeTab == "RISKS" && <RisksTab />}
-          {activeTab == "REWARDS" && <RewardsTab/>}
+          {activeTab == "REWARDS" && currState == 0 && <RewardsTab/>}
           {activeTab == "FAQ" && <FaqsTab/>}
         </>
       </main>
