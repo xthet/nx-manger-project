@@ -47,7 +47,7 @@ export default function CampaignCard({ address, creator }:props) {
   const router = useRouter()
 
   return (
-    <div className="cc-container fl-cl fl-c" style={campaignDetails && (campaignDetails.state == 1) ? { "display":"none" } : {}}>
+    <div className="cc-container fl-cl fl-c">
       <div className="cc-img">
         {!imgLoad && <Skeleton style={{ "height": "100%", "borderRadius": "1.39vw 1.39vw 0 0" }}/>}
         <img src={imageURI} alt="cc-mckp" onLoad={()=>{setImgLoad(true)}} 

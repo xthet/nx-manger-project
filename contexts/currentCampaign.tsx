@@ -12,10 +12,10 @@ interface currCampaign{
 const CampaignContext = createContext<currCampaign | null>(null)
 
 function CampaignProvider ({ children, address }:props){
-  const [currAddress, setCurrAddress] = useState(address)
+  // const [currAddress, setCurrAddress] = useState(address)
 
   return (
-    <CampaignContext.Provider value={{ currAddress }}>
+    <CampaignContext.Provider value={{ currAddress: address }}>
       {children}
     </CampaignContext.Provider>
   )
