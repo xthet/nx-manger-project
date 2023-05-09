@@ -46,21 +46,23 @@ export default function Dashboard() {
               <div className="db-stat">
                 <p className="db-stat-act">{"raised"}</p>
                 <div className="db-stat-amt-grp">
-                  <p className="db-stat-amt">{"27997"}</p>
+                  <p className="db-stat-amt">{"29.97"}</p>
                   <p className="db-stat-msr">{"ETH"}</p>
                 </div>
               </div>
               <div className="db-stat">
                 <p className="db-stat-act">{"from"}</p>
                 <div className="db-stat-amt-grp">
-                  <p className="db-stat-amt">{"1700"}</p>
+                  <p className="db-stat-amt">{"890"}
+                    {/* <sup>{"+"}</sup> */}
+                  </p>
                   <p className="db-stat-msr">{"backers"}</p>
                 </div>
               </div>
               <div className="db-stat">
                 <p className="db-stat-act">{"across"}</p>
                 <div className="db-stat-amt-grp">
-                  <p className="db-stat-amt">{"190"}</p>
+                  <p className="db-stat-amt">{"88"}</p>
                   <p className="db-stat-msr">{"campaigns"}</p>
                 </div>
               </div>
@@ -150,7 +152,7 @@ export default function Dashboard() {
                 <span>{"Dark Metroidvania"}</span>
               </span>
               <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
-              <span className="db-tbl-rw-ele">{"5"}</span>
+              <span className="db-tbl-rw-ele --eta">{"5"}</span>
               <span className="db-tbl-rw-ele">
                 <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
                 <span>{"3.58"}</span>
