@@ -112,7 +112,7 @@
   font-size: 2rem
   opacity: 0.8
   letter-spacing: 0.03em
-  color: $color-ltext
+  color: #FFEBFF
 
 .db-stat-amt-grp
   width: 100%
@@ -142,11 +142,11 @@
     @include def-p
     opacity: 0.8
     width: 60%
-    font-size: 1.2rem
+    font-size: 1.25rem
     line-height: 1.2em
 
 .db-stats-info-icon
-  color: $color-subtext
+  color: rgba(54, 30, 119, 0.8)
   height: 1.2rem
 
 .db-recents
@@ -169,7 +169,8 @@
   width: 32.4%
   @include fl-bl
   @include fl-sb
-  background: #D7CDF4
+  background: rgba(215, 205, 244, 0.6)
+  box-shadow: 0 0 8px 0 rgba(215, 201, 244, 0.08)
   padding: 1rem
   border-radius: 0.3em
 
@@ -259,4 +260,10 @@
   @include def-p
   font-size: 1.3rem
   letter-spacing: 0.02em
+  &.--status
+    margin: 0.2em 0
+    font-size: 1.1rem
+    padding: 0 1.3em
+    border-radius: 0.6em
+    background: #E2DAF6
 
