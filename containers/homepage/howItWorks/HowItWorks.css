@@ -125,9 +125,10 @@
 }
 
 .hi-infobox-icon{
-  width: 5rem;
-  height: 5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   color: var(--color-card-text);
+  opacity: 0.8;
 }
 @media(max-width: 1250px){
   .hi-infobox-icon{
@@ -150,11 +151,14 @@
 
 .hi-info-title{
   font-family: var(--font-family);
-  font-weight: 600;
-  font-size: 2.3rem;
+  font-weight: 700;
+  font-size: 2rem;
   line-height: 1em;
   color: var(--color-card-text);
+  opacity: 0.8;
   text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;;
 }
 @media(max-width: 1250px){
   .hi-info-title{
@@ -179,7 +183,8 @@
   line-height: 1.3em;
   color: var(--color-card-text);
   text-align: center;
-  width: 90%;
+  text-justify: inter-word;
+  width: 95%;
 }
 @media(max-width: 1250px){
   .hi-info{
