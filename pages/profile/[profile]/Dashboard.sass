@@ -2,6 +2,7 @@
   @include fl-tl
 
 .db-side
+  background: #F8F5FF
   position: fixed
   bottom: 0
   top: 0
@@ -53,7 +54,7 @@
   padding: 2rem
   padding-top: calc(3.7vw + 2rem)
   margin-left: 15%
-  background: #F8F5FF
+  background: #fff
   width: 85%
   min-height: 100vh
   @include fl-tl
@@ -229,16 +230,15 @@
     color: $color-card-text
 
 .db-tbl-hdr
-  padding: 0.5em 0
+  padding: 0.5em 0.3em
   width: 100%
   display: grid
-  border-top: 1px solid $color-sub-bg
-  border-bottom: 1px solid $color-sub-bg
+  border-top: 1px solid rgba(0,0,0,0.1)
+  border-bottom: 1px solid rgba(0,0,0,0.1)
   grid-template-columns: 2fr 1fr 0.5fr 0.5fr 2fr
   grid-column-gap: 2em
   justify-items: start
   align-content: center
-
 
 .db-tbl-hdr-ele
   @include def-p
@@ -246,26 +246,29 @@
   font-weight: 500
   font-size: 1.3rem
   letter-spacing: 0.04em
-  &.--eta
-    justify-self: end
+  // &.--eta
+  //   justify-self: end
 
 .db-tbl-act-icon
   height: 1.4rem
   color: $color-subtext
+  transition: all 0.3s ease 
+  &:hover
+    opacity: 0.6  
 
 .db-tbl-rw
   cursor: pointer
   width: 100%
-  padding: 0.5em 0
+  padding: 0.5em 0.3em
   display: grid
-  border-bottom: 1px solid $color-sub-bg
+  border-bottom: 1px solid rgba(0,0,0,0.1)
   grid-template-columns: 2fr 1fr 0.5fr 0.5fr 2fr
   grid-column-gap: 2em
   justify-items: start
   align-content: center
   transition: all 0.5s ease
   &:hover
-    background: rgba(255,255,255,0.4)
+    background: rgba(0,0,0,0.02)
 
 .db-tbl-rw-img
   width: 2.08vw
@@ -279,8 +282,8 @@
   font-size: 1.3rem
   letter-spacing: 0.03em
   font-weight: 500
-  &.--eta
-    justify-self: end
+  // &.--eta
+  //   justify-self: end
   &.--status
     margin: 0.6em 0 0.1em 0
     font-size: 1.1rem
