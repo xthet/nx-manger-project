@@ -44,7 +44,9 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
       <div className="cbm-modal">
         <p className="cbm-title">{"About the creator"}</p>
         {uData && <div className="cbm-creator">
-          <h2>{"@" + uData!.username}</h2>
+          <Link href={`/profile/${uData.username}`}>
+            <h2>{"@" + uData.username}</h2>
+          </Link>
           <p>{data.location}</p>
         </div>}
         <p className="--tbx-bio"><p>{data.bio}</p></p>
@@ -73,10 +75,11 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
             {sptCreators &&
               sptCreators.map((creator, index:number)=>{
                 return (
-                  <span key={index} className="cbm-spt-creator">
-                    {"@" + creator.username}
-                  </span>
-                  
+                  <Link key={index} href={`/profile/${creator.username}`}>
+                    <span className="cbm-spt-creator">
+                      {"@" + creator.username}
+                    </span>
+                  </Link>
                 )
               })
             }
