@@ -1,3 +1,10 @@
+.cbm-modal
+  @extend .tbx-modal
+  top: calc((100vh - 60vh)/2)
+  padding: 2rem 3rem
+  height: 60vh
+  overflow-y: auto
+  
 .cbm-title
   @include def-p
   color: $color-subtext
@@ -10,9 +17,13 @@
   @include fl-c
   gap: 0.5em
   h2
+    cursor: pointer
     @include def-h
     letter-spacing: 0.03em
     color: $color-card-text
+    transition: all 0.2s ease
+    &:hover
+      opacity: 0.8
   p
     @include def-p
     font-size: 1.2rem
@@ -48,3 +59,27 @@
   @include fl-tl
   @include fl-c
   gap: 0.8em
+
+.cbm-oc-title
+  @include def-p
+  color: $color-card-text
+  font-weight: 600
+  letter-spacing: 0.03em
+
+.cbm-creators-cont
+  width: 100%
+  @include fl-cl
+  flex-wrap: wrap
+  gap: 0.4em
+
+.cbm-spt-creator
+  cursor: pointer
+  @include def-p
+  font-weight: 500
+  color: $color-ltext
+  letter-spacing: 0.02em
+  transition: all 0.2s ease
+  &:hover
+    text-decoration: underline
+    opacity: 0.8
+  

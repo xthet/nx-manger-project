@@ -41,7 +41,7 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
   return (
     <>
       <div className="tbx-reactive" onClick={()=>{offMe()}}></div>
-      <div className="tbx-modal --tbx-bio-modal">
+      <div className="cbm-modal">
         <p className="cbm-title">{"About the creator"}</p>
         {uData && <div className="cbm-creator">
           <h2>{"@" + uData!.username}</h2>
@@ -68,18 +68,8 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
         </div>
 
         <div className="cbm-other-creators">
-          <p className="cbm-oc-title">{"Supporting Creators:"}</p>
+          {sptCreators.length > 0 && <p className="cbm-oc-title">{"Supporting Creators:"}</p>}
           <div className="cbm-creators-cont">
-            {sptCreators &&
-              sptCreators.map((creator, index:number)=>{
-                return (
-                  <span key={index} className="cbm-spt-creator">
-                    {"@" + creator.username}
-                  </span>
-                  
-                )
-              })
-            }
             {sptCreators &&
               sptCreators.map((creator, index:number)=>{
                 return (
