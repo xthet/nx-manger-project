@@ -26,7 +26,7 @@ export default function HowItWorks() {
           <div className="hi-infobox-details fl-cl fl-c">
             <h5 className="hi-info-title">{"Fund a campaign"}</h5>
             <p className="hi-info">{`Have you found a project idea you care about?, 
-            simply click the “fund this project” button to 
+            click the “fund this project” button to 
             contribute to its success and earn nice rewards in return.`}</p>
             <Link href="/campaigns"><button className="hi-info-cta">{"Fund a campaign"}</button></Link>
           </div>
