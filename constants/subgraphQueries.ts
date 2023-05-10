@@ -2,7 +2,7 @@ import { gql } from "@apollo/client"
 
 export const GET_HOMEPAGE_CAMPAIGNS = gql`
   query getHomepageCampaigns{
-    campaignAddeds(first: 6, where:{published: true}, orderBy: createdAt, orderDirection: desc) {
+    campaignAddeds(first: 6, where:{isPublished: true}, orderBy: createdAt, orderDirection: desc) {
       id
       campaignAddress
       creator
@@ -45,14 +45,14 @@ export const GET_CAMPAIGN_DETAILS = gql`
       creator
       funders
       funderCount
-      published
+      isPublished
     }
   }
 `
 
 export const GET_ALL_CAMPAIGNS = gql`
   query getAllCampaigns($offset: Int!){
-    campaignAddeds(first: 12, skip: $offset, where:{published:true}, orderBy: createdAt, orderDirection: desc) {
+    campaignAddeds(first: 12, skip: $offset, where:{isPublished:true}, orderBy: createdAt, orderDirection: desc) {
       id
       campaignAddress
       creator
@@ -62,7 +62,7 @@ export const GET_ALL_CAMPAIGNS = gql`
 
 export const GET_SOME_CAMPAIGNS = gql`
   query getSomeCampaigns($category: String!, $offset: Int!){
-    campaignAddeds(first: 12, skip: $offset, where:{published:true, category: $category}, orderBy: createdAt, orderDirection: desc) {
+    campaignAddeds(first: 12, skip: $offset, where:{isPublished:true, category: $category}, orderBy: createdAt, orderDirection: desc) {
       id
       campaignAddress
       creator
@@ -88,8 +88,8 @@ export const GET_BACKED_CAMPAIGNS = gql`
 
 export const SEARCH_CAMPAIGNS = gql`
   query searchCampaigns($term: String!){
-    campaignSearch(text: $term){
-      published
+    campaignSearch(text: $term, where:{isPublished: true}){
+      isPublished
       creator
     }
   }
