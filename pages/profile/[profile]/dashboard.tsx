@@ -1,11 +1,15 @@
+import { ConnectionContext } from "@/contexts/connection"
+import { conn } from "@/types"
 import { faEthereum } from "@fortawesome/free-brands-svg-icons"
-import { faChartSimple, faCircleInfo, faPencil, faTrash, faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { faAngleLeft, faAngleRight, faChartSimple, faCircleInfo, faPencil, faTrash, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { useContext } from "react"
 
 export default function Dashboard() {
+  const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
   const router = useRouter()
   const { profile } = router.query
 
@@ -22,7 +26,7 @@ export default function Dashboard() {
           <h3 className="db-sec-title">{"Dashboard"}</h3>
           <div className="db-menu">
             <span>{"Drafts"}</span>
-            <span>{"Account Settings"}</span>
+            <Link href={`/pages/settings/${account}`}><span>{"Account Settings"}</span></Link>
             <span>{"Campaigns"}</span>
           </div>
           <div className="db-user">
@@ -184,6 +188,15 @@ export default function Dashboard() {
                 <span className="db-tbl-details">{"Details"}</span>
               </span>
             </div>
+          </div>
+
+          <div className="db-tbl-pgnt">
+            <FontAwesomeIcon icon={faAngleLeft} className="db-tbl-pgnt-icon"/>
+            <div className="db-tbl-pgs-cont">
+              <span>{"1"}</span>
+              <span className="--pgatv">{"2"}</span>
+            </div>
+            <FontAwesomeIcon icon={faAngleRight} className="db-tbl-pgnt-icon"/>
           </div>
         </main>
       </div>

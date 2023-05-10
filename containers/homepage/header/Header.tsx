@@ -7,13 +7,13 @@ import { useRouter } from "next/router"
 import { useContext } from "react"
 
 export default function Header() {
-  const { isConnected, account, connect, isAuth }:conn = useContext(ConnectionContext)!
+  const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
   const router = useRouter()
 
   function checkAction(){
     if(isConnected){
       if(isAuth){
-        router.push(`/profile/${account}/dashboard`)
+        router.push(`/profile/${uNameVal}/dashboard`)
       }else{router.push("/signUp")}
     }else{connect()}
   }

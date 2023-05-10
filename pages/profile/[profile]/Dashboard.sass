@@ -19,6 +19,9 @@
   @include fl-c
   gap: 1.8rem
   span
+    cursor: pointer
+    &:hover
+      opacity: 0.8
     @include def-p
     font-weight: 600
     color: $color-subtext
@@ -272,16 +275,16 @@
   @include fl-cl
   gap: 0.4em
   @include def-p
+  color: $color-card-text
   font-size: 1.3rem
   letter-spacing: 0.03em
-  font-weight: 600
+  font-weight: 500
   &.--eta
     justify-self: end
   &.--status
-    // opacity: 0.85
-    margin: 0.2em 0
+    margin: 0.6em 0 0.1em 0
     font-size: 1.1rem
-    padding: 0 1.3em
+    padding: 0 0.8em
     border-radius: 0.6em
     background: #C8EFE9
     color: #47947D
@@ -301,6 +304,25 @@
   &:hover
     opacity: 0.6
 
+.db-tbl-pgnt
+  width: 100%
+  @include fl-cc
+  gap: 0.8em
+
+.db-tbl-pgnt-icon
+  @include def-fa-icon
+
+.db-tbl-pgs-cont
+  @include fl-cc
+  gap: 0.8em
+  span
+    @include def-p
+    cursor: pointer
+    color: $color-card-text
+    &.--pgatv
+      background: $color-sub-bg
+      padding: 0.4em 0.7em
+      border-radius: 0.2em
 
 
 // purple
