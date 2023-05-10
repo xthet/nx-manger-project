@@ -269,7 +269,7 @@ export default function ETeamTab() {
                         onChange={(e)=>{setCurrAddr(e.target.value)}} value={currAddr}
                       />
                       <FontAwesomeIcon icon={faCirclePlus} className="tt-add-member-icon"
-                        onClick={()=>{setAddArr(prev=>([...prev, currAddr])); setCurrAddr("")}}
+                        onClick={()=>{setAddArr(prev=>([...prev, currAddr.toLowerCase()])); setCurrAddr("")}}
                       />
                     </div>
                     <div className="tt-members-list">

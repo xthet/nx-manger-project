@@ -40,7 +40,6 @@ export function useURIData(address:string){
       if(cmpd.faqs.length){
         setCFaqs(cmpd.faqs)
       }
-      console.log(cdata)
     }catch(e){console.log(e)}
   },[isConnected, address, signer])
 

@@ -121,3 +121,11 @@ export const FIND_USER = gql`
     }
   }
 `
+
+export const FIND_USERS = gql`
+  query findUsers($addresses: [String!]){
+    userAddeds(where:{id_in:$addresses}){
+      username
+    }
+  }
+`
