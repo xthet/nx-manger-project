@@ -16,6 +16,7 @@ export { default as UserBox } from "./userBox/UserBox"
 export { default as MobileUserBox } from "./mobileUserBox/MobileUserBox"
 export { default as CatTable } from "./catTable/CatTable"
 export { default as Notibox } from "./notibox/Notibox"
+export { default as CreatorBioModal } from "./creatorBioModal/CreatorBioModal"
 
 export { default as RewardsTab } from "./campaignTabs/rewardsTab/RewardsTab"
 export { default as StoryTab } from "./campaignTabs/storyTab/StoryTab"

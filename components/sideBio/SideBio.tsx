@@ -17,7 +17,7 @@ import { useContext, useState } from "react"
 import Blockies from "react-blockies"
 import { v4 } from "uuid"
 import { cutStr } from "@/utils/cutStr"
-import { RefundNotice, TimelineBox } from "../exportComps"
+import { CreatorBioModal, RefundNotice, TimelineBox } from "../exportComps"
 import onetime from "onetime"
 import { useQUData } from "@/hooks/useQUData"
 
@@ -35,6 +35,7 @@ export default function SideBio({ state }:props) {
   const { uNameVal } = useQUData(campaignDetails.creator)
   const [donAmount, setDonAmount] = useState("")
   const [showRNX, setShowRNX] = useState(false)
+  const [showBio, setShowBio] = useState(false)
 
   const [showTBX, setShowTBX] = useState(false)
   const tlArr = [
@@ -110,8 +111,8 @@ export default function SideBio({ state }:props) {
           </Link>
           <FontAwesomeIcon icon={faShareNodes} className="sb-social-icon"/>
         </div>
-
-        <p className="sb-creator-bio">{cdata ? cutStr(cdata.bio, 145) : ""}</p>
+        {showBio && cdata && <CreatorBioModal data={cdata} offMe={()=>{setShowBio(false)}}/>}
+        <p className="sb-creator-bio" onClick={()=>{setShowBio(true)}}>{cdata ? cutStr(cdata.bio, 145) : ""}</p>
       </div>
 
       {state == 0 && <div className="sb-support fl-tl fl-c">

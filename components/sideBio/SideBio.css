@@ -124,6 +124,7 @@
 }
 
 .sb-creator-bio{
+  cursor: pointer;
   font-family: var(--font-family);
   font-weight: 300;
   font-size: 1.4rem;
