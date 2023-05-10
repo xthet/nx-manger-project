@@ -233,8 +233,8 @@
   padding: 0.5em 0.3em
   width: 100%
   display: grid
-  border-top: 1px solid rgba(0,0,0,0.1)
-  border-bottom: 1px solid rgba(0,0,0,0.1)
+  border-top: 1px solid #e5e5e8
+  border-bottom: 1px solid #e5e5e8
   grid-template-columns: 2fr 1fr 0.5fr 0.5fr 2fr
   grid-column-gap: 2em
   justify-items: start
@@ -261,7 +261,7 @@
   width: 100%
   padding: 0.5em 0.3em
   display: grid
-  border-bottom: 1.6px solid rgba(0,0,0,0.1)
+  border-bottom: 1px solid #e5e5e8
   grid-template-columns: 2fr 1fr 0.5fr 0.5fr 2fr
   grid-column-gap: 2em
   justify-items: start
@@ -278,12 +278,12 @@
   @include fl-cl
   gap: 0.4em
   @include def-p
-  color: $color-subtext
-  // font-size: 1.3rem
-  letter-spacing: 0.03em
-  // font-weight: 500
-  // &.--eta
-  //   justify-self: end
+  font-size: 1.35rem
+  color: $color-card-text
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
+  // letter-spacing: 0.03em
   &.--status
     margin: 0.6em 0
     font-size: 1.1rem
@@ -291,6 +291,8 @@
     border-radius: 0.6em
     background: #C8EFE9
     color: #47947D
+    font-weight: 600
+    letter-spacing: 0.02em
   &.--options
     gap:1em
     cursor: pointer
