@@ -20,6 +20,11 @@
   @include fl-cl
   @include fl-c
   gap: 2rem
+  &.--tbx-bio-modal
+    top: calc((100vh - 60vh)/2)
+    padding: 2rem 3rem
+    height: 60vh
+    overflow-y: auto
   @media(max-width: $lg)
     width: 70vw
     left: calc((100vw - 70vw)/2)
@@ -103,6 +108,13 @@
   text-align: center
   color: $color-subtext
   white-space: pre-wrap
+
+.--tbx-bio
+  @extend .--tbx-still
+  text-align: left
+  line-height: 1.3em
+  p
+    width: 95%
 
 .tbx-cta-cont
   @include fl-cc
