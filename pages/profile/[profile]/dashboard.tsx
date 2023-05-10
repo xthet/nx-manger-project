@@ -29,10 +29,12 @@ export default function Dashboard() {
             <Link href={`/pages/settings/${account}`}><span>{"Account Settings"}</span></Link>
             <span>{"Campaigns"}</span>
           </div>
-          <div className="db-user">
-            <img src="/re3.jpg" alt="--" className="db-pfp"/>
-            <span>{"nootbox"}</span>
-          </div>
+          <Link href={`/profile/${uNameVal}`} className="db-user">
+            <div className="db-user">
+              <img src="/re3.jpg" alt="--" className="db-pfp"/>
+              <span>{"nootbox"}</span>
+            </div>
+          </Link>
         </aside>
         <main className="db-main">
           <div className="db-main-header">
