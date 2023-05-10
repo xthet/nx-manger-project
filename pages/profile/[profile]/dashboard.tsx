@@ -11,8 +11,7 @@ import { useContext } from "react"
 export default function Dashboard() {
   const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
   const router = useRouter()
-  console.log(router.asPath)
-  // const { profile } = router.query
+  const profile = router.asPath.split("/")[2]
 
   return (
     <>
