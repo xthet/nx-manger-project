@@ -6,11 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 import { useContext } from "react"
 import { DshbBacked, DshbCreated } from "../exportConts"
+import { cutStr } from "@/utils/cutStr"
 
 export default function Dshbrd() {
   const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
   const { activeTab, setActiveTab } = useContext(DashboardContext)!
-  
+
   return (
     <div className="db">
       <aside className="db-side">
@@ -18,13 +19,13 @@ export default function Dshbrd() {
         <div className="db-menu">
           <span>{"Drafts"}</span>
           <Link href={`/settings/${account}`}><span>{"Account Settings"}</span></Link>
-          <span>{"Campaigns Created"}</span>
+          <Link href={`/profile/${uNameVal}/dashboard/created`}><span>{"Campaigns Created"}</span></Link>
           <span>{"Campaigns Backed"}</span>
         </div>
         <Link href={`/profile/${uNameVal}`} className="db-user">
           <div className="db-user">
             <img src="/re3.jpg" alt="--" className="db-pfp"/>
-            <span>{"nootbox"}</span>
+            <span>{cutStr(uNameVal, 14)}</span>
           </div>
         </Link>
       </aside>

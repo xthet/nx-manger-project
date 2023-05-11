@@ -10,7 +10,6 @@ export default function Dashboard() {
   const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
   const router = useRouter()
   const profile = router.asPath.split("/")[2]
-  const [activeTab, setActiveTab] = useState("Created")
 
   return (
     <>
