@@ -12,8 +12,7 @@ import { cutStr } from "@/utils/cutStr"
 
 export default function Dashboard() {
   const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
-  // const { activeTab, setActiveTab } = useContext(DashboardContext)!
-  const [activeTab, setActiveTab] = useState("CREATED")
+  const { activeTab, setActiveTab } = useContext(DashboardContext)!
   const router = useRouter()
   const profile = router.asPath.split("/")[2]
 

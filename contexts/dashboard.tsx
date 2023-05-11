@@ -14,7 +14,7 @@ interface dshb {
   setActiveTab: Function
 }
 
-const DashboardContext = createContext<dshb | null>(null) 
+const DashboardContext = createContext<dshb>({ activeTab:"CREATED", setActiveTab: ()=>{} }) 
 
 function DashboardProvider({ children, owner }:props){
   // check conn auth screen size own page
