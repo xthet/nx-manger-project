@@ -79,11 +79,9 @@
   position: relative
   width: 80%
   @include fl-cl
-  gap: 0.8em
+  gap: 1em
   padding-bottom: 0.5em
   border-bottom: 1px solid rgba(0,0,0,0.2)
-  @media(max-width: $md)
-    gap: 1em
   span
     @include def-p
     font-size: 2.2rem
@@ -109,16 +107,17 @@
   @media(max-width: $lg)
     height: 2px
     bottom: -1px
+  @media(max-width: 1280px)
+    width: 6.8vw
   @media(max-width: $mlg)
     width: 7.5vw
-  @media(max-width: $md)
-    // width: 5.3vw
   &.--next
-    left: 6.83vw
+    left: 6.5vw
+    @media(max-width: 1280px)
+      left: 7.3vw
     @media(max-width: $mlg)
-      left: 8.3vw
-    @media(max-width: $md)
-      // left: 5.3vw
+      left: 8.6vw
+
 
 .db-hdr-cta
   @include def-btn
