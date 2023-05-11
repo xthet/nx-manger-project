@@ -1,4 +1,6 @@
+import { DashboardHeader, DashboardTabs } from "@/containers/exportConts"
 import { ConnectionContext } from "@/contexts/connection"
+import { DashboardProvider } from "@/contexts/dashboard"
 import { conn } from "@/types"
 import { faEthereum } from "@fortawesome/free-brands-svg-icons"
 import { faAngleLeft, faAngleRight, faChartSimple, faCircleInfo, faPencil, faTrash, faTrashCan } from "@fortawesome/free-solid-svg-icons"
@@ -22,6 +24,13 @@ export default function Dashboard() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/assets/manger_favicon.svg" />
       </Head>
+      <DashboardProvider owner={profile}>
+        <div className="db">
+          <DashboardHeader/>
+          {/* <DashboardTabs/> */}
+        </div>
+      </DashboardProvider>
+
       <div className="db">
         <aside className="db-side">
           <h3 className="db-sec-title">{"Dashboard"}</h3>
@@ -39,19 +48,7 @@ export default function Dashboard() {
           </Link>
         </aside>
         <main className="db-main">
-          <div className="db-main-header">
-            <div className="db-crt-dnt">
-              <div className={`db-tab-indic ${activeTab == "Backed" ? "--next" : ""}`}></div>
-              <span onClick={()=>{setActiveTab("Created")}}>{"Created"}</span>
-              <span onClick={()=>{setActiveTab("Backed")}}>{"Backed"}</span>
-            </div>
-            <Link href={"/create-campaign"}>
-              <button className="db-hdr-cta">
-                <FontAwesomeIcon icon={faChartSimple} className="db-hdr-cta-icon"/>
-                {"Start a campaign"}
-              </button>
-            </Link>
-          </div>
+
 
           <div className="db-stats-grp">
             <div className="db-stats-cont">
