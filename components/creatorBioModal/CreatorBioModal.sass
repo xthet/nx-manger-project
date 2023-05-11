@@ -1,9 +1,14 @@
 .cbm-modal
   @extend .tbx-modal
-  top: calc((100vh - 60vh)/2)
+  // top: unset
+  // left: unset
+  // inset: 0
+  // margin: auto
+  // top: calc((100vh - 60vh)/2)
   padding: 2rem 3rem
-  height: 60vh
+  max-height: 60vh
   overflow-y: auto
+
   
 .cbm-title
   @include def-p
@@ -50,9 +55,15 @@
   transition: all 0.2s ease
   &:hover
     opacity: 0.6
+  @media(max-width: $md)
+    height: 1.5rem
+  @media(max-width: $sm)
+    height: 1.2rem
 
 .cbm-email-icon
   height: 1.3rem
+  @media(max-width: $sm)
+    height: 1rem
 
 .cbm-other-creators
   width: 100%
