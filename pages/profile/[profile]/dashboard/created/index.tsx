@@ -9,6 +9,7 @@ import { faChartSimple } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 import { cutStr } from "@/utils/cutStr"
+import { CrtdCampaigns } from "@/containers/exportConts"
 
 export default function Dashboard() {
   const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
@@ -25,7 +26,8 @@ export default function Dashboard() {
         <link rel="icon" href="/assets/manger_favicon.svg" />
       </Head>
       <DashboardProvider owner={profile}>
-        <div className="db">
+        <CrtdCampaigns/>
+        {/* <div className="db">
           <aside className="db-side">
             <h3 className="db-sec-title">{"Dashboard"}</h3>
             <div className="db-menu">
@@ -56,7 +58,7 @@ export default function Dashboard() {
               </Link>
             </div>
           </main>
-        </div>
+        </div> */}
       </DashboardProvider>
     </>
   )

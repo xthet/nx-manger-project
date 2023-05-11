@@ -40,3 +40,5 @@ export { default as DashboardTabs } from "./dashboard/dashboardTabs/DashboardTab
 export { default as DshbCreated } from "./dashboard/dashboardTabs/dshbCreated/DshbCreated"
 export { default as DshbBacked } from "./dashboard/dashboardTabs/dshbBacked/DshbBacked"
 export { default as Dshbrd } from "./dashboard/Dshbrd"
+
+export { default as CrtdCampaigns } from "./crtdCampaigns/CrtdCampaigns"
