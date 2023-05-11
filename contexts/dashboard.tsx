@@ -20,14 +20,19 @@ function DashboardProvider({ children, owner }:props){
   // check conn auth screen size own page
   const { isConnected, signer, account, uNameVal, isAuth }:conn = useContext(ConnectionContext)!
   const [activeTab, setActiveTab] = useState("CREATED")
-  const isBigScreen = useMediaQuery({ query: "(min-width: 1000px)" })
+  const desktop = useMediaQuery({ query: "(min-width: 1000px)" })
   const [validated, setValidated] = useState(false)
+  const [isBigScreen, setIsBigScreen] = useState(false)
 
   function validate(){
     if(isConnected && (owner == uNameVal) && isBigScreen && isAuth){
       setValidated(true)
     }else{setValidated(false)}
   }
+
+  useEffect(()=>{
+    desktop ? setIsBigScreen(true) : setIsBigScreen(false)
+  },[desktop])
 
   useEffect(()=>{
     owner && validate()
