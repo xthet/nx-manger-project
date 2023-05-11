@@ -82,6 +82,8 @@
   gap: 0.8em
   padding-bottom: 0.5em
   border-bottom: 1px solid rgba(0,0,0,0.2)
+  @media(max-width: $md)
+    gap: 1em
   span
     @include def-p
     font-size: 2.2rem
@@ -110,13 +112,13 @@
   @media(max-width: $mlg)
     width: 7.5vw
   @media(max-width: $md)
-    width: 5.3vw
+    // width: 5.3vw
   &.--next
     left: 6.83vw
     @media(max-width: $mlg)
       left: 8.3vw
     @media(max-width: $md)
-      left: 5.3vw
+      // left: 5.3vw
 
 .db-hdr-cta
   @include def-btn
@@ -195,6 +197,8 @@
     width: 65%
     font-size: 1.25rem
     line-height: 1.2em
+    @media(max-width: $mlg)
+      width: 72%
 
 .db-stats-info-icon
   color: rgba(54, 30, 119, 0.8)
