@@ -1,5 +1,5 @@
 import { faEthereum } from "@fortawesome/free-brands-svg-icons"
-import { faPencil } from "@fortawesome/free-solid-svg-icons"
+import { faAngleLeft, faAngleRight, faPencil } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 
@@ -74,13 +74,13 @@ export default function CrtdCampaigns() {
       </div>
 
       <div className="db-tbl-pgnt">
-        <button className="db-tbl-sm-btn">{"See more"}</button>
-        {/* <FontAwesomeIcon icon={faAngleLeft} className="db-tbl-pgnt-icon"/>
+        {/* <button className="db-tbl-sm-btn">{"See more"}</button> */}
+        <FontAwesomeIcon icon={faAngleLeft} className="db-tbl-pgnt-icon"/>
         <div className="db-tbl-pgs-cont">
           <span>{"1"}</span>
           <span className="--pgatv">{"2"}</span>
         </div>
-        <FontAwesomeIcon icon={faAngleRight} className="db-tbl-pgnt-icon"/> */}
+        <FontAwesomeIcon icon={faAngleRight} className="db-tbl-pgnt-icon"/>
       </div>
     </>
   )
