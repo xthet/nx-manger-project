@@ -14,7 +14,7 @@
   @include fl-sb
   gap: 8rem
   overflow: hidden
-  @media(max-width: $md)
+  @media(max-width: $mlg)
     padding-top: 6vw
 
 .db-menu
@@ -107,19 +107,22 @@
   @media(max-width: $lg)
     height: 2px
     bottom: -1px
-    // width: vw
+  @media(max-width: $mlg)
+    width: 7.5vw
   @media(max-width: $md)
     width: 5.3vw
   &.--next
     left: 6.83vw
-    @media(max-width: $lg)
-      // left: 4.75vw
+    @media(max-width: $mlg)
+      left: 8.3vw
     @media(max-width: $md)
       left: 5.3vw
 
 .db-hdr-cta
   @include def-btn
   padding: 0.65em 1.2em
+  @media(max-width: $mlg)
+    padding: 0.65em 1em
 
 .db-hdr-cta-icon
   height: 1.5rem
