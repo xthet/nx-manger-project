@@ -6,12 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 
 export default function Dashboard() {
   const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
   const router = useRouter()
   const profile = router.asPath.split("/")[2]
+  const [activeTab, setActiveTab] = useState("Created")
 
   return (
     <>
@@ -27,7 +28,8 @@ export default function Dashboard() {
           <div className="db-menu">
             <span>{"Drafts"}</span>
             <Link href={`/settings/${account}`}><span>{"Account Settings"}</span></Link>
-            <span>{"Campaigns"}</span>
+            <span>{"Campaigns Created"}</span>
+            <span>{"Campaigns Backed"}</span>
           </div>
           <Link href={`/profile/${uNameVal}`} className="db-user">
             <div className="db-user">
@@ -39,8 +41,9 @@ export default function Dashboard() {
         <main className="db-main">
           <div className="db-main-header">
             <div className="db-crt-dnt">
-              <span>{"Created"}</span>
-              <span>{"Donated"}</span>
+              <div className={`db-tab-indic ${activeTab == "Backed" ? "--next" : ""}`}></div>
+              <span onClick={()=>{setActiveTab("Created")}}>{"Created"}</span>
+              <span onClick={()=>{setActiveTab("Backed")}}>{"Backed"}</span>
             </div>
             <Link href={"/create-campaign"}>
               <button className="db-hdr-cta">
@@ -150,7 +153,7 @@ export default function Dashboard() {
               </span>
               <span className="db-tbl-rw-ele --options">
                 <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
-                <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/>
+                {/* <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/> */}
                 <span className="db-tbl-details">{"Details"}</span>
               </span>
             </div>
@@ -168,7 +171,7 @@ export default function Dashboard() {
               </span>
               <span className="db-tbl-rw-ele --options">
                 <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
-                <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/>
+                {/* <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/> */}
                 <span className="db-tbl-details">{"Details"}</span>
               </span>
             </div>
@@ -186,19 +189,20 @@ export default function Dashboard() {
               </span>
               <span className="db-tbl-rw-ele --options">
                 <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
-                <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/>
+                {/* <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/> */}
                 <span className="db-tbl-details">{"Details"}</span>
               </span>
             </div>
           </div>
 
           <div className="db-tbl-pgnt">
-            <FontAwesomeIcon icon={faAngleLeft} className="db-tbl-pgnt-icon"/>
+            <button className="db-tbl-sm-btn">{"See more"}</button>
+            {/* <FontAwesomeIcon icon={faAngleLeft} className="db-tbl-pgnt-icon"/>
             <div className="db-tbl-pgs-cont">
               <span>{"1"}</span>
               <span className="--pgatv">{"2"}</span>
             </div>
-            <FontAwesomeIcon icon={faAngleRight} className="db-tbl-pgnt-icon"/>
+            <FontAwesomeIcon icon={faAngleRight} className="db-tbl-pgnt-icon"/> */}
           </div>
         </main>
       </div>

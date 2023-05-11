@@ -67,6 +67,7 @@
   @include fl-sb
 
 .db-crt-dnt
+  position: relative
   width: 80%
   @include fl-cl
   gap: 0.8em
@@ -81,6 +82,19 @@
     transition: all 0.3s ease
     &:hover
       opacity: 0.8
+
+.db-tab-indic
+  position: absolute
+  opacity: 0.8
+  bottom: -2.22px
+  left: 0
+  height: 4px
+  width: 6vw
+  border-radius: 25px
+  background: $color-text
+  transition: all 0.3s ease
+  &.--next
+    left: 6.83vw
 
 .db-hdr-cta
   @include def-btn
@@ -216,7 +230,6 @@
   width: 100%
   @include fl-cl
   @include fl-c
-  // border: 1px solid #000
 
 .db-table-type
   width: 100%
@@ -235,7 +248,7 @@
   display: grid
   border-top: 1px solid #e5e5e8
   border-bottom: 1px solid #e5e5e8
-  grid-template-columns: 2fr 1fr 0.5fr 0.5fr 2fr
+  grid-template-columns: 2fr 1fr 0.5fr 0.5fr 1fr
   grid-column-gap: 2em
   justify-items: start
   align-content: center
@@ -262,7 +275,7 @@
   padding: 0.5em 0.3em
   display: grid
   border-bottom: 1px solid #e5e5e8
-  grid-template-columns: 2fr 1fr 0.5fr 0.5fr 2fr
+  grid-template-columns: 2fr 1fr 0.5fr 0.5fr 1fr
   grid-column-gap: 2em
   justify-items: start
   align-content: center
@@ -283,7 +296,6 @@
   text-overflow: ellipsis
   overflow: hidden
   white-space: nowrap
-  // letter-spacing: 0.03em
   &.--status
     margin: 0.6em 0
     font-size: 1.1rem
@@ -307,7 +319,7 @@
   cursor: pointer
   transition: all 0.3s ease 
   &:hover
-    opacity: 0.6
+    opacity: 0.8
 
 .db-tbl-pgnt
   width: 100%
@@ -328,6 +340,9 @@
       background: $color-sub-bg
       padding: 0.4em 0.7em
       border-radius: 0.2em
+
+.db-tbl-sm-btn
+  @include def-btn
 
 
 // purple
