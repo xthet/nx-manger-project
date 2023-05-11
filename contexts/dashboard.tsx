@@ -12,7 +12,7 @@ interface dshb {
   setActiveTab: Function
 }
 
-const DashboardContext = createContext<dshb | null>(null)
+const DashboardContext = createContext<dshb | null>(null) 
 
 
 function DashboardProvider({ children, owner }:props){
