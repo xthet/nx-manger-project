@@ -2,12 +2,12 @@ import { faEthereum } from "@fortawesome/free-brands-svg-icons"
 import { faAngleLeft, faAngleRight, faPencil } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-export default function CrtdCampaigns() {
+export default function BckdCampaigns() {
   return (
     <>
       <div className="db-table">
         <div className="db-table-type">
-          <h3>{"Campaigns Created"}</h3>
+          <h3>{"Campaigns Backed"}</h3>
         </div>
 
         <div className="db-tbl-hdr">

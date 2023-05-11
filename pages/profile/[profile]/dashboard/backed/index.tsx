@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 import { cutStr } from "@/utils/cutStr"
 import { CrtdCampaigns } from "@/containers/exportConts"
+import BckdCampaigns from "@/containers/bckdCampaigns/BckdCampaigns"
 
 export default function Dashboard() {
   const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
@@ -58,7 +59,7 @@ export default function Dashboard() {
                 </button>
               </Link>
             </div> */}
-            <CrtdCampaigns/>
+            <BckdCampaigns/>
           </main>
         </div>
       </DashboardProvider>
