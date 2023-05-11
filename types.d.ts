@@ -93,7 +93,7 @@ export interface udata {
   backed: Array<string>
   username: string
   created: Array<string>
-  createdCount: string
+  publishedCount: string
   createdAt: BigNumber
   homeAddr: string
   pfp: string

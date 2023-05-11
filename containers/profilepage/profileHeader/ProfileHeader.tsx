@@ -29,11 +29,11 @@ export default function ProfileHeader() {
           </div>
           {/* <p className="crh-username">{uLoading ? "" : uNameVal}</p> */}
           <p className="crh-name">{`Joined ${uData ? getDateFromTS(parseInt(uData.createdAt.toString())) : ""}`}</p>
-          <p className="crh-contribution">
-            {`Created ${uData ? uData.createdCount : ""} 
+          {uData && <p className="crh-contribution">
+            {`Created ${uData ? uData.publishedCount : ""} 
               campaign${uData ? uData.created.length == 1 ? "" : "s" : ""} • Funded 
               ${uData ? uData.backedCount : ""} campaign${uData ? uData.backed.length == 1 ? "" : "s" : ""}`}
-          </p>
+          </p>}
           {isOwnPage && <Link href={`/profile/${uNameVal}/dashboard`}><button className="crh-dashboard-btn">{"Dashboard"}</button></Link>}
         </div>
       </div>

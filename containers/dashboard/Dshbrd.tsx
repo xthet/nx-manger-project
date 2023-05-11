@@ -32,9 +32,9 @@ export default function Dshbrd() {
       <main className="db-main">
         <div className="db-main-header">
           <div className="db-crt-dnt">
-            <div className={`db-tab-indic ${activeTab == "Backed" ? "--next" : ""}`}></div>
-            <span onClick={()=>{setActiveTab("Created")}}>{"Created"}</span>
-            <span onClick={()=>{setActiveTab("Backed")}}>{"Backed"}</span>
+            <div className={`db-tab-indic ${activeTab == "BACKED" ? "--next" : ""}`}></div>
+            <span onClick={()=>{setActiveTab("CREATED")}}>{"Created"}</span>
+            <span onClick={()=>{setActiveTab("BACKED")}}>{"Backed"}</span>
           </div>
           <Link href={"/create-campaign"}>
             <button className="db-hdr-cta">
