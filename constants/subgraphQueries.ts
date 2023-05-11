@@ -21,7 +21,7 @@ export const GET_USER_DETAILS = gql`
       backed
       username
       created
-      createdCount
+      publishedCount
       createdAt
       homeAddr
       pfp
@@ -114,7 +114,7 @@ export const FIND_USER = gql`
       backed
       username
       created
-      createdCount
+      publishedCount
       createdAt
       homeAddr
       pfp

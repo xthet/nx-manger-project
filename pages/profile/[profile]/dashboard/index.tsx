@@ -26,7 +26,7 @@ export default function Dashboard() {
           <h3 className="db-sec-title">{"Dashboard"}</h3>
           <div className="db-menu">
             <span>{"Drafts"}</span>
-            <Link href={`/pages/settings/${account}`}><span>{"Account Settings"}</span></Link>
+            <Link href={`/settings/${account}`}><span>{"Account Settings"}</span></Link>
             <span>{"Campaigns"}</span>
           </div>
           <Link href={`/profile/${uNameVal}`} className="db-user">
