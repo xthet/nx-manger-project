@@ -514,3 +514,12 @@
   }
 }
 
+.acp-expired-info{
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em
+}
+
+.acp-expired-info span:first-child{
+  font-weight: 700;
+}
