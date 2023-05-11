@@ -123,7 +123,10 @@ export default function ActiveCampaign({ click, setPTitle }: props) {
         <div className="acp-info">
           {currState == 0  
             ? <p>{`Risk involved: Donations will no longer be refundable when this project expires by ${deadlineStatement}.`}</p>
-            : <p>{`${cDetails && cDetails.funderCount} backer${cDetails && cDetails.funderCount == 1 ? "" : "s"} donated to help bring this project to life.`}</p>
+            : <p>
+              <span>{"Campaign Complete!!"}</span>
+              <span>{`${cDetails && cDetails.funderCount} backer${cDetails && cDetails.funderCount == 1 ? "" : "s"} donated to help bring this project to life.`}</span>
+            </p>
           }
         </div>
       </div>
