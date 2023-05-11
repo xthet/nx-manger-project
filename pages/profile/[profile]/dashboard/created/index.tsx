@@ -28,7 +28,9 @@ export default function Dashboard() {
       <DashboardProvider owner={profile}>
         <div className="db">
           <aside className="db-side">
-            <h3 className="db-sec-title">{"Dashboard"}</h3>
+            <Link href={`/profile/${uNameVal}/dashboard`}>
+              <h3 className="db-sec-title">{"Dashboard"}</h3>
+            </Link>
             <div className="db-menu">
               <span>{"Drafts"}</span>
               <Link href={`/settings/${account}`}><span>{"Account Settings"}</span></Link>
