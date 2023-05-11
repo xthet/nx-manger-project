@@ -22,7 +22,7 @@ export default function Dshbrd() {
           <span>{"Drafts"}</span>
           <Link href={`/settings/${account}`}><span>{"Account Settings"}</span></Link>
           <Link href={`/profile/${uNameVal}/dashboard/created`}><span>{"Campaigns Created"}</span></Link>
-          <span>{"Campaigns Backed"}</span>
+          <Link href={`/profile/${uNameVal}/dashboard/backed`}><span>{"Campaigns Backed"}</span></Link>
         </div>
         <Link href={`/profile/${uNameVal}`} className="db-user">
           <div className="db-user">
