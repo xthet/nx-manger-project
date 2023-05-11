@@ -26,8 +26,7 @@ export default function Dashboard() {
         <link rel="icon" href="/assets/manger_favicon.svg" />
       </Head>
       <DashboardProvider owner={profile}>
-        <CrtdCampaigns/>
-        {/* <div className="db">
+        <div className="db">
           <aside className="db-side">
             <h3 className="db-sec-title">{"Dashboard"}</h3>
             <div className="db-menu">
@@ -44,7 +43,7 @@ export default function Dashboard() {
             </Link>
           </aside>
           <main className="db-main">
-            <div className="db-main-header">
+            {/* <div className="db-main-header">
               <div className="db-crt-dnt">
                 <div className={`db-tab-indic ${activeTab == "BACKED" ? "--next" : ""}`}></div>
                 <span onClick={()=>{setActiveTab("CREATED")}}>{"Created"}</span>
@@ -56,9 +55,10 @@ export default function Dashboard() {
                   {"Start a campaign"}
                 </button>
               </Link>
-            </div>
+            </div> */}
+            <CrtdCampaigns/>
           </main>
-        </div> */}
+        </div>
       </DashboardProvider>
     </>
   )
