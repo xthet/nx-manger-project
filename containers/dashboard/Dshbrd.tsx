@@ -9,7 +9,7 @@ import { DshbBacked, DshbCreated } from "../exportConts"
 import { cutStr } from "@/utils/cutStr"
 
 export default function Dshbrd() {
-  const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
+  const { account, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
   const { activeTab, setActiveTab } = useContext(DashboardContext)!
 
   return (
@@ -45,7 +45,6 @@ export default function Dshbrd() {
             </button>
           </Link>
         </div>
-        
         {activeTab == "CREATED" && <DshbCreated/>}
         {activeTab == "BACKED" && <DshbBacked/>}
       </main>
