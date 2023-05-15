@@ -13,7 +13,6 @@ export default function FaqsTab() {
   const { isConnected, connect, account, signer, isAuth }:conn = useContext(ConnectionContext)!
   const { cdata, fcLoading, cRisks, cFaqs } = useURIData(currAddress)
   const [showFAns, setShowFAns] = useState<number>(-1)
-  const [hideFAns, setHideFAns] = useState<number|null>(null)
 
   return (
     <section className="cpd-tab st-container fl-tl fl-c" id="s_faq">
