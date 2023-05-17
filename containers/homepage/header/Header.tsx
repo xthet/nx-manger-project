@@ -1,7 +1,7 @@
 import { ConnectionContext } from "@/contexts/connection"
 import { conn } from "@/types"
 import { truncateStr } from "@/utils/truncateStr"
-import { faAddressCard, faChartLine, faUser, faWallet } from "@fortawesome/free-solid-svg-icons"
+import { faAddressCard, faChartLine, faUser, faWallet, faChartSimple } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useRouter } from "next/router"
 import { useContext } from "react"
@@ -13,7 +13,7 @@ export default function Header() {
   function checkAction(){
     if(isConnected){
       if(isAuth){
-        router.push(`/profile/${uNameVal}/dashboard`)
+        router.push("/create-campaign")
       }else{router.push("/signUp")}
     }else{connect()}
   }
@@ -26,10 +26,10 @@ export default function Header() {
           <p>{"Manger is a reward-based crypto crowdfunding platform connecting interested backers with remarkable creators in web3 space."}</p>
           <button className="hd-connect fl-cc" onClick={()=>{checkAction()}}>
             {!isConnected && <FontAwesomeIcon icon={faWallet} className="hd-wallet-icon"/>}
-            {isAuth && <FontAwesomeIcon icon={faAddressCard} className="hd-wallet-icon"/>}
+            {isAuth && <FontAwesomeIcon icon={faChartSimple} className="hd-wallet-icon"/>}
             {isConnected && !isAuth && <FontAwesomeIcon icon={faUser} className="hd-wallet-icon"/>}
             
-            {isConnected ? isAuth ? "Dashboard" : "Sign Up" : "Connect your wallet"}
+            {isConnected ? isAuth ? "Start a campaign" : "Sign Up" : "Connect your wallet"}
           </button>
         </div>
 

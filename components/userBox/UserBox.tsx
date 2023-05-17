@@ -49,9 +49,9 @@ export default function UserBox({ iVisible, offMe }:props) {
           </div>
         </div>
         <div className="ub-sep"></div>
-        {isAuth && <Link href="/create-campaign" style={{ "width":"100%" }} >
+        {isAuth && <Link href={`/profile/${uNameVal}/dashboard`} style={{ "width":"100%" }} >
           <button className="ub-cta">
-            {"Start a campaign"}
+            {"Dashboard"}
           </button>
         </Link>}
         <div className="ub-sep"></div>

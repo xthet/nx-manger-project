@@ -227,7 +227,7 @@
   font-size: 1.5rem;
   letter-spacing: 0.02em;
   line-height: 1em;
-  background: var(--color-text);
+  background: var(--color-btn);
   width: 100%;
   padding: 0.6em 0.6em 0.7em;
   cursor: pointer;

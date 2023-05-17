@@ -8,7 +8,7 @@ import Blockies from "react-blockies"
 
 
 export default function MobileUserBox() {
-  const { isConnected, connect, account, signer, isAuth, balance }:conn = useContext(ConnectionContext)!
+  const { isConnected, connect, account, signer, isAuth, balance, uNameVal }:conn = useContext(ConnectionContext)!
   const router = useRouter()
 
   return (
@@ -34,9 +34,11 @@ export default function MobileUserBox() {
       {isAuth && <button className="mub-cta" onClick={()=>{router.push("/create-campaign")}}>{"Start a campaign"}</button>}
 
       {isAuth && <div className="mub-wallet-options fl-cl">
-        <div className="mub-wallet-option fl-cl">
-          <p>{"Dashboard"}</p>
-        </div>
+        <Link href={`/profile/${uNameVal}/dashboard`}>
+          <div className="mub-wallet-option fl-cl">
+            <p>{"Dashboard"}</p>
+          </div>
+        </Link>
         <Link href={`/settings/${account}`}>
           <div className="mub-wallet-option fl-cl">
             <p>{"Settings"}</p>

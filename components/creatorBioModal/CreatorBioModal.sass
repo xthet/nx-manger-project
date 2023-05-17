@@ -5,22 +5,34 @@
   // inset: 0
   // margin: auto
   // top: calc((100vh - 60vh)/2)
+  top: 25%
   padding: 2rem 3rem
   max-height: 60vh
   overflow-y: auto
 
+.cbm-cancel
+  @include def-fa-icon
+  height: 2rem 
+  color: $color-subtext
+  position: absolute
+  right: 1.5rem
+  top: 1rem
   
 .cbm-title
   @include def-p
   color: $color-subtext
   font-weight: 600
   letter-spacing: 0.02em
+  margin-top: -0.4rem
 
 .cbm-creator
   width: 100%
   @include fl-tl
-  @include fl-c
   gap: 0.5em
+  .cbm-creator-dets
+    @include fl-tl
+    @include fl-c
+    gap: 0.5em
   h2
     cursor: pointer
     @include def-h

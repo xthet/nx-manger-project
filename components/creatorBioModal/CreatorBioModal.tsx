@@ -4,9 +4,11 @@ import { useQUData } from "@/hooks/useQUData"
 import { conn, fcmp } from "@/types"
 import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { faTwitter } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope, faGlobe } from "@fortawesome/free-solid-svg-icons"
+import { faEnvelope, faGlobe, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
+import Blockies from "react-blockies"
+
 import { useContext, useEffect, useState } from "react"
 
 interface userType {
@@ -43,11 +45,19 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
       <div className="tbx-reactive" onClick={()=>{offMe()}}></div>
       <div className="cbm-modal">
         <p className="cbm-title">{"About the creator"}</p>
+        <FontAwesomeIcon icon={faXmark} className="cbm-cancel" onClick={()=>{offMe()}}/>
         {uData && <div className="cbm-creator">
-          <Link href={`/profile/${uData.username}`}>
-            <h2>{"@" + uData.username}</h2>
-          </Link>
-          <p>{data.location}</p>
+          {uData && uData.pfp && (uData.pfp != "_NIL") ? <img src={uData.pfp.replace("ipfs://", "https://ipfs.io/ipfs/")} alt="--" className="crh-pfp"/>
+            : <Blockies seed={account.toLowerCase()} scale={8} size={11} 
+              className="crh-jazzicon" color="#C4A2E7" bgColor="#361E77" 
+              spotColor="#fff"
+            />}
+          <div className="cbm-creator-dets">
+            <Link href={`/profile/${uData.username}`}>
+              <h2>{"@" + uData.username}</h2>
+            </Link>
+            <p>{data.location}</p>
+          </div>
         </div>}
         <p className="--tbx-bio"><p>{data.bio}</p></p>
         <div className="cbm-contacts">
