@@ -1,23 +1,22 @@
-import { ConnectionContext } from "@/contexts/connection"
-import { auth, conn } from "@/types"
-import { truncateStr } from "@/utils/truncateStr"
-import { ethers } from "ethers"
-import Head from "next/head"
-import { FormEvent, useContext, useEffect, useState } from "react"
-import ReactLoading from "react-loading"
-import Crowdfunder from "@/constants/abis/CrowdFunder.json"
-import { useRouter } from "next/router"
-import { cutStr } from "@/utils/cutStr"
-import { NotificationContext } from "@/contexts/notification"
-import { v4 } from "uuid"
-import { useCookies } from "react-cookie"
-import onetime from "onetime"
 import { TimelineBox } from "@/components/exportComps"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Crowdfunder from "@/constants/abis/CrowdFunder.json"
+import { CHECK_UVAL } from "@/constants/subgraphQueries"
+import { ConnectionContext } from "@/contexts/connection"
+import { NotificationContext } from "@/contexts/notification"
+import { conn } from "@/types"
+import { truncateStr } from "@/utils/truncateStr"
+import { ApolloClient, InMemoryCache } from "@apollo/client"
 import fleek from "@fleekhq/fleek-storage-js"
 import { faImages } from "@fortawesome/free-solid-svg-icons"
-import { ApolloClient, InMemoryCache } from "@apollo/client"
-import { CHECK_UVAL } from "@/constants/subgraphQueries"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { ethers } from "ethers"
+import Head from "next/head"
+import { useRouter } from "next/router"
+import onetime from "onetime"
+import { FormEvent, useContext, useEffect, useState } from "react"
+import { useCookies } from "react-cookie"
+import ReactLoading from "react-loading"
+import { v4 } from "uuid"
 
  
 
@@ -93,15 +92,15 @@ export default function SignUp() {
     setShowTBX(true)
     const data = new FormData(e.target)
     const username = data.get("username")!.toString()
-    let twitter = data.get("twitter")!.toString() ? data.get("twitter")!.toString() : "_NIL"
+    // let twitter = data.get("twitter")!.toString() ? data.get("twitter")!.toString() : "_NIL"
     let email = data.get("email")!.toString()
     let conAddress = data.get("conAddress")!.toString() ? data.get("conAddress")!.toString() : "_NIL"
 
-    if(!(twitter == "_NIL") && !twitter.includes("https://twitter.com/")){
-      twitter = `https://twitter.com/${twitter.replace("@" || "https://twitter.com/" || "www.twitter.com/" || "https://www.twitter.com/" , "")}`
-    }
+    // if(!(twitter == "_NIL") && !twitter.includes("https://twitter.com/")){
+    //   twitter = `https://twitter.com/${twitter.replace("@" || "https://twitter.com/" || "www.twitter.com/" || "https://www.twitter.com/" , "")}`
+    // }
 
-    if(username && twitter && email){
+    if(username && email){
       const authMsg = `Welcome to Manger!
       \nClick to sign in and accept the Manger Terms of Service.
       \nThis request will not cost any gas fees.
@@ -113,7 +112,7 @@ export default function SignUp() {
       const pfp = imgURLToBe ? imgURLToBe : "_NIL"
       try {    
         setTlIndex(prev => prev >= tlArr.length ? prev : prev + 1)  
-        const addUserTx = await crowdfunder.addUser(account, username, twitter, email, conAddress, pfp)
+        const addUserTx = await crowdfunder.addUser(account, username, email, conAddress, pfp)
         await addUserTx.wait(1)
         
         dispatch({
@@ -213,7 +212,7 @@ export default function SignUp() {
                   onChange={(e)=>{setUsrName(e.target.value)}} value={usrName}
                 />
               </div>
-              <div className="su-inpt short">
+              {/* <div className="su-inpt short">
                 <div className="su-inpt-lbl">
                   <label htmlFor="twitter">{"Twitter"}</label>
                   <small style={{ "opacity":"0.7" }}>{twit && `https://twitter.com/${cutStr(twit,14)}`}</small>
@@ -221,7 +220,7 @@ export default function SignUp() {
                 <input type="text" name="twitter" placeholder="twitter_handle" className="su-form-input" 
                   onChange={(e)=>{setTwit(e.target.value)}}
                 />
-              </div>
+              </div> */}
             </div>
             <div className="su-inpt full">
               <div className="su-inpt-lbl">
@@ -232,7 +231,7 @@ export default function SignUp() {
             </div>
             <div className="su-inpt full">
               <div className="su-inpt-lbl">
-                <label htmlFor="hAddress">{"Contact address"}</label>
+                <label htmlFor="hAddress">{"Shipping address"}</label>
                 <small style={{ "color":"yellow" }}>{"required"}</small>
               </div>
               <textarea cols={91} rows={2} name="conAddress" placeholder="21, Flo Drive, Bu County, 32337 FL, USA" className="su-form-input" required/>

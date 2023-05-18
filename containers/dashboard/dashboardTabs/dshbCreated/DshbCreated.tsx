@@ -1,8 +1,14 @@
+import { DashboardContext } from "@/contexts/dashboard"
+import { useQUData } from "@/hooks/useQUData"
 import { faEthereum } from "@fortawesome/free-brands-svg-icons"
 import { faCircleInfo, faPencil } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useContext } from "react"
 
 export default function DshbCreated() {
+  const { activeTab, setActiveTab, uData } = useContext(DashboardContext)!
+
+
   return (
     <>
       <div className="db-stats-grp">

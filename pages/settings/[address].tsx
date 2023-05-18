@@ -92,19 +92,19 @@ export default function Account() {
     setShowTBX(true)
     const data = new FormData(e.target)
     const username = data.get("username")!.toString()
-    let twitter = data.get("twitter")!.toString() ? data.get("twitter")!.toString() : "_NIL"
+    // let twitter = data.get("twitter")!.toString() ? data.get("twitter")!.toString() : "_NIL"
     let email = data.get("email")!.toString()
     let conAddress = data.get("conAddress")!.toString() ? data.get("conAddress")!.toString() : "_NIL"
 
-    if(!(twitter == "_NIL") && !twitter.includes("https://twitter.com/")){
-      twitter = `https://twitter.com/${twitter.replace("@" || "https://twitter.com/" || "www.twitter.com/" || "https://www.twitter.com/" , "")}`
-    }
+    // if(!(twitter == "_NIL") && !twitter.includes("https://twitter.com/")){
+    //   twitter = `https://twitter.com/${twitter.replace("@" || "https://twitter.com/" || "www.twitter.com/" || "https://www.twitter.com/" , "")}`
+    // }
     const pfp = imgURLToBe ? imgURLToBe : "_NIL"
-    if(username && twitter && email){  
+    if(username && email){  
       const crowdfunder = new ethers.Contract(Crowdfunder.address, Crowdfunder.abi, signer)
       try {
         setTlIndex(prev => prev >= tlArr.length ? prev : prev + 1)  
-        const addUserTx = await crowdfunder.addUser(account, username, twitter, email, conAddress, pfp)
+        const addUserTx = await crowdfunder.addUser(account, username, email, conAddress, pfp)
         await addUserTx.wait(1)
         setTlIndex(prev => prev >= tlArr.length ? prev : prev + 2)  
         dispatch({
@@ -194,7 +194,9 @@ export default function Account() {
                   <div className="su-inpt short">
                     <div className="acs-inpt-lbl">
                       <label htmlFor="username">{"Username"}</label>
-                      {showInvalidUVal ? <small style={{ "color":"red" }}>{"Invalid Username!!"}</small> : uValDuplicate ? <small style={{ "color":"red" }}>{"Username already exists!!"}</small> : <small style={{ "color":"yellow" }}>{"required"}</small>}
+                      {showInvalidUVal ? <small style={{ "color":"red" }}>{"Invalid Username!!"}</small> : uValDuplicate 
+                        ? <small style={{ "color":"red" }}>{"Username already exists!!"}</small> 
+                        : <small style={{ "color":"orange" }}>{"required"}</small>}
                     </div>
                     <input type="text" name="username" placeholder="username" required className="acs-form-input"
                       defaultValue={usrData ? usrData.username : ""}
@@ -202,7 +204,7 @@ export default function Account() {
                     />
                   </div>
 
-                  <div className="su-inpt short">
+                  {/* <div className="su-inpt short">
                     <div className="acs-inpt-lbl">
                       <label htmlFor="twitter">{"Twitter"}</label>
                       <small style={{ "opacity":"0.7" }}>{twit && `https://twitter.com/${cutStr(twit,14)}`}</small>
@@ -211,7 +213,7 @@ export default function Account() {
                       onChange={(e)=>{setTwit(e.target.value)}}
                       defaultValue={usrData ? usrData.twitter !== "_NIL" ? usrData.twitter.replace("https://twitter.com/", "") : "" : ""}
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <div className="su-inpt full">
                   <div className="acs-inpt-lbl">
@@ -236,7 +238,7 @@ export default function Account() {
                 </div>
               </form>
             </section> 
-            : <p className="pg-notice">{"Please Sign Up"}</p> : <Error statusCode={404}/>
+            : <Error statusCode={404}/> : <Error statusCode={404}/>
       }
     </>
   )

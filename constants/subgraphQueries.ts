@@ -15,15 +15,16 @@ export const GET_USER_DETAILS = gql`
     userAdded(id:$userAddress){
       id
       address
-      email
-      twitter
-      backedCount
-      backed
       username
+      email
+      shipAddr
       created
+      backed
+      totalRaised
+      totalDonated
       publishedCount
+      backedCount
       createdAt
-      homeAddr
       pfp
 	  }
   }
@@ -108,15 +109,16 @@ export const FIND_USER = gql`
     userAddeds(where:{username: $name}){
       id
       address
-      email
-      twitter
-      backedCount
-      backed
       username
+      email
+      shipAddr
       created
+      backed
+      totalRaised
+      totalDonated
       publishedCount
+      backedCount
       createdAt
-      homeAddr
       pfp
     }
   }
