@@ -62,7 +62,7 @@ export default function RewardCard({ address, id, onEdit }:props) {
 
   async function checkStatus(f:BigNumber){
     if(isAuth){
-      if(uData && (uData.homeAddr.length > 5)){
+      if(uData && (uData.shipAddr.length > 5)){
         handleFund(f)
       }else if(rwdDetails.shipsTo[0] == "_NW"){
         handleFund(f)

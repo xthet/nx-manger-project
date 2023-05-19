@@ -11,7 +11,7 @@ export default function StoryTab() {
   const { cdata, fcLoading, cStory } = useURIData(currAddress)
   return (
     <section className="cpd-tab st-container fl-tl fl-c" id="s_story">
-      <h3 className="st-title">
+      <h3 className="st-title" style={{ "paddingLeft":"0.5rem" }}>
         {"Story"}
         {/* <span className="st-maximize">
           <FontAwesomeIcon icon={faCaretLeft} className="st-max-icon"/>

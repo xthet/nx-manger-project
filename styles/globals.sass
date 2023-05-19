@@ -18,6 +18,7 @@ $lg: 1250px
 $mlg: 1024px
 $md: 1000px
 $sm: 600px
+$vsm: 400px
 
 .p-full
   min-height: 100vh
@@ -108,9 +109,11 @@ $sm: 600px
   line-height: 1em
   color: $color-text
   @media(max-width: $lg)
-    font-size: 1.2rem
+    font-size: 1.2rem 
   @media(max-width: $sm)
-    font-size: 1rem
+    font-size: 1rem 
+  @media(max-width: $vsm)
+    font-size: 0.7rem
 
 @mixin def-h
   font-family: $font-family

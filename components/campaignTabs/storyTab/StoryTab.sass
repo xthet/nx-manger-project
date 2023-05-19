@@ -2,16 +2,12 @@
 .st-title
   @include def-h
   width: 100%
-  // @include fl-cl
-  // @include fl-sb
-  // font-family: $font-family
   font-weight: 300
   opacity: 0.7
   font-size: 1.8rem
-  // line-height: 1em
-  // letter-spacing: 0.04em
-  // color: var(--color-card-text)
   margin-bottom: 0.5em
+  @media(max-width: $lg)
+    font-size: 1.5rem
   &.--st-cent
     @media (max-width: $sm)
       text-align: center
@@ -47,11 +43,17 @@
   margin-bottom: 1em
   h1,h2,h3,h4,h5
     @include def-h
-  p
+  p, span
     @include def-p
     font-weight: 300
     line-height: 1.4em
     margin-bottom: 1em
+    @media(max-width: $lg)
+      font-size: 1.2rem !important
+    @media(max-width: $sm)
+      font-size: 1rem !important
+    // @media(max-width: $vsm)
+    //   font-size: 0.7rem !important
   ul
     padding-left: 0.8em
   li

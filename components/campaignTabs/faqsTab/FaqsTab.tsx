@@ -40,7 +40,7 @@ export default function FaqsTab() {
             }
           </div>
       }
-      <h3 className="st-title">{"Risks and challenges!"}</h3>
+      <h3 className="st-title --st-cent" style={{ "paddingLeft":"0.5rem" }}>{"Risks and challenges!"}</h3>
       {
         !cdata || fcLoading || !cdata.risks ? <ReactLoading type="bubbles" color="#C4A2E7"/> : <article className="st-story" dangerouslySetInnerHTML={cRisks}/>
       } 
