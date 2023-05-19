@@ -88,14 +88,13 @@ export interface udata {
   id: string
   address: string
   email: string
-  twitter: string
   backedCount: string
   backed: Array<string>
   username: string
   created: Array<string>
   publishedCount: string
   createdAt: BigNumber
-  homeAddr: string
+  shipAddr: string
   pfp: string
 }
 

@@ -83,7 +83,7 @@ function ConnectionProvider ({ children }:props) {
       setUNameVal((!userData || !userData.username) ? account : userData.username)
       setUsrData(userData)
 
-      if(userData && userData.username && userData.email && userData.twitter && userData.homeAddr && seSSig){
+      if(userData && userData.username && userData.email && userData.shipAddr && seSSig){
         setIsAuth(true)
       }else{setIsAuth(false)}
     }else{return}

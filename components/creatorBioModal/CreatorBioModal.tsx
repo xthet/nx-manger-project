@@ -4,7 +4,7 @@ import { useQUData } from "@/hooks/useQUData"
 import { conn, fcmp } from "@/types"
 import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { faTwitter } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope, faGlobe, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { faEnvelope, faGlobe, faLocationDot, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 import Blockies from "react-blockies"
@@ -56,10 +56,10 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
             <Link href={`/profile/${uData.username}`}>
               <h2>{"@" + uData.username}</h2>
             </Link>
-            <p>{data.location}</p>
+            <p><FontAwesomeIcon icon={faLocationDot} className="cbm-creator-location-icon"/> {data.location}</p>
           </div>
         </div>}
-        <p className="--tbx-bio"><p>{data.bio}</p></p>
+        <p className="--tbx-bio"><span>{data.bio}</span></p>
         <div className="cbm-contacts">
           <span className="cbm-contact --socials">
             {uData && <Link href={`/profile/${uData!.username}`}>

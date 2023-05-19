@@ -230,7 +230,7 @@ export default function Account() {
                     <small style={{ "color":"orange" }}>{"required"}</small>
                   </div>
                   <textarea cols={91} rows={2} name="conAddress" placeholder="home address" className="acs-form-input"
-                    defaultValue={usrData ? usrData.homeAddr !== "_NIL" ? usrData.homeAddr : "" : ""}
+                    defaultValue={usrData ? usrData.shipAddr !== "_NIL" ? usrData.shipAddr : "" : ""}
                   />
                 </div>
                 <div className="acs-cta">

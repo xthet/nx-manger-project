@@ -67,7 +67,7 @@ function CampaignCreatorProvider ({ children }:{children:ReactNode}) {
   },[])
 
   useEffect(()=>{
-    (activeTab !== "Basics") && localStorage.setItem("currTab", JSON.stringify({ currTab: activeTab }))
+    (activeTab !== "Basics") && newCampaignAddr && localStorage.setItem("currTab", JSON.stringify({ currTab: activeTab }))
   },[activeTab])
 
   return (
