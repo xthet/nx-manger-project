@@ -94,7 +94,8 @@ export default function SignUp() {
     const username = data.get("username")!.toString()
     // let twitter = data.get("twitter")!.toString() ? data.get("twitter")!.toString() : "_NIL"
     let email = data.get("email")!.toString()
-    let conAddress = data.get("conAddress")!.toString() ? data.get("conAddress")!.toString() : "_NIL"
+    // let conAddress = data.get("conAddress")!.toString() ? data.get("conAddress")!.toString() : "_NIL"
+    let conAddress = "_NIL"
 
     // if(!(twitter == "_NIL") && !twitter.includes("https://twitter.com/")){
     //   twitter = `https://twitter.com/${twitter.replace("@" || "https://twitter.com/" || "www.twitter.com/" || "https://www.twitter.com/" , "")}`
@@ -229,13 +230,13 @@ export default function SignUp() {
               </div>
               <input type="email" name="email" placeholder="email address" required className="su-form-input"/>
             </div>
-            <div className="su-inpt full">
+            {/* <div className="su-inpt full">
               <div className="su-inpt-lbl">
                 <label htmlFor="hAddress">{"Shipping address"}</label>
                 <small style={{ "color":"yellow" }}>{"required"}</small>
               </div>
               <textarea cols={91} rows={2} name="conAddress" placeholder="21, Flo Drive, Bu County, 32337 FL, USA" className="su-form-input" required/>
-            </div>
+            </div> */}
             <div className="su-cta">
               <button type="submit">{"Create account"}</button>
             </div>

@@ -12,9 +12,9 @@ import { cutStr } from "@/utils/cutStr"
 import { CrtdCampaigns } from "@/containers/exportConts"
 import BckdCampaigns from "@/containers/bckdCampaigns/BckdCampaigns"
 
-export default function Dashboard() {
+export default function Backed() {
   const { isConnected, account, connect, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
-  const { activeTab, setActiveTab } = useContext(DashboardContext)!
+  // const { activeTab, setActiveTab } = useContext(DashboardContext)!
   const router = useRouter()
   const profile = router.asPath.split("/")[2]
 

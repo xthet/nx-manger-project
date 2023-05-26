@@ -131,3 +131,22 @@ export const FIND_USERS = gql`
     }
   }
 `
+
+export const FIND_BACKER_COUNT = gql`
+  query findBackerCount($addresses: [String!]){
+    campaignAddeds(where:{id_in:$addresses}){
+      funders
+      funderCount
+    }
+  }
+`
+
+export const FIND_CREATORS_SUPP_COUNT = gql`
+  query findCreatorsSuppCount($addresses: [String!]){
+    campaignAddeds(where:{id_in:$addresses}){
+      creator {
+        id
+      }
+    }
+  }
+`

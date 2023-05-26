@@ -224,7 +224,7 @@ export default function Account() {
                     defaultValue={usrData ? usrData.email : ""}
                   />
                 </div>
-                <div className="su-inpt full">
+                {/* <div className="su-inpt full">
                   <div className="acs-inpt-lbl">
                     <label htmlFor="hAddress">{"Contact address"}</label>
                     <small style={{ "color":"orange" }}>{"required"}</small>
@@ -232,7 +232,7 @@ export default function Account() {
                   <textarea cols={91} rows={2} name="conAddress" placeholder="home address" className="acs-form-input"
                     defaultValue={usrData ? usrData.shipAddr !== "_NIL" ? usrData.shipAddr : "" : ""}
                   />
-                </div>
+                </div> */}
                 <div className="acs-cta">
                   <button type="submit">{"Save changes"}</button>
                 </div>

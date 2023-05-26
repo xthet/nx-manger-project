@@ -1,13 +1,17 @@
+import { ConnectionContext } from "@/contexts/connection"
 import { DashboardContext } from "@/contexts/dashboard"
 import { useQUData } from "@/hooks/useQUData"
+import useUserStats from "@/hooks/useUserStats"
+import { conn } from "@/types"
 import { faEthereum } from "@fortawesome/free-brands-svg-icons"
 import { faCircleInfo, faPencil } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useContext } from "react"
 
 export default function DshbCreated() {
+  const { account, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
   const { activeTab, setActiveTab, uData } = useContext(DashboardContext)!
-
+  const { backersSum, cCampaignsSum, totalRaisedSum } = useUserStats(account)
 
   return (
     <>
@@ -16,24 +20,24 @@ export default function DshbCreated() {
           <div className="db-stat">
             <p className="db-stat-act">{"raised"}</p>
             <div className="db-stat-amt-grp">
-              <p className="db-stat-amt">{"29.97"}</p>
+              <p className="db-stat-amt">{totalRaisedSum}</p>
               <p className="db-stat-msr">{"ETH"}</p>
             </div>
           </div>
           <div className="db-stat">
             <p className="db-stat-act">{"from"}</p>
             <div className="db-stat-amt-grp">
-              <p className="db-stat-amt">{"890"}
+              <p className="db-stat-amt">{backersSum}
                 {/* <sup>{"+"}</sup> */}
               </p>
-              <p className="db-stat-msr">{"backers"}</p>
+              <p className="db-stat-msr">{`${"backer"}${(backersSum !== 1) ? "s" : ""}`}</p>
             </div>
           </div>
           <div className="db-stat">
             <p className="db-stat-act">{"across"}</p>
             <div className="db-stat-amt-grp">
-              <p className="db-stat-amt">{"88"}</p>
-              <p className="db-stat-msr">{"campaigns"}</p>
+              <p className="db-stat-amt">{cCampaignsSum}</p>
+              <p className="db-stat-msr">{`${"campaign"}${(backersSum !== 1) ? "s" : ""}`}</p>
             </div>
           </div>
         </div>

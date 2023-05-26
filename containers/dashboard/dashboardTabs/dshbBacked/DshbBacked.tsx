@@ -1,8 +1,17 @@
+import { ConnectionContext } from "@/contexts/connection"
+import { DashboardContext } from "@/contexts/dashboard"
+import useUserStats from "@/hooks/useUserStats"
+import { conn } from "@/types"
 import { faEthereum } from "@fortawesome/free-brands-svg-icons"
 import { faCircleInfo, faPencil } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useContext } from "react"
 
 export default function DshbBacked() {
+  const { account, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
+  const { activeTab, setActiveTab, uData } = useContext(DashboardContext)!
+  const { bCampaignsSum, totalDonatedSum } = useUserStats(account)
+
   return (
     <>
       <div className="db-stats-grp">
@@ -10,7 +19,7 @@ export default function DshbBacked() {
           <div className="db-stat">
             <p className="db-stat-act">{"donated"}</p>
             <div className="db-stat-amt-grp">
-              <p className="db-stat-amt">{"49.67"}</p>
+              <p className="db-stat-amt">{totalDonatedSum}</p>
               {/* <sup>{"+"}</sup> */}
               <p className="db-stat-msr">{"ETH"}</p>
             </div>
@@ -25,7 +34,7 @@ export default function DshbBacked() {
           <div className="db-stat">
             <p className="db-stat-act">{"across"}</p>
             <div className="db-stat-amt-grp">
-              <p className="db-stat-amt">{"43"}</p>
+              <p className="db-stat-amt">{bCampaignsSum}</p>
               <p className="db-stat-msr">{"campaigns"}</p>
             </div>
           </div>
