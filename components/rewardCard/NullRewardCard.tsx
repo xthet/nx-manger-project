@@ -19,7 +19,7 @@ export default function NullRewardCard({ address }:props) {
   async function handleFund(donation:BigNumber){
     const crowdfunder = new ethers.Contract(crowdFunderABI.address, crowdFunderABI.abi, signer)
     try {
-      const donateTx = await crowdfunder.donateToCampaign(address,{ value:donation })
+      const donateTx = await crowdfunder.donateToCampaign(address,false,{ value:donation })
       const donateTxR = await donateTx.wait(1)
       dispatch({
         type: "ADD_NOTI",

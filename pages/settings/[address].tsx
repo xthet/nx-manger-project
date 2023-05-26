@@ -85,7 +85,11 @@ export default function Account() {
       .catch(err => console.log("Error fetching data: ", err))
 
     if(userData.length > 0){
-      setUValDuplicate(true)
+      if(userData[0].username == usrName){
+        setUValDuplicate(false)
+      }else{
+        setUValDuplicate(true)
+      }
     }else{setUValDuplicate(false)}
   }
 

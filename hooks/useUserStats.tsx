@@ -55,7 +55,7 @@ export default function useUserStats(addr:string) {
 
     let cSupp:string[] = []
     for (var cmp of userCreatorsSupp){
-      counts.push(cmp.creator.id)
+      cSupp.push(cmp.creator.id)
     }
     const uniqueCSupp = [...new Set(cSupp)]
     setCreatorsSuppSum(uniqueCSupp.length.toString())

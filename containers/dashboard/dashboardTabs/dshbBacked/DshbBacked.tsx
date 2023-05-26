@@ -28,14 +28,14 @@ export default function DshbBacked() {
             <p className="db-stat-act">{"to"}</p>
             <div className="db-stat-amt-grp">
               <p className="db-stat-amt">{creatorsSuppSum}</p>
-              <p className="db-stat-msr">{"creators"}</p>
+              <p className="db-stat-msr">{`${"creator"}${(~~(creatorsSuppSum) !== 1) ? "s" : ""}`}</p>
             </div>
           </div>
           <div className="db-stat">
             <p className="db-stat-act">{"across"}</p>
             <div className="db-stat-amt-grp">
               <p className="db-stat-amt">{bCampaignsSum}</p>
-              <p className="db-stat-msr">{"campaigns"}</p>
+              <p className="db-stat-msr">{`${"campaign"}${(~~(bCampaignsSum) !== 1) ? "s" : ""}`}</p>
             </div>
           </div>
         </div>

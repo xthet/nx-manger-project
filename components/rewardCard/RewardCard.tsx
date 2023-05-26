@@ -34,7 +34,7 @@ export default function RewardCard({ address, id, onEdit }:props) {
     // check if rwd is physical and auth b4 funding
     const crowdfunder = new ethers.Contract(crowdFunderABI.address, crowdFunderABI.abi, signer)
     try {
-      const donateTx = await crowdfunder.donateToCampaign(address,{ value:donation })
+      const donateTx = await crowdfunder.donateToCampaign(address,true,{ value:donation })
       const donateTxR = await donateTx.wait(1)
       dispatch({
         type: "ADD_NOTI",
