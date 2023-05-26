@@ -30,14 +30,14 @@ export default function DshbCreated() {
               <p className="db-stat-amt">{backersSum}
                 {/* <sup>{"+"}</sup> */}
               </p>
-              <p className="db-stat-msr">{`${"backer"}${(backersSum !== 1) ? "s" : ""}`}</p>
+              <p className="db-stat-msr">{`${"backer"}${(~~(backersSum) !== 1) ? "s" : ""}`}</p>
             </div>
           </div>
           <div className="db-stat">
             <p className="db-stat-act">{"across"}</p>
             <div className="db-stat-amt-grp">
               <p className="db-stat-amt">{cCampaignsSum}</p>
-              <p className="db-stat-msr">{`${"campaign"}${(backersSum !== 1) ? "s" : ""}`}</p>
+              <p className="db-stat-msr">{`${"campaign"}${(~~(backersSum) !== 1) ? "s" : ""}`}</p>
             </div>
           </div>
         </div>

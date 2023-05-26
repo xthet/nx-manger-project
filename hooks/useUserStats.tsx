@@ -1,10 +1,11 @@
-import { FIND_BACKER_COUNT, GET_USER_DETAILS } from "@/constants/subgraphQueries"
+import { FIND_BACKER_COUNT, FIND_CREATORS_SUPP_COUNT, GET_USER_DETAILS } from "@/constants/subgraphQueries"
 import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { BigNumber, ethers } from "ethers"
 import { useEffect, useState } from "react"
 
 export default function useUserStats(addr:string) {
-  const [backersSum, setBackersSum] = useState<number | string>("--")
+  const [backersSum, setBackersSum] = useState("--")
+  const [creatorsSuppSum, setCreatorsSuppSum] = useState("--")
   const [totalRaisedSum, setTotalRaisedSum] = useState("--")
   const [cCampaignsSum, setCCampaignsSum] = useState("--")
   const [totalDonatedSum, setTotalDonatedSum] = useState("--")
@@ -34,7 +35,7 @@ export default function useUserStats(addr:string) {
         query: FIND_BACKER_COUNT,
         variables: { addresses: userData.created }
       })
-      .then(async (data) => {return data.data.campaignAddeds})
+      .then((data) => {return data.data.campaignAddeds})
       .catch(err => console.log("Error fetching data: ", err))
     
     let counts:number[] = []
@@ -42,9 +43,22 @@ export default function useUserStats(addr:string) {
       counts.push(~~(cmp.funderCount))
     }
     const backers = counts.reduce((pSum, a)=>pSum + a,0)
-    setBackersSum(backers) 
+    setBackersSum(backers.toString()) 
 
-    // const userCreators
+    const userCreatorsSupp = await client
+      .query({
+        query: FIND_CREATORS_SUPP_COUNT,
+        variables: { addresses: userData.backed }
+      })
+      .then((data) => {return data.data.campaignAddeds})
+      .catch(err => console.log("Error fetching data: ", err))
+
+    let cSupp:string[] = []
+    for (var cmp of userBackers){
+      counts.push(cmp.creator.id)
+    }
+    const uniqueCSupp = [...new Set(cSupp)]
+    setCreatorsSuppSum(uniqueCSupp.length.toString())
 
     let reciFunders:string[] = []
     if(userBackers.length > 0){
@@ -67,6 +81,7 @@ export default function useUserStats(addr:string) {
     totalRaisedSum,
     cCampaignsSum,
     totalDonatedSum,
-    bCampaignsSum
+    bCampaignsSum,
+    creatorsSuppSum
   }
 }

@@ -10,7 +10,7 @@ import { useContext } from "react"
 export default function DshbBacked() {
   const { account, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
   const { activeTab, setActiveTab, uData } = useContext(DashboardContext)!
-  const { bCampaignsSum, totalDonatedSum } = useUserStats(account)
+  const { bCampaignsSum, totalDonatedSum, creatorsSuppSum } = useUserStats(account)
 
   return (
     <>
@@ -27,7 +27,7 @@ export default function DshbBacked() {
           <div className="db-stat">
             <p className="db-stat-act">{"to"}</p>
             <div className="db-stat-amt-grp">
-              <p className="db-stat-amt">{"97"}</p>
+              <p className="db-stat-amt">{creatorsSuppSum}</p>
               <p className="db-stat-msr">{"creators"}</p>
             </div>
           </div>
