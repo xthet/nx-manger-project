@@ -66,10 +66,8 @@ function CampaignEditorProvider ({ children, cmpAddress, validator }:{children:R
       const recEdit = localStorage.getItem("staticGrandCmp")
       if(!recEdit){
         localStorage.setItem("staticGrandCmp", JSON.stringify(cmp))
-        console.log(localStorage.getItem("staticGrandCmp"))
       }
       else{
-        console.log(recEdit)
         updateGrandCmp(JSON.parse(recEdit))
       }
       setPtitle(campaignDetails.title)
@@ -85,7 +83,7 @@ function CampaignEditorProvider ({ children, cmpAddress, validator }:{children:R
       }
     }
     campaignDetails && campaignDetails.creator && validateEditor()
-  },[account, cmpAddress, campaignDetails.creator])
+  },[account, cmpAddress, campaignDetails.creator, isConnected])
 
   useEffect(()=>{
     if(grandCmp.title){localStorage.setItem("staticGrandCmp", JSON.stringify(grandCmp))}

@@ -74,7 +74,6 @@ export default function ETeamTab() {
         location, 
         twitter: cmpTwit ? cmpTwit : "_NIL"
       }
-      console.log(teamObj)
       updateGrandCmp(teamObj)
       setIsReady(true)
     }
@@ -115,8 +114,7 @@ export default function ETeamTab() {
 
       const crowdfunder = new ethers.Contract(CrowdFunder.address, CrowdFunder.abi, signer)
 
-
-      if(hasKey(TimeboxContracts, chainId) && cDetails && !cDetails.published){
+      if(hasKey(TimeboxContracts, chainId) && cDetails && !cDetails.isPublished){
         const linkToken = new ethers.Contract(TimeboxContracts[chainId].linkToken, LinkToken.abi, signer)
         const fundTx = await linkToken.transfer(TimeboxContracts[chainId].upkeepCreator, ethers.utils.parseEther("2"))
         const fundTxR = await fundTx.wait(1)
@@ -269,7 +267,11 @@ export default function ETeamTab() {
                         onChange={(e)=>{setCurrAddr(e.target.value)}} value={currAddr}
                       />
                       <FontAwesomeIcon icon={faCirclePlus} className="tt-add-member-icon"
-                        onClick={()=>{setAddArr(prev=>([...prev, currAddr.toLowerCase()])); setCurrAddr("")}}
+                        onClick={()=>{
+                          typeof(currAddr) == "string" && currAddr.includes("0x") && 
+                          currAddr.length == 42 && setAddArr(prev=>([...prev, currAddr.toLowerCase()]))
+                          setCurrAddr("")}
+                        }
                       />
                     </div>
                     <div className="tt-members-list">

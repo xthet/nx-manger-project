@@ -54,7 +54,7 @@ export default function useUserStats(addr:string) {
       .catch(err => console.log("Error fetching data: ", err))
 
     let cSupp:string[] = []
-    for (var cmp of userBackers){
+    for (var cmp of userCreatorsSupp){
       counts.push(cmp.creator.id)
     }
     const uniqueCSupp = [...new Set(cSupp)]

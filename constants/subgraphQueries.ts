@@ -5,7 +5,9 @@ export const GET_HOMEPAGE_CAMPAIGNS = gql`
     campaignAddeds(first: 6, where:{isPublished: true}, orderBy: createdAt, orderDirection: desc) {
       id
       campaignAddress
-      creator
+      creator {
+        id
+      }
     }
   }
 `
@@ -43,7 +45,9 @@ export const GET_CAMPAIGN_DETAILS = gql`
   query getCampaignDetails($campaignAddress: String!){
     campaignAdded(id: $campaignAddress){
       campaignAddress
-      creator
+      creator {
+        id
+      }
       funders
       funderCount
       isPublished
@@ -56,7 +60,9 @@ export const GET_ALL_CAMPAIGNS = gql`
     campaignAddeds(first: 12, skip: $offset, where:{isPublished:true}, orderBy: createdAt, orderDirection: desc) {
       id
       campaignAddress
-      creator
+      creator {
+        id
+      }
     }
   }
 `
@@ -66,7 +72,9 @@ export const GET_SOME_CAMPAIGNS = gql`
     campaignAddeds(first: 12, skip: $offset, where:{isPublished:true, category: $category}, orderBy: createdAt, orderDirection: desc) {
       id
       campaignAddress
-      creator
+      creator {
+        id
+      }
     }   
   }
 `

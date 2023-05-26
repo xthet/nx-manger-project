@@ -9,7 +9,7 @@
 }
 .ub-container.fl-cl.fl-c{
   z-index: 11;
-  position: absolute;
+  position: fixed;
   top: 4.17vw;
   right: 4.86vw;
   background: linear-gradient(0deg, #907CC0 32.83%, rgba(221, 213, 241, 0.75) 105.07%);

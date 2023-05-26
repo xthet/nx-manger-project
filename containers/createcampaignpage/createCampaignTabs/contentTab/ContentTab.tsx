@@ -262,7 +262,7 @@ export default function ContentTab() {
                     </div>
                     <div className="ct-faq-inpt">
                       <p>{"Answer"}</p>
-                      <textarea name="faq-a" id="faq-a" cols={91} rows={4} className="ct-faq-a"
+                      <textarea name="faq-a" id="faq-a" cols={91} rows={6} className="ct-faq-a"
                         onChange={(e)=>{setCurrFaqA(e.target.value)}} value={currFaqA}
                         required
                       ></textarea>

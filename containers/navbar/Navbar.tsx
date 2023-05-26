@@ -65,6 +65,7 @@ export default function Navbar() {
           || router.pathname == "/create-campaign" 
           || router.pathname == "/signUp" ) && "page-unfill"}
         ${(router.pathname.includes("/profile/[profile]/dashboard")) && "nv-active"}
+        ${!UBInvis && "nv-active"}
         `
       } 
       onScroll={()=>{console.log(scrollY)}}
@@ -77,15 +78,15 @@ export default function Navbar() {
             {
               !isConnected
                 ? <button className="nv-connect" onClick={()=>{connect()}}>{"Connect"}</button>
-                : <div className="nv-conn-info fl-cl">
+                : <div className="nv-conn-info fl-cl" onClick={()=>{setUBInvis(prev=>!prev); setUBOff(prev=>!prev)}}>
                   <Blockies seed={account} scale={3} size={8} 
                     className="nv-jazzicon" color="#b78be4" bgColor="#361E77" spotColor="#fff"
                   />
                   <p className="nv-usr-address">{uNameVal.length > 7 ? cutStr(uNameVal, 7) : uNameVal}</p>
                   { 
                     UBOff ?
-                      <FontAwesomeIcon icon={faAngleDown} className="nv-drpdown-icon" onClick={()=>{setUBInvis(false); setUBOff(false)}}/>
-                      : <FontAwesomeIcon icon={faAngleUp} className="nv-drpdown-icon" onClick={()=>{setUBOff(true)}}/>
+                      <FontAwesomeIcon icon={faAngleDown} className="nv-drpdown-icon"/>
+                      : <FontAwesomeIcon icon={faAngleUp} className="nv-drpdown-icon"/>
                   }
                 </div>
             }

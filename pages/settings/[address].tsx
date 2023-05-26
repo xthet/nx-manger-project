@@ -32,6 +32,8 @@ export default function Account() {
   const [showInvalidUVal, setShowInvalidUVal] = useState(false)
   const [uValDuplicate, setUValDuplicate] = useState(false)
 
+  console.log(imgURLToBe)
+
   const [showTBX, setShowTBX] = useState(false)
   const tlArr = [
     "Entering credentials",
@@ -94,7 +96,8 @@ export default function Account() {
     const username = data.get("username")!.toString()
     // let twitter = data.get("twitter")!.toString() ? data.get("twitter")!.toString() : "_NIL"
     let email = data.get("email")!.toString()
-    let conAddress = data.get("conAddress")!.toString() ? data.get("conAddress")!.toString() : "_NIL"
+    // let conAddress = data.get("conAddress")!.toString() ? data.get("conAddress")!.toString() : "_NIL"
+    let conAddress = "_NIL"
 
     // if(!(twitter == "_NIL") && !twitter.includes("https://twitter.com/")){
     //   twitter = `https://twitter.com/${twitter.replace("@" || "https://twitter.com/" || "www.twitter.com/" || "https://www.twitter.com/" , "")}`

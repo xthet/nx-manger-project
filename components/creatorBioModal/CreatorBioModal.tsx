@@ -20,6 +20,8 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
   const { uData } = useQUData(data.creator)
   const [sptCreators, setSptCreators] = useState<userType[]>([])
 
+  console.log(data)
+
   useEffect(()=>{
     async function findCreators(){
       const client = new ApolloClient({
@@ -32,7 +34,7 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
           query: FIND_USERS,
           variables: { addresses: data.creators }
         })
-        .then(data => data.data.userAddeds)
+        .then(data => {return data.data.userAddeds})
         .catch(err => console.log("Error fetching data: ", err))
 
       users && (users.length > 0) && setSptCreators(users)
