@@ -54,9 +54,9 @@ export default function ProfileHeader() {
 
         <div className="crh-socials fl-cr">
           {/* <FontAwesomeIcon icon={faGlobe} className="crh-social-icon"/> */}
-          <Link href={uData && uData.twitter ? uData.twitter : "#"}>
+          {/* <Link href={uData && uData.twitter ? uData.twitter : "#"}>
             <FontAwesomeIcon icon={faTwitter} className="crh-social-icon"/>
-          </Link>
+          </Link> */}
           <FontAwesomeIcon icon={faShareNodes} className="crh-social-icon"/>
         </div>
       </div>

@@ -25,6 +25,16 @@
   letter-spacing: 0.02em
   margin-top: -0.4rem
 
+.cbm-pfp
+  @extend .crh-pfp
+  @media(max-width: $lg)
+    border-radius: 0.9vw
+    width: 6.25vw
+    height: 6.25vw
+  @media(max-width: $md)
+    width: 10.25vw
+    height: 10.25vw
+
 .cbm-creator
   width: 100%
   @include fl-tl
@@ -54,6 +64,7 @@
     height: 0.8rem
 
 .cbm-contacts
+  margin-top: 0.8em
   width: 100%
   @include fl-tl
   @include fl-c
@@ -84,6 +95,7 @@
     height: 1rem
 
 .cbm-other-creators
+  margin-top: 0.6em
   width: 100%
   @include fl-tl
   @include fl-c

@@ -20,7 +20,6 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
   const { uData } = useQUData(data.creator)
   const [sptCreators, setSptCreators] = useState<userType[]>([])
 
-  console.log(data)
 
   useEffect(()=>{
     async function findCreators(){
@@ -49,7 +48,7 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
         <p className="cbm-title">{"About the creator"}</p>
         <FontAwesomeIcon icon={faXmark} className="cbm-cancel" onClick={()=>{offMe()}}/>
         {uData && <div className="cbm-creator">
-          {uData && uData.pfp && (uData.pfp != "_NIL") ? <img src={uData.pfp.replace("ipfs://", "https://ipfs.io/ipfs/")} alt="--" className="crh-pfp"/>
+          {uData && uData.pfp && (uData.pfp != "_NIL") ? <img src={uData.pfp.replace("ipfs://", "https://ipfs.io/ipfs/")} alt="--" className="cbm-pfp"/>
             : <Blockies seed={account.toLowerCase()} scale={8} size={11} 
               className="crh-jazzicon" color="#C4A2E7" bgColor="#361E77" 
               spotColor="#fff"
@@ -78,7 +77,6 @@ export default function CreatorBioModal({ data, offMe }:{data:fcmp, offMe:Functi
             <FontAwesomeIcon icon={faEnvelope} className="cbm-email-icon"/>
             <span>{data.email}</span>
           </span>}
-
         </div>
 
         <div className="cbm-other-creators">

@@ -19,8 +19,8 @@ export default function DshbBacked() {
           <div className="db-stat">
             <p className="db-stat-act">{"donated"}</p>
             <div className="db-stat-amt-grp">
-              <p className="db-stat-amt">{totalDonatedSum}</p>
-              {/* <sup>{"+"}</sup> */}
+              <p className="db-stat-amt">{totalDonatedSum.length > 5 ? totalDonatedSum.slice(0,4) + "+" : totalDonatedSum}</p>
+              
               <p className="db-stat-msr">{"ETH"}</p>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function DshbBacked() {
         </div>
       </div>
 
-      <section className="db-recents">
+      {/* <section className="db-recents">
         <h3>{"Recent Donations"}</h3>
         <div className="db-recents-cont">
           <div className="db-recent">
@@ -86,7 +86,7 @@ export default function DshbBacked() {
             <span className="db-recent-amt">{"0.03"}<span>{"ETH"}</span></span>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="db-table">
         <div className="db-table-type">
