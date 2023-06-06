@@ -107,15 +107,17 @@ export default function RewardsTab() {
       try {
         setTlIndex(prev => prev >= tlArr.length ? prev : prev + 1)
         const addRwdTx = await currCmp.makeReward(
-          ethers.utils.parseEther(rPrice),
-          rName,
-          rDesc,
-          imgURLToBe ? imgURLToBe : "_NIL",
-          currItem ? currItem.split(",") : [""],
-          (Math.floor((new Date(rDelD).getTime()) / 1000)).toString(),
-          rQty && Number(rQty) ? rQty : "0",
-          !rQty ? true : false, // bool infinite
-          shipsTo.length > 0 ? shipsTo : ["_NW"]
+          {
+            _price: ethers.utils.parseEther(rPrice),
+            _title: rName,
+            _description: rDesc,
+            _rpic: imgURLToBe ? imgURLToBe : "_NIL",
+            _perks: currItem ? currItem.split(",") : [""],
+            _deadline: (Math.floor((new Date(rDelD).getTime()) / 1000)).toString(),
+            _quantity: rQty && Number(rQty) ? rQty : "0",
+            _infinite: !rQty ? true : false,
+            _shipsTo: shipsTo.length > 0 ? shipsTo : ["_NW"]
+          }
         )
         setTlIndex(prev => prev >= tlArr.length ? prev : prev + 1)
         const addRwdTxR = await addRwdTx.wait(1)

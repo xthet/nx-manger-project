@@ -91,13 +91,15 @@ export default function BasicsTab() {
         // creating campaign smart contract
         setTlIndex(prev => prev >= tlArr.length ? prev : prev + 1)
         const creationTx = await crowdfunder.addCampaign(
-          cmpTitle,
-          cmpTagLine,
-          currCat,
-          tagArr.slice(0,3).join("/"),
-          ethers.utils.parseEther(goalAmount),
-          BigNumber.from(parseInt(dur) * 86400),
-          imgURLToBe
+          {
+            _title: cmpTitle,
+            _description: cmpTagLine,
+            _category: currCat,
+            _tags: tagArr.slice(0,3).join("/"),
+            _goalAmount: ethers.utils.parseEther(goalAmount),
+            _duration: BigNumber.from(~~(dur) * 86400),
+            _imageURI: imgURLToBe
+          }
         )
         // awaiting confirmation
         setTlIndex(prev => prev > tlArr.length ? prev : prev + 1)
