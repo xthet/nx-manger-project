@@ -1,10 +1,13 @@
 import { NullRewardCard, RewardCard } from "@/components/exportComps"
+import { ConnectionContext } from "@/contexts/connection"
 import { CampaignContext } from "@/contexts/currentCampaign"
 import useRwdTab from "@/hooks/useRwdTab"
+import { conn } from "@/types"
 import { useContext } from "react"
 import ReactLoading from "react-loading"
 
 export default function RewardsTab() {
+  const { isConnected, defSigner }:conn = useContext(ConnectionContext)!
   const { currAddress } = useContext(CampaignContext)!
   const { loading, rwIds } = useRwdTab(currAddress)
 
@@ -17,6 +20,7 @@ export default function RewardsTab() {
       <div className="rt-rewards-container fl-tl fl-c">
         {
           loading || !rwIds || !rwIds.length || !typeof(rwIds[0] == "number") ? <ReactLoading type="bubbles" color="#C4A2E7"/> : 
+            !isConnected ? <div className="rt-conn-cta"><p>{"Connect your wallet to view rewards!!"}</p><button>{"Connect your wallet"}</button></div> :
             <>
               <NullRewardCard address={currAddress}/>
               {

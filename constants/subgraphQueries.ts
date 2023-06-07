@@ -158,3 +158,11 @@ export const FIND_CREATORS_SUPP_COUNT = gql`
     }
   }
 `
+
+export const FIND_CMP_FUNDERS = gql`
+  query findCmpFunders($cmpAddress: String!){
+    campaignAdded(id:$cmpAddress){
+      funders
+    }
+  }
+`

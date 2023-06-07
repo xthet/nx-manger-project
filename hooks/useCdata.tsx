@@ -20,7 +20,7 @@ let cmpObject:cmp = {
 }
 
 export function useCdata(address:string){
-  const { isConnected, signer, account }:conn = useContext(ConnectionContext)!
+  const { isConnected, account, defSigner }:conn = useContext(ConnectionContext)!
   const [loading, setLoading] = useState(true)
   const [imgLoad, setImgLoad] = useState(false)
   const [campaignDetails, setCampaignDetails] = useState<cmp>(cmpObject)
@@ -33,7 +33,7 @@ export function useCdata(address:string){
     let isIn = true
 
     async function startCard() {
-      const CmpCntrt = new ethers.Contract(address, campaignABI.abi, signer)
+      const CmpCntrt = new ethers.Contract(address, campaignABI.abi, defSigner!)
       try{
         const cmpData = await CmpCntrt.getCampaignDetails()
         let cmpProxy:cmp | any = {}
@@ -47,9 +47,9 @@ export function useCdata(address:string){
         console.log(e)
       }
     }
-    isIn && isConnected && address && signer && startCard().catch(e=>console.log(e))
+    isIn && address && defSigner && startCard().catch(e=>console.log(e))
     return () => {isIn = false}
-  }, [isConnected, address, signer])
+  }, [isConnected, address, defSigner])
 
   const calcDetails = useCallback(async()=>{
     if(campaignDetails && campaignDetails.goalAmount){

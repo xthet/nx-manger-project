@@ -6,7 +6,7 @@ import { ConnectionContext } from "@/contexts/connection"
 import DOMPurify from "dompurify"
 
 export function useURIData(address:string){
-  const { isConnected, signer }:conn = useContext(ConnectionContext)!
+  const { isConnected, defSigner }:conn = useContext(ConnectionContext)!
   const [cdata, setCdata] = useState<fcmp>()
   const [fcLoading, setFcLoading] = useState(true)
   const [visLoaded, setVisLoaded] = useState(false)
@@ -17,7 +17,7 @@ export function useURIData(address:string){
 
   
   const start = useCallback(async () => {
-    const cmpCntrt = new ethers.Contract(address, campaignABI.abi, signer)
+    const cmpCntrt = new ethers.Contract(address, campaignABI.abi, defSigner!)
     let cmpd
     try{
       const uri = await cmpCntrt.s_campaignURI()
@@ -41,12 +41,12 @@ export function useURIData(address:string){
         setCFaqs(cmpd.faqs)
       }
     }catch(e){console.log(e)}
-  },[isConnected, address, signer])
+  },[isConnected, address, defSigner])
 
   
   useEffect(()=>{
     let isIn = true
-    isIn && isConnected && signer && start().catch(e=>console.log(e))
+    isIn && defSigner && start().catch(e=>console.log(e))
     return () => {isIn = false}
   },[isConnected, start])
 

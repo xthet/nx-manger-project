@@ -64,8 +64,8 @@ export function useCampaigns(id:string, offset:number){
 
   useEffect(() => {
     let isIn = true 
-    if(id == "home"){isIn && isConnected && callHomeCampaigns()}
-    else if(id == "All Categories"){isIn && isConnected && callAllCampaigns(offset)}
+    if(id == "home"){isIn && callHomeCampaigns()}
+    else if(id == "All Categories"){isIn && callAllCampaigns(offset)}
     else{isIn && isConnected && callSomeCampaigns(id, offset)}
     return () => {isIn = false}
   }, [isConnected, callHomeCampaigns, id, offset])

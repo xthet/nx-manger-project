@@ -5,23 +5,23 @@ import { useContext, useEffect, useState } from "react"
 import campaignABI from "@/constants/abis/Campaign.json"
 
 export default function useRwdTab(address:string) {
-  const { isConnected, signer, account }:conn = useContext(ConnectionContext)!
+  const { isConnected, defSigner, account }:conn = useContext(ConnectionContext)!
   const [loading, setLoading] = useState(true)
   const [rwIds, setRwIds] = useState<any>([])
 
 
   async function modArray(arr:BigNumber[]){
-    let strKeyArr = await arr.map((id:BigNumber)=>{return ethers.utils.formatEther(id)}) // to string
+    let strKeyArr = arr.map((id:BigNumber)=>{return ethers.utils.formatEther(id)}) // to string
     let uniqueKeys:any[] = [...new Set(strKeyArr)] // remove duplicates
-    let newKeyArr:any[] = await uniqueKeys.map((id:string)=>{return parseFloat(id)}) // to number
-    let readyArr = await newKeyArr.sort((a, b)=> (a - b)) // sort in incrreasing order
+    let newKeyArr:any[] = uniqueKeys.map((id:string)=>{return parseFloat(id)}) // to number
+    let readyArr = newKeyArr.sort((a, b)=> (a - b)) // sort in incrreasing order
     return readyArr
   }
 
   useEffect(()=>{
     let isIn = true
     async function startRewardsTab(){
-      const campaign = new ethers.Contract(address, campaignABI.abi, signer)
+      const campaign = new ethers.Contract(address, campaignABI.abi, defSigner!)
       try {
         let fetchKeysTx = await campaign.getRewardKeys()
         const ids = await modArray(fetchKeysTx)
@@ -34,9 +34,9 @@ export default function useRwdTab(address:string) {
         console.log(error)
       }
     }
-    isIn && address && signer && isConnected && startRewardsTab().catch(e=>console.log(e))
+    isIn && address && defSigner && startRewardsTab().catch(e=>console.log(e))
     return ()=>{isIn = false}
-  },[isConnected, address, signer])
+  },[isConnected, address, defSigner])
 
   return (
     {

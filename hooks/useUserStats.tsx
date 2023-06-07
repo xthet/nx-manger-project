@@ -1,4 +1,4 @@
-import { FIND_BACKER_COUNT, FIND_CREATORS_SUPP_COUNT, GET_USER_DETAILS } from "@/constants/subgraphQueries"
+import { FIND_BACKER_COUNT, FIND_CMP_FUNDERS, FIND_CREATORS_SUPP_COUNT, GET_USER_DETAILS } from "@/constants/subgraphQueries"
 import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { BigNumber, ethers } from "ethers"
 import { useEffect, useState } from "react"
@@ -60,22 +60,20 @@ export default function useUserStats(addr:string) {
     const uniqueCSupp = [...new Set(cSupp)]
     setCreatorsSuppSum(uniqueCSupp.length.toString())
 
-    let reciFunders:string[] = []
-    if(userBackers.length > 0){
-      for (var cmp of userBackers){
-        reciFunders = [...reciFunders, ...cmp.funders]
-        if(reciFunders.length >= 3){
-          break
-        }
-      }
-    }
-
-    
+    const latestCmp = userData && userData.created ?  userData.created[userData.created.length - 1] : "0x0000000000000000000000000000000000"
+    const latestCmpFunders = await client
+    .query({
+      query: FIND_CMP_FUNDERS,
+      variables: { cmpAddress: latestCmp }
+    })
+    .then((data) => {return data.data.campaignAdded.funders})
+    .catch(err => console.log("Error fetching data: ", err))
   }
 
   useEffect(()=>{
     addr && findStats().catch(e=>console.log(e))
   },[addr])
+
   return {
     backersSum,
     totalRaisedSum,
