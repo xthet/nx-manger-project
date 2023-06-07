@@ -1,6 +1,7 @@
 import { ConnectionContext } from "@/contexts/connection"
 import { DashboardContext } from "@/contexts/dashboard"
 import { useQUData } from "@/hooks/useQUData"
+import useUserCreatedCmps from "@/hooks/useUserCreatedCmps"
 import useUserStats from "@/hooks/useUserStats"
 import { conn } from "@/types"
 import { faEthereum } from "@fortawesome/free-brands-svg-icons"
@@ -9,9 +10,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useContext } from "react"
 
 export default function DshbCreated() {
-  const { account, isAuth, uNameVal }:conn = useContext(ConnectionContext)!
+  const { account, isAuth, uNameVal }: conn = useContext(ConnectionContext)!
   const { activeTab, setActiveTab, uData } = useContext(DashboardContext)!
   const { backersSum, cCampaignsSum, totalRaisedSum } = useUserStats(account)
+  const {} = useUserCreatedCmps(account)
 
   return (
     <>
@@ -27,24 +29,32 @@ export default function DshbCreated() {
           <div className="db-stat">
             <p className="db-stat-act">{"from"}</p>
             <div className="db-stat-amt-grp">
-              <p className="db-stat-amt">{backersSum}
+              <p className="db-stat-amt">
+                {backersSum}
                 {/* <sup>{"+"}</sup> */}
               </p>
-              <p className="db-stat-msr">{`${"backer"}${(~~(backersSum) !== 1) ? "s" : ""}`}</p>
+              <p className="db-stat-msr">{`${"backer"}${
+                ~~backersSum !== 1 ? "s" : ""
+              }`}</p>
             </div>
           </div>
           <div className="db-stat">
             <p className="db-stat-act">{"across"}</p>
             <div className="db-stat-amt-grp">
               <p className="db-stat-amt">{cCampaignsSum}</p>
-              <p className="db-stat-msr">{`${"campaign"}${(~~(cCampaignsSum) !== 1) ? "s" : ""}`}</p>
+              <p className="db-stat-msr">{`${"campaign"}${
+                ~~cCampaignsSum !== 1 ? "s" : ""
+              }`}</p>
             </div>
           </div>
         </div>
 
         <div className="db-stats-info">
           <p>
-            <FontAwesomeIcon icon={faCircleInfo} className="db-stats-info-icon"/>
+            <FontAwesomeIcon
+              icon={faCircleInfo}
+              className="db-stats-info-icon"
+            />
             {`
             Did you know: Manger runs a flexible crowdfunding system i.e. 
             all earnings at the end of a campaign, belong to the campaign creator, 
@@ -54,7 +64,7 @@ export default function DshbCreated() {
         </div>
       </div>
 
-      <section className="db-recents">
+      {/* <section className="db-recents">
         <h3>{"Recent Donations"}</h3>
         <div className="db-recents-cont">
           <div className="db-recent">
@@ -88,7 +98,7 @@ export default function DshbCreated() {
             <span className="db-recent-amt">{"0.03"}<span>{"ETH"}</span></span>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <div className="db-table">
         <div className="db-table-type">
@@ -104,17 +114,17 @@ export default function DshbCreated() {
 
         <div className="db-tbl-rw">
           <span className="db-tbl-rw-ele">
-            <img src="/e43.png" alt="--" className="db-tbl-rw-img"/>
+            <img src="/e43.png" alt="--" className="db-tbl-rw-img" />
             <span>{"Rune Fencer Illyia - A Cute Metroidvania"}</span>
           </span>
           <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
           <span className="db-tbl-rw-ele  --eta">{"15"}</span>
           <span className="db-tbl-rw-ele">
-            <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
+            <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon" />
             <span>{"3.58"}</span>
           </span>
           <span className="db-tbl-rw-ele --options">
-            <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
+            <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon" />
             {/* <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/> */}
             <span className="db-tbl-details">{"Details"}</span>
           </span>
@@ -122,17 +132,17 @@ export default function DshbCreated() {
 
         <div className="db-tbl-rw">
           <span className="db-tbl-rw-ele">
-            <img src="/e43.png" alt="--" className="db-tbl-rw-img"/>
+            <img src="/e43.png" alt="--" className="db-tbl-rw-img" />
             <span>{"Dark Metroidvania"}</span>
           </span>
           <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
           <span className="db-tbl-rw-ele --eta">{"53"}</span>
           <span className="db-tbl-rw-ele">
-            <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
+            <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon" />
             <span>{"3.58"}</span>
           </span>
           <span className="db-tbl-rw-ele --options">
-            <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
+            <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon" />
             {/* <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/> */}
             <span className="db-tbl-details">{"Details"}</span>
           </span>
@@ -140,17 +150,17 @@ export default function DshbCreated() {
 
         <div className="db-tbl-rw">
           <span className="db-tbl-rw-ele">
-            <img src="/e43.png" alt="--" className="db-tbl-rw-img"/>
+            <img src="/e43.png" alt="--" className="db-tbl-rw-img" />
             <span>{"Dark Metroidvania"}</span>
           </span>
           <span className="db-tbl-rw-ele --status">{"Fundraising"}</span>
           <span className="db-tbl-rw-ele  --eta">{"5"}</span>
           <span className="db-tbl-rw-ele">
-            <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon"/>
+            <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon" />
             <span>{"3.58"}</span>
           </span>
           <span className="db-tbl-rw-ele --options">
-            <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon"/>
+            <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon" />
             {/* <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/> */}
             <span className="db-tbl-details">{"Details"}</span>
           </span>
