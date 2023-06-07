@@ -106,7 +106,7 @@ export default function SideBio({ state }:props) {
         </div>
 
         <div className="sb-creator-socials fl-cl">
-          <Link href={!userDets || !userDets.twitter ? "#" : userDets.twitter }>
+          <Link href={!userDets || !cdata || !cdata.twitter ? "#" : cdata.twitter }>
             <FontAwesomeIcon icon={faTwitter} className="sb-social-icon"/>
           </Link>
           <FontAwesomeIcon icon={faShareNodes} className="sb-social-icon"/>
@@ -115,7 +115,7 @@ export default function SideBio({ state }:props) {
         <p className="sb-creator-bio" onClick={()=>{setShowBio(true)}}>{cdata ? cutStr(cdata.bio, 145) : ""}</p>
       </div>
 
-      {(state == 0 || state == 2) && <div className="sb-support fl-tl fl-c">
+      {(state == 0 || state == 2) && isConnected && <div className="sb-support fl-tl fl-c">
         <h4 className="sb-support-heading">{"Support"}</h4>
         <div className="sb-support-box fl-tl fl-c">
           <h4 className="sb-support-box-heading">{"Get a refund."}</h4>

@@ -64,10 +64,10 @@ export default function useProfile(type:string, profile:string) {
   }
 
   useEffect(()=>{
-    if(isConnected && type == "Created"){
+    if(type == "Created"){
       profile && callProfileCreated().catch(e=>console.log(e))
     }
-    else if(isConnected && type == "Backed"){
+    else if(type == "Backed"){
       profile && callProfileBacked().catch(e=>console.log(e))
     }
   },[isConnected, profile, account])

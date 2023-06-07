@@ -34,7 +34,7 @@ export default function CampaignsPage({ cat, offVal }:props) {
       </div> */}
       {
         <>
-          { !isConnected ? <p>{""}</p> :
+          {
             loading || !campaigns 
               ? <p>{" "}</p> : !campaigns.length 
                 ? <div className="cp-load-alert fl-cl fl-c">
@@ -49,7 +49,7 @@ export default function CampaignsPage({ cat, offVal }:props) {
                 </>
           }
           {
-            !isConnected 
+            !isConnected && !campaigns
               ? <div className="cp-load-alert fl-cl fl-c">
                 <p>{"Please connect your wallet to view campaigns"}</p> 
                 <ReactLoading type={"bubbles"} color="#827B93"/>
