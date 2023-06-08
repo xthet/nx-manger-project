@@ -1,7 +1,14 @@
 import { FIND_USER_PUBLISHED_CMPS } from "@/constants/subgraphQueries"
+import { ConnectionContext } from "@/contexts/connection"
+import { conn } from "@/types"
 import { ApolloClient, InMemoryCache } from "@apollo/client"
+import { useContext, useEffect, useState } from "react"
 
-export default function useUserCreatedCmps(userAddr: string) {
+export default function useUserCreatedCmps() {
+  const { account, isAuth, uNameVal, isConnected }: conn =
+    useContext(ConnectionContext)!
+  const [cmps, setCmps] = useState("yo")
+
   async function initTable() {
     const client = new ApolloClient({
       uri: process.env.NEXT_PUBLIC_SUBGRAPH_URI,
@@ -11,12 +18,20 @@ export default function useUserCreatedCmps(userAddr: string) {
     const userPubCmps = await client
       .query({
         query: FIND_USER_PUBLISHED_CMPS,
-        variables: { userAddress: userAddr.toLowerCase() },
+        variables: { cmpAddress: account.toLowerCase() },
       })
       .then(async (data) => {
-        return data.data.userAdded
+        console.log(data)
+        return data.data.campaignAddeds
       })
       .catch((err) => console.log("Error fetching data: ", err))
   }
-  return <div>useUserCreatedCmps</div>
+
+  useEffect(() => {
+    isConnected && account && initTable()
+  }, [account, isAuth, isConnected])
+
+  return {
+    cmps,
+  }
 }
