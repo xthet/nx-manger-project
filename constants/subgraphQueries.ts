@@ -189,6 +189,7 @@ export const FIND_USER_PUBLISHED_CMPS = gql`
     campaignAddeds(where: { creator: $cmpAddress, isPublished: true }) {
       title
       description
+      campaignAddress
     }
   }
 `
