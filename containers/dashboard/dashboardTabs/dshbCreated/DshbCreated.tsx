@@ -13,7 +13,7 @@ export default function DshbCreated() {
   const { account, isAuth, uNameVal }: conn = useContext(ConnectionContext)!
   const { activeTab, setActiveTab, uData } = useContext(DashboardContext)!
   const { backersSum, cCampaignsSum, totalRaisedSum } = useUserStats(account)
-  const {} = useUserCreatedCmps()
+  const { cmps } = useUserCreatedCmps()
 
   return (
     <>

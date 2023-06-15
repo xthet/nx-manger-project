@@ -21,7 +21,7 @@ export default function useUserCreatedCmps() {
         variables: { cmpAddress: account.toLowerCase() },
       })
       .then(async (data) => {
-        // console.log(data)
+        console.log(data)
         return data.data.campaignAddeds
       })
       .catch((err) => console.log("Error fetching data: ", err))

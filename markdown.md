@@ -35,11 +35,13 @@ __this text is bold__
   ```bash
   yarn add react-skeleton
   ```
+
   ```javascript
   function add(num1, num2) {
     return num1 + num2
   }
   ```
+
   ```python
   def add(num1, num2):
     return num1 + num2
@@ -48,9 +50,9 @@ __this text is bold__
   <!-- tables -->
   | Name      | Email   |
   | -------   | ------- |
-  | John Doe  | johndoe@gmail.com |
+  | John Doe  | <johndoe@gmail.com> |
 
   <!-- task-lists -->
-  * [x] Task 1
-  * [ ] Task 2
-  * [x] Task 3
+* [x] Task 1
+* [ ] Task 2
+* [x] Task 3
