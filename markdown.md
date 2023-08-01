@@ -1,8 +1,7 @@
 # this is an H1
 
-*this text is italicized*
-
-__this text is bold__
+> *this text is italicized*
+> __this text is bold__
 
 ~~this text is strikethrough~~
 

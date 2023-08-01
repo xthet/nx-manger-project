@@ -1,26 +1,9 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "quotes": ["warn", "double"],
-    "semi": ["warn", "never"],
-    "indent": ["warn", 2],
-    "no-multi-spaces": ["warn"],
-    "no-console": "off",
-    "object-curly-spacing": ["warn", "always"],
     "react-hooks/exhaustive-deps": "off",
     "space-infix-ops": ["warn", { "int32Hint": false }],
     "@typescript-eslint/no-explicit-any": ["off"],
     "@next/next/no-img-element": ["off"]
-    // "max-len": [
-    //   "warn",
-    //   {
-    //     "code": 80,
-    //     "tabWidth": 2,
-    //     "ignoreComments": true, //"comments": 80
-    //     "ignoreUrls": true,
-    //     "ignoreStrings": false,
-    //     "ignoreTemplateLiterals": false
-    //   }
-    // ]
   }
 }
