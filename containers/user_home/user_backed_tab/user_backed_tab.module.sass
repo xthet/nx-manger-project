@@ -1,0 +1,255 @@
+@import @/styles/_mixins
+
+.db-stats-grp
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 0.8em
+  margin-top: -2rem
+
+.db-stats-cont
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+
+.db-stat
+  background: $color-btn
+  box-shadow: 0 0 9px 0px rgba(17, 10, 37, 0.1)
+  border-radius: 0.3em
+  padding: 0.5em 1em
+  @include fl-tl
+  @include fl-c
+  gap: 0.2rem
+  width: 31%
+  opacity: 0.85
+
+.db-stat-act
+  @include def-p
+  font-size: 2rem
+  opacity: 0.8
+  letter-spacing: 0.03em
+  color: #FFEBFF
+  @media(max-width: $lg)
+    font-size: 1.8rem
+
+.db-stat-amt-grp
+  width: 100%
+  @include fl-bl
+  @include fl-sb
+  gap: 0.5rem
+
+.db-stat-amt
+  @include def-p
+  font-size: 9rem
+  font-weight: 800
+  letter-spacing: 0.03em
+  color: #fff
+  @media(max-width: $lg)
+    font-size: 7rem
+
+.db-stat-msr
+  @include def-p
+  font-size: 2rem
+  font-weight: 600
+  color: $color-htext
+  letter-spacing: 0.03em
+  @media(max-width: $lg)
+    font-size: 1.8rem
+
+.db-stats-info
+  opacity: 0.7
+  width: 100%
+  @include fl-tl
+  gap: 0.2em
+  p
+    @include def-p
+    opacity: 0.8
+    width: 65%
+    font-size: 1.25rem
+    line-height: 1.2em
+    @media(max-width: $mlg)
+      width: 72%
+
+.db-stats-info-icon
+  color: rgba(54, 30, 119, 0.8)
+  height: 1.2rem
+
+.db-recents
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 0.8rem
+  h3
+    @include def-h
+    font-size: 1.8rem
+    font-weight: 600
+    opacity: 0.8
+    @media(max-width: $lg)
+      font-size: 1.5rem
+
+.db-recents-cont
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+
+.db-recent
+  width: 32.4%
+  @include fl-bl
+  @include fl-sb
+  background: rgba(215, 205, 244, 0.6)
+  box-shadow: 0 0 8px 0 rgba(215, 201, 244, 0.08)
+  padding: 0.8rem
+  border-radius: 0.3em
+
+.db-recent-dets-grp
+  @include fl-tl
+  gap: 0.4em
+  img
+    width: 3rem
+    height: 3rem
+    border-radius: 0.2em
+
+.db-recent-dets
+  @include fl-tl
+  @include fl-c
+  gap: 0.3rem
+  span:first-child
+    @include def-p
+    font-size: 1.4rem
+    font-weight: 600
+    letter-spacing: 0.03em
+  span:last-child
+    @include def-p
+    font-size: 1rem
+    color: $color-subtext
+    letter-spacing: 0.04em
+
+.db-recent-amt
+  @include def-p
+  span
+    margin-left: 0.2em
+    @include def-p
+    font-weight: 600
+    color: $color-card-text
+
+.db-table
+  width: 100%
+  @include fl-cl
+  @include fl-c
+
+.db-table-type
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+  padding: 0.6em 0
+  h3
+    @include def-h
+    font-weight: 700
+    font-size: 2rem
+    color: $color-card-text
+    @media(max-width: $lg)
+      font-size: 1.8rem
+
+.db-tbl-hdr
+  padding: 0.5em 0.3em
+  width: 100%
+  display: grid
+  border-top: 1px solid #e5e5e8
+  border-bottom: 1px solid #e5e5e8
+  grid-template-columns: 2fr 1fr 0.5fr 0.5fr 1fr
+  grid-column-gap: 2em
+  justify-items: start
+  align-content: center
+
+.db-tbl-hdr-ele
+  @include def-p
+  opacity: 0.78
+  font-weight: 500
+  font-size: 1.3rem
+  letter-spacing: 0.04em
+  // &.--eta
+  //   justify-self: end
+
+.db-tbl-act-icon
+  height: 1.4rem
+  color: $color-subtext
+  transition: all 0.3s ease
+  &:hover
+    opacity: 0.6
+
+.db-tbl-rw
+  cursor: pointer
+  width: 100%
+  padding: 0.5em 0.3em
+  display: grid
+  border-bottom: 1px solid #e5e5e8
+  grid-template-columns: 2fr 1fr 0.5fr 0.5fr 1fr
+  grid-column-gap: 2em
+  justify-items: start
+  align-content: center
+  transition: all 0.5s ease
+  &:hover
+    background: rgba(0,0,0,0.02)
+
+.db-tbl-rw-img
+  width: 2.5vw
+  border-radius: 0.4em
+
+.db-tbl-rw-ele
+  @include fl-cl
+  gap: 0.4em
+  @include def-p
+  font-size: 1.35rem
+  color: $color-card-text
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
+  &.--status
+    margin: 0.6em 0
+    font-size: 1.1rem
+    padding: 0 0.8em
+    border-radius: 0.6em
+    background: #C8EFE9
+    color: #47947D
+    font-weight: 600
+    letter-spacing: 0.02em
+    @media(max-width: $lg)
+      margin: 0.4em 0
+  &.--options
+    gap: 1em
+    cursor: pointer
+    justify-self: end
+
+.db-tbl-details
+  border: 1px solid $color-card-text
+  border-radius: 0.38em
+  margin: 0.2em 0
+  padding: 0.3em 0.8em 0.4em
+  color: $color-subtext
+  cursor: pointer
+  transition: all 0.3s ease
+  &:hover
+    opacity: 0.8
+
+.db-tbl-pgnt
+  width: 100%
+  @include fl-cc
+  gap: 0.8em
+
+.db-tbl-pgnt-icon
+  @include def-fa-icon
+
+.db-tbl-pgs-cont
+  @include fl-cc
+  gap: 0.8em
+  span
+    @include def-p
+    cursor: pointer
+    color: $color-card-text
+    &.--pgatv
+      background: $color-sub-bg
+      padding: 0.4em 0.7em
+      border-radius: 0.2em
+
+.db-tbl-sm-btn
+  @include def-btn

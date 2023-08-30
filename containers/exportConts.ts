@@ -35,10 +35,3 @@ export { default as ERewardsTab } from "./editcampaignpage/editCampaignTabs/erew
 
 export { default as CreatedTab } from "./profilepage/profileDetails/createdTab/CreatedTab"
 export { default as BackedTab } from "./profilepage/profileDetails/backedTab/BackedTab"
-
-export { default as DashboardTabs } from "./dashboard/dashboardTabs/DashboardTabs"
-export { default as DshbCreated } from "./dashboard/dashboardTabs/dshbCreated/DshbCreated"
-export { default as DshbBacked } from "./dashboard/dashboardTabs/dshbBacked/DshbBacked"
-export { default as Dshbrd } from "./dashboard/Dshbrd"
-
-export { default as CrtdCampaigns } from "./crtdCampaigns/CrtdCampaigns"

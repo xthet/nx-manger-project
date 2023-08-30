@@ -1,0 +1,59 @@
+@import @/styles/_mixins
+
+.db-main-header
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+
+.db-crt-dnt
+  position: relative
+  width: 80%
+  @include fl-cl
+  gap: 1em
+  padding-bottom: 0.5em
+  border-bottom: 1px solid rgba(0,0,0,0.2)
+  span
+    @include def-p
+    font-size: 2.2rem
+    font-weight: 700
+    color: $color-card-text
+    cursor: pointer
+    transition: all 0.3s ease
+    @media(max-width: $lg)
+      font-size: 2rem
+    &:hover
+      opacity: 0.8
+
+.db-tab-indic
+  position: absolute
+  opacity: 0.8
+  bottom: -2.22px
+  left: 0
+  height: 4px
+  width: 6vw
+  border-radius: 25px
+  background: $color-text
+  transition: all 0.3s ease
+  @media(max-width: $lg)
+    height: 2px
+    bottom: -1px
+  @media(max-width: 1280px)
+    width: 6.8vw
+  @media(max-width: $mlg)
+    width: 7.5vw
+  &.--next
+    left: 7vw
+    @media(max-width: 1280px)
+      left: 7.3vw
+    @media(max-width: $mlg)
+      left: 8.6vw
+
+.db-hdr-cta
+  @include def-btn
+  padding: 0.65em 1.2em
+  @media(max-width: $mlg)
+    padding: 0.65em 1em
+
+.db-hdr-cta-icon
+  height: 1.5rem
+  color: $color-htext
