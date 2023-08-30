@@ -26,7 +26,7 @@ export default function CampaignRow({ address }: { address: string }) {
         className="db-tbl-rw-ele --status"
         style={
           campaignDetails.state == 0
-            ? { background: "green" }
+            ? { background: "#63FE4B" }
             : campaignDetails.state == 1
             ? { background: "amber" }
             : campaignDetails.state == 2

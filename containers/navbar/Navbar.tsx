@@ -84,9 +84,6 @@ export default function Navbar() {
         }
         ${!UBInvis && "nv-active"}
         `}
-      onScroll={() => {
-        console.log(scrollY)
-      }}
     >
       <div className="fl-cc fl-sb nv-menu-wrapper">
         <Logo className="nv-logo fl-cl" />

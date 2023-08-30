@@ -16,7 +16,7 @@ export default function Home() {
       <Header />
       <Campaigns />
       <HowItWorks />
-      {/* <Blog/> */}
+      <Blog />
     </>
   )
 }

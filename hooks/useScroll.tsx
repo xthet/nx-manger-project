@@ -1,5 +1,5 @@
+"use client"
 import { useState, useEffect } from "react"
-
 
 export function useScroll() {
   // storing this to get the scroll direction
@@ -16,7 +16,11 @@ export function useScroll() {
   const [scrollDirection, setScrollDirection] = useState("")
 
   const listener = () => {
-    setBodyOffset(typeof window !== "undefined" ? document.body.getBoundingClientRect() : null)
+    setBodyOffset(
+      typeof window !== "undefined"
+        ? document.body.getBoundingClientRect()
+        : null
+    )
     setScrollY(-bodyOffset!.top)
     setScrollX(bodyOffset!.left)
     setScrollDirection(lastScrollTop > -bodyOffset!.top ? "down" : "up")
@@ -33,6 +37,6 @@ export function useScroll() {
   return {
     scrollY,
     scrollX,
-    scrollDirection
+    scrollDirection,
   }
 }

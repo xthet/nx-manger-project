@@ -4,7 +4,7 @@ $font-family: "Outfit", sans-serif
 
 $color-subtext: #827B93
 $color-bg: #fff
-$color-footer : #110A25
+$color-footer: #110A25
 $color-text: #361E77
 $color-ltext: #6843AD
 $color-card-text: #544776
@@ -25,11 +25,11 @@ $vsm: 400px
 
 @mixin sc-padding
   padding: 0 8rem
-  @media (max-width: 1050px) 
+  @media (max-width: 1050px)
     padding: 0 4rem
-  @media (max-width: 850px) 
+  @media (max-width: 850px)
     padding: 0 1.6rem
-  @media (max-width: 350px) 
+  @media (max-width: 350px)
     padding: 0 0.8rem
 
 @mixin fl-tl
@@ -43,13 +43,11 @@ $vsm: 400px
   align-items: flex-start
   justify-content: center
 
-
 /* top-right */
 @mixin fl-tr
   display: flex
   align-items: flex-start
   justify-content: flex-end
-
 
 /* center-left */
 @mixin fl-cl
@@ -57,13 +55,11 @@ $vsm: 400px
   align-items: center
   justify-content: flex-start
 
-
 /* center-center */
 @mixin fl-cc
   display: flex
   align-items: center
   justify-content: center
-
 
 /* center-right */
 @mixin fl-cr
@@ -71,33 +67,27 @@ $vsm: 400px
   align-items: center
   justify-content: flex-end
 
-
 @mixin fl-bl
   display: flex
   align-items: flex-end
   justify-content: flex-start
-
 
 @mixin fl-bc
   display: flex
   align-items: flex-end
   justify-content: center
 
-
 @mixin fl-br
   display: flex
   align-items: flex-end
   justify-content: flex-end
 
-
 /* space-between */
 @mixin fl-sb
   justify-content: space-between
 
-
 @mixin fl-sa
   justify-content: space-around
-
 
 @mixin fl-c
   flex-direction: column
@@ -109,9 +99,9 @@ $vsm: 400px
   line-height: 1em
   color: $color-text
   @media(max-width: $lg)
-    font-size: 1.2rem 
+    font-size: 1.2rem
   @media(max-width: $sm)
-    font-size: 1rem 
+    font-size: 1rem
   @media(max-width: $vsm)
     font-size: 0.7rem
 
@@ -150,7 +140,7 @@ $vsm: 400px
   &:hover
     transform: scale(1.05)
   @media(max-width: $lg)
-    font-size: 1.3rem    
+    font-size: 1.3rem
   @media(max-width: $md)
     font-size: 1.2rem
   @media(max-width: $sm)
@@ -247,8 +237,6 @@ $vsm: 400px
 
 @import "@/containers/profilepage/profileDetails/createdTab/CreatedTab.sass"
 @import "@/containers/profilepage/profileDetails/backedTab/BackedTab.sass"
-
-@import "../pages/profile/[profile]/dashboard/Dashboard"
 
 @import "@/components/campaignTabs/faqsTab/FaqsTab"
 @import "../components/creatorBioModal/CreatorBioModal"
