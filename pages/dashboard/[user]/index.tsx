@@ -1,5 +1,5 @@
-import React from "react"
+import DashboardLayout from "@/containers/dashboardLayout"
 
 export default function User() {
-	return <div>User</div>
+	return <DashboardLayout>sup</DashboardLayout>
 }
