@@ -2,22 +2,18 @@ import CampaignRow from "@/components/campaignRow/CampaignRow"
 import DashboardLayout from "@/containers/dashboardLayout"
 import { ConnectionContext } from "@/contexts/connection"
 import useDashboardValidator from "@/hooks/useDashboardValidator"
-import useFindUserPublished from "@/hooks/useFindUserPublished"
+import useFindUserBacked from "@/hooks/useFindUserBacked"
 import { conn } from "@/types"
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Error from "next/error"
 import { useRouter } from "next/router"
 import { useContext } from "react"
-import s from "./all_user_created_page.module.sass"
-import Link from "next/link"
+import s from "./all_user_backed_page.module.sass"
 
-export default function AllUserCreatedPage() {
+export default function AllUserBackedPage() {
 	const { validated } = useDashboardValidator()
-	const router = useRouter()
-	const { isConnected, account, connect, isAuth, uNameVal }: conn =
-		useContext(ConnectionContext)!
-	const { createdCampaigns } = useFindUserPublished(account)
+	const { backedCampaigns } = useFindUserBacked()
 
 	if (!validated) {
 		return <Error statusCode={404} />
@@ -27,7 +23,7 @@ export default function AllUserCreatedPage() {
 		<DashboardLayout>
 			<div className={s["db-table"]}>
 				<div className={s["db-table-type"]}>
-					<h3>{"Campaigns Created"}</h3>
+					<h3>{"Campaigns Backed"}</h3>
 				</div>
 
 				<div className={s["db-tbl-hdr"]}>
@@ -39,17 +35,9 @@ export default function AllUserCreatedPage() {
 					<span className={s["db-tbl-hdr-ele"]}>{"Balance"}</span>
 				</div>
 
-				{createdCampaigns.length > 0 &&
-					createdCampaigns.map((cmp, idx) => {
-						return (
-							<Link
-								href={`/dashboard/${uNameVal}/all_user_created_page/${cmp.campaignAddress}`}
-								key={idx}
-								className={s["db-tbl-rw-link"]}
-							>
-								<CampaignRow address={cmp.campaignAddress} />
-							</Link>
-						)
+				{backedCampaigns.length > 0 &&
+					backedCampaigns.map((cmp, idx) => {
+						return <CampaignRow address={cmp.campaignAddress} key={idx} />
 					})}
 			</div>
 			<div className={s["db-tbl-pgnt"]}>

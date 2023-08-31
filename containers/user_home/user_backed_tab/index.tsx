@@ -7,12 +7,15 @@ import { faCircleInfo, faPencil } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useContext } from "react"
 import s from "./user_backed_tab.module.sass"
+import useFindUserBacked from "@/hooks/useFindUserBacked"
+import CampaignRow from "@/components/campaignRow/CampaignRow"
 
 export default function UserBackedTab() {
 	const { account, isAuth, uNameVal }: conn = useContext(ConnectionContext)!
 	const { activeTab, setActiveTab, uData } = useContext(DashboardContext)!
 	const { bCampaignsSum, totalDonatedSum, creatorsSuppSum } =
 		useUserStats(account)
+	const { backedCampaigns } = useFindUserBacked()
 
 	return (
 		<>
@@ -115,79 +118,17 @@ export default function UserBackedTab() {
 					<span className={s["db-tbl-hdr-ele"]}>{"Balance"}</span>
 				</div>
 
-				<div className={s["db-tbl-rw"]}>
-					<span className={s["db-tbl-rw-ele"]}>
-						<img src="/e43.png" alt="--" className={s["db-tbl-rw-img"]} />
-						<span>{"Rune Fencer Illyia - A Cute Metroidvania"}</span>
-					</span>
-					<span className={`${s["db-tbl-rw-ele"]} ${s["--status"]}`}>
-						{"Fundraising"}
-					</span>
-					<span className={`${s["db-tbl-rw-ele"]}  ${s["--eta"]}`}>{"15"}</span>
-					<span className={s["db-tbl-rw-ele"]}>
-						<FontAwesomeIcon
-							icon={faEthereum}
-							className={s["db-tbl-act-icon"]}
-						/>
-						<span>{"3.58"}</span>
-					</span>
-					<span className={`${s["db-tbl-rw-ele"]} ${s["--options"]}`}>
-						<FontAwesomeIcon icon={faPencil} className={s["db-tbl-act-icon"]} />
-						{/* <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/> */}
-						<span className={s["db-tbl-details"]}>{"Details"}</span>
-					</span>
-				</div>
-
-				<div className={s["db-tbl-rw"]}>
-					<span className={s["db-tbl-rw-ele"]}>
-						<img src="/e43.png" alt="--" className={s["db-tbl-rw-img"]} />
-						<span>{"Rune Fencer Illyia - A Cute Metroidvania"}</span>
-					</span>
-					<span className={`${s["db-tbl-rw-ele"]} ${s["--status"]}`}>
-						{"Fundraising"}
-					</span>
-					<span className={`${s["db-tbl-rw-ele"]}  ${s["--eta"]}`}>{"15"}</span>
-					<span className={s["db-tbl-rw-ele"]}>
-						<FontAwesomeIcon
-							icon={faEthereum}
-							className={s["db-tbl-act-icon"]}
-						/>
-						<span>{"3.58"}</span>
-					</span>
-					<span className={`${s["db-tbl-rw-ele"]} ${s["--options"]}`}>
-						<FontAwesomeIcon icon={faPencil} className={s["db-tbl-act-icon"]} />
-						{/* <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/> */}
-						<span className={s["db-tbl-details"]}>{"Details"}</span>
-					</span>
-				</div>
-
-				<div className={s["db-tbl-rw"]}>
-					<span className={s["db-tbl-rw-ele"]}>
-						<img src="/e43.png" alt="--" className={s["db-tbl-rw-img"]} />
-						<span>{"Rune Fencer Illyia - A Cute Metroidvania"}</span>
-					</span>
-					<span className={`${s["db-tbl-rw-ele"]} ${s["--status"]}`}>
-						{"Fundraising"}
-					</span>
-					<span className={`${s["db-tbl-rw-ele"]}  ${s["--eta"]}`}>{"15"}</span>
-					<span className={s["db-tbl-rw-ele"]}>
-						<FontAwesomeIcon
-							icon={faEthereum}
-							className={s["db-tbl-act-icon"]}
-						/>
-						<span>{"3.58"}</span>
-					</span>
-					<span className={`${s["db-tbl-rw-ele"]} ${s["--options"]}`}>
-						<FontAwesomeIcon icon={faPencil} className={s["db-tbl-act-icon"]} />
-						{/* <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/> */}
-						<span className={s["db-tbl-details"]}>{"Details"}</span>
-					</span>
-				</div>
+				{backedCampaigns.length > 0 &&
+					backedCampaigns.slice(0, 4).map((cmp, idx) => {
+						return <CampaignRow address={cmp.campaignAddress} key={idx} />
+					})}
 			</section>
 
-			<div className={s["db-tbl-pgnt"]}>
-				<button className={s["db-tbl-sm-btn"]}>{"See more"}</button>
-			</div>
+			{backedCampaigns.length > 3 && (
+				<div className={s["db-tbl-pgnt"]}>
+					<button className={s["db-tbl-sm-btn"]}>{"See more"}</button>
+				</div>
+			)}
 		</>
 	)
 }

@@ -11,7 +11,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 	return (
 		<div className={s["db"]}>
 			<aside className={s["db-side"]}>
-				<Link href={`dashboard/${uNameVal}`}>
+				<Link href={`/dashboard/${uNameVal}/`}>
 					<h3 className={s["db-sec-title"]}>{"Dashboard"}</h3>
 				</Link>
 				<div className={s["db-menu"]}>

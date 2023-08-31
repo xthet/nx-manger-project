@@ -38,7 +38,7 @@ function DashboardProvider({ children, owner }: props) {
 		desktop ? setIsBigScreen(true) : setIsBigScreen(false)
 	}, [desktop])
 
-	if (owner && owner !== uNameVal) {
+	if ((owner && owner !== uNameVal) || !isAuth) {
 		return <Error statusCode={404} />
 	}
 

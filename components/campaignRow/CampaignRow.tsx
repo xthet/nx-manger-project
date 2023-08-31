@@ -3,68 +3,69 @@ import { faEthereum } from "@fortawesome/free-brands-svg-icons"
 import { faPencil } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ethers } from "ethers"
+import s from "./campaign_row.module.sass"
 
 export default function CampaignRow({ address }: { address: string }) {
-  const {
-    loading,
-    campaignDetails,
-    imageURI,
-    imgLoad,
-    setImgLoad,
-    progress,
-    daysUntil,
-    deadlineStatement,
-  } = useCdata(address)
+	const {
+		loading,
+		campaignDetails,
+		imageURI,
+		imgLoad,
+		setImgLoad,
+		progress,
+		daysUntil,
+		deadlineStatement,
+	} = useCdata(address)
 
-  return (
-    <div className="db-tbl-rw">
-      <span className="db-tbl-rw-ele">
-        <img src={imageURI} alt="--" className="db-tbl-rw-img" />
-        <span>{campaignDetails.title}</span>
-      </span>
-      <span
-        className="db-tbl-rw-ele --status"
-        style={
-          campaignDetails.state == 0
-            ? { background: "#63FE4B" }
-            : campaignDetails.state == 1
-            ? { background: "amber" }
-            : campaignDetails.state == 2
-            ? { background: "red" }
-            : {}
-        }
-      >
-        {campaignDetails.state == 0
-          ? "Fundraising"
-          : campaignDetails.state == 1
-          ? "Expired"
-          : campaignDetails.state == 2
-          ? "Canceled"
-          : "--"}
-      </span>
-      <span className="db-tbl-rw-ele  --eta">
-        {daysUntil <= 0 ? 0 : daysUntil}
-      </span>
-      <span className="db-tbl-rw-ele">
-        <FontAwesomeIcon icon={faEthereum} className="db-tbl-act-icon" />
-        <span>
-          {Number(ethers.utils.formatEther(campaignDetails.currentBalance)) >=
-          10
-            ? Number(
-                ethers.utils.formatEther(campaignDetails.currentBalance)
-              ).toPrecision(4)
-            : Number(
-                Number(
-                  ethers.utils.formatEther(campaignDetails.currentBalance)
-                ).toFixed(3)
-              ).toPrecision(2)}
-        </span>
-      </span>
-      <span className="db-tbl-rw-ele --options">
-        <FontAwesomeIcon icon={faPencil} className="db-tbl-act-icon" />
-        {/* <FontAwesomeIcon icon={faTrash} className="db-tbl-act-icon"/> */}
-        <span className="db-tbl-details">{"Details"}</span>
-      </span>
-    </div>
-  )
+	return (
+		<div className={s["db-tbl-rw"]}>
+			<span className={s["db-tbl-rw-ele"]}>
+				<img src={imageURI} alt="--" className={s["db-tbl-rw-img"]} />
+				<span>{campaignDetails.title}</span>
+			</span>
+			<span
+				className={`${s["db-tbl-rw-ele"]} ${s["--status"]}`}
+				style={
+					campaignDetails.state == 0
+						? { background: "#C8EFE9", color: "#47947D" }
+						: campaignDetails.state == 1
+						? { background: "amber" }
+						: campaignDetails.state == 2
+						? { background: "red" }
+						: {}
+				}
+			>
+				{campaignDetails.state == 0
+					? "Fundraising"
+					: campaignDetails.state == 1
+					? "Expired"
+					: campaignDetails.state == 2
+					? "Canceled"
+					: "--"}
+			</span>
+			<span className={`${s["db-tbl-rw-ele"]}  ${s["--eta"]}`}>
+				{daysUntil <= 0 ? 0 : daysUntil}
+			</span>
+			<span className={s["db-tbl-rw-ele"]}>
+				<FontAwesomeIcon icon={faEthereum} className={s["db-tbl-act-icon"]} />
+				<span>
+					{Number(ethers.utils.formatEther(campaignDetails.currentBalance)) >=
+					10
+						? Number(
+								ethers.utils.formatEther(campaignDetails.currentBalance)
+						  ).toPrecision(4)
+						: Number(
+								Number(
+									ethers.utils.formatEther(campaignDetails.currentBalance)
+								).toFixed(3)
+						  ).toPrecision(2)}
+				</span>
+			</span>
+			<span className={`${s["db-tbl-rw-ele"]} ${s["--options"]}`}>
+				<FontAwesomeIcon icon={faPencil} className={s["db-tbl-act-icon"]} />
+				{/* <FontAwesomeIcon icon={faTrash} className={s["db-tbl-act-icon"]}/> */}
+				<span className={s["db-tbl-details"]}>{"Details"}</span>
+			</span>
+		</div>
+	)
 }

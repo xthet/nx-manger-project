@@ -3,31 +3,31 @@ import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { useEffect, useState } from "react"
 
 export default function useFindUserPublished(creator: string) {
-  const [createdCampaigns, setCreatedCampaigns] = useState<any[]>([])
+	const [createdCampaigns, setCreatedCampaigns] = useState<any[]>([])
 
-  useEffect(() => {
-    async function findUser() {
-      const client = new ApolloClient({
-        uri: process.env.NEXT_PUBLIC_SUBGRAPH_URI,
-        cache: new InMemoryCache(),
-      })
+	useEffect(() => {
+		async function findUserPublished() {
+			const client = new ApolloClient({
+				uri: process.env.NEXT_PUBLIC_SUBGRAPH_URI,
+				cache: new InMemoryCache(),
+			})
 
-      const cmps = await client
-        .query({
-          query: FIND_USER_PUBLISHED_CMPS,
-          variables: { cmpAddress: creator },
-        })
-        .then(async (data) => {
-          return data.data.campaignAddeds
-        })
-        .catch((err) => console.log("Error fetching data: ", err))
-      cmps && setCreatedCampaigns(cmps)
-    }
+			const cmps = await client
+				.query({
+					query: FIND_USER_PUBLISHED_CMPS,
+					variables: { cmpAddress: creator },
+				})
+				.then(async (data) => {
+					return data.data.campaignAddeds
+				})
+				.catch((err) => console.log("Error fetching data: ", err))
+			cmps && setCreatedCampaigns(cmps)
+		}
 
-    creator && findUser().catch((e) => console.log(e))
-  }, [creator])
+		creator && findUserPublished().catch((e) => console.log(e))
+	}, [creator])
 
-  return {
-    createdCampaigns,
-  }
+	return {
+		createdCampaigns,
+	}
 }

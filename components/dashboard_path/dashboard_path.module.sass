@@ -1,0 +1,26 @@
+@import @/styles/_mixins
+
+.section
+  z-index: 6
+  @include fl-cl
+  gap: 8px
+
+.link
+  @include fl-cl
+  gap: 8px
+  @include def-p
+  font-weight: 600
+  &:hover
+    opacity: 0.8
+
+.caret
+  height: 2rem
+  color: $color-text
+  cursor: pointer
+  opacity: 0.8
+  @media (max-width: $lg)
+    height: 2rem
+  @media (max-width: $md)
+    height: 1.5rem
+  @media(max-width: $sm)
+    height: 1.2rem

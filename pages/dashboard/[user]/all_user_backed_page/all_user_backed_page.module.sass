@@ -1,0 +1,73 @@
+@import @/styles/_mixins
+
+.db-table
+  width: 100%
+  @include fl-cl
+  @include fl-c
+
+.db-table-type
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+  padding: 0.6em 0
+  h3
+    @include def-h
+    font-weight: 700
+    font-size: 2rem
+    color: $color-card-text
+    @media(max-width: $lg)
+      font-size: 1.8rem
+
+.db-tbl-hdr
+  padding: 0.5em 0.3em
+  width: 100%
+  display: grid
+  border-top: 1px solid #e5e5e8
+  border-bottom: 1px solid #e5e5e8
+  grid-template-columns: 2fr 1fr 0.5fr 0.5fr 1fr
+  grid-column-gap: 2em
+  justify-items: start
+  align-content: center
+
+.db-tbl-hdr-ele
+  @include def-p
+  opacity: 0.78
+  font-weight: 500
+  font-size: 1.3rem
+  letter-spacing: 0.04em
+  // &.--eta
+  //   justify-self: end
+
+.db-tbl-hdr-ele--status
+  @extend .db-tbl-hdr-ele
+  margin-left: 1.25vw
+
+.db-tbl-act-icon
+  height: 1.4rem
+  color: $color-subtext
+  transition: all 0.3s ease
+  &:hover
+    opacity: 0.6
+
+.db-tbl-pgnt
+  width: 100%
+  @include fl-cc
+  gap: 0.8em
+
+.db-tbl-pgnt-icon
+  @include def-fa-icon
+
+.db-tbl-pgs-cont
+  @include fl-cc
+  gap: 0.8em
+  span
+    @include def-p
+    cursor: pointer
+    color: $color-card-text
+    &.--pgatv
+      background: $color-sub-bg
+      padding: 0.4em 0.7em
+      border-radius: 0.2em
+
+.db-tbl-sm-btn
+  @include def-btn
