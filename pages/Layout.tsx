@@ -10,6 +10,10 @@ export default function Layout({ children }: { children: ReactNode }) {
 			<Navbar />
 			<div className="p-full">{children}</div>
 			{!router.pathname.includes("/dashboard/[user]") && <Footer />}
+			{router.pathname ==
+				"/dashboard/[user]/all_user_created_page/[user_single_cmp_created]" && (
+				<Footer />
+			)}
 		</>
 	)
 }

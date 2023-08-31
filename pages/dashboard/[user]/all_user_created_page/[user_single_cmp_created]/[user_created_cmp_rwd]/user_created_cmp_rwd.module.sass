@@ -1,0 +1,56 @@
+@import @/styles/_mixins
+
+.section
+  width: 100%
+  padding: 0
+  @include fl-tl
+  @include fl-sb
+  padding-top: 6.04vw
+
+.separator
+  height: 60vh
+  width: 1px
+  background: $color-text
+  opacity: 0.4
+
+.rwd_in_view
+  padding: 0 3rem
+  @include fl-tl
+  @include fl-c
+  gap: 3vw
+  width: 60%
+  @include def-p
+
+.responses
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 10px
+
+.rwd_response_header
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 10px
+  @include def-h
+  font-size: 1.4rem
+  letter-spacing: 0.03em
+
+.rwd_separator
+  width: 100%
+  height: 1px
+  background: $color-text
+
+.response_in_view
+  width: 40%
+  padding: 0 3rem
+
+.resp_section_header
+  width: 100%
+  @include fl-cl
+  @include fl-c
+  gap: 10px
+  @include def-p
+  h3
+    @include def-h
+    font-size: 1.8rem

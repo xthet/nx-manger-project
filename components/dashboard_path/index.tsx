@@ -28,7 +28,11 @@ export default function DashboardPath() {
 						className={s.link}
 					>
 						{modArray[idx]}
-						<FontAwesomeIcon icon={faCaretRight} className={s.caret} />
+						<FontAwesomeIcon
+							icon={faCaretRight}
+							className={s.caret}
+							style={idx == pathArray.length - 1 ? { display: "none" } : {}}
+						/>
 					</Link>
 				)
 			})}
