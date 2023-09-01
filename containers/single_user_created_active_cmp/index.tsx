@@ -51,7 +51,9 @@ export default function SingleUserCreatedActiveCmp() {
 				<div className="acp-bg-grad"></div>
 			</div>
 
-			<DashboardPath />
+			<div className={s.dashboard_path}>
+				<DashboardPath />
+			</div>
 
 			<div className={s.active_campaign}>
 				<div className="acp-img fl-cc">

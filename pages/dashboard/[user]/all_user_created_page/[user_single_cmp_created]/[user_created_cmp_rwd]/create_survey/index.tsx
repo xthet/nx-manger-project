@@ -1,18 +1,48 @@
 import DashboardPath from "@/components/dashboard_path"
 import s from "./create_survey.module.sass"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faXmark } from "@fortawesome/free-solid-svg-icons"
-import { useState } from "react"
+import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { useContext, useEffect, useState } from "react"
+import { conn } from "@/types"
+import { ConnectionContext } from "@/contexts/connection"
+import Error from "next/error"
+import useRwdCard from "@/hooks/useRwdCard"
+import useDashboardValidator from "@/hooks/useDashboardValidator"
+import { useRouter } from "next/router"
+import { ethers } from "ethers"
+import RewardABI from "@/constants/abis/Reward.json"
+import fleek from "@fleekhq/fleek-storage-js"
+
+interface creds {
+	name: string
+	country: string
+	str_address: string
+	city: string
+	state: string
+	postal_code: string
+}
 
 export default function CreateSurvey() {
-	const [grandSurveyArray, setGrandSurveyArray] = useState<any[]>([])
+	const { uNameVal, signer }: conn = useContext(ConnectionContext)!
+	const router = useRouter()
+	const campaign_address = router.asPath.split("/")[4]
+	const r_id = Number(router.asPath.split("/")[5])
+	const { rwdDetails, rwdAddress } = useRwdCard(campaign_address, r_id)
+	const { validated } = useDashboardValidator()
+	const [backerSum, setBackerSum] = useState(0)
+	const [introText, setIntroText] = useState(
+		`${uNameVal} needs some info from you to deliver your reward.`
+	)
+	const [enquiriesArray, setEnquiriesArray] = useState<any[]>([])
+	const [credentials, setCredentials] = useState(true)
+	const [stagedOption, setStagedOption] = useState("")
 
 	function createSingleQuestion() {
 		const sq = {
 			type: "single",
 			question: "",
 		}
-		setGrandSurveyArray((prev) => [...prev, sq])
+		setEnquiriesArray((prev) => [...prev, sq])
 	}
 
 	function createMultiQuestion() {
@@ -21,21 +51,65 @@ export default function CreateSurvey() {
 			question: "",
 			options: [],
 		}
-
-		setGrandSurveyArray((prev) => [...prev, mq])
+		setEnquiriesArray((prev) => [...prev, mq])
 	}
 
+	async function uploadJSON(grand_survey_object: any) {
+		const date = new Date()
+		const timestamp = date.getTime()
+		const data = {
+			apiKey: process.env.NEXT_PUBLIC_FLEEK_STORAGE_API_KEY!,
+			apiSecret: process.env.NEXT_PUBLIC_FLEEK_STORAGE_API_SEC!,
+			key: `manger/grand_surveys/${uNameVal}/MNG_${timestamp}`,
+			data: JSON.stringify(grand_survey_object),
+		}
+		try {
+			const response = await fleek.upload(data)
+			return response.hashV0
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	async function releaseSurvey() {
+		const reward = new ethers.Contract(rwdAddress, RewardABI.abi, signer)
+		const grand_survey_object = {
+			reward_creator: uNameVal,
+			reward_address: rwdAddress,
+			credentials: credentials,
+			enquiries: enquiriesArray,
+		}
+		const ipfs_hash = await uploadJSON(grand_survey_object)
+		await reward.updateSurveyLink(`ipfs://${ipfs_hash}`)
+	}
+
+	useEffect(() => {
+		async function getRwdData() {
+			if (signer && rwdAddress) {
+				const reward = new ethers.Contract(rwdAddress, RewardABI.abi, signer)
+				const donators = await reward.getDonators()
+				setBackerSum(donators.length)
+			}
+		}
+		getRwdData()
+	}, [rwdAddress, signer])
+
+	if (!validated) {
+		return <Error statusCode={404} />
+	}
 	return (
 		<main className={s.create_survey}>
-			<DashboardPath />
+			<div className={s.dashboard_path}>
+				<DashboardPath />
+			</div>
 			<div className={s.header}>
 				<h2>Create Survey</h2>
 				<div className={s.details}>
-					<span>0.05 ETH reward</span>
+					<span>{ethers.utils.formatEther(rwdDetails.price)} ETH reward</span>
 					<span>|</span>
-					<span>38 backers</span>
+					<span>{`${backerSum} backers`}</span>
 					<span>|</span>
-					<span>Palomino Vol 2 & 3</span>
+					<span>{rwdDetails.title}</span>
 				</div>
 			</div>
 			<div className={s.notice}>
@@ -68,48 +142,128 @@ export default function CreateSurvey() {
 							className={s.ed_text_area}
 							cols={30}
 							rows={3}
-							defaultValue="darkplanetcomics needs some info from you to deliver your reward."
-							placeholder="darkplanetcomics needs some info from you to deliver your reward."
+							value={introText}
+							onChange={(e) => {
+								setIntroText(e.target.value)
+							}}
 						/>
 					</div>
 
 					<div className={s.ed_enquiry}>
 						<div className={s.ed_shipping_details}>
-							<p>Name & address</p>
+							<p>
+								Name & address{" "}
+								<span style={{ opacity: "0.6" }}>(Shipping details)</span>
+							</p>
 						</div>
-						<FontAwesomeIcon icon={faXmark} className={s.x_icon} />
+						{credentials ? (
+							<FontAwesomeIcon
+								icon={faXmark}
+								className={s.x_icon}
+								onClick={() => setCredentials(false)}
+							/>
+						) : (
+							<FontAwesomeIcon
+								icon={faPlus}
+								className={s.x_icon}
+								onClick={() => setCredentials(true)}
+							/>
+						)}
 					</div>
-
-					<div className={s.ed_enquiry}>
-						<div className={s.ed_single_question}>
-							<input type="text" />
-						</div>
-						<FontAwesomeIcon icon={faXmark} className={s.x_icon} />
-					</div>
-
-					<div className={s.ed_enquiry}>
-						<div className={s.ed_multi_question}>
-							<input type="text" />
-							<div className={s.ed_multi_options}>
-								<div className={s.ed_option}>
-									<span>Option one</span>
-									<FontAwesomeIcon icon={faXmark} className={s.x_icon} />
+					{enquiriesArray.map((enquiry, idx) => {
+						if (enquiry.type == "single") {
+							return (
+								<div className={s.ed_enquiry} key={idx}>
+									<div className={s.ed_single_question}>
+										<input
+											type="text"
+											value={enquiry.question}
+											onChange={(e) => {
+												enquiriesArray[idx].question = e.target.value
+												setEnquiriesArray((prev) => [...enquiriesArray])
+											}}
+											required
+										/>
+									</div>
+									<FontAwesomeIcon
+										icon={faXmark}
+										className={s.x_icon}
+										onClick={() => {
+											enquiriesArray.splice(idx, 1)
+											setEnquiriesArray((prev) => [...enquiriesArray])
+										}}
+									/>
 								</div>
-								<div className={s.ed_option}>
-									<span>Option one</span>
-									<FontAwesomeIcon icon={faXmark} className={s.x_icon} />
-								</div>
-								<div className={s.ed_option}>
-									<span>Option one</span>
-									<FontAwesomeIcon icon={faXmark} className={s.x_icon} />
-								</div>
-								<span className={s.ed_add_option}>Add another option</span>
-							</div>
-						</div>
-						<FontAwesomeIcon icon={faXmark} className={s.x_icon} />
-					</div>
+							)
+						} else if (enquiry.type == "multi") {
+							return (
+								<div className={s.ed_enquiry} key={idx}>
+									<div className={s.ed_multi_question}>
+										<input
+											type="text"
+											value={enquiry.question}
+											onChange={(e) => {
+												enquiriesArray[idx].question = e.target.value
+												setEnquiriesArray((prev) => [...enquiriesArray])
+											}}
+											required
+										/>
+										<div className={s.ed_multi_options}>
+											{enquiriesArray[idx].options.map(
+												(option: string, o_idx: number) => {
+													return (
+														<div className={s.ed_option} key={o_idx}>
+															<span>{option}</span>
+															<FontAwesomeIcon
+																icon={faXmark}
+																className={s.x_icon}
+																onClick={() => {
+																	enquiriesArray[idx].options.splice(o_idx, 1)
+																	setEnquiriesArray((prev) => [
+																		...enquiriesArray,
+																	])
+																}}
+															/>
+														</div>
+													)
+												}
+											)}
 
-					{/* <div className={s.separator} /> */}
+											<div className={s.ed_add_option}>
+												<input
+													type="text"
+													placeholder="Add an option"
+													value={stagedOption}
+													onChange={(e) => setStagedOption(e.target.value)}
+												/>
+												<FontAwesomeIcon
+													icon={faPlus}
+													className={s.x_icon}
+													onClick={() => {
+														enquiriesArray[idx].options = [
+															...enquiriesArray[idx].options,
+															stagedOption,
+														]
+														setEnquiriesArray((prev) => [...enquiriesArray])
+														setStagedOption("")
+													}}
+												/>
+											</div>
+										</div>
+									</div>
+									<FontAwesomeIcon
+										icon={faXmark}
+										className={s.x_icon}
+										onClick={() => {
+											enquiriesArray.splice(idx, 1)
+											setEnquiriesArray((prev) => [...enquiriesArray])
+										}}
+									/>
+								</div>
+							)
+						}
+					})}
+
 					<div className={s.ed_add_questions}>
 						<button
 							onClick={() => {
@@ -128,81 +282,106 @@ export default function CreateSurvey() {
 					</div>
 					<div className={s.separator} />
 					<div className={s.ed_save_cancel}>
-						<button>Send survey</button>
-						<span>Cancel</span>
+						<button
+							onClick={() => {
+								releaseSurvey()
+							}}
+						>
+							Send survey
+						</button>
+						<span
+							onClick={() => {
+								router.push(
+									`/dashboard/${uNameVal}/all_user_created_page/${campaign_address}/`
+								)
+							}}
+						>
+							Cancel
+						</span>
 					</div>
 				</main>
 
 				{/* PREVIEW */}
 				<aside className={s.preview}>
 					<h2>Preview</h2>
-					<p className={s.pr_intro}>
-						darkplanetcomics needs some info from you to deliver your reward.
-					</p>
+					<p className={s.pr_intro}>{introText}</p>
 					<div className={s.separator} />
 
-					<div className={s.pr_enquiry}>
-						<div className={s.pr_shipping_details}>
-							<h4>Shipping details</h4>
-							<input type="text" className={s.pr_input} placeholder="Country" />
-							<input type="text" className={s.pr_input} placeholder="Name" />
-							<div className={s.pr_input_small}>
+					{credentials && (
+						<div className={s.pr_enquiry}>
+							<div className={s.pr_shipping_details}>
+								<h4>Shipping details</h4>
+								<input type="text" className={s.pr_input} placeholder="Name" />
 								<input
 									type="text"
 									className={s.pr_input}
-									placeholder="Address 1"
+									placeholder="Country"
 								/>
-								<small>Street Address, P.O. box</small>
+								<div className={s.pr_input_small}>
+									<input
+										type="text"
+										className={s.pr_input}
+										placeholder="Address"
+									/>
+									<small>Street Address, P.O. box</small>
+								</div>
+								<input type="text" className={s.pr_input} placeholder="City" />
+								<input type="text" className={s.pr_input} placeholder="State" />
+								<input
+									type="text"
+									className={s.pr_input}
+									placeholder="Zip or Postal Code"
+								/>
 							</div>
-							<input type="text" className={s.pr_input} placeholder="City" />
-							<input type="text" className={s.pr_input} placeholder="State" />
-							<input
-								type="text"
-								className={s.pr_input}
-								placeholder="Zip or Postal Code"
-							/>
+							<div className={s.separator} />
 						</div>
-					</div>
+					)}
 
-					<div className={s.separator} />
-
-					<div className={s.pr_enquiry}>
-						<div className={s.pr_single_question}>
-							<label className={s.pr_question_label}>
-								Did you select more than one reward tier?
-							</label>
-							<input
-								type="text"
-								className={s.pr_input}
-								placeholder="required"
-								required
-							/>
-						</div>
-					</div>
-
-					<div className={s.separator} />
-
-					<div className={s.pr_enquiry}>
-						<div className={s.pr_multi_question}>
-							<label className={s.pr_question_label}>
-								For how many Lynx did you pledge?
-							</label>
-							<div className={s.pr_options}>
-								<div className={s.pr_option}>
-									<input type="radio" required className={s.pr_option_radio} />
-									<span>Option one</span>
+					{enquiriesArray.map((enquiry, idx) => {
+						if (enquiry.type == "single") {
+							return (
+								<div className={s.pr_enquiry} key={idx}>
+									<div className={s.pr_single_question}>
+										<label className={s.pr_question_label}>
+											{enquiry.question}
+										</label>
+										<input
+											type="text"
+											className={s.pr_input}
+											placeholder="required"
+											required
+										/>
+									</div>
+									<div className={s.separator} />
 								</div>
-								<div className={s.pr_option}>
-									<input type="radio" required className={s.pr_option_radio} />
-									<span>Option one</span>
+							)
+						} else if (enquiry.type == "multi") {
+							return (
+								<div className={s.pr_enquiry} key={idx}>
+									<div className={s.pr_multi_question}>
+										<label className={s.pr_question_label}>
+											{enquiry.question}
+										</label>
+										<div className={s.pr_options}>
+											{enquiry.options.map((option: string, o_idx: number) => {
+												return (
+													<div className={s.pr_option} key={o_idx}>
+														<input
+															type="radio"
+															required
+															className={s.pr_option_radio}
+														/>
+														<span>{option}</span>
+													</div>
+												)
+											})}
+										</div>
+									</div>
+									<div className={s.separator} />
 								</div>
-								<div className={s.pr_option}>
-									<input type="radio" required className={s.pr_option_radio} />
-									<span>Option one</span>
-								</div>
-							</div>
-						</div>
-					</div>
+							)
+						}
+					})}
 				</aside>
 			</section>
 		</main>

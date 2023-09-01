@@ -2,11 +2,20 @@
 
 .create_survey
   width: 100%
-  padding: 0 8rem
-  padding-top: 5.04vw
+  padding: 6.5vw 8rem 5vw
+  // padding-top: 6.5vw
   @include fl-tl
   @include fl-c
   gap: 1vw
+
+.dashboard_path
+  width: 100%
+  padding: 4px 8rem
+  background: $color-sub-bg
+  position: absolute
+  top: 3.8vw
+  left: 0
+  z-index: 15
 
 .header
   width: 100%
@@ -23,10 +32,14 @@
   padding: 5px
   width: 100%
   @include fl-cl
-  gap: 10px
+  gap: 6px
   span
     @include def-p
-    color: $color-ltext
+    // color: $color-ltext
+    font-weight: 500
+    opacity: 0.8
+    font-size: 1.4rem
+    font-style: italic
 
 .notice
   width: 100%
@@ -136,11 +149,19 @@
     height: 1.5rem
 
 .ed_add_option
-  cursor: pointer
-  margin-top: 3rem
-  @include def-p
-  font-size: 1.3rem
-  color: $color-subtext
+  margin-top: 10px
+  background: rgba(150,145,165,0.1)
+  padding: 4px
+  border-radius: 3px
+  width: 80%
+  @include fl-cl
+  @include fl-sb
+  input
+    @include def-inpt
+    width: 70%
+    border-radius: 3px
+    color: $color-subtext
+    font-size: 1.2rem
 
 .ed_add_questions
   width: 100%
@@ -159,6 +180,8 @@
   @include def-p
   button
     @include def-btn
+  span
+    cursor: pointer
 
 .pr_intro
   @include def-p
@@ -168,6 +191,8 @@
   @include fl-c
   gap: 6px
   width: 100%
+  .separator
+    margin-top: 6px
 
 .pr_shipping_details
   @include fl-tl

@@ -224,7 +224,7 @@ export default function UserSingleActiveRwd({ address, id, onEdit }: props) {
 						<Link
 							href={`/dashboard/${uNameVal}/all_user_created_page/${address}/${id}/create_survey`}
 						>
-							<button className="rc-cta">Create survey</button>
+							<button className="rc-cta">View survey</button>
 						</Link>
 					)}
 				</div>
