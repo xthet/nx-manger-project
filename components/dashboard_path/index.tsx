@@ -22,7 +22,7 @@ export default function DashboardPath() {
 	modArray[4] = campaignDetails.title
 	modArray[5] = rwdDetails.title
 
-	console.log(pathArray)
+	// console.log(pathArray)
 	return (
 		<div className={s.section}>
 			{pathArray.map((page, idx) => {

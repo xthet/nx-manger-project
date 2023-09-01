@@ -12,6 +12,7 @@ import { useRouter } from "next/router"
 import { ethers } from "ethers"
 import RewardABI from "@/constants/abis/Reward.json"
 import fleek from "@fleekhq/fleek-storage-js"
+import { TimelineBox } from "@/components/exportComps"
 
 interface creds {
 	name: string
@@ -30,12 +31,15 @@ export default function CreateSurvey() {
 	const { rwdDetails, rwdAddress } = useRwdCard(campaign_address, r_id)
 	const { validated } = useDashboardValidator()
 	const [backerSum, setBackerSum] = useState(0)
-	const [introText, setIntroText] = useState(
-		`${uNameVal} needs some info from you to deliver your reward.`
-	)
+	const [introText, setIntroText] = useState("")
 	const [enquiriesArray, setEnquiriesArray] = useState<any[]>([])
 	const [credentials, setCredentials] = useState(true)
 	const [stagedOption, setStagedOption] = useState("")
+
+	const [showTBX, setShowTBX] = useState(false)
+	const tlArr = ["Creating survey object", "Uploading", "Survey sent"]
+	const [tlIndex, setTlIndex] = useState(0)
+	const [tlClosable, setTlClosable] = useState(false)
 
 	function createSingleQuestion() {
 		const sq = {
@@ -72,15 +76,20 @@ export default function CreateSurvey() {
 	}
 
 	async function releaseSurvey() {
+		setShowTBX(true)
 		const reward = new ethers.Contract(rwdAddress, RewardABI.abi, signer)
 		const grand_survey_object = {
 			reward_creator: uNameVal,
 			reward_address: rwdAddress,
+			intro: introText,
 			credentials: credentials,
 			enquiries: enquiriesArray,
 		}
+		setTlIndex((prev) => (prev >= tlArr.length ? prev : prev + 1))
 		const ipfs_hash = await uploadJSON(grand_survey_object)
-		await reward.updateSurveyLink(`ipfs://${ipfs_hash}`)
+		const updateTx = await reward.updateSurveyLink(`ipfs://${ipfs_hash}`)
+		await updateTx.wait(1)
+		setTlIndex((prev) => (prev >= tlArr.length ? prev : prev + 2))
 	}
 
 	useEffect(() => {
@@ -92,13 +101,24 @@ export default function CreateSurvey() {
 			}
 		}
 		getRwdData()
-	}, [rwdAddress, signer])
+		setIntroText(`${uNameVal} needs some info from you to deliver your reward.`)
+	}, [rwdAddress, signer, campaign_address, uNameVal])
 
 	if (!validated) {
 		return <Error statusCode={404} />
 	}
 	return (
 		<main className={s.create_survey}>
+			{showTBX && (
+				<TimelineBox
+					offMe={() => {
+						setShowTBX(false)
+					}}
+					arr={tlArr}
+					arrIndex={tlIndex}
+					closable={tlClosable}
+				/>
+			)}
 			<div className={s.dashboard_path}>
 				<DashboardPath />
 			</div>
