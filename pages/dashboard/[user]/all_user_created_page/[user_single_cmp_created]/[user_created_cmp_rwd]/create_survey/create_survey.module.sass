@@ -1,0 +1,223 @@
+@import @/styles/_mixins
+
+.create_survey
+  width: 100%
+  padding: 0 8rem
+  padding-top: 5.04vw
+  @include fl-tl
+  @include fl-c
+  gap: 1vw
+
+.header
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 10px
+  h2
+    @include def-h
+    font-size: 2.5rem
+    color: $color-card-text
+
+.details
+  background: $color-htext
+  padding: 5px
+  width: 100%
+  @include fl-cl
+  gap: 10px
+  span
+    @include def-p
+    color: $color-ltext
+
+.notice
+  width: 100%
+  background: $color-sub-bg
+  border-radius: 6px
+  padding: 2rem
+  h4
+    @include def-h
+    font-size: 1.6rem
+    font-weight: 600
+    letter-spacing: 0.02em
+    margin-bottom: 15px
+  ul
+    padding: 0 3rem
+  li
+    @include def-p
+    font-weight: 400
+    margin-bottom: 8px
+    font-size: 1.4rem
+
+.survey_creator
+  width: 100%
+  @include fl-tl
+  @include fl-sb
+  padding: 10px
+
+.edit
+  @include fl-tl
+  @include fl-c
+  gap: 10px
+  width: 45%
+  h2
+    @include def-h
+    font-size: 2rem
+    margin-bottom: 2rem
+
+.preview
+  @extend .edit
+
+.ed_introduction
+  width: 100%
+  @include def-p
+  p
+    font-weight: 600
+    margin-bottom: 8px
+
+.x_icon
+  @include def-fa-icon
+  color: rgba(0,0,0,0.3)
+  height: 2rem
+  margin-left: auto
+
+.ed_text_area
+  @include def-inpt
+  width: 100%
+  border-radius: 3px
+  font-weight: 400
+
+.ed_shipping_details
+  @include def-p
+  font-weight: 500
+  p
+    margin-top: 2.5px
+
+.separator
+  width: 100%
+  height: 1px
+  background: $color-subtext
+
+.ed_enquiry
+  border-radius: 3px
+  width: 100%
+  background: $color-htext
+  padding: 8px
+  @include fl-tl
+
+.ed_single_question
+  width: 90%
+  input
+    @include def-inpt
+    width: 100%
+    border-radius: 3px
+
+.ed_multi_question
+  @extend .ed_single_question
+  @include fl-tl
+  @include fl-c
+  gap: 10px
+
+.ed_multi_options
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 5px
+
+.ed_option
+  padding: 0.5em 0.7em
+  @include def-p
+  font-size: 1.4rem
+  border-radius: 3px
+  border: 1px solid $color-sub-bg
+  background: white
+  width: 60%
+  @include fl-cl
+  @include fl-sb
+  .x_icon
+    height: 1.5rem
+
+.ed_add_option
+  cursor: pointer
+  margin-top: 3rem
+  @include def-p
+  font-size: 1.3rem
+  color: $color-subtext
+
+.ed_add_questions
+  width: 100%
+  @include fl-cl
+  gap: 10px
+  button
+    @include def-btn
+    background: $color-node-ring
+    box-shadow: none
+    color: white
+
+.ed_save_cancel
+  width: 100%
+  @include fl-cl
+  gap: 20px
+  @include def-p
+  button
+    @include def-btn
+
+.pr_intro
+  @include def-p
+
+.pr_enquiry
+  @include fl-tl
+  @include fl-c
+  gap: 6px
+  width: 100%
+
+.pr_shipping_details
+  @include fl-tl
+  @include fl-c
+  gap: 6px
+  width: 70%
+  h4
+    @include def-p
+    font-weight: 600
+  small
+    @include def-p
+    font-weight: 300
+    font-size: 1rem
+
+.pr_input_small
+  width: 100%
+
+.pr_input
+  @include def-inpt
+  width: 100%
+  border-radius: 3px
+
+.pr_single_question
+  @extend .pr_input_small
+  @include fl-tl
+  @include fl-c
+  gap: 6px
+
+.pr_question_label
+  @include def-p
+  font-size: 1.4rem
+
+.pr_multi_question
+  @extend .pr_single_question
+
+.pr_options
+  margin-top: 8px
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 6px
+
+.pr_option
+  width: 100%
+  @include fl-cl
+  gap: 6px
+  span
+    @include def-p
+    font-size: 1.3rem
+
+.pr_option_radio
+  cursor: pointer
+  accent-color: $color-text

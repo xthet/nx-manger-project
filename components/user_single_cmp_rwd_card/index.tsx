@@ -216,7 +216,7 @@ export default function UserSingleCmpRwdCard({ address, id, onEdit }: props) {
 						</Link>
 					) : (
 						<Link
-							href={`/dashboard/${uNameVal}/all_user_created_page/${address}/${id}`}
+							href={`/dashboard/${uNameVal}/all_user_created_page/${address}/${id}/create_survey`}
 						>
 							<button className="rc-cta">Create survey</button>
 						</Link>
