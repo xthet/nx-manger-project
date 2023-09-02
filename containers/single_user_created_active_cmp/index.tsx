@@ -117,12 +117,10 @@ export default function SingleUserCreatedActiveCmp() {
 													)
 											  ).toPrecision(4)
 											: Number(
-													Number(
-														ethers.utils.formatEther(
-															campaignDetails.currentBalance
-														)
-													).toFixed(3)
-											  ).toPrecision(2)}
+													ethers.utils.formatEther(
+														campaignDetails.currentBalance
+													)
+											  ).toFixed(4)}
 									</p>
 									<p className="acp-amt-curr">{"ETH"}</p>
 								</div>

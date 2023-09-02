@@ -7,11 +7,12 @@ import { conn } from "@/types"
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Error from "next/error"
-import { useRouter } from "next/router"
+import Link from "next/link"
 import { useContext } from "react"
 import s from "./all_user_backed_page.module.sass"
 
 export default function AllUserBackedPage() {
+	const { account, isAuth, uNameVal }: conn = useContext(ConnectionContext)!
 	const { validated } = useDashboardValidator()
 	const { backedCampaigns } = useFindUserBacked()
 
@@ -37,7 +38,16 @@ export default function AllUserBackedPage() {
 
 				{backedCampaigns.length > 0 &&
 					backedCampaigns.map((cmp, idx) => {
-						return <CampaignRow address={cmp.campaignAddress} key={idx} />
+						return (
+							<Link
+								href={`/dashboard/${uNameVal}/all_user_backed_page/${cmp.campaignAddress}`}
+								key={idx}
+								className={s["db-tbl-rw-link"]}
+								style={{ width: "100%" }}
+							>
+								<CampaignRow address={cmp.campaignAddress} />
+							</Link>
+						)
 					})}
 			</div>
 			<div className={s["db-tbl-pgnt"]}>

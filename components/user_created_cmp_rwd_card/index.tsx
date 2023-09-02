@@ -20,7 +20,7 @@ interface props {
 	onEdit: boolean
 }
 
-export default function UserSingleCmpRwdCard({ address, id, onEdit }: props) {
+export default function UserCreatedCmpRwdCard({ address, id, onEdit }: props) {
 	const { loading, setLoading, rwdDetails, deliDate, shipping, rwdAddress } =
 		useRwdCard(address, id)
 	const { isConnected, signer, isAuth, account, uNameVal }: conn =

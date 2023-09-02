@@ -11,6 +11,7 @@ import { useContext } from "react"
 import s from "./user_created_tab.module.sass"
 import useFindUserPublished from "@/hooks/useFindUserPublished"
 import CampaignRow from "@/components/campaignRow/CampaignRow"
+import Link from "next/link"
 
 export default function UserCreatedTab() {
 	const { account, isAuth, uNameVal }: conn = useContext(ConnectionContext)!
@@ -87,7 +88,16 @@ export default function UserCreatedTab() {
 
 				{createdCampaigns.length > 0 &&
 					createdCampaigns.slice(0, 4).map((cmp, idx) => {
-						return <CampaignRow address={cmp.campaignAddress} key={idx} />
+						return (
+							<Link
+								href={`/dashboard/${uNameVal}/all_user_created_page/${cmp.campaignAddress}`}
+								key={idx}
+								className={s["db-tbl-rw-link"]}
+								style={{ width: "100%" }}
+							>
+								<CampaignRow address={cmp.campaignAddress} />
+							</Link>
+						)
 					})}
 			</section>
 

@@ -108,7 +108,7 @@ export default function CampaignCard({ address, creator }: props) {
 											Number(
 												ethers.utils.formatEther(campaignDetails.currentBalance)
 											).toFixed(3)
-									  ).toPrecision(2)}
+									  )}
 							</p>
 							<p className="cc-amt-curr">{"ETH"}</p>
 						</div>

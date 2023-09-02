@@ -1,7 +1,11 @@
 import DashboardPath from "@/components/dashboard_path"
 import s from "./create_survey.module.sass"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons"
+import {
+	faPlus,
+	faXmark,
+	faXmarkCircle,
+} from "@fortawesome/free-solid-svg-icons"
 import { useContext, useEffect, useState } from "react"
 import { conn } from "@/types"
 import { ConnectionContext } from "@/contexts/connection"
@@ -35,6 +39,7 @@ export default function CreateSurvey() {
 	const [enquiriesArray, setEnquiriesArray] = useState<any[]>([])
 	const [credentials, setCredentials] = useState(true)
 	const [stagedOption, setStagedOption] = useState("")
+	const [showNotice, setShowNotice] = useState(true)
 
 	const [showTBX, setShowTBX] = useState(false)
 	const tlArr = ["Creating survey object", "Uploading", "Survey sent"]
@@ -127,12 +132,19 @@ export default function CreateSurvey() {
 				<div className={s.details}>
 					<span>{ethers.utils.formatEther(rwdDetails.price)} ETH reward</span>
 					<span>|</span>
-					<span>{`${backerSum} backers`}</span>
+					<span>{`${backerSum} backer(s)`}</span>
 					<span>|</span>
 					<span>{rwdDetails.title}</span>
 				</div>
 			</div>
-			<div className={s.notice}>
+			<div className={s.notice} style={!showNotice ? { display: "none" } : {}}>
+				<FontAwesomeIcon
+					icon={faXmarkCircle}
+					className={s.x_icon_abs}
+					onClick={() => {
+						setShowNotice(false)
+					}}
+				/>
 				<h4>Important reminders</h4>
 				<ul>
 					<li>

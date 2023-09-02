@@ -9,6 +9,7 @@ import { useContext } from "react"
 import s from "./user_backed_tab.module.sass"
 import useFindUserBacked from "@/hooks/useFindUserBacked"
 import CampaignRow from "@/components/campaignRow/CampaignRow"
+import Link from "next/link"
 
 export default function UserBackedTab() {
 	const { account, isAuth, uNameVal }: conn = useContext(ConnectionContext)!
@@ -26,7 +27,7 @@ export default function UserBackedTab() {
 						<div className={s["db-stat-amt-grp"]}>
 							<p className={s["db-stat-amt"]}>
 								{totalDonatedSum.length > 5
-									? totalDonatedSum.slice(0, 4) + "+"
+									? Number(totalDonatedSum).toFixed(2) + "+"
 									: totalDonatedSum}
 							</p>
 
@@ -68,42 +69,6 @@ export default function UserBackedTab() {
 				</div>
 			</div>
 
-			{/* <section className="db-recents">
-        <h3>{"Recent Donations"}</h3>
-        <div className="db-recents-cont">
-          <div className="db-recent">
-            <div className="db-recent-dets-grp">
-              <img src="/re3.jpg" alt="--" />
-              <div className="db-recent-dets">
-                <span>{"Emma Ryan Jr."}</span>
-                <span>{"Dark Metroidvania"}</span>
-              </div>
-            </div>
-            <span className="db-recent-amt">{"0.03"}<span>{"ETH"}</span></span>
-          </div>
-          <div className="db-recent">
-            <div className="db-recent-dets-grp">
-              <img src="/re3.jpg" alt="--" />
-              <div className="db-recent-dets">
-                <span>{"Emma Ryan Jr."}</span>
-                <span>{"Dark Metroidvania"}</span>
-              </div>
-            </div>
-            <span className="db-recent-amt">{"0.03"}<span>{"ETH"}</span></span>
-          </div>
-          <div className="db-recent">
-            <div className="db-recent-dets-grp">
-              <img src="/re3.jpg" alt="--" />
-              <div className="db-recent-dets">
-                <span>{"Emma Ryan Jr."}</span>
-                <span>{"Dark Metroidvania"}</span>
-              </div>
-            </div>
-            <span className="db-recent-amt">{"0.03"}<span>{"ETH"}</span></span>
-          </div>
-        </div>
-      </section> */}
-
 			<section className={s["db-table"]}>
 				<div className={s["db-table-type"]}>
 					<h3>{"Campaigns Backed"}</h3>
@@ -120,7 +85,16 @@ export default function UserBackedTab() {
 
 				{backedCampaigns.length > 0 &&
 					backedCampaigns.slice(0, 4).map((cmp, idx) => {
-						return <CampaignRow address={cmp.campaignAddress} key={idx} />
+						return (
+							<Link
+								href={`/dashboard/${uNameVal}/all_user_backed_page/${cmp.campaignAddress}`}
+								key={idx}
+								className={s["db-tbl-rw-link"]}
+								style={{ width: "100%" }}
+							>
+								<CampaignRow address={cmp.campaignAddress} />
+							</Link>
+						)
 					})}
 			</section>
 

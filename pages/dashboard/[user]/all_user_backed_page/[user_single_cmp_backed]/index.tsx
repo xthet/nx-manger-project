@@ -1,13 +1,13 @@
+import UserBackedCmpRwdCard from "@/components/user_backed_cmp_rwd_card"
 import SingleUserCreatedActiveCmp from "@/containers/single_user_created_active_cmp"
 import { CampaignProvider } from "@/contexts/currentCampaign"
 import useDashboardValidator from "@/hooks/useDashboardValidator"
+import useRwdTab from "@/hooks/useRwdTab"
 import Error from "next/error"
 import { useRouter } from "next/router"
-import s from "./user_single_cmp_created.module.sass"
-import useRwdTab from "@/hooks/useRwdTab"
-import UserCreatedCmpRwdCard from "@/components/user_created_cmp_rwd_card"
+import s from "./user_single_cmp_backed.module.sass"
 
-export default function UserSingleCmpCreated() {
+export default function UserSingleCmpBacked() {
 	const router = useRouter()
 	const campaign_address = router.asPath.split("/")[4]
 	const { loading, rwIds } = useRwdTab(campaign_address)
@@ -23,14 +23,14 @@ export default function UserSingleCmpCreated() {
 				<SingleUserCreatedActiveCmp />
 				<section className={s.rewards_section}>
 					<div className={s.header}>
-						<h3>REWARDS CREATED</h3>
+						<h3>REWARDS DESERVED</h3>
 						<div className={s.separator} />
 					</div>
 
 					<div className={s.rewards_cont}>
 						{rwIds.map((rId: number, index: number) => {
 							return (
-								<UserCreatedCmpRwdCard
+								<UserBackedCmpRwdCard
 									address={campaign_address}
 									id={rId}
 									key={index}
