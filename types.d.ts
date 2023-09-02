@@ -157,3 +157,38 @@ export interface noti {
 	title: string
 	message: string
 }
+
+export interface enquiry {
+	type: "single" | "multi"
+	question: string
+	options?: string[]
+}
+
+export interface survey {
+	reward_address: string
+	reward_creator: string
+	intro: string
+	credentials: boolean
+	enquiries: enquiry[]
+}
+
+export interface creds {
+	name: string
+	country: string
+	str_address: string
+	city: string
+	state: string
+	postal_code: string
+}
+
+export interface response {
+	question: string
+	answer: string
+}
+
+export interface survey_response {
+	responder_name: string
+	reward_in_view: string
+	credentials: creds | null
+	responses: response[]
+}

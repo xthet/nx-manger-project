@@ -5,9 +5,13 @@ import Error from "next/error"
 import { useRouter } from "next/router"
 import s from "./user_created_cmp_rwd.module.sass"
 import DashboardPath from "@/components/dashboard_path"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { ConnectionContext } from "@/contexts/connection"
-import { conn } from "@/types"
+import { conn, survey_response } from "@/types"
+import useFindSurveyResponders from "@/hooks/useFindSurveyResponders"
+import { cutStr } from "@/utils/cutStr"
+import { truncateStr } from "@/utils/truncateStr"
+import ResponseRow from "@/components/response_row"
 
 export default function UserCreatedCmpRwd() {
 	const router = useRouter()
@@ -17,6 +21,11 @@ export default function UserCreatedCmpRwd() {
 		useContext(ConnectionContext)!
 	const { loading, setLoading, rwdDetails, deliDate, shipping, rwdAddress } =
 		useRwdCard(campaign_address, r_id)
+	const { responders } = useFindSurveyResponders(
+		rwdAddress,
+		rwdDetails.donators
+	)
+	const [resInView, setResInView] = useState<survey_response>()
 	const { validated } = useDashboardValidator()
 	if (!validated) {
 		return <Error statusCode={404} />
@@ -30,7 +39,7 @@ export default function UserCreatedCmpRwd() {
 			<section className={s.section}>
 				<main
 					className={s.rwd_in_view}
-					style={!rwdDetails.surveyLink ? { width: "100%" } : {}}
+					style={resInView ? { width: "60%" } : { width: "100%" }}
 				>
 					<UserSingleActiveRwd
 						address={campaign_address}
@@ -44,78 +53,81 @@ export default function UserCreatedCmpRwd() {
 						</div>
 						{/* <p>No responses have been made to this survey.</p> */}
 						<div className={s.entries_cont}>
-							<div className={s.resp_entry}>
-								<span>cod_alligator</span>
-								<button>View response</button>
-							</div>
-							<div className={s.resp_entry}>
-								<span>cod_alligator</span>
-								<button>View response</button>
-							</div>
-							<div className={s.resp_entry}>
-								<span>cod_alligator</span>
-								<button>View response</button>
-							</div>
-							<div className={s.resp_entry}>
-								<span>cod_alligator</span>
-								<button>View response</button>
-							</div>
-							<div className={s.resp_entry}>
-								<span>cod_alligator</span>
-								<button>View response</button>
-							</div>
-							<div className={s.resp_entry}>
-								<span>cod_alligator</span>
-								<button>View response</button>
-							</div>
+							{responders &&
+								responders.map((responder, idx) => {
+									return (
+										<ResponseRow
+											address={responder.address}
+											key={idx}
+											onClick={() => {
+												async function get_res() {
+													const rsp = await fetch(responder.res_link)
+														.then((res) => res.json())
+														.then((data) => data)
+													console.log(rsp)
+													setResInView(rsp)
+												}
+												get_res()
+											}}
+										/>
+									)
+								})}
 						</div>
 					</div>
 				</main>
 				<div className={s.separator} />
-				<aside className={s.response_in_view}>
+				<aside
+					className={s.response_in_view}
+					style={
+						resInView ? { width: "40%", display: "block" } : { display: "none" }
+					}
+				>
 					<div className={s.resp_section_header}>
 						{rwdDetails && <h3>{rwdDetails.title}</h3>}
-						<p>cod_alligator</p>
+						<p>{resInView ? resInView.responder_name : ""}</p>
 					</div>
 
-					<div className={s.staged_resp}>
-						<div className={s.shipping_details}>
-							<h4>Shipping details</h4>
-							<div className={s.shipping_dets_cont}>
-								<p>
-									<span>Name:</span>
-									<span>James Fraser</span>
-								</p>
-								<p>
-									<span>Address:</span>
-									<span>34, Eugene Drive, Palo Alto, CA.</span>
-								</p>
-								<p>
-									<span>City/State:</span>
-									<span>Aurora/California</span>
-								</p>
-								<p>
-									<span>Zip/Postal Code:</span>
-									<span>110115</span>
-								</p>
-								<p>
-									<span>Country:</span>
-									<span>United States of America</span>
-								</p>
-							</div>
-						</div>
-						<div className={s.resp_separator} />
-						<div className={s.enquiry}>
-							<p>Do you want your book as an NFT?</p>
-							<p>— Yes</p>
+					{resInView && (
+						<div className={s.staged_resp}>
+							{resInView.credentials && (
+								<div className={s.shipping_details}>
+									<h4>Shipping details</h4>
+									<div className={s.shipping_dets_cont}>
+										<p>
+											<span>Name:</span>
+											<span>{resInView.credentials.name}</span>
+										</p>
+										<p>
+											<span>Address:</span>
+											<span>{resInView.credentials.str_address}</span>
+										</p>
+										<p>
+											<span>City/State:</span>
+											<span>{`${resInView.credentials.city}/${resInView.credentials.state}`}</span>
+										</p>
+										<p>
+											<span>Zip/Postal Code:</span>
+											<span>{resInView.credentials.postal_code}</span>
+										</p>
+										<p>
+											<span>Country:</span>
+											<span>{resInView.credentials.country}</span>
+										</p>
+									</div>
+								</div>
+							)}
 							<div className={s.resp_separator} />
+							{resInView.responses.map((response, idx) => {
+								return (
+									<div className={s.enquiry} key={idx}>
+										<p>{response.question}</p>
+										<p>{`—${response.answer}`}</p>
+										<div className={s.resp_separator} />
+									</div>
+								)
+							})}
 						</div>
-						<div className={s.enquiry}>
-							<p>Did you apply for any other reward tier?</p>
-							<p>— No</p>
-							<div className={s.resp_separator} />
-						</div>
-					</div>
+					)}
 				</aside>
 			</section>
 		</section>

@@ -18,15 +18,6 @@ import RewardABI from "@/constants/abis/Reward.json"
 import fleek from "@fleekhq/fleek-storage-js"
 import { TimelineBox } from "@/components/exportComps"
 
-interface creds {
-	name: string
-	country: string
-	str_address: string
-	city: string
-	state: string
-	postal_code: string
-}
-
 export default function CreateSurvey() {
 	const { uNameVal, signer }: conn = useContext(ConnectionContext)!
 	const router = useRouter()

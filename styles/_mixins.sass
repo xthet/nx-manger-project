@@ -135,6 +135,9 @@ $vsm: 400px
   cursor: pointer
   transition: transform 0.3s ease
   white-space: nowrap
+  &:disabled
+    background: gray
+    cursor: default
   &:hover
     transform: scale(1.05)
   @media(max-width: $lg)

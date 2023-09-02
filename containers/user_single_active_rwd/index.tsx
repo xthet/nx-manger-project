@@ -220,28 +220,14 @@ export default function UserSingleActiveRwd({ address, id, onEdit }: props) {
 						<p>{""}</p>
 					)}
 
-					{rwdDetails.surveyLink &&
+					{/* {rwdDetails.surveyLink &&
 						!rwdDetails.surveyLink.includes("undefined") && (
 							<button
 								className="rc-cta"
-								onClick={() => {
-									async function getS() {
-										const res = await fetch(
-											rwdDetails.surveyLink.replace(
-												"ipfs://",
-												"https://ipfs.io/ipfs/"
-											)
-										)
-											.then((res) => res.json())
-											.then((data) => data)
-										console.log(res)
-									}
-									getS()
-								}}
 							>
 								View survey
 							</button>
-						)}
+						)} */}
 					{rwdDetails.surveyLink.includes("undefined") && (
 						<button className="rc-cta">Create Survey</button>
 					)}
