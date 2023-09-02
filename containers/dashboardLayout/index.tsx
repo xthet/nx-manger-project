@@ -15,7 +15,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 					<h3 className={s["db-sec-title"]}>{"Dashboard"}</h3>
 				</Link>
 				<div className={s["db-menu"]}>
-					<span>{"Drafts"}</span>
+					<Link href={`/dashboard/${uNameVal}/all_user_drafts_page`}>
+						<span>{"Drafts"}</span>
+					</Link>
 					<Link href={`/settings/${account}`}>
 						<span>{"Account Settings"}</span>
 					</Link>

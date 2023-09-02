@@ -46,8 +46,9 @@ export default function AllUserCreatedPage() {
 								href={`/dashboard/${uNameVal}/all_user_created_page/${cmp.campaignAddress}`}
 								key={idx}
 								className={s["db-tbl-rw-link"]}
+								style={{ width: "100%" }}
 							>
-								<CampaignRow address={cmp.campaignAddress} />
+								<CampaignRow address={cmp.campaignAddress} created />
 							</Link>
 						)
 					})}

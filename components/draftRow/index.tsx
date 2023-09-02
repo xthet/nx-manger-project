@@ -3,23 +3,10 @@ import { faEthereum } from "@fortawesome/free-brands-svg-icons"
 import { faPencil } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ethers } from "ethers"
-import s from "./campaign_row.module.sass"
-import { useRouter } from "next/router"
-import Link from "next/link"
-import { conn } from "@/types"
-import { ConnectionContext } from "@/contexts/connection"
-import { useContext } from "react"
+import s from "./draft_row.module.sass"
 
-export default function CampaignRow({
-	address,
-	created,
-}: {
-	address: string
-	created: boolean
-}) {
-	const { uNameVal }: conn = useContext(ConnectionContext)!
+export default function DraftRow({ address }: { address: string }) {
 	const { campaignDetails, imageURI, daysUntil } = useCdata(address)
-	const router = useRouter()
 
 	return (
 		<div className={s["db-tbl-rw"]}>
@@ -65,16 +52,10 @@ export default function CampaignRow({
 						  ).toPrecision(2)}
 				</span>
 			</span>
-
 			<span className={`${s["db-tbl-rw-ele"]} ${s["--options"]}`}>
-				{created && (
-					<Link href={`/edit-campaign/${address}`}>
-						<span className={s["db-tbl-details"]}>{"Edit"}</span>
-					</Link>
-				)}
-				<Link href={`/dashboard/${uNameVal}/all_user_created_page/${address}`}>
-					<span className={s["db-tbl-details"]}>{"Details"}</span>
-				</Link>
+				<FontAwesomeIcon icon={faPencil} className={s["db-tbl-act-icon"]} />
+				{/* <FontAwesomeIcon icon={faTrash} className={s["db-tbl-act-icon"]}/> */}
+				<span className={s["db-tbl-details"]}>{"Edit"}</span>
 			</span>
 		</div>
 	)

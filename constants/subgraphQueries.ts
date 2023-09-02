@@ -194,6 +194,16 @@ export const FIND_USER_PUBLISHED_CMPS = gql`
 	}
 `
 
+export const FIND_USER_DRAFT_CMPS = gql`
+	query findUserPublishedCmps($cmpAddress: String!) {
+		campaignAddeds(where: { creator: $cmpAddress, isPublished: false }) {
+			title
+			description
+			campaignAddress
+		}
+	}
+`
+
 export const FIND_USER_BACKED_CMPS = gql`
 	query findUserBackedCmps($cmpAddresses: [String!]) {
 		campaignAddeds(where: { campaignAddress_in: $cmpAddresses }) {

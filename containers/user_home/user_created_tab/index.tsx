@@ -25,7 +25,11 @@ export default function UserCreatedTab() {
 					<div className={s["db-stat"]}>
 						<p className={s["db-stat-act"]}>{"raised"}</p>
 						<div className={s["db-stat-amt-grp"]}>
-							<p className={s["db-stat-amt"]}>{totalRaisedSum}</p>
+							<p className={s["db-stat-amt"]}>
+								{totalRaisedSum !== "--"
+									? Number(totalRaisedSum).toFixed(3)
+									: "--"}
+							</p>
 							<p className={s["db-stat-msr"]}>{"ETH"}</p>
 						</div>
 					</div>
@@ -95,7 +99,7 @@ export default function UserCreatedTab() {
 								className={s["db-tbl-rw-link"]}
 								style={{ width: "100%" }}
 							>
-								<CampaignRow address={cmp.campaignAddress} />
+								<CampaignRow address={cmp.campaignAddress} created />
 							</Link>
 						)
 					})}

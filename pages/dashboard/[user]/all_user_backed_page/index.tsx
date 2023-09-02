@@ -45,7 +45,7 @@ export default function AllUserBackedPage() {
 								className={s["db-tbl-rw-link"]}
 								style={{ width: "100%" }}
 							>
-								<CampaignRow address={cmp.campaignAddress} />
+								<CampaignRow address={cmp.campaignAddress} created={false} />
 							</Link>
 						)
 					})}
