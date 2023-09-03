@@ -72,7 +72,11 @@ export default function CampaignRow({
 						<span className={s["db-tbl-details"]}>{"Edit"}</span>
 					</Link>
 				)}
-				<Link href={`/dashboard/${uNameVal}/all_user_created_page/${address}`}>
+				<Link
+					href={`/dashboard/${uNameVal}/all_user_${
+						created ? "created" : "backed"
+					}_page/${address}`}
+				>
 					<span className={s["db-tbl-details"]}>{"Details"}</span>
 				</Link>
 			</span>
