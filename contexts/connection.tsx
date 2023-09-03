@@ -203,12 +203,10 @@ function ConnectionProvider({ children }: props) {
 		} else {
 			if (
 				confirm(
-					"You need a Metamask wallet to use this site,\nWould you like to install Metamask"
+					"You need a Web3 wallet to use this site,\nWould you like to install Metamask"
 				)
 			) {
 				router.push("https://metamask.io/")
-			} else {
-				alert("Please install Metamask ;)")
 			}
 		}
 	}, [account, chainId])

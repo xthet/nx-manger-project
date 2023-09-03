@@ -69,40 +69,54 @@ export default function Footer() {
 					</div>
 
 					<div className="mb-footer-menu fl-tl">
-						<div className="mb-ft-divider"></div>
-						<div className="mb-ft-menu-wrapper fl-tl fl-c fl-sb">
-							<div className="mb-ft-menu-links fl-tl fl-c">
-								<Menu />
+						<div className="mb-ft-menu-wrapper fl-tl fl-sb">
+							<div
+								className="mb-ft-menu-links fl-tl fl-c"
+								style={{ marginTop: "4px" }}
+							>
+								<Link href="/campaigns" className="ft-menu-link">
+									{"Campaigns"}
+								</Link>
+								<Link href="./" className="ft-menu-link">
+									{"About us"}
+								</Link>
 							</div>
 
-							<div className="ft-social-links fl-cr">
-								<div className="ft-social-link">
-									<FontAwesomeIcon
-										icon={faTwitter}
-										className="ft-social-icon"
-									/>
-								</div>
-								<div className="ft-social-link">
-									<FontAwesomeIcon
-										icon={faTelegram}
-										className="ft-social-icon"
-									/>
-								</div>
-								<div className="ft-social-link">
-									<FontAwesomeIcon icon={faGithub} className="ft-social-icon" />
-								</div>
-								<div className="ft-social-link">
-									<FontAwesomeIcon
-										icon={faFacebook}
-										className="ft-social-icon"
-									/>
-								</div>
+							<div
+								className="mb-ft-menu-links fl-tl fl-c"
+								style={{ marginTop: "4px" }}
+							>
+								<Link href="/#blog" className="ft-menu-link">
+									{"Blog"}
+								</Link>
+								<Link href="/#how-it-works" className="ft-menu-link">
+									{"Help"}
+								</Link>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div className="ft-copyright fl-cr">
+				<div className="ft-copyright fl-cl fl-c">
+					<div
+						className="ft-social-links fl-cr"
+						style={{
+							marginBottom: "7px",
+						}}
+					>
+						<div className="ft-social-link">
+							<FontAwesomeIcon icon={faTwitter} className="ft-social-icon" />
+						</div>
+						<div className="ft-social-link">
+							<FontAwesomeIcon icon={faTelegram} className="ft-social-icon" />
+						</div>
+						<div className="ft-social-link">
+							<FontAwesomeIcon icon={faGithub} className="ft-social-icon" />
+						</div>
+						<div className="ft-social-link">
+							<FontAwesomeIcon icon={faFacebook} className="ft-social-icon" />
+						</div>
+					</div>
 					<p>{"© 2023 Manger.All Rights Reserved."}</p>
 				</div>
 			</div>
