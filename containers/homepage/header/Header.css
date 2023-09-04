@@ -23,6 +23,9 @@
 	mix-blend-mode: screen;
 	opacity: 0.87;
 }
+.hd-hero-title.fl-tr.fl-c {
+	gap: 1.5em;
+}
 @media (max-width: 550px) {
 	.hd-hero.fl-cc.fl-sb {
 		flex-direction: column;
@@ -30,12 +33,8 @@
 	}
 	.hd-hero-title.fl-tr.fl-c {
 		align-items: center;
-		gap: 1.6em;
+		gap: 1.9em;
 	}
-}
-
-.hd-hero-title.fl-tr.fl-c {
-	gap: 1.9em;
 }
 
 .hd-hero-title h1 {
