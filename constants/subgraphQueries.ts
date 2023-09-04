@@ -96,6 +96,16 @@ export const GET_SOME_CAMPAIGNS = gql`
 	}
 `
 
+export const GET_FEATURED_USERS = gql`
+	query getFeaturedUsers {
+		userAddeds(first: 4, orderBy: createdAt, orderDirection: asc) {
+			username
+			pfp
+			address
+		}
+	}
+`
+
 export const GET_CREATED_CAMPAIGNS = gql`
 	query getCreatedCampaigns($profile: String!) {
 		userAdded(id: $profile) {
@@ -185,8 +195,8 @@ export const FIND_CMP_FUNDERS = gql`
 `
 
 export const FIND_USER_PUBLISHED_CMPS = gql`
-	query findUserPublishedCmps($cmpAddress: String!) {
-		campaignAddeds(where: { creator: $cmpAddress, isPublished: true }) {
+	query findUserPublishedCmps($usrAddress: String!) {
+		campaignAddeds(where: { creator: $usrAddress, isPublished: true }) {
 			title
 			description
 			campaignAddress

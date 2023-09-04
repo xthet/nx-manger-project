@@ -15,7 +15,7 @@ export default function useFindUserPublished(creator: string) {
 			const cmps = await client
 				.query({
 					query: FIND_USER_PUBLISHED_CMPS,
-					variables: { cmpAddress: creator },
+					variables: { usrAddress: creator },
 				})
 				.then(async (data) => {
 					return data.data.campaignAddeds

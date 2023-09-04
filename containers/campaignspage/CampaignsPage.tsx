@@ -54,7 +54,7 @@ export default function CampaignsPage({ cat, offVal }: props) {
 						<>
 							<FeaturedCampaign campaigns={campaigns} />
 							<div className="ccp-sub-wrapper fl-cl">
-								<h4 className="ccp-subtitle">{"Explore 320 Projects"}</h4>
+								<h4 className="ccp-subtitle">{`Explore ${campaigns.length} Projects`}</h4>
 							</div>
 						</>
 					)}
@@ -72,10 +72,12 @@ export default function CampaignsPage({ cat, offVal }: props) {
 					)}
 				</>
 			}
-			<button className="cg-see-more fl-cc" onClick={handleSeemore}>
-				{"See more"}
-			</button>
-			<Blog />
+			{campaigns.length > 6 && (
+				<button className="cg-see-more fl-cc" onClick={handleSeemore}>
+					{"See more"}
+				</button>
+			)}
+			{/* <Blog /> */}
 		</section>
 	)
 }
