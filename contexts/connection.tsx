@@ -30,8 +30,7 @@ function ConnectionProvider({ children }: { children: ReactNode }) {
 		connector: found_wallet,
 	} = useAccount()
 	const { chain } = useNetwork()
-	const { chains, error, isLoading, pendingChainId, switchNetwork } =
-		useSwitchNetwork()
+	const { switchNetwork } = useSwitchNetwork()
 	const [hasMetamask, setHasMetamask] = useState(false)
 	const { data: signer } = useSigner()
 	const { data: bi_balance } = useBalance({
@@ -47,7 +46,6 @@ function ConnectionProvider({ children }: { children: ReactNode }) {
 	const [seSSig, setSeSSig] = useState("")
 	const [isAuth, setIsAuth] = useState(false)
 	const [chainId, setChainId] = useState("1")
-	// const [signer, setSigner] = useState<any>()
 
 	function connect() {
 		setWCM(true)
@@ -113,7 +111,7 @@ function ConnectionProvider({ children }: { children: ReactNode }) {
 
 	useEffect(() => {
 		isConnected && account && auth().catch((e) => console.log(e))
-	}, [isConnected, account, seSSig, chain])
+	}, [isConnected, account, seSSig, chain, chainId])
 
 	const findSig = useCallback(async () => {
 		const sSig = cookies.sess_sig
@@ -133,10 +131,10 @@ function ConnectionProvider({ children }: { children: ReactNode }) {
 			setCookie("sess_sig", iSig, { expires: tomorrow, path: "/" })
 			setSeSSig(iSig)
 		}
-	}, [account])
+	}, [account, isConnected, chainId, switchNetwork, found_wallet])
 
 	useEffect(() => {
-		isConnected && findSig().catch((e) => console.log(e))
+		isConnected && !seSSig && findSig().catch((e) => console.log(e))
 	}, [findSig])
 
 	useEffect(() => {
@@ -146,9 +144,9 @@ function ConnectionProvider({ children }: { children: ReactNode }) {
 		if (bi_balance) {
 			setBalance(bi_balance.formatted)
 		}
-		if (window.ethereum) {
+		initDefWall().catch((e) => console.log(e))
+		if (typeof window !== "undefined" && window.ethereum) {
 			setHasMetamask(true)
-			initDefWall().catch((e) => console.log(e))
 		} else if (
 			confirm(
 				"You need a Web3 wallet to use this site,\nWould you like to install Metamask"
@@ -170,7 +168,7 @@ function ConnectionProvider({ children }: { children: ReactNode }) {
 		isConnected,
 		chainId,
 		signer,
-		account: account ?? "",
+		account: account ?? "0x0000000000000000000000000000000000000000",
 		connect,
 		isAuth,
 		balance,

@@ -18,7 +18,6 @@ export default function AllUserCreatedPage() {
 	const { isConnected, account, connect, isAuth, uNameVal }: conn =
 		useContext(ConnectionContext)!
 	const { createdCampaigns } = useFindUserPublished(account)
-
 	if (!validated) {
 		return <Error statusCode={404} />
 	}

@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import s from "./user_single_cmp_created.module.sass"
 import useRwdTab from "@/hooks/useRwdTab"
 import UserCreatedCmpRwdCard from "@/components/user_created_cmp_rwd_card"
+import PayoutBox from "@/components/payout_box"
 
 export default function UserSingleCmpCreated() {
 	const router = useRouter()
@@ -45,6 +46,10 @@ export default function UserSingleCmpCreated() {
 						<div className={s.header}>
 							<h3 style={{ width: "100%", textAlign: "right" }}>PAYOUT</h3>
 							<div className={s.separator} />
+						</div>
+
+						<div className={s.payout_cont}>
+							<PayoutBox />
 						</div>
 					</aside>
 				</section>

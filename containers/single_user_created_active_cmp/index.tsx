@@ -148,15 +148,27 @@ export default function SingleUserCreatedActiveCmp() {
                 </button>} */}
 					<div className="acp-bio fl-cl fl-sb">
 						<div className="acp-bio-native fl-cl">
-							{/* <span
+							<span
 								className={s.c_state}
 								style={
 									campaignDetails.state == 0
-										? { background: "#52fc00", color: "#1c6156" }
+										? {
+												background: "#52fc00",
+												color: "#1c6156",
+												opacity: "0.7",
+										  }
 										: campaignDetails.state == 1
-										? { background: "amber" }
+										? {
+												background: "#ffbf00",
+												color: "#624900",
+												opacity: "0.7",
+										  }
 										: campaignDetails.state == 2
-										? { background: "red" }
+										? {
+												background: "#ff1414",
+												color: "#760000",
+												opacity: "0.7",
+										  }
 										: {}
 								}
 							>
@@ -167,7 +179,7 @@ export default function SingleUserCreatedActiveCmp() {
 									: campaignDetails.state == 2
 									? "Canceled"
 									: "--"}
-							</span> */}
+							</span>
 							{/* <div
 								className="acp-cat-name fl-cl"
 								onClick={() => {

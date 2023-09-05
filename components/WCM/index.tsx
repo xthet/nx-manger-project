@@ -18,6 +18,7 @@ export default function WalletChoiceModal({ offMe }: { offMe: Function }) {
 
 	useEffect(() => {
 		!isLoading && isSuccess && offMe()
+		isError && offMe()
 	}, [isSuccess, isError])
 	return (
 		<>
@@ -77,7 +78,7 @@ export default function WalletChoiceModal({ offMe }: { offMe: Function }) {
 						/>
 						<span>
 							{connectors[3].name}
-							{!connectors[3].ready && " (unsupported)"}
+							{/* {!connectors[3].ready && " (unsupported)"} */}
 							{isLoading &&
 								connectors[3].id === pendingConnector?.id &&
 								" (connecting)"}
