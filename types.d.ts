@@ -6,7 +6,7 @@ export interface conn {
 	chainId: string
 	signer: JsonRpcSigner | (() => JsonRpcSigner) | any
 	account: string
-	connect: () => Promise<void>
+	connect: () => void
 	isAuth: boolean
 	balance: string
 	uNameVal: string
@@ -191,4 +191,9 @@ export interface survey_response {
 	reward_in_view: string
 	credentials: creds | null
 	responses: response[]
+}
+
+export interface wallet {
+	name: "Metamask" | "Rabby" | "Wallet Connect" | "Gnosis Safe" | "Coinbase"
+	icon: string
 }

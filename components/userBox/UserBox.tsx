@@ -7,6 +7,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { AnimationEvent, useContext, useEffect, useState } from "react"
 import Blockies from "react-blockies"
+import { useAccount, useDisconnect } from "wagmi"
 
 interface props {
 	iVisible: boolean
@@ -14,6 +15,12 @@ interface props {
 }
 
 export default function UserBox({ iVisible, offMe }: props) {
+	const { disconnect } = useDisconnect()
+	const {
+		isConnected,
+		address: active_address,
+		connector: found_wallet,
+	} = useAccount()
 	const { account, balance, isAuth, uNameVal }: conn =
 		useContext(ConnectionContext)!
 	const router = useRouter()
@@ -47,10 +54,10 @@ export default function UserBox({ iVisible, offMe }: props) {
 			>
 				<div className="ub-wallet-info-cont fl-tl fl-c">
 					<div className="ub-wallet-info fl-cl">
-						<p>{"Connected with Metamask"}</p>
+						<p>{`Connected with ${found_wallet?.name}`}</p>
 						<img
-							src="/assets/metamask.svg"
-							alt="wallet-ico"
+							src={`/assets/wallets/${found_wallet?.id}.svg`}
+							alt="--"
 							className="ub-wallet-ico"
 						/>
 					</div>

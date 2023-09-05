@@ -130,7 +130,13 @@ export default function SurveyResponseForm({
 		<>
 			<div className={s.reactive} />
 			<main className={s.form_cont}>
-				<FontAwesomeIcon icon={faXmarkCircle} className={s.cancel_icon} />
+				<FontAwesomeIcon
+					icon={faXmarkCircle}
+					className={s.cancel_icon}
+					onClick={() => {
+						offMe()
+					}}
+				/>
 				<div className={s.header}>
 					<h2 className={s.cmp_name}>{campaignDetails?.title}</h2>
 					<p className={s.cmp_creator}>{surveyJSON?.reward_creator}</p>

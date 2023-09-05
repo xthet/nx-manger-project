@@ -9,26 +9,29 @@ import { NotificationProvider } from "../contexts/notification"
 import { CookiesProvider } from "react-cookie"
 import type { AppProps } from "next/app"
 import Layout from "./Layout"
+import WagmiProvider from "@/contexts/wagmiConnect"
 
 const graphClient = new ApolloClient({
-  cache: new InMemoryCache(),
-  uri: process.env.NEXT_PUBLIC_SUBGRAPH_URI
+	cache: new InMemoryCache(),
+	uri: process.env.NEXT_PUBLIC_SUBGRAPH_URI,
 })
 
 export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <CookiesProvider>
-        <ConnectionProvider>
-          <NotificationProvider>
-            <ApolloProvider client={graphClient}>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </ApolloProvider>
-          </NotificationProvider>
-        </ConnectionProvider>
-      </CookiesProvider>
-    </>
-  )
+	return (
+		<>
+			<CookiesProvider>
+				<WagmiProvider>
+					<ConnectionProvider>
+						<NotificationProvider>
+							<ApolloProvider client={graphClient}>
+								<Layout>
+									<Component {...pageProps} />
+								</Layout>
+							</ApolloProvider>
+						</NotificationProvider>
+					</ConnectionProvider>
+				</WagmiProvider>
+			</CookiesProvider>
+		</>
+	)
 }

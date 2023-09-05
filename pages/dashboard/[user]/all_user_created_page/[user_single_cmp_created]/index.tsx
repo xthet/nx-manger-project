@@ -21,24 +21,32 @@ export default function UserSingleCmpCreated() {
 		<main className={s.section}>
 			<CampaignProvider address={campaign_address}>
 				<SingleUserCreatedActiveCmp />
-				<section className={s.rewards_section}>
-					<div className={s.header}>
-						<h3>REWARDS CREATED</h3>
-						<div className={s.separator} />
-					</div>
+				<section className={s.campaign_dets}>
+					<main className={s.rewards_section}>
+						<div className={s.header}>
+							<h3>REWARDS CREATED</h3>
+							<div className={s.separator} />
+						</div>
+						<div className={s.rewards_cont}>
+							{rwIds.map((rId: number, index: number) => {
+								return (
+									<UserCreatedCmpRwdCard
+										address={campaign_address}
+										id={rId}
+										key={index}
+										onEdit={false}
+									/>
+								)
+							})}
+						</div>
+					</main>
 
-					<div className={s.rewards_cont}>
-						{rwIds.map((rId: number, index: number) => {
-							return (
-								<UserCreatedCmpRwdCard
-									address={campaign_address}
-									id={rId}
-									key={index}
-									onEdit={false}
-								/>
-							)
-						})}
-					</div>
+					<aside className={s.payout_section}>
+						<div className={s.header}>
+							<h3 style={{ width: "100%", textAlign: "right" }}>PAYOUT</h3>
+							<div className={s.separator} />
+						</div>
+					</aside>
 				</section>
 			</CampaignProvider>
 		</main>

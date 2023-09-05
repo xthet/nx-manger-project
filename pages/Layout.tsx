@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 					content="Manger Project - Fundraising on the blockchain"
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/assets/manger_favicon.svg" />
+				<link rel="icon" sizes="32x32" href="/assets/manger_favicon.svg" />
 			</Head>
 			<Navbar />
 			<div className="p-full">{children}</div>

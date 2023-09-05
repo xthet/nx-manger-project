@@ -148,7 +148,27 @@ export default function SingleUserCreatedActiveCmp() {
                 </button>} */}
 					<div className="acp-bio fl-cl fl-sb">
 						<div className="acp-bio-native fl-cl">
-							<div
+							{/* <span
+								className={s.c_state}
+								style={
+									campaignDetails.state == 0
+										? { background: "#52fc00", color: "#1c6156" }
+										: campaignDetails.state == 1
+										? { background: "amber" }
+										: campaignDetails.state == 2
+										? { background: "red" }
+										: {}
+								}
+							>
+								{campaignDetails.state == 0
+									? "Fundraising"
+									: campaignDetails.state == 1
+									? "Expired"
+									: campaignDetails.state == 2
+									? "Canceled"
+									: "--"}
+							</span> */}
+							{/* <div
 								className="acp-cat-name fl-cl"
 								onClick={() => {
 									router.push(
@@ -166,7 +186,7 @@ export default function SingleUserCreatedActiveCmp() {
 									<img src="/assets/manger_bio_logo.svg" alt="bio-logo" />
 									<p>{creatorVal}</p>
 								</div>
-							</Link>
+							</Link> */}
 						</div>
 						<div className="acp-bio-socials fl-cr">
 							{cdata && cdata.twitter && (
