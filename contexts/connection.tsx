@@ -1,5 +1,6 @@
 import WalletChoiceModal from "@/components/WCM"
 import { GET_USER_DETAILS } from "@/constants/subgraphQueries"
+import { useIsConnected } from "@/hooks/useIsConnected"
 import { conn, udata } from "@/types"
 import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { ethers } from "ethers"
@@ -24,11 +25,8 @@ import {
 const ConnectionContext = createContext<conn | null>(null)
 
 function ConnectionProvider({ children }: { children: ReactNode }) {
-	const {
-		isConnected,
-		address: account,
-		connector: found_wallet,
-	} = useAccount()
+	const { address: account, connector: found_wallet } = useAccount()
+	const { isConnected } = useIsConnected()
 	const { chain } = useNetwork()
 	const { switchNetwork } = useSwitchNetwork()
 	const [hasMetamask, setHasMetamask] = useState(false)

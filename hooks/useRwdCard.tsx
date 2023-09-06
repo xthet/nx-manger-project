@@ -20,7 +20,8 @@ let rwdObj: rwd = {
 }
 
 export default function useRwdCard(address: string, id: number) {
-	const { isConnected, signer }: conn = useContext(ConnectionContext)!
+	const { isConnected, signer, defSigner }: conn =
+		useContext(ConnectionContext)!
 	const [loading, setLoading] = useState(true)
 	const [rwdDetails, setRwdDetails] = useState<rwd>(rwdObj)
 	const [deliDate, setDeliDate] = useState("")
@@ -32,7 +33,7 @@ export default function useRwdCard(address: string, id: number) {
 		let isIn = true
 
 		async function startCard() {
-			const campaign = new ethers.Contract(address, campaignABI.abi, signer)
+			const campaign = new ethers.Contract(address, campaignABI.abi, defSigner!)
 			try {
 				const rwd_address = await campaign.rewards(
 					ethers.utils.parseEther(id.toString())

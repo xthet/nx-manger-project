@@ -68,7 +68,7 @@ export default function PayoutBox() {
 			<h3>Payout Summary</h3>
 			<div
 				className={s.pyt_dets}
-				style={campaignDetails.state !== 1 ? { opacity: "0.7" } : {}}
+				style={campaignDetails.state !== 1 ? { opacity: "0.8" } : {}}
 			>
 				<div className={s.cmp_dets}>
 					<img
@@ -95,7 +95,9 @@ export default function PayoutBox() {
 					<div className={s.amt_dets}>
 						<span className={s.amt_det}>Gross:</span>
 						<span>
-							{ethers.utils.formatEther(campaignDetails.currentBalance)}{" "}
+							{Number(
+								ethers.utils.formatEther(campaignDetails.currentBalance)
+							).toFixed(6)}{" "}
 							<span className={s.curr}>ETH</span>
 						</span>
 					</div>
@@ -103,9 +105,11 @@ export default function PayoutBox() {
 					<div className={s.amt_dets}>
 						<span className={s.amt_det}>Processing Fee (4%):</span>
 						<span>
-							{Number(
-								ethers.utils.formatEther(campaignDetails.currentBalance)
-							) * 0.04}{" "}
+							{(
+								Number(
+									ethers.utils.formatEther(campaignDetails.currentBalance)
+								) * 0.04
+							).toFixed(6)}{" "}
 							<span className={s.curr}>ETH</span>
 						</span>
 					</div>
@@ -114,9 +118,11 @@ export default function PayoutBox() {
 				<div className={s.pyt_final}>
 					<p>Payout</p>
 					<span>
-						{Number(ethers.utils.formatEther(campaignDetails.currentBalance)) -
+						{(
+							Number(ethers.utils.formatEther(campaignDetails.currentBalance)) -
 							Number(ethers.utils.formatEther(campaignDetails.currentBalance)) *
-								0.04}{" "}
+								0.04
+						).toFixed(6)}{" "}
 						<span className={s.curr}>ETH</span>
 					</span>
 				</div>
