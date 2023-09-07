@@ -1,0 +1,121 @@
+.tbx-reactive
+  position: fixed
+  z-index: 20
+  top: 0
+  bottom: 0
+  right: 0
+  left: 0
+  background: rgba(0,0,0,0.4)
+
+.tbx-modal
+  position: fixed
+  z-index: 21
+  top: 35%
+  width: 60vw
+  left: calc((100vw - 60vw)/2)
+  background: $color-htext
+  box-shadow: 0 0 15px 1px rgba(0,0,0,0.1)
+  border-radius: 0.4rem
+  padding: 4rem 5rem
+  @include fl-cl
+  @include fl-c
+  gap: 1.25em
+  @media(max-width: $lg)
+    width: 70vw
+    left: calc((100vw - 70vw)/2)
+  @media(max-width: $md)
+    width: 80vw
+    left: calc((100vw - 80vw)/2)
+
+.tbx-tl-wrp
+  width: 100%
+  @include fl-cl
+  @include fl-c
+  margin-bottom: 2rem
+
+.tbx-eta-wrp
+  position: relative
+  top: 1.2rem
+  width: 100%
+  height: 5px
+  padding: 1px 0
+  background: rgba(0,0,0,0.1)
+  z-index: 1
+
+.tbx-eta
+  background: $color-text
+  height: 100%
+
+.tbx-tl-stop
+  width: 100%
+  @include fl-cl
+  @include fl-c
+  gap: 1.3rem
+  text-align: center
+  &.--tl-first
+    justify-self: start
+    @include fl-tl
+    @include fl-c
+    text-align: left
+  &.--tl-last
+    justify-self: end
+    @include fl-bl
+    @include fl-c
+    text-align: right
+  .tbx-tl-node
+    height: 2rem
+    width: 2rem
+    border-radius: 50%
+    background: #fff
+    border: 1px solid $color-card-text
+    @include fl-cc
+  .tbx-tl-node-info
+    @include def-p
+    color: $color-subtext
+    font-size: 1.1rem
+    max-width: 90%
+    letter-spacing: 0.02em
+
+.tbx-tl-check
+  height: 2rem
+  width: 2rem
+  color: $color-card-text
+
+.tbx-title
+  @include def-h
+
+.tbx-subtitle
+  @include def-p
+  color: $color-subtext
+  animation: pulsate-bck 0.8s ease-in-out infinite both
+@keyframes pulsate-bck 
+  0% 
+    transform: scale(1)
+  
+  50% 
+    transform: scale(0.96)
+  
+  100% 
+    transform: scale(1)
+
+.--tbx-still
+  @include def-p
+  text-align: center
+  color: $color-subtext
+  white-space: pre-wrap
+
+.--tbx-bio
+  @extend .--tbx-still
+  text-align: left
+  line-height: 1.3em
+  span
+    width: 95%
+
+.tbx-cta-cont
+  @include fl-cc
+  width: 100%
+  gap: 1em
+
+.tbx-cta
+  @include def-btn
+

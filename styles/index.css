@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;700;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+	--font-family: "Outfit", sans-serif;
+
+	--color-subtext: #827b93;
+	--color-bg: #fff;
+	--color-footer: #110a25;
+	--color-text: #361e77;
+	--color-card-text: #544776;
+	--color-sub-bg: #e0d9e7;
+	--color-htext: #f6f4fb;
+	--color-btn: linear-gradient(98.97deg, #2474c6 -35.95%, #c4a2e7 114.36%);
+	--color-header-bg: linear-gradient(
+		180deg,
+		#9071df 1.12%,
+		#361e77 41.15%,
+		#080410 95.83%
+	);
+	--color-section-hd: linear-gradient(
+		180deg,
+		#9071df 1.12%,
+		#361e77 57.09%,
+		#110a25 95.83%
+	);
+
+	scrollbar-color: #c4a2e7 #361e77 !important;
+	scrollbar-width: thin !important;
+}

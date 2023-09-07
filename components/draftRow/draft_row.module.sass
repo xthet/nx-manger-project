@@ -1,0 +1,57 @@
+@import @/styles/_mixins
+
+.db-tbl-rw
+  cursor: pointer
+  width: 100%
+  padding: 0.5em 0.3em
+  display: grid
+  border-bottom: 1px solid #e5e5e8
+  grid-template-columns: 2fr 1fr 0.5fr 0.5fr 1fr
+  grid-column-gap: 2em
+  justify-items: start
+  align-content: center
+  transition: all 0.5s ease
+  &:hover
+    background: rgba(0,0,0,0.02)
+
+.db-tbl-rw-img
+  width: 2.5vw
+  height: 2.5vw
+  border-radius: 0.4em
+  object-fit: cover
+
+.db-tbl-rw-ele
+  @include fl-cl
+  gap: 0.4em
+  @include def-p
+  font-size: 1.35rem
+  color: $color-card-text
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
+  &.--status
+    // margin: 0.6em 0
+    font-size: 1.1rem
+    padding: 0 0.8em
+    border-radius: 0.6em
+    background: #C8EFE9
+    color: #47947D
+    font-weight: 600
+    letter-spacing: 0.05em
+    @media(max-width: $lg)
+      margin: 0.4em 0
+  &.--options
+    gap: 1em
+    cursor: pointer
+    justify-self: end
+
+.db-tbl-details
+  border: 1px solid $color-card-text
+  border-radius: 0.38em
+  margin: 0.2em 0
+  padding: 0.3em 0.8em 0.4em
+  color: $color-subtext
+  cursor: pointer
+  transition: all 0.3s ease
+  &:hover
+    opacity: 0.8

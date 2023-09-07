@@ -1,0 +1,26 @@
+@import @/styles/_mixins
+
+.rc_container
+  @include fl-tl
+  @include fl-c
+  width: 100%
+  padding: 1.25vw
+  background: $color-htext
+  // box-shadow: 0px 4px 23px 4px rgba(54, 30, 119, 0.1)
+  // border-radius: 7px
+  gap: 2.08vw
+  transition: all 0.3s ease
+  cursor: pointer
+
+  @media (max-width: 1000px)
+    padding: 2.02vw
+    gap: 3.37vw
+
+  @media (max-width: 600px)
+    padding: 3.07vw
+    gap: 5.11vw
+
+.rc_header
+  @include fl-tl
+  @include fl-c
+  gap: 10px

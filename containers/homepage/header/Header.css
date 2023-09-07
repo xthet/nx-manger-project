@@ -1,0 +1,145 @@
+/* hd */
+.hd-header.sc-padding.fl-bc {
+	height: 100vh;
+	background: var(--color-header-bg);
+	padding-bottom: 2em;
+}
+@media (max-width: 600px) {
+	.hd-header.sc-padding.fl-bc {
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+.hd-hero {
+	width: 100%;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.hd-hero img {
+	width: clamp(180px, 50%, 800px);
+	mix-blend-mode: screen;
+	opacity: 0.87;
+}
+.hd-hero-title.fl-tr.fl-c {
+	gap: 1.5em;
+}
+@media (max-width: 550px) {
+	.hd-hero.fl-cc.fl-sb {
+		flex-direction: column;
+		gap: 4em;
+	}
+	.hd-hero-title.fl-tr.fl-c {
+		align-items: center;
+		gap: 1.9em;
+	}
+}
+
+.hd-hero-title h1 {
+	font-family: var(--font-family);
+	font-weight: 700;
+	font-size: 7rem;
+	line-height: 1.1em;
+	color: var(--color-htext);
+	width: 97%;
+}
+@media (max-width: 1250px) {
+	.hd-hero-title h1 {
+		font-size: 5rem;
+	}
+}
+@media (max-width: 1000px) {
+	.hd-hero-title h1 {
+		font-size: 4.7rem;
+	}
+}
+@media (max-width: 600px) {
+	.hd-hero-title h1 {
+		font-size: 3.4rem;
+		text-align: center;
+	}
+}
+
+.hd-hero-title p {
+	font-family: var(--font-family);
+	font-weight: 400;
+	font-size: 1.8rem;
+	line-height: 1.5em;
+	color: var(--color-htext);
+}
+@media (max-width: 1250px) {
+	.hd-hero-title p {
+		font-size: 1.2rem;
+	}
+}
+@media (max-width: 1000px) {
+	.hd-hero-title p {
+		font-size: 1.5rem;
+	}
+}
+@media (max-width: 600px) {
+	.hd-hero-title p {
+		font-size: 1.1rem;
+		text-align: center;
+		width: 80%;
+	}
+}
+
+.hd-connect {
+	padding: 0.65em 1em;
+	background: var(--color-btn);
+	box-shadow: 0px 4px 23px 4px rgba(0, 0, 0, 0.13);
+	border: none;
+	border-radius: 0.5em;
+
+	gap: 0.5em;
+
+	font-family: var(--font-family);
+	font-weight: 400;
+	font-size: 1.7rem;
+	line-height: 1em;
+	letter-spacing: 0.04em;
+	color: var(--color-htext);
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+@media (max-width: 1250px) {
+	.hd-connect {
+		font-size: 1.2rem;
+	}
+}
+@media (max-width: 1000px) {
+	.hd-connect {
+		font-size: 1.4rem;
+	}
+}
+@media (max-width: 600px) {
+	.hd-connect {
+		font-size: 1.1rem;
+	}
+}
+.hd-connect:hover {
+	transform: scale(1.05);
+}
+
+.hd-wallet-icon {
+	width: 1.7rem;
+	/* height: clamp(10px, 1.2vw, 20px); */
+}
+@media (max-width: 1250px) {
+	.hd-wallet-icon {
+		width: 1.2rem;
+	}
+}
+@media (max-width: 1000px) {
+	.hd-wallet-icon {
+		width: 1.4rem;
+	}
+}
+@media (max-width: 600px) {
+	.hd-wallet-icon {
+		width: 1.1rem;
+	}
+}

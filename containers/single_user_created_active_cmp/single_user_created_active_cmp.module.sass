@@ -1,0 +1,49 @@
+@import @/styles/_mixins
+
+.section
+  position: relative
+  padding: 0 8rem
+  padding-top: 7.04vw
+  padding-bottom: 4.04vw
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 2vw
+
+  @media(max-width: 1000px)
+    padding-top: 8vw
+    padding-bottom: 8vw
+
+  @media(max-width: 600px)
+    padding-top: 17.29vw
+    padding-bottom: 17.29vw
+
+.active_campaign
+  @include fl-tl
+  gap: 2.08vw
+
+  @media(max-width: 1000px)
+    flex-direction: column
+    align-items: center
+    justify-content: flex-start
+    gap: 3.37vw
+
+.dashboard_path
+  width: 100%
+  padding: 4px 8rem
+  background: $color-sub-bg
+  position: absolute
+  top: 3.8vw
+  left: 0
+  z-index: 9
+
+.c_state
+  @include def-h
+  background: green
+  padding: 0.5em
+  border-radius: 5px
+  text-transform: uppercase
+  letter-spacing: 0.04em
+  font-weight: 700
+  font-size: 2rem
+  opacity: 0.8

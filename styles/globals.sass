@@ -1,0 +1,242 @@
+// @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100200300400500700900&family=Outfit:wght@100200300400500600700800900&display=swap')
+
+$font-family: "Outfit", sans-serif
+
+$color-subtext: #827B93
+$color-bg: #fff
+$color-footer: #110A25
+$color-text: #361E77
+$color-ltext: #6843AD
+$color-card-text: #544776
+$color-sub-bg: #E0D9E7
+$color-htext: #F6F4FB
+$color-node-ring: #C4A2E7
+$color-complement: #2474c6
+$color-btn: linear-gradient(98.97deg, #2474C6 -35.95%, #C4A2E7 114.36%)
+
+$lg: 1250px
+$mlg: 1024px
+$md: 1000px
+$sm: 600px
+$vsm: 400px
+
+.p-full
+  min-height: 100vh
+
+@mixin sc-padding
+  padding: 0 8rem
+  @media (max-width: 1050px)
+    padding: 0 4rem
+  @media (max-width: 850px)
+    padding: 0 1.6rem
+  @media (max-width: 350px)
+    padding: 0 0.8rem
+
+@mixin fl-tl
+  display: flex
+  align-items: flex-start
+  justify-content: flex-start
+
+/* top-center */
+@mixin fl-tc
+  display: flex
+  align-items: flex-start
+  justify-content: center
+
+/* top-right */
+@mixin fl-tr
+  display: flex
+  align-items: flex-start
+  justify-content: flex-end
+
+/* center-left */
+@mixin fl-cl
+  display: flex
+  align-items: center
+  justify-content: flex-start
+
+/* center-center */
+@mixin fl-cc
+  display: flex
+  align-items: center
+  justify-content: center
+
+/* center-right */
+@mixin fl-cr
+  display: flex
+  align-items: center
+  justify-content: flex-end
+
+@mixin fl-bl
+  display: flex
+  align-items: flex-end
+  justify-content: flex-start
+
+@mixin fl-bc
+  display: flex
+  align-items: flex-end
+  justify-content: center
+
+@mixin fl-br
+  display: flex
+  align-items: flex-end
+  justify-content: flex-end
+
+/* space-between */
+@mixin fl-sb
+  justify-content: space-between
+
+@mixin fl-sa
+  justify-content: space-around
+
+@mixin fl-c
+  flex-direction: column
+
+@mixin def-p
+  font-family: $font-family
+  font-weight: 400
+  font-size: 1.5rem
+  line-height: 1em
+  color: $color-text
+  @media(max-width: $lg)
+    font-size: 1.2rem
+  @media(max-width: $sm)
+    font-size: 1rem
+  @media(max-width: $vsm)
+    font-size: 0.7rem
+
+@mixin def-h
+  font-family: $font-family
+  font-weight: 500
+  font-size: 3rem
+  line-height: 1em
+  color: $color-text
+  @media(max-width: $lg)
+    font-size: 1.8rem
+  @media(max-width: $lg)
+    font-size: 2.3rem
+  @media(max-width: $sm)
+    font-size: 1.5rem
+
+@mixin def-btn
+  @include fl-cc
+  gap: 0.5em
+
+  padding: 0.65em 1.5em
+  background: $color-btn
+  box-shadow: 0px 4px 23px 4px rgba(0, 0, 0, 0.13)
+  border: none
+  border-radius: 8px
+
+  font-family: $font-family
+  font-weight: 600
+  font-size: 1.5rem
+  line-height: 1em
+  letter-spacing: 0.04em
+  color: $color-htext
+  cursor: pointer
+  transition: transform 0.3s ease
+  white-space: nowrap
+  &:hover
+    transform: scale(1.05)
+  @media(max-width: $lg)
+    font-size: 1.3rem
+  @media(max-width: $md)
+    font-size: 1.2rem
+  @media(max-width: $sm)
+    font-size: 1rem
+
+@mixin def-inpt
+  width: 50%
+  outline: none
+  border: none
+  padding: 0.6em
+  background: $color-sub-bg
+  font-family: $font-family
+  font-size: 1.5rem
+  font-weight: 500
+  letter-spacing: 0.02em
+  color: $color-text
+  border-radius: 0.4em 0.4em 0 0
+  border-bottom: 1px solid $color-text
+  &::placeholder
+    color: $color-card-text
+    font-weight: 300
+  @media(max-width: $lg)
+    font-size: 1.2rem
+  @media(max-width: $md)
+    width: 80%
+  @media(max-width: $sm)
+    font-size: 1rem
+
+@mixin def-fa-icon
+  height: 3rem
+  color: $color-node-ring
+  cursor: pointer
+  &:hover
+    opacity: 0.8
+  @media (max-width: $lg)
+    height: 2rem
+  @media (max-width: $md)
+    height: 1.5rem
+  @media(max-width: $sm)
+    height: 1.2rem
+
+@mixin no-select
+  -webkit-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+.ec-not-owner-notice
+  @include fl-cc
+  margin-left: auto
+  margin-top: 10rem
+  @include def-p
+  color: red
+
+.noti-wrapper
+  position: fixed
+  z-index: 50
+  top: 70px
+  right: 10px
+  width: 350px
+  @include fl-bl
+  @include fl-c
+  gap: 1rem
+  @media(max-width: $sm)
+    top: 55px
+    right: calc(50vw - 350px)
+
+.pg-notice
+  @include def-p
+
+.inpt-small-noti
+  font-family: $font-family
+  font-weight: 300
+  font-size: 1.2rem
+  line-height: 1em
+  color: red
+  @media(max-width: $md)
+    font-size: 0.8rem
+
+@import "../pages/signUp/SignUp.sass"
+@import "../pages/settings/settings"
+@import "@/components/timelineBox/TimelineBox"
+@import "@/components/catTable/CatTable.sass"
+@import "@/components/notibox/Notibox"
+@import "@/components/sideBio/SideBio"
+@import "../containers/profilepage/profileHeader/ProfileHeader"
+@import "@/containers/createcampaignpage/createCampaignTabs/basicsTab/BasicsTab.sass"
+@import "@/containers/createcampaignpage/createCampaignTabs/contentTab/ContentTab.sass"
+@import "@/containers/createcampaignpage/createCampaignTabs/teamTab/TeamTab.sass"
+@import "@/containers/createcampaignpage/createCampaignTabs/profileTab/ProfileTab.sass"
+@import "@/containers/createcampaignpage/createCampaignTabs/rewardsTab/RewardsTab.sass"
+
+@import "../components/campaignTabs/storyTab/StoryTab.sass"
+@import "../components/campaignTabs/rewardsTab/RewardsTab.sass"
+
+@import "@/containers/profilepage/profileDetails/createdTab/CreatedTab.sass"
+@import "@/containers/profilepage/profileDetails/backedTab/BackedTab.sass"
+
+@import "@/components/campaignTabs/faqsTab/FaqsTab"
+@import "../components/creatorBioModal/CreatorBioModal"

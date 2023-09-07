@@ -1,0 +1,202 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	scroll-behavior: smooth;
+}
+
+html,
+body {
+	background-color: #fff;
+	overflow: overlay;
+	color: #361e77;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.6rem;
+}
+@media (max-width: 1000px) {
+	body {
+		font-size: 1rem;
+	}
+}
+@media (max-width: 600px) {
+	body {
+		font-size: 0.8rem;
+	}
+}
+
+div,
+section,
+article {
+	scrollbar-color: #c4a2e7 #361e77 !important;
+	scrollbar-width: thin !important;
+}
+
+a {
+	color: unset;
+	text-decoration: none;
+}
+
+button {
+	border: none;
+	background: none;
+	outline: none;
+}
+button:disabled {
+	opacity: 0.5;
+	cursor: unset;
+}
+
+::-webkit-scrollbar-track {
+	margin-block: 1em;
+}
+::-webkit-scrollbar {
+	width: 16px;
+}
+::-webkit-scrollbar-thumb {
+	background: #9071df;
+	border-radius: 10px;
+	background-clip: content-box;
+	border: 6px solid transparent;
+}
+
+.cpd-tab {
+	margin-top: 1.74vw;
+	width: 100%;
+}
+@media (max-width: 1000px) {
+	.cpd-tab {
+		margin-top: 2.82vw;
+	}
+}
+@media (max-width: 550px) {
+	.cpd-tab {
+		margin-top: 4.28vw;
+	}
+}
+
+.sc-padding {
+	padding: 0 8rem;
+}
+@media (max-width: 1050px) {
+	.sc-padding {
+		padding: 0 4rem;
+	}
+}
+@media (max-width: 850px) {
+	.sc-padding {
+		padding: 0 1.6rem;
+	}
+}
+@media (max-width: 350px) {
+	.sc-padding {
+		padding: 0 0.8rem;
+	}
+}
+
+/* FLEXBOX */
+/* top-left */
+.fl-tl {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+/* top-center */
+.fl-tc {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+/* top-right */
+.fl-tr {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+}
+
+/* center-left */
+.fl-cl {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+/* center-center */
+.fl-cc {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* center-right */
+.fl-cr {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.fl-bl {
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-start;
+}
+
+.fl-bc {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.fl-br {
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+/* space-between */
+.fl-sb {
+	justify-content: space-between;
+}
+
+.fl-sa {
+	justify-content: space-around;
+}
+
+.fl-c {
+	flex-direction: column;
+}
+
+/* imports */
+@import "../containers/navbar/Navbar.css";
+@import "../containers/homepage/header/Header.css";
+@import "../containers/homepage/campaigns/Campaigns.css";
+@import "../containers/homepage/howItWorks/HowItWorks.css";
+@import "../containers/homepage/blog/Blog.css";
+@import "../containers/footer/Footer.css";
+@import "../containers/campaignspage/CampaignsPage.css";
+@import "../containers/campaignspage/featuredCampaign/FeaturedCampaign.css";
+@import "../containers/campaignpage/activeCampaign/ActiveCampaign.css";
+@import "../containers/campaignpage/campaignDetails/CampaignDetails.css";
+@import "../containers/profilepage/profileHeader/ProfileHeader.css";
+@import "../containers/profilepage/profileDetails/ProfileDetails.css";
+@import "../containers/createcampaignpage/createCampaignHeader/CreateCampaignHeader.css";
+@import "../containers/createcampaignpage/createCampaignTabs/CreateCampaignTabs.css";
+
+@import "../components/sidebar/Sidebar.css";
+@import "../components/campaignGrid/CampaignGrid.css";
+@import "../components/campaignCard/CampaignCard.css";
+@import "../components/categoryFilter/CategoryFilter.css";
+@import "../components/blogCard/BlogCard.css";
+@import "../components/rewardCard/RewardCard.css";
+@import "../components/sideNotice/SideNotice.css";
+@import "../components/campaignTabs/rewardsTab/RewardsTab.css";
+@import "../components/sideBio/SideBio.css";
+@import "../components/userBox/UserBox.css";
+@import "../components/mobileUserBox/MobileUserBox.css";

@@ -1,0 +1,90 @@
+@import @/styles/_mixins
+
+.pyt_cont
+  @include def-p
+  @include fl-tl
+  @include fl-c
+  width: 100%
+  padding: 1.25vw
+  background: $color-bg
+  box-shadow: 0px 4px 23px 4px rgba(54, 30, 119, 0.1)
+  border-radius: 7px
+  gap: 1.08vw
+  transition: all 0.3s ease
+
+.pyt_dets
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 1.08vw
+
+.cmp_dets
+  width: 100%
+  @include fl-tl
+  gap: 8px
+
+.earnings_dets
+  width: 78%
+  p
+    font-weight: 600
+
+.earnings
+  margin-top: 10px
+  @include fl-cl
+  @include fl-sb
+
+.curr
+  font-weight: 700
+  color: $color-text
+
+.cmp_img
+  width: 3.66vw
+  height: 3.66vw
+  object-fit: cover
+  border-radius: 5px
+  box-shadow: 0px 2px 8px 2px rgba(54, 30, 119, 0.08)
+
+.pyt_breakdown
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 1.08vw
+  padding: 0 7px
+
+.amt_dets
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+
+.amt_det
+  color: $color-subtext
+
+.pyt_final
+  margin-top: 10px
+  width: 100%
+  background: $color-htext
+  border-radius: 3px
+  padding: 10px 7px
+  @include fl-cl
+  @include fl-sb
+  p
+    font-weight: 700
+
+.pyt_notice
+  margin-top: -6px
+  line-height: 1.2
+  color: $color-subtext
+  font-size: 1.3rem
+  opacity: 0.8
+
+.withdraw_btn
+  margin-top: 8px
+  @include def-btn
+  width: 100%
+
+.tc
+  width: 100%
+  input
+    cursor: pointer
+  span
+    margin-left: 5px

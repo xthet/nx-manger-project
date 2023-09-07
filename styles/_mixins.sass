@@ -1,0 +1,204 @@
+$font-family: "Outfit", sans-serif
+
+$color-subtext: #827B93
+$color-bg: #fff
+$color-footer: #110A25
+$color-text: #361E77
+$color-ltext: #6843AD
+$color-card-text: #544776
+$color-sub-bg: #E0D9E7
+$color-htext: #F6F4FB
+$color-node-ring: #C4A2E7
+$color-complement: #2474c6
+$color-btn: linear-gradient(98.97deg, #2474C6 -35.95%, #C4A2E7 114.36%)
+
+$lg: 1250px
+$mlg: 1024px
+$md: 1000px
+$sm: 600px
+$vsm: 400px
+
+.p-full
+  min-height: 100vh
+
+@mixin sc-padding
+  padding: 0 8rem
+  @media (max-width: 1050px)
+    padding: 0 4rem
+  @media (max-width: 850px)
+    padding: 0 1.6rem
+  @media (max-width: 350px)
+    padding: 0 0.8rem
+
+@mixin sn-padding
+  padding-left: 8rem
+  padding-right: 8rem
+  @media (max-width: 1050px)
+    padding-left: 4rem
+    padding-right: 4rem
+  @media (max-width: 850px)
+    padding-left: 1.6rem
+    padding-right: 1.6rem
+  @media (max-width: 350px)
+    padding-left: 0.8rem
+    padding-right: 0.8rem
+
+@mixin fl-tl
+  display: flex
+  align-items: flex-start
+  justify-content: flex-start
+
+/* top-center */
+@mixin fl-tc
+  display: flex
+  align-items: flex-start
+  justify-content: center
+
+/* top-right */
+@mixin fl-tr
+  display: flex
+  align-items: flex-start
+  justify-content: flex-end
+
+/* center-left */
+@mixin fl-cl
+  display: flex
+  align-items: center
+  justify-content: flex-start
+
+/* center-center */
+@mixin fl-cc
+  display: flex
+  align-items: center
+  justify-content: center
+
+/* center-right */
+@mixin fl-cr
+  display: flex
+  align-items: center
+  justify-content: flex-end
+
+@mixin fl-bl
+  display: flex
+  align-items: flex-end
+  justify-content: flex-start
+
+@mixin fl-bc
+  display: flex
+  align-items: flex-end
+  justify-content: center
+
+@mixin fl-br
+  display: flex
+  align-items: flex-end
+  justify-content: flex-end
+
+/* space-between */
+@mixin fl-sb
+  justify-content: space-between
+
+@mixin fl-sa
+  justify-content: space-around
+
+@mixin fl-c
+  flex-direction: column
+
+@mixin def-p
+  font-family: $font-family
+  font-weight: 400
+  font-size: 1.5rem
+  line-height: 1em
+  color: $color-text
+  @media(max-width: $lg)
+    font-size: 1.2rem
+  @media(max-width: $sm)
+    font-size: 1rem
+  @media(max-width: $vsm)
+    font-size: 0.7rem
+
+@mixin def-h
+  font-family: $font-family
+  font-weight: 500
+  font-size: 3rem
+  line-height: 1em
+  color: $color-text
+  @media(max-width: $lg)
+    font-size: 1.8rem
+  @media(max-width: $lg)
+    font-size: 2.3rem
+  @media(max-width: $sm)
+    font-size: 1.5rem
+
+@mixin def-btn
+  @include fl-cc
+  gap: 0.5em
+
+  padding: 0.65em 1.5em
+  background: $color-btn
+  box-shadow: 0px 4px 23px 4px rgba(0, 0, 0, 0.13)
+  border: none
+  border-radius: 8px
+
+  font-family: $font-family
+  font-weight: 600
+  font-size: 1.5rem
+  line-height: 1em
+  letter-spacing: 0.04em
+  color: $color-htext
+  cursor: pointer
+  transition: transform 0.3s ease
+  white-space: nowrap
+  &:disabled
+    background: gray
+    cursor: default
+    &:hover
+      transform: none
+  &:hover
+    transform: scale(1.05)
+  @media(max-width: $lg)
+    font-size: 1.3rem
+  @media(max-width: $md)
+    font-size: 1.2rem
+  @media(max-width: $sm)
+    font-size: 1rem
+
+@mixin def-inpt
+  width: 50%
+  outline: none
+  border: none
+  padding: 0.6em
+  background: $color-sub-bg
+  font-family: $font-family
+  font-size: 1.5rem
+  font-weight: 500
+  letter-spacing: 0.02em
+  color: $color-text
+  border-radius: 0.4em 0.4em 0 0
+  border-bottom: 1px solid $color-text
+  &::placeholder
+    color: $color-card-text
+    font-weight: 300
+  @media(max-width: $lg)
+    font-size: 1.2rem
+  @media(max-width: $md)
+    width: 80%
+  @media(max-width: $sm)
+    font-size: 1rem
+
+@mixin def-fa-icon
+  height: 3rem
+  color: $color-node-ring
+  cursor: pointer
+  &:hover
+    opacity: 0.8
+  @media (max-width: $lg)
+    height: 2rem
+  @media (max-width: $md)
+    height: 1.5rem
+  @media(max-width: $sm)
+    height: 1.2rem
+
+@mixin no-select
+  -webkit-user-select: none
+  -ms-user-select: none
+  user-select: none

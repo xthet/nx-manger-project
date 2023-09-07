@@ -1,0 +1,146 @@
+@import @/styles/_mixins
+
+.reactive
+  position: fixed
+  z-index: 20
+  top: 0
+  bottom: 0
+  right: 0
+  left: 0
+  background: rgba(0,0,0,0.4)
+
+.form_cont
+  position: fixed
+  z-index: 21
+  top: 5%
+  min-height: 60vh
+  max-height: 90vh
+  width: 50vw
+  left: calc((100vw - 50vw)/2)
+  background: $color-htext
+  box-shadow: 0 0 15px 1px rgba(0,0,0,0.1)
+  border-radius: 0.4rem
+  padding: 2rem 1rem
+  overflow-y: scroll
+  @include def-p
+  @include fl-cl
+  @include fl-c
+  gap: 1.25em
+  @media(max-width: $lg)
+    width: 70vw
+    left: calc((100vw - 70vw)/2)
+  @media(max-width: $md)
+    width: 80vw
+    left: calc((100vw - 80vw)/2)
+
+.cancel_icon
+  position: absolute
+  @include def-fa-icon
+  right: 10px
+  top: 10px
+  color: $color-subtext
+
+.header
+  width: 100%
+  @include fl-cl
+  @include fl-c
+  gap: 8px
+  p
+    opacity: 0.7
+
+.separator
+  width: 100%
+  height: 1px
+  background: $color-subtext
+  opacity: 0.5
+
+.form
+  width: 100%
+  padding: 0 3rem
+  @include fl-tl
+  @include fl-c
+  gap: 20px
+
+.enquiry
+  @include fl-tl
+  @include fl-c
+  gap: 6px
+  width: 100%
+  .separator
+    margin-top: 6px
+
+.shipping_details
+  @include fl-tl
+  @include fl-c
+  gap: 6px
+  width: 100%
+  h4
+    @include def-p
+    font-weight: 600
+  small
+    @include def-p
+    font-weight: 300
+    font-size: 1rem
+
+.shipping_details_label
+  font-size: 1.5rem
+  font-weight: 600
+
+.input_small
+  width: 100%
+
+.input
+  @include def-inpt
+  width: 100%
+  border-radius: 3px
+
+.input_grp
+  width: 100%
+  @include fl-cl
+  @include fl-sb
+  .input
+    width: 48%
+
+.country_select
+  width: 48%
+  @include def-p
+
+.single_question
+  @extend .input_small
+  @include fl-tl
+  @include fl-c
+  gap: 6px
+
+.question_label
+  @include def-p
+  font-size: 1.4rem
+
+.multi_question
+  @extend .single_question
+
+.options
+  margin-top: 8px
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 6px
+
+.option
+  width: 100%
+  @include fl-cl
+  gap: 6px
+  span
+    @include def-p
+    font-size: 1.3rem
+
+.option_radio
+  cursor: pointer
+  accent-color: $color-text
+
+.footer
+  @include fl-cc
+  width: 100%
+
+.submit
+  @include def-btn
+  box-shadow: none

@@ -1,0 +1,228 @@
+.rt-cta
+  @include fl-cl
+  @include fl-c
+  gap: 0.8em
+  width: 100%
+
+.rt-cta-btn
+  @include fl-cc
+  width: 60%
+  padding: 1rem
+  border-radius: 0.6rem
+  background-color: $color-sub-bg
+  cursor: pointer
+  &:hover
+    opacity: 0.8
+  @media (max-width: $md)
+    width: 100%
+
+.rt-add-icon
+  color: $color-card-text
+  width: 4rem
+  // height: 4rem
+  @media (max-width: $md)
+    width: 2rem
+
+.rt-cta-label
+  @include def-p
+
+.rt-card-form
+  @extend .ct-card
+  position: relative
+  width: 80%
+  @media (max-width: $sm)
+    width: 100%
+
+.rt-form-inpt-grp
+  width: 100%
+  @include fl-cl
+  flex-wrap: wrap
+  @media (max-width: $sm)
+    @include fl-sb
+  // &.ft-top
+  //   @include fl-tl
+  &.ft-space
+    margin-bottom: 6.94vw
+    @media(max-width: $md)
+      margin-bottom: 9vw
+    @media(max-width: $sm)
+      margin-bottom: 15vw
+
+.rt-form-inpt-label
+  @include def-p
+  width: 20%
+  @media (max-width: $sm)
+    line-height: 1.2em
+    width: 26%  
+
+.rt-form-inpt
+  @include def-inpt
+  width: 80%
+  &.--rt-items-inpt
+    &::placeholder
+      color: #360446
+  @media (max-width: $sm)
+    width: 70%
+
+.rt-img-inpt
+  width: 80%
+  height: max(12.5vw, 180px)
+  background-color: $color-sub-bg
+  border-radius: 0.625em
+  @media (max-width: $sm)
+    width: 70%
+
+.rt-card-img-lbl
+  width: 100%
+  height: 100%
+  background-color: $color-sub-bg
+  cursor: pointer
+  transition: background-color 0.2s ease
+  transition: all 0.3s ease
+  &:hover
+    opacity: 0.8
+
+.rt-img-cont
+  @include fl-cc
+  width: 100%
+  height: 100%
+  img
+    width: 100%
+    height: 100%
+    border-radius: 0.625em
+    object-fit: cover
+  
+.rt-card-img-icon
+  height: 3rem
+  color: $color-card-text
+  opacity: 0.8
+
+.rt-form-grp-input
+  @include fl-cl
+  flex-wrap: wrap
+  width: 80%
+  gap: 1rem
+  input
+    &[type="radio"]
+      cursor: pointer
+      accent-color: $color-text
+  @media (max-width: $sm)
+    width: 70%
+
+.rt-rad-inpt-label
+  @include def-p
+
+.rt-rad-info
+  @include def-p
+  font-size: 1.2rem
+  color: $color-subtext
+
+.rt-form-inpt-sm-grp
+  width: 80%
+  @include fl-tl
+  @include fl-c
+  gap: 0.5rem
+  .rt-form-inpt
+    width: 100%
+    font-weight: 300
+  small
+    width: 100%
+    @include fl-cr
+    @include def-p
+    color: $color-subtext
+    font-size: 1.2rem
+    @media (max-width: $sm)
+      font-size: 0.8rem
+  @media (max-width: $sm)
+    width: 70%
+
+div.rt-form-select
+  width: 80%
+  @include def-p
+  color: $color-card-text
+  @media (max-width: $sm)
+    width: 70%
+
+div.css-13cymwt-control
+  border-color: $color-text
+
+div.css-t3ipsp-control  
+  border-color: $color-subtext
+  box-shadow: none
+  &:hover
+    box-shadow: none
+    border-color: $color-card-text
+
+.rt-form-footer
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  padding: 1.8rem
+  width: 100%
+  border-radius: 0 0 0.44em 0.44em
+  background-color: $color-node-ring
+  @include fl-cr
+  gap: 0.8em
+
+.rt-form-save
+  @include def-btn
+  background: $color-text
+  box-shadow: none
+
+.rt-form-cancel
+  @include def-btn
+  background: $color-ltext
+  box-shadow: none
+
+.rt-form-add-item-grp
+  width: 100%
+  @include fl-cl
+  gap: 1rem
+  .rt-form-inpt
+    width: 60%
+
+.rt-form-add-item-icon
+  @include def-fa-icon
+    
+
+.rt-form-items-inpt
+  @extend .rt-form-inpt-sm-grp
+  gap: 0.8em
+
+.rt-form-items-ul
+  .rt-i-item
+    @include fl-tl
+    gap: 0.5em
+  li
+    @include def-p
+    font-size: 1.2rem
+    margin-bottom: 0.4em
+  .rt-x-item
+    height: 1.5rem
+    color: $color-node-ring
+    cursor: pointer
+
+.rt-made-rewards
+  @include fl-cl
+  @include fl-c
+  gap: 0.8em
+  width: 60%
+  @media(max-width: $md)
+    width: 100%
+
+.rt-rwd-edit-grp
+  width: 100%
+  @include fl-tl
+  gap: 0.5em
+
+.rt-rwd-options
+  @include fl-cl
+  @include fl-c
+  gap: 0.5rem
+
+.rt-edit-icon
+  @include def-fa-icon
+
+.rt-rwd-x-icon
+  @include def-fa-icon

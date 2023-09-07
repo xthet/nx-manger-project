@@ -1,0 +1,126 @@
+.cbm-modal
+  @extend .tbx-modal
+  // top: unset
+  // left: unset
+  // inset: 0
+  // margin: auto
+  // top: calc((100vh - 60vh)/2)
+  top: 25%
+  padding: 2rem 3rem
+  max-height: 60vh
+  overflow-y: auto
+
+.cbm-cancel
+  @include def-fa-icon
+  height: 2rem 
+  color: $color-subtext
+  position: absolute
+  right: 1.5rem
+  top: 1rem
+  
+.cbm-title
+  @include def-p
+  color: $color-subtext
+  font-weight: 600
+  letter-spacing: 0.02em
+  margin-top: -0.4rem
+
+.cbm-pfp
+  @extend .crh-pfp
+  @media(max-width: $lg)
+    border-radius: 0.9vw
+    width: 6.25vw
+    height: 6.25vw
+  @media(max-width: $md)
+    width: 10.25vw
+    height: 10.25vw
+
+.cbm-creator
+  width: 100%
+  @include fl-tl
+  gap: 0.5em
+  .cbm-creator-dets
+    @include fl-tl
+    @include fl-c
+    gap: 0.5em
+  h2
+    cursor: pointer
+    @include def-h
+    letter-spacing: 0.03em
+    color: $color-card-text
+    transition: all 0.2s ease
+    &:hover
+      opacity: 0.8
+  p
+    @include def-p
+    font-size: 1.2rem
+    color: $color-subtext
+    letter-spacing: 0.03em
+
+.cbm-creator-location-icon
+  height: 1.2rem
+  color: $color-subtext
+  @media(max-width: $sm)
+    height: 0.8rem
+
+.cbm-contacts
+  margin-top: 0.8em
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 0.8em
+
+.cbm-contact
+  @include fl-cl
+  gap: 0.4em
+  @include def-p
+  color: $color-subtext
+  &.--socials
+    gap: 0.8em
+
+.cbm-social-icon
+  color: $color-card-text
+  height: 1.6rem
+  transition: all 0.2s ease
+  &:hover
+    opacity: 0.6
+  @media(max-width: $md)
+    height: 1.5rem
+  @media(max-width: $sm)
+    height: 1.2rem
+
+.cbm-email-icon
+  height: 1.3rem
+  @media(max-width: $sm)
+    height: 1rem
+
+.cbm-other-creators
+  margin-top: 0.6em
+  width: 100%
+  @include fl-tl
+  @include fl-c
+  gap: 0.8em
+
+.cbm-oc-title
+  @include def-p
+  color: $color-card-text
+  font-weight: 600
+  letter-spacing: 0.03em
+
+.cbm-creators-cont
+  width: 100%
+  @include fl-cl
+  flex-wrap: wrap
+  gap: 0.4em
+
+.cbm-spt-creator
+  cursor: pointer
+  @include def-p
+  font-weight: 500
+  color: $color-subtext
+  letter-spacing: 0.02em
+  transition: all 0.2s ease
+  &:hover
+    text-decoration: underline
+    opacity: 0.8
+  

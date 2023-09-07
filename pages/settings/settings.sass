@@ -1,0 +1,79 @@
+.acs
+  // width: 100%
+  // height: 100vh
+  padding: 7.2vw 0
+  @include fl-cc
+  @include fl-c
+  @media (max-width: $sm)
+    padding: 20vw 0 0
+  
+.acs-container
+  @extend .su-container
+  height: unset
+  z-index: 1
+  @include fl-cl
+  @include fl-c
+  gap:2.5rem
+  // border: 1px solid #000
+  border-radius: 2rem
+  padding: 1rem 3rem
+  box-shadow: 0 0 10px 5px rgba(110, 70, 219, 0.05)
+  @media(max-width: $sm)
+    border-radius: 0
+    padding: 1rem
+
+.acs-header
+  @include fl-cl
+  @include fl-c
+  gap: 0.8rem
+
+.acs-img-grp
+  @extend .su-img-grp
+  @include fl-cl
+  @include fl-c
+
+.acs-img-inpt
+  @extend .su-img-inpt
+  background: rgba(0,0,0,0.08)
+  &:hover
+    background: rgba(0,0,0,0.15)
+
+.acs-avt-title
+  @extend .su-avt-title
+  color: $color-card-text
+
+.acs-avt-spec
+  @extend .su-avt-spec
+  color: $color-card-text
+
+.acs-ipld-img-icon
+  @extend .su-ipld-img-icon
+  color: $color-text
+
+.acs-usr-address
+  @extend .su-usr-address
+  color: $color-card-text
+  opacity: 0.5
+  cursor: default
+
+.acs-title
+  @extend .su-title
+  color: $color-text
+
+.acs-info
+  @extend .su-info
+  color: $color-subtext
+
+.acs-inpt-lbl
+  @extend .su-inpt-lbl
+  label,small
+    color: $color-card-text
+
+.acs-form-input
+  @extend .su-form-input
+  background: $color-sub-bg
+  border-bottom: 1px solid $color-card-text
+
+.acs-cta
+  @extend .su-cta
+  @include fl-cc

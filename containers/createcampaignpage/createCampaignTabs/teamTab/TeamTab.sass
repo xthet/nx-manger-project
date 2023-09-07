@@ -1,0 +1,113 @@
+.tt-members-inpt-grp
+  @include fl-tl
+  width: 100%
+
+.tt-inpt-label
+  @include def-p
+  width: 20%
+  @media(max-width: $sm)
+    width: 30%
+
+.tt-card-subtitle
+  @extend .ct-card-subtitle
+  width: 95%
+  @media(max-width: $sm)
+    width: 100%
+
+.tt-members-inpt-list-grp
+  @include fl-tl
+  @include fl-c
+  gap: 0.5em
+  width: 80%
+  @media(max-width: $sm)
+    width: 70%
+
+.tt-address-inpt-grp
+  width: 100%
+  @include fl-cl
+  gap: 0.8em
+
+.tt-address-inpt
+  @include def-inpt
+  
+.tt-add-member-icon
+  @include def-fa-icon
+
+.tt-members-list
+  ul
+    @include fl-tl
+    @include fl-c
+    gap:0.6em
+
+.tt-member-grp
+  @include fl-cl
+  gap: 0.5em
+
+.tt-member
+  @include def-p
+  font-weight: 400
+
+.tt-del-member-icon
+  @include def-fa-icon
+  height:2rem
+      
+.tt-cta
+  width: 100%
+  @include fl-cc
+  .tt-cta-btn
+    @include def-btn
+    // background: $color-ltext
+    // box-shadow: none
+
+.tt-form-select
+  // @extend .rt-form-select
+  width: 100%
+  @include def-p
+
+.tt-get-link
+  text-decoration: underline
+  cursor: pointer
+  &:hover
+    opacity: 0.8
+
+.tt-link-bal-wrp
+  @include fl-tl
+  @include fl-c
+  gap: 0.5em
+
+.tt-link-dets
+  @include def-p
+
+.tt-link-bal-cont
+  @include fl-cl
+  gap: 1.5rem
+
+.tt-link-bal-usr
+  @include fl-cl
+  gap: 0.5em
+  padding: 0.8rem 1rem
+  border: 1px solid $color-subtext
+  border-radius: 0.4rem
+  p
+    @include def-p  
+  @media(max-width: $sm)
+    padding: 0.4rem 1rem
+
+.tt-link-logo
+  height: 2.2rem
+
+.tt-link-bal
+  @include def-p
+  font-weight: 600
+  margin-left: -0.6rem
+  @media(max-width: $sm)
+    margin-left: -0.8rem
+
+.tt-link-check
+  @include def-fa-icon
+  height: 2.5rem
+  color: #adf802
+
+.tt-get-link-btn
+  @include def-btn
+  font-size: 1rem
