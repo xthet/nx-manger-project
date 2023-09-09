@@ -129,7 +129,7 @@ function ConnectionProvider({ children }: { children: ReactNode }) {
 			setCookie("sess_sig", iSig, { expires: tomorrow, path: "/" })
 			setSeSSig(iSig)
 		}
-	}, [account, isConnected, chainId, switchNetwork, found_wallet])
+	}, [account, isConnected, chainId, switchNetwork, found_wallet, signer])
 
 	useEffect(() => {
 		isConnected && !seSSig && findSig().catch((e) => console.log(e))
