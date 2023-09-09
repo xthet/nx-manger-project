@@ -214,7 +214,21 @@ export default function SignUp() {
 					/>
 				)}
 				{!isConnected ? (
-					<ReactLoading type="bubbles" color="#C4A2E7" />
+					<div
+						className="rt-conn-cta"
+						style={{ position: "relative", zIndex: "3" }}
+					>
+						<p style={{ color: "white" }}>
+							{"Connect your wallet to sign up!!"}
+						</p>
+						<button
+							onClick={() => {
+								connect()
+							}}
+						>
+							{"Connect your wallet"}
+						</button>
+					</div>
 				) : (
 					<form
 						onSubmit={(e) => {
