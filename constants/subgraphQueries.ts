@@ -98,7 +98,7 @@ export const GET_SOME_CAMPAIGNS = gql`
 
 export const GET_FEATURED_USERS = gql`
 	query getFeaturedUsers {
-		userAddeds(first: 4, orderBy: createdAt, orderDirection: asc) {
+		userAddeds(first: 2, orderBy: createdAt, orderDirection: asc) {
 			username
 			pfp
 			address
