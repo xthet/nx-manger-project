@@ -77,7 +77,7 @@ export default function WalletChoiceModal({ offMe }: { offMe: Function }) {
 							className={s.wllt_img}
 						/>
 						<span>
-							{connectors[3].name}
+							{`${connectors[3].name} (Injected)`}
 							{/* {!connectors[3].ready && " (unsupported)"} */}
 							{isLoading &&
 								connectors[3].id === pendingConnector?.id &&
