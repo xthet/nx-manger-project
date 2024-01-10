@@ -29,14 +29,15 @@
 
 .creators_cont
   display: grid
-  grid-template-columns: repeat(4, 1fr)
-  width: 100%
+  grid-template-columns: repeat(2, 1fr)
+  width: 70%
   grid-gap: 19px
+  justify-items: center
   @media (max-width: $md)
+    width: 100%
     grid-gap: 10px
   @media (max-width: $sm)
     grid-template-columns: repeat(2, 1fr)
-    justify-items: center
     grid-column-gap: 0
 
 .fc

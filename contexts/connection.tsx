@@ -129,7 +129,7 @@ function ConnectionProvider({ children }: { children: ReactNode }) {
 			setCookie("sess_sig", iSig, { expires: tomorrow, path: "/" })
 			setSeSSig(iSig)
 		}
-	}, [account, isConnected, chainId, switchNetwork, found_wallet])
+	}, [account, isConnected, chainId, switchNetwork, found_wallet, signer])
 
 	useEffect(() => {
 		isConnected && !seSSig && findSig().catch((e) => console.log(e))
@@ -143,15 +143,7 @@ function ConnectionProvider({ children }: { children: ReactNode }) {
 			setBalance(bi_balance.formatted)
 		}
 		initDefWall().catch((e) => console.log(e))
-		if (typeof window !== "undefined" && window.ethereum) {
-			setHasMetamask(true)
-		} else if (
-			confirm(
-				"You need a Web3 wallet to use this site,\nWould you like to install Metamask"
-			)
-		) {
-			router.push("https://metamask.io/")
-		}
+		isConnected && setHasMetamask(true)
 		async function get_chain_id() {
 			if (isConnected && account && found_wallet) {
 				const chainId = found_wallet.getChainId()
