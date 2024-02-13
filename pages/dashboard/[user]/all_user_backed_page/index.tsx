@@ -33,7 +33,7 @@ export default function AllUserBackedPage() {
 					<span className={`${s["db-tbl-hdr-ele"]} ${s["--eta"]}`}>
 						{"ETA (days)"}
 					</span>
-					<span className={s["db-tbl-hdr-ele"]}>{"Balance"}</span>
+					<span className={s["db-tbl-hdr-ele"]}>{"Balance (ETH)"}</span>
 				</div>
 
 				{backedCampaigns.length > 0 &&

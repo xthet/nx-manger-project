@@ -35,7 +35,7 @@ export default function AllUserCreatedPage() {
 					<span className={`${s["db-tbl-hdr-ele"]} ${s["--eta"]}`}>
 						{"ETA (days)"}
 					</span>
-					<span className={s["db-tbl-hdr-ele"]}>{"Balance"}</span>
+					<span className={s["db-tbl-hdr-ele"]}>{"Balance (ETH)"}</span>
 				</div>
 
 				{createdCampaigns.length > 0 &&

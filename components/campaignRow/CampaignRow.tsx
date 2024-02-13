@@ -51,7 +51,7 @@ export default function CampaignRow({
 				{daysUntil <= 0 ? 0 : daysUntil}
 			</span>
 			<span className={s["db-tbl-rw-ele"]}>
-				<FontAwesomeIcon icon={faEthereum} className={s["db-tbl-act-icon"]} />
+				{/* <FontAwesomeIcon icon={faEthereum} className={s["db-tbl-act-icon"]} /> */}
 				<span>
 					{Number(ethers.utils.formatEther(campaignDetails.currentBalance)) >=
 					10
