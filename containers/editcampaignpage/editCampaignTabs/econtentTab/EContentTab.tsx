@@ -177,6 +177,7 @@ export default function EContentTab() {
 									"A good pitch is compelling, informative, and easy to digest. Learn more."}
 							</p>
 							<Editor
+								apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY!}
 								plugins={
 									"image link preview table paste wordcount visualblocks searchreplace"
 								}
@@ -209,6 +210,7 @@ export default function EContentTab() {
 								}
 							</p>
 							<Editor
+								apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY!}
 								plugins={
 									"link preview table paste wordcount visualblocks searchreplace"
 								}

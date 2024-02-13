@@ -80,14 +80,14 @@ export default function UserCreatedTab() {
 					<span className={s["db-tbl-hdr-ele"]}>{"Name"}</span>
 					<span
 						className={s["db-tbl-hdr-ele"]}
-						style={{ marginLeft: "1.25vw" }}
+						// style={{ marginLeft: "1.25vw" }}
 					>
 						{"Status"}
 					</span>
 					<span className={`${s["db-tbl-hdr-ele"]} ${s["--eta"]}`}>
 						{"ETA (days)"}
 					</span>
-					<span className={s["db-tbl-hdr-ele"]}>{"Balance"}</span>
+					<span className={s["db-tbl-hdr-ele"]}>{"Balance (ETH)"}</span>
 				</div>
 
 				{createdCampaigns.length > 0 &&

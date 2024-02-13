@@ -8,7 +8,7 @@ import { useRouter } from "next/router"
 import Link from "next/link"
 import { conn } from "@/types"
 import { ConnectionContext } from "@/contexts/connection"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 
 export default function CampaignRow({
 	address,
@@ -31,11 +31,23 @@ export default function CampaignRow({
 				className={`${s["db-tbl-rw-ele"]} ${s["--status"]}`}
 				style={
 					campaignDetails.state == 0
-						? { background: "#C8EFE9", color: "#47947D" }
+						? {
+								background: "#52fc00",
+								color: "#1c6156",
+								opacity: "0.7",
+						  }
 						: campaignDetails.state == 1
-						? { background: "amber" }
+						? {
+								background: "#ffbf00",
+								color: "#624900",
+								opacity: "0.7",
+						  }
 						: campaignDetails.state == 2
-						? { background: "red" }
+						? {
+								background: "#ff1414",
+								color: "#760000",
+								opacity: "0.7",
+						  }
 						: {}
 				}
 			>
@@ -61,8 +73,8 @@ export default function CampaignRow({
 						: Number(
 								Number(
 									ethers.utils.formatEther(campaignDetails.currentBalance)
-								).toFixed(3)
-						  ).toPrecision(2)}
+								).toFixed(4)
+						  ).toPrecision(3)}
 				</span>
 			</span>
 

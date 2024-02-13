@@ -23,6 +23,7 @@ export default function useFeaturedCreators() {
 				})
 				.catch((err) => console.log("Error fetching data: ", err))
 			data && data.length > 0 && setCreators(data)
+			console.log(data)
 		}
 
 		getFeaturedUsers().catch((e) => console.log(e))

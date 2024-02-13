@@ -204,7 +204,7 @@ export default function ContentTab() {
 							</p>
 
 							<Editor
-								// apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY!}
+								apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY!}
 								plugins={
 									"image link preview table paste wordcount visualblocks searchreplace"
 								}
@@ -236,6 +236,7 @@ export default function ContentTab() {
 								}
 							</p>
 							<Editor
+								apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY!}
 								plugins={
 									"link preview table paste wordcount visualblocks searchreplace"
 								}
