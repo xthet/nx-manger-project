@@ -6,28 +6,21 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>Manger</title>
+				<title>Manger — Fundraising on the blockchain</title>
 				<meta
 					name="description"
-					content="Manger - Fundraising on the blockchain"
+					content="Unlock the Power of Community with Manger: The Next-Generation Crowdfunding Web3 Protocol. Manger is revolutionizing the way we fund projects and ideas. Our protocol harnesses the power of the decentralized Web3 ecosystem to bring together a community of like-minded individuals who are passionate about making a difference."
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<meta data-rh="true" property="og:type" content="hero" />
-				<meta data-rh="true" property="og:site_name" content="Manger" />
+				<meta property="og:site_name" content="Manger" />
 				<meta
-					data-rh="true"
 					property="og:image"
 					content="https://manger-project.vercel.app/manger.png"
 				/>
+				<meta property="og:url" content="https://manger-project.vercel.app/" />
 				<meta
-					data-rh="true"
-					property="og:url"
-					content="https://manger-project.vercel.app/"
-				/>
-				<meta
-					data-rh="true"
 					property="og:title"
-					content="Manger - Fundraising on the blockchain"
+					content="Manger — Fundraising on the blockchain"
 				/>
 				<link rel="icon" href="/assets/manger_favicon.svg" />
 			</Head>
