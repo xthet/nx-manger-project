@@ -43,15 +43,24 @@ export default function Footer() {
 						<div className="ft-social-link">
 							<FontAwesomeIcon icon={faFacebookF} className="ft-social-icon" />
 						</div>
-						<div className="ft-social-link">
+						<Link
+							href={process.env.NEXT_PUBLIC_TWITTER_SOCIAL!}
+							className="ft-social-link"
+						>
 							<FontAwesomeIcon icon={faTwitter} className="ft-social-icon" />
-						</div>
-						<div className="ft-social-link">
+						</Link>
+						<Link
+							href={process.env.NEXT_PUBLIC_TELEGRAM_SOCIAL!}
+							className="ft-social-link"
+						>
 							<FontAwesomeIcon icon={faTelegram} className="ft-social-icon" />
-						</div>
-						<div className="ft-social-link">
+						</Link>
+						<Link
+							href={process.env.NEXT_PUBLIC_GITHUB_SOCIAL!}
+							className="ft-social-link"
+						>
 							<FontAwesomeIcon icon={faGithub} className="ft-social-icon" />
-						</div>
+						</Link>
 					</div>
 				</div>
 
@@ -104,15 +113,24 @@ export default function Footer() {
 							marginBottom: "7px",
 						}}
 					>
-						<div className="ft-social-link">
+						<Link
+							href={process.env.NEXT_PUBLIC_TWITTER_SOCIAL!}
+							className="ft-social-link"
+						>
 							<FontAwesomeIcon icon={faTwitter} className="ft-social-icon" />
-						</div>
-						<div className="ft-social-link">
+						</Link>
+						<Link
+							href={process.env.NEXT_PUBLIC_TELEGRAM_SOCIAL!}
+							className="ft-social-link"
+						>
 							<FontAwesomeIcon icon={faTelegram} className="ft-social-icon" />
-						</div>
-						<div className="ft-social-link">
+						</Link>
+						<Link
+							href={process.env.NEXT_PUBLIC_GITHUB_SOCIAL!}
+							className="ft-social-link"
+						>
 							<FontAwesomeIcon icon={faGithub} className="ft-social-icon" />
-						</div>
+						</Link>
 						<div className="ft-social-link">
 							<FontAwesomeIcon icon={faFacebook} className="ft-social-icon" />
 						</div>
