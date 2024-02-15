@@ -16,7 +16,7 @@ export default function FeaturedCreators() {
 
 			<div className={s.creators_cont}>
 				{creators &&
-					creators.splice(2, 1).map((creator, idx) => {
+					creators.slice(0, 2).map((creator, idx) => {
 						return (
 							<Link
 								href={`/profile/${creator.username}`}

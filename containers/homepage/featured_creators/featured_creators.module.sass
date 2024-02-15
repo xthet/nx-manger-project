@@ -29,7 +29,7 @@
 
 .creators_cont
   display: grid
-  grid-template-columns: repeat(4, 1fr)
+  grid-template-columns: repeat(2, 1fr)
   width: 100%
   grid-gap: 19px
   justify-items: start
@@ -53,8 +53,8 @@
       opacity: 0.8
   img
     transition: all 0.5s ease
-    width: 21vw
-    aspect-ratio: 4/3
+    width: 100%
+    aspect-ratio: 2/1
     // height: 26.35vw
     object-fit: cover
     // border-radius: 3px
@@ -69,6 +69,7 @@
     @include def-p
     transition: all 0.3s ease
     font-weight: 700
+    font-size: 2rem
     @media(max-width: $vsm)
       font-size: 1rem
   p:first-child
